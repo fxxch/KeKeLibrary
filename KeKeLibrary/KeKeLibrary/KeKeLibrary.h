@@ -20,3 +20,5 @@ FOUNDATION_EXPORT const unsigned char KeKeLibraryVersionString[];
 #import <KeKeLibrary/KKTool.h>
 #import <KeKeLibrary/KKCategory.h>
 #import <KeKeLibrary/KKSharedInstance.h>
+#import <KeKeLibrary/KeKeLibraryDefine.h>
+
