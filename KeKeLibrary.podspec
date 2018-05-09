@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.0.19"
+    s.version      = "0.0.20"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -110,7 +110,7 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-    s.resources = "KeKeLibrary/KeKeLibrary/**/*.{bundle,png,xml,plist,sqlite}"  
+    s.resources = "KeKeLibrary/KeKeLibrary/**/*.{bundle,sqlite}"  
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
