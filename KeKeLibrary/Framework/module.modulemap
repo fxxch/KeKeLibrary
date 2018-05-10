@@ -1,6 +1,0 @@
-framework module KeKeLibrary {
-  umbrella header "KeKeLibrary.h"
-
-  export *
-  module * { export * }
-}

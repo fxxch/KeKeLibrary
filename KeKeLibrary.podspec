@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.0.21"
+    s.version      = "0.0.22"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -190,8 +190,8 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
   # s.dependency 'MBProgressHUD'
-    s.dependency 'AFNetworking'
-    s.dependency 'FMDB'
+  # s.dependency 'AFNetworking'
+  # s.dependency 'FMDB'
   # s.dependency 'PinYin4Objc'
   # s.dependency 'AMap3DMap-NO-IDFA', '~> 5.5.0'
   # s.dependency 'AMapLocation-NO-IDFA', '~> 2.5.0'

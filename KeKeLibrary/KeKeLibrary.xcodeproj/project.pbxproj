@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		3AA6D47E20A2BE6D00DF9694 /* FrameworksJoinScript */ = {
+		3AA6D47E20A2BE6D00DF9694 /* JoinScriptWorkspace */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 3AA6D47F20A2BE6D00DF9694 /* Build configuration list for PBXAggregateTarget "FrameworksJoinScript" */;
+			buildConfigurationList = 3AA6D47F20A2BE6D00DF9694 /* Build configuration list for PBXAggregateTarget "JoinScriptWorkspace" */;
 			buildPhases = (
 				3AA6D48220A2BE7400DF9694 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = FrameworksJoinScript;
+			name = JoinScriptWorkspace;
 			productName = FrameworksJoinScript;
+		};
+		3AF5A6BD20A4302F0003ADE2 /* JoinScriptProject */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3AF5A6BE20A4302F0003ADE2 /* Build configuration list for PBXAggregateTarget "JoinScriptProject" */;
+			buildPhases = (
+				3AF5A6C120A430350003ADE2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = JoinScriptProject;
+			productName = JoinScriptProject;
 		};
 /* End PBXAggregateTarget section */
 
@@ -203,12 +214,34 @@
 		3AA6D47B20A2BBD200DF9694 /* KKUIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D46E20A2BBD200DF9694 /* KKUIToolbar.m */; };
 		3AA6D47C20A2BBD200DF9694 /* KKView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D47020A2BBD200DF9694 /* KKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA6D47D20A2BBD200DF9694 /* KKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D47120A2BBD200DF9694 /* KKView.m */; };
+		3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68A20A42F8A0003ADE2 /* AFCompatibilityMacros.h */; };
+		3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68B20A42F8A0003ADE2 /* AFHTTPSessionManager.h */; };
+		3AF5A6A620A42F8A0003ADE2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A68C20A42F8A0003ADE2 /* AFHTTPSessionManager.m */; };
+		3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68D20A42F8A0003ADE2 /* AFNetworking.h */; };
+		3AF5A6A820A42F8A0003ADE2 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68E20A42F8A0003ADE2 /* AFNetworkReachabilityManager.h */; };
+		3AF5A6A920A42F8B0003ADE2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A68F20A42F8A0003ADE2 /* AFNetworkReachabilityManager.m */; };
+		3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69020A42F8A0003ADE2 /* AFSecurityPolicy.h */; };
+		3AF5A6AB20A42F8B0003ADE2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69120A42F8A0003ADE2 /* AFSecurityPolicy.m */; };
+		3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69220A42F8A0003ADE2 /* AFURLRequestSerialization.h */; };
+		3AF5A6AD20A42F8B0003ADE2 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69320A42F8A0003ADE2 /* AFURLRequestSerialization.m */; };
+		3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69420A42F8A0003ADE2 /* AFURLResponseSerialization.h */; };
+		3AF5A6AF20A42F8B0003ADE2 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69520A42F8A0003ADE2 /* AFURLResponseSerialization.m */; };
+		3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69620A42F8A0003ADE2 /* AFURLSessionManager.h */; };
+		3AF5A6B120A42F8B0003ADE2 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69720A42F8A0003ADE2 /* AFURLSessionManager.m */; };
+		3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69920A42F8A0003ADE2 /* FMDatabase.h */; };
+		3AF5A6B320A42F8B0003ADE2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69A20A42F8A0003ADE2 /* FMDatabase.m */; };
+		3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69B20A42F8A0003ADE2 /* FMDatabaseAdditions.h */; };
+		3AF5A6B520A42F8B0003ADE2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69C20A42F8A0003ADE2 /* FMDatabaseAdditions.m */; };
+		3AF5A6B620A42F8B0003ADE2 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69D20A42F8A0003ADE2 /* FMDatabasePool.h */; };
+		3AF5A6B720A42F8B0003ADE2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69E20A42F8A0003ADE2 /* FMDatabasePool.m */; };
+		3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69F20A42F8A0003ADE2 /* FMDatabaseQueue.h */; };
+		3AF5A6B920A42F8B0003ADE2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A6A020A42F8A0003ADE2 /* FMDatabaseQueue.m */; };
+		3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A120A42F8A0003ADE2 /* FMDB.h */; };
+		3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A220A42F8A0003ADE2 /* FMResultSet.h */; };
+		3AF5A6BC20A42F8B0003ADE2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A6A320A42F8A0003ADE2 /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21FCC8AB13B27B5F834E8BED /* Pods-KeKeLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeKeLibrary.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeKeLibrary/Pods-KeKeLibrary.release.xcconfig"; sourceTree = "<group>"; };
-		2C113A64837D1D69D05F5926 /* Pods_KeKeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeKeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		381322C063F3595D44C1602E /* Pods-KeKeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeKeLibrary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeKeLibrary/Pods-KeKeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 		3A5E25A520A333D600938748 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = SOURCE_ROOT; };
 		3AA6D29820A2B99C00DF9694 /* KeKeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeKeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = KKCoreText.sqlite; sourceTree = "<group>"; };
@@ -393,6 +426,31 @@
 		3AA6D46E20A2BBD200DF9694 /* KKUIToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUIToolbar.m; sourceTree = "<group>"; };
 		3AA6D47020A2BBD200DF9694 /* KKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKView.h; sourceTree = "<group>"; };
 		3AA6D47120A2BBD200DF9694 /* KKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKView.m; sourceTree = "<group>"; };
+		3AF5A68A20A42F8A0003ADE2 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
+		3AF5A68B20A42F8A0003ADE2 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		3AF5A68C20A42F8A0003ADE2 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		3AF5A68D20A42F8A0003ADE2 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		3AF5A68E20A42F8A0003ADE2 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		3AF5A68F20A42F8A0003ADE2 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		3AF5A69020A42F8A0003ADE2 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		3AF5A69120A42F8A0003ADE2 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		3AF5A69220A42F8A0003ADE2 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		3AF5A69320A42F8A0003ADE2 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		3AF5A69420A42F8A0003ADE2 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		3AF5A69520A42F8A0003ADE2 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		3AF5A69620A42F8A0003ADE2 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		3AF5A69720A42F8A0003ADE2 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		3AF5A69920A42F8A0003ADE2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		3AF5A69A20A42F8A0003ADE2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		3AF5A69B20A42F8A0003ADE2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		3AF5A69C20A42F8A0003ADE2 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		3AF5A69D20A42F8A0003ADE2 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		3AF5A69E20A42F8A0003ADE2 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		3AF5A69F20A42F8A0003ADE2 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3AF5A6A020A42F8A0003ADE2 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3AF5A6A120A42F8A0003ADE2 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		3AF5A6A220A42F8A0003ADE2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		3AF5A6A320A42F8A0003ADE2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,7 +470,6 @@
 				3AA6D29A20A2B99C00DF9694 /* KeKeLibrary */,
 				3AA6D2A320A2BA4700DF9694 /* SupportingFiles */,
 				3AA6D29920A2B99C00DF9694 /* Products */,
-				9326B55F9E652621820A5E79 /* Pods */,
 				4AB745486794E5CB48161F29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -759,6 +816,8 @@
 		3AA6D30720A2BA6C00DF9694 /* ThirdLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				3AF5A68920A42F8A0003ADE2 /* AFNetworking */,
+				3AF5A69820A42F8A0003ADE2 /* FMDB */,
 				3AA6D30820A2BA6C00DF9694 /* AESCrypt */,
 				3AA6D31120A2BA6C00DF9694 /* GetIPAddress */,
 			);
@@ -1255,21 +1314,50 @@
 			path = KKView;
 			sourceTree = "<group>";
 		};
+		3AF5A68920A42F8A0003ADE2 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				3AF5A68A20A42F8A0003ADE2 /* AFCompatibilityMacros.h */,
+				3AF5A68B20A42F8A0003ADE2 /* AFHTTPSessionManager.h */,
+				3AF5A68C20A42F8A0003ADE2 /* AFHTTPSessionManager.m */,
+				3AF5A68D20A42F8A0003ADE2 /* AFNetworking.h */,
+				3AF5A68E20A42F8A0003ADE2 /* AFNetworkReachabilityManager.h */,
+				3AF5A68F20A42F8A0003ADE2 /* AFNetworkReachabilityManager.m */,
+				3AF5A69020A42F8A0003ADE2 /* AFSecurityPolicy.h */,
+				3AF5A69120A42F8A0003ADE2 /* AFSecurityPolicy.m */,
+				3AF5A69220A42F8A0003ADE2 /* AFURLRequestSerialization.h */,
+				3AF5A69320A42F8A0003ADE2 /* AFURLRequestSerialization.m */,
+				3AF5A69420A42F8A0003ADE2 /* AFURLResponseSerialization.h */,
+				3AF5A69520A42F8A0003ADE2 /* AFURLResponseSerialization.m */,
+				3AF5A69620A42F8A0003ADE2 /* AFURLSessionManager.h */,
+				3AF5A69720A42F8A0003ADE2 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		3AF5A69820A42F8A0003ADE2 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				3AF5A69920A42F8A0003ADE2 /* FMDatabase.h */,
+				3AF5A69A20A42F8A0003ADE2 /* FMDatabase.m */,
+				3AF5A69B20A42F8A0003ADE2 /* FMDatabaseAdditions.h */,
+				3AF5A69C20A42F8A0003ADE2 /* FMDatabaseAdditions.m */,
+				3AF5A69D20A42F8A0003ADE2 /* FMDatabasePool.h */,
+				3AF5A69E20A42F8A0003ADE2 /* FMDatabasePool.m */,
+				3AF5A69F20A42F8A0003ADE2 /* FMDatabaseQueue.h */,
+				3AF5A6A020A42F8A0003ADE2 /* FMDatabaseQueue.m */,
+				3AF5A6A120A42F8A0003ADE2 /* FMDB.h */,
+				3AF5A6A220A42F8A0003ADE2 /* FMResultSet.h */,
+				3AF5A6A320A42F8A0003ADE2 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		4AB745486794E5CB48161F29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C113A64837D1D69D05F5926 /* Pods_KeKeLibrary.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9326B55F9E652621820A5E79 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				381322C063F3595D44C1602E /* Pods-KeKeLibrary.debug.xcconfig */,
-				21FCC8AB13B27B5F834E8BED /* Pods-KeKeLibrary.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1281,9 +1369,11 @@
 			files = (
 				3AA6D47820A2BBD200DF9694 /* KKTextField.h in Headers */,
 				3AA6D3CD20A2BA6C00DF9694 /* KKRefreshHeaderView.h in Headers */,
+				3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */,
 				3AA6D3EA20A2BA6D00DF9694 /* AESCrypt.h in Headers */,
 				3AA6D3B720A2BA6C00DF9694 /* KanJiSort.h in Headers */,
 				3AA6D3D020A2BA6C00DF9694 /* KKScrollVewRefresh.h in Headers */,
+				3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */,
 				3AA6D41F20A2BA6D00DF9694 /* UIScreen+KKCategory.h in Headers */,
 				3AA6D40720A2BA6D00DF9694 /* NSNumber+KKCategory.h in Headers */,
 				3AA6D43920A2BA6D00DF9694 /* KKFormRequest.h in Headers */,
@@ -1302,6 +1392,8 @@
 				3AA6D3F220A2BA6D00DF9694 /* GetIPAddress.h in Headers */,
 				3AA6D40B20A2BA6D00DF9694 /* NSString+KKCategory.h in Headers */,
 				3AA6D40120A2BA6D00DF9694 /* NSDictionary+KKCategory.h in Headers */,
+				3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */,
+				3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */,
 				3AA6D43720A2BA6D00DF9694 /* AFHTTPSessionManager+KKExtention.h in Headers */,
 				3AA6D40320A2BA6D00DF9694 /* NSMutableArray+KKCategory.h in Headers */,
 				3AA6D47420A2BBD200DF9694 /* KKNavigationController.h in Headers */,
@@ -1335,17 +1427,23 @@
 				3AA6D41320A2BA6D00DF9694 /* UIDevice+KKCategory.h in Headers */,
 				3AA6D3D420A2BA6C00DF9694 /* KKToastView.h in Headers */,
 				3AA6D3FD20A2BA6D00DF9694 /* NSDate+KKCategory.h in Headers */,
+				3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */,
+				3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */,
+				3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */,
 				3AA6D3CB20A2BA6C00DF9694 /* KKRefreshFooterDraggingView.h in Headers */,
 				3AA6D3D820A2BA6D00DF9694 /* KKWaitingView.h in Headers */,
 				3AA6D44720A2BA6D00DF9694 /* KKSharedInstance.h in Headers */,
 				3AA6D42120A2BA6D00DF9694 /* UIScrollView+KKCategory.h in Headers */,
+				3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */,
 				3AA6D3E420A2BA6D00DF9694 /* KKWindowImageView.h in Headers */,
+				3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */,
 				3AA6D3C720A2BA6C00DF9694 /* KKPageScrollView.h in Headers */,
 				3AA6D43F20A2BA6D00DF9694 /* KKRequestParam.h in Headers */,
 				3AA6D47C20A2BBD200DF9694 /* KKView.h in Headers */,
 				3AA6D45920A2BA6D00DF9694 /* KeKeLibrary.h in Headers */,
 				3AA6D3B020A2BA6C00DF9694 /* KKAlertView.h in Headers */,
 				3AA6D41D20A2BA6D00DF9694 /* UINavigationController+KKCategory.h in Headers */,
+				3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */,
 				3AA6D3B220A2BA6C00DF9694 /* KKAuthorizedManager.h in Headers */,
 				3AA6D3C520A2BA6C00DF9694 /* KKPageControl.h in Headers */,
 				3AA6D47220A2BBD200DF9694 /* KKViewController.h in Headers */,
@@ -1359,6 +1457,8 @@
 				3AA6D3C120A2BA6C00DF9694 /* KKEmptyNoticeView.h in Headers */,
 				3AA6D40D20A2BA6D00DF9694 /* NSTimer+KKCategory.h in Headers */,
 				3AA6D3FF20A2BA6D00DF9694 /* NSDateFormatter+KKCategory.h in Headers */,
+				3AF5A6A820A42F8A0003ADE2 /* AFNetworkReachabilityManager.h in Headers */,
+				3AF5A6B620A42F8B0003ADE2 /* FMDatabasePool.h in Headers */,
 				3AA6D44520A2BA6D00DF9694 /* Reachability.h in Headers */,
 				3AA6D3A820A2BA6C00DF9694 /* KKCoreTextItem.h in Headers */,
 				3AA6D42B20A2BA6D00DF9694 /* UIView+KKCategory.h in Headers */,
@@ -1370,7 +1470,9 @@
 				3AA6D3BE20A2BA6C00DF9694 /* KKEmoticonView.h in Headers */,
 				3AA6D40920A2BA6D00DF9694 /* NSObject+KKCategory.h in Headers */,
 				3AA6D41720A2BA6D00DF9694 /* UIImage+KKCategory.h in Headers */,
+				3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */,
 				3AA6D3AA20A2BA6C00DF9694 /* KKCoreTextLabel.h in Headers */,
+				3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1381,12 +1483,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AA6D2A020A2B99C00DF9694 /* Build configuration list for PBXNativeTarget "KeKeLibrary" */;
 			buildPhases = (
-				DA2282B2CC9BD3E041F71D93 /* [CP] Check Pods Manifest.lock */,
 				3AA6D29320A2B99C00DF9694 /* Sources */,
 				3AA6D29420A2B99C00DF9694 /* Frameworks */,
 				3AA6D29520A2B99C00DF9694 /* Headers */,
 				3AA6D29620A2B99C00DF9694 /* Resources */,
-				E2341FC8D9ACB7A18B025BBE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1412,6 +1512,9 @@
 					3AA6D47E20A2BE6D00DF9694 = {
 						CreatedOnToolsVersion = 9.3;
 					};
+					3AF5A6BD20A4302F0003ADE2 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 				};
 			};
 			buildConfigurationList = 3AA6D29220A2B99C00DF9694 /* Build configuration list for PBXProject "KeKeLibrary" */;
@@ -1427,7 +1530,8 @@
 			projectRoot = "";
 			targets = (
 				3AA6D29720A2B99C00DF9694 /* KeKeLibrary */,
-				3AA6D47E20A2BE6D00DF9694 /* FrameworksJoinScript */,
+				3AA6D47E20A2BE6D00DF9694 /* JoinScriptWorkspace */,
+				3AF5A6BD20A4302F0003ADE2 /* JoinScriptProject */,
 			);
 		};
 /* End PBXProject section */
@@ -1458,40 +1562,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#xcodebuild -project hvui.xcodeproj -target FrameworkMaker_Release;rm -rf build;\n\nWorkspace_Name=\"${PROJECT_NAME}.xcworkspace\"\nProduct_Name=\"${PROJECT_NAME}\"\nTarget_Name=\"${PROJECT_NAME}\"\n\ntmpDir=\"${PROJECT_TEMP_DIR}/build\"\nrm -rf \"${tmpDir}\"#清除编译临时文件\n\n\n#编译bundle\nxcodebuild  -workspace \"${Workspace_Name}\"    \\\n-scheme \"${Target_Name}\"          \\\n-configuration \"Release\"          \\\n-sdk \"iphonesimulator\"            \\\nbuild SYMROOT=\"${tmpDir}\"         \\\nONLY_ACTIVE_ARCH=\"NO\"             \\\nVALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n\nfunction buildLibs(){\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Debug\" \"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            xcodebuild -workspace \"${Workspace_Name}\"    \\\n            -scheme \"${Target_Name}\"          \\\n            -configuration \"${configuration}\" \\\n            -sdk \"${sdk}\"                     \\\n            build SYMROOT=\"${tmpDir}\"         \\\n            ONLY_ACTIVE_ARCH=\"NO\"             \\\n            VALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n        done\n    done\n}\n\nfunction lipoLibs(){\n    #copy Release-iphoneos到 Frameworks 目录,然后 lipo -c 一份\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    frameworkDir=\"${ios_libs_dir}/Frameworks\"\n    [ -d \"${frameworkDir}\" ] || mkdir -p \"${frameworkDir}\"\n    cp -r \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework\" \"${frameworkDir}/\"\n    #lipo -c ... -o ..\n    lipo -c \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework/${Product_Name}\" \"${ios_libs_dir}/Release-iphonesimulator/${Product_Name}.framework/${Product_Name}\" -o \"${frameworkDir}/${Product_Name}.framework/${Product_Name}\"\n    rm -rf \"${frameworkDir}/${Product_Name}.framework/_CodeSignature\"\n}\n\nfunction rmLibs(){\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            rm -rf \"${ios_libs_dir}/${configuration}-${sdk}/${Product_Name}.framework\"\n        done\n    done\n}\n\nbuildLibs\n\nlipoLibs\n\n#rmLibs\n\n#cp to ios_libs\n#cp -Rf \"${SRCROOT}/ios_libs/Frameworks/${productName}.framework\" \"${SRCROOT}/../ios_libs/Frameworks/${productName}.framework\"";
+			shellScript = "#xcodebuild -project hvui.xcodeproj -target FrameworkMaker_Release;rm -rf build;\n\nWorkspace_Name=\"${PROJECT_NAME}.xcworkspace\"\nProduct_Name=\"${PROJECT_NAME}\"\nTarget_Name=\"${PROJECT_NAME}\"\n\ntmpDir=\"${PROJECT_TEMP_DIR}/build\"\nrm -rf \"${tmpDir}\"#清除编译临时文件\n\n\n#编译bundle\nxcodebuild  -workspace \"${Workspace_Name}\"              \\\n            -scheme \"${Target_Name}\"                    \\\n            -configuration \"Release\"                    \\\n            -sdk \"iphonesimulator\"                      \\\n            build SYMROOT=\"${tmpDir}\"                   \\\n            ONLY_ACTIVE_ARCH=\"NO\"                       \\\n            VALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n\n#========== 编译库 ==========\nfunction buildLibs(){\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Debug\" \"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            xcodebuild -workspace \"${Workspace_Name}\"   \\\n            -scheme \"${Target_Name}\"                    \\\n            -configuration \"${configuration}\"           \\\n            -sdk \"${sdk}\"                               \\\n            build SYMROOT=\"${tmpDir}\"                   \\\n            ONLY_ACTIVE_ARCH=\"NO\"                       \\\n            VALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n        done\n    done\n}\n\n#========== 合并库 ==========\nfunction lipoLibs(){\n    #copy Release-iphoneos到 Frameworks 目录,然后 lipo -c 一份\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    frameworkDir=\"${ios_libs_dir}/Frameworks\"\n    [ -d \"${frameworkDir}\" ] || mkdir -p \"${frameworkDir}\"\n    cp -r \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework\" \"${frameworkDir}/\"\n    #lipo -c ... -o ..\n    lipo -c \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework/${Product_Name}\" \"${ios_libs_dir}/Release-iphonesimulator/${Product_Name}.framework/${Product_Name}\" -o \"${frameworkDir}/${Product_Name}.framework/${Product_Name}\"\n    rm -rf \"${frameworkDir}/${Product_Name}.framework/_CodeSignature\"\n}\n\n#========== 删除临时库 ==========\nfunction rmLibs(){\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            rm -rf \"${ios_libs_dir}/${configuration}-${sdk}/${Product_Name}.framework\"\n        done\n    done\n}\n\nbuildLibs\n\nlipoLibs\n\nrmLibs\n\n#cp to ios_libs\n#cp -Rf \"${SRCROOT}/ios_libs/Frameworks/${productName}.framework\" \"${SRCROOT}/../ios_libs/Frameworks/${productName}.framework\"\n\n\n";
 		};
-		DA2282B2CC9BD3E041F71D93 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KeKeLibrary-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2341FC8D9ACB7A18B025BBE /* [CP] Copy Pods Resources */ = {
+		3AF5A6C120A430350003ADE2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeKeLibrary/Pods-KeKeLibrary-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "#xcodebuild -project hvui.xcodeproj -target FrameworkMaker_Release;rm -rf build;\n\nProduct_Name=\"${PROJECT_NAME}\"\nTarget_Name=\"${PROJECT_NAME}\"\n\ntmpDir=\"${PROJECT_TEMP_DIR}/build\"\nrm -rf \"${tmpDir}\"#清除编译临时文件\n\n\n#编译bundle\nxcodebuild  -target \"${Target_Name}\"                    \\\n            -configuration \"Release\"                    \\\n            -sdk \"iphonesimulator\"                      \\\n            build SYMROOT=\"${tmpDir}\"                   \\\n            ONLY_ACTIVE_ARCH=\"NO\"\n#            VALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n\n#========== 编译库 ==========\nfunction buildLibs(){\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Debug\" \"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            xcodebuild  -target \"${Target_Name}\"          \\\n                        -configuration \"${configuration}\" \\\n                        -sdk \"${sdk}\"                     \\\n                        build SYMROOT=\"${tmpDir}\"         \\\n                        ONLY_ACTIVE_ARCH=\"NO\"\n#                        VALID_ARCHS=\"arm64 armv7 armv7s i386 x86_64\"\n        done\n    done\n}\n\n#========== 合并库 ==========\nfunction lipoLibs(){\n    #copy Release-iphoneos到 Frameworks 目录,然后 lipo -c 一份\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    frameworkDir=\"${ios_libs_dir}/Frameworks\"\n    [ -d \"${frameworkDir}\" ] || mkdir -p \"${frameworkDir}\"\n    cp -r \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework\" \"${frameworkDir}/\"\n    #lipo -c ... -o ..\n    lipo -c \"${ios_libs_dir}/Release-iphoneos/${Product_Name}.framework/${Product_Name}\" \"${ios_libs_dir}/Release-iphonesimulator/${Product_Name}.framework/${Product_Name}\" -o \"${frameworkDir}/${Product_Name}.framework/${Product_Name}\"\n    rm -rf \"${frameworkDir}/${Product_Name}.framework/_CodeSignature\"\n}\n\n#========== 删除临时库 ==========\nfunction rmLibs(){\n    ios_libs_dir=\"${SRCROOT}/../ios_libs\"\n    sdks=(\"iphonesimulator\" \"iphoneos\")\n    configurations=(\"Release\")\n    for configuration in ${configurations[@]}\n    do\n        for sdk in ${sdks[@]}\n        do\n            rm -rf \"${ios_libs_dir}/${configuration}-${sdk}/${Product_Name}.framework\"\n        done\n    done\n}\n\nbuildLibs\n\nlipoLibs\n\nrmLibs\n\n#cp to ios_libs\n#cp -Rf \"${SRCROOT}/ios_libs/Frameworks/${productName}.framework\" \"${SRCROOT}/../ios_libs/Frameworks/${productName}.framework\"\n\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1502,10 +1586,13 @@
 			files = (
 				3AA6D40420A2BA6D00DF9694 /* NSMutableArray+KKCategory.m in Sources */,
 				3AA6D3F120A2BA6D00DF9694 /* NSString+Base64.m in Sources */,
+				3AF5A6B720A42F8B0003ADE2 /* FMDatabasePool.m in Sources */,
 				3AA6D3BB20A2BA6C00DF9694 /* KKCycleProgressView.m in Sources */,
 				3AA6D43E20A2BA6D00DF9694 /* KKRequestManager.m in Sources */,
 				3AA6D3A920A2BA6C00DF9694 /* KKCoreTextItem.m in Sources */,
+				3AF5A6AF20A42F8B0003ADE2 /* AFURLResponseSerialization.m in Sources */,
 				3AA6D3AF20A2BA6C00DF9694 /* KKAlbumManager.m in Sources */,
+				3AF5A6A620A42F8A0003ADE2 /* AFHTTPSessionManager.m in Sources */,
 				3AA6D43A20A2BA6D00DF9694 /* KKFormRequest.m in Sources */,
 				3AA6D41C20A2BA6D00DF9694 /* UILabel+KKCategory.m in Sources */,
 				3AA6D42E20A2BA6D00DF9694 /* UIViewController+KKCategory.m in Sources */,
@@ -1524,7 +1611,9 @@
 				3AA6D42020A2BA6D00DF9694 /* UIScreen+KKCategory.m in Sources */,
 				3AA6D3D120A2BA6C00DF9694 /* KKScrollVewRefresh.m in Sources */,
 				3AA6D3E520A2BA6D00DF9694 /* KKWindowImageView.m in Sources */,
+				3AF5A6AB20A42F8B0003ADE2 /* AFSecurityPolicy.m in Sources */,
 				3AA6D3BD20A2BA6C00DF9694 /* KKDateSelectView.m in Sources */,
+				3AF5A6AD20A42F8B0003ADE2 /* AFURLRequestSerialization.m in Sources */,
 				3AA6D44220A2BA6D00DF9694 /* KKRequestSender.m in Sources */,
 				3AA6D42620A2BA6D00DF9694 /* UITableView+KKCategory.m in Sources */,
 				3AA6D3E320A2BA6D00DF9694 /* KKWindowImageItem.m in Sources */,
@@ -1541,11 +1630,14 @@
 				3AA6D3F820A2BA6D00DF9694 /* NSArray+KKCategory.m in Sources */,
 				3AA6D3AB20A2BA6C00DF9694 /* KKCoreTextLabel.m in Sources */,
 				3AA6D47D20A2BBD200DF9694 /* KKView.m in Sources */,
+				3AF5A6B120A42F8B0003ADE2 /* AFURLSessionManager.m in Sources */,
 				3AA6D41420A2BA6D00DF9694 /* UIDevice+KKCategory.m in Sources */,
 				3AA6D44420A2BA6D00DF9694 /* KKUploadDataObject.m in Sources */,
 				3AA6D3AD20A2BA6C00DF9694 /* KKActionSheet.m in Sources */,
+				3AF5A6B520A42F8B0003ADE2 /* FMDatabaseAdditions.m in Sources */,
 				3AA6D3B120A2BA6C00DF9694 /* KKAlertView.m in Sources */,
 				3AA6D3D520A2BA6C00DF9694 /* KKToastView.m in Sources */,
+				3AF5A6B320A42F8B0003ADE2 /* FMDatabase.m in Sources */,
 				3AA6D44B20A2BA6D00DF9694 /* KKUserDefaultsManager.m in Sources */,
 				3AA6D3B920A2BA6C00DF9694 /* KKComparer.m in Sources */,
 				3AA6D3CC20A2BA6C00DF9694 /* KKRefreshFooterDraggingView.m in Sources */,
@@ -1559,6 +1651,7 @@
 				3AA6D3C220A2BA6C00DF9694 /* KKEmptyNoticeView.m in Sources */,
 				3AA6D3DD20A2BA6D00DF9694 /* KKWindowActionViewItem.m in Sources */,
 				3AA6D44620A2BA6D00DF9694 /* Reachability.m in Sources */,
+				3AF5A6BC20A42F8B0003ADE2 /* FMResultSet.m in Sources */,
 				3AA6D3CA20A2BA6C00DF9694 /* KKRefreshFooterAutoView.m in Sources */,
 				3AA6D43420A2BA6D00DF9694 /* KILocalizationManager.m in Sources */,
 				3AA6D41020A2BA6D00DF9694 /* UIButton+KKCategory.m in Sources */,
@@ -1581,10 +1674,12 @@
 				3AA6D40C20A2BA6D00DF9694 /* NSString+KKCategory.m in Sources */,
 				3AA6D3C820A2BA6C00DF9694 /* KKPageScrollView.m in Sources */,
 				3AA6D3D920A2BA6D00DF9694 /* KKWaitingView.m in Sources */,
+				3AF5A6B920A42F8B0003ADE2 /* FMDatabaseQueue.m in Sources */,
 				3AA6D43C20A2BA6D00DF9694 /* KKNetWorkObserver.m in Sources */,
 				3AA6D43620A2BA6D00DF9694 /* KKFileCacheManager.m in Sources */,
 				3AA6D3B520A2BA6C00DF9694 /* KKButton.m in Sources */,
 				3AA6D41A20A2BA6D00DF9694 /* UIImageView+KKCategory.m in Sources */,
+				3AF5A6A920A42F8B0003ADE2 /* AFNetworkReachabilityManager.m in Sources */,
 				3AA6D3E920A2BA6D00DF9694 /* WindowModalViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1724,7 +1819,6 @@
 		};
 		3AA6D2A120A2B99C00DF9694 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 381322C063F3595D44C1602E /* Pods-KeKeLibrary.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ARCHS = (
@@ -1748,7 +1842,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				MACH_O_TYPE = mh_dylib;
+				MODULEMAP_FILE = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1763,7 +1859,6 @@
 		};
 		3AA6D2A220A2B99C00DF9694 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21FCC8AB13B27B5F834E8BED /* Pods-KeKeLibrary.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ARCHS = (
@@ -1787,7 +1882,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				MACH_O_TYPE = mh_dylib;
+				MODULEMAP_FILE = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1803,12 +1900,11 @@
 		3AA6D48020A2BE6D00DF9694 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../ios_libs/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				MACH_O_TYPE = mh_dylib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1816,12 +1912,34 @@
 		3AA6D48120A2BE6D00DF9694 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../ios_libs/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				MACH_O_TYPE = mh_dylib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3AF5A6BF20A4302F0003ADE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				MACH_O_TYPE = mh_dylib;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3AF5A6C020A4302F0003ADE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				MACH_O_TYPE = mh_dylib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1847,11 +1965,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AA6D47F20A2BE6D00DF9694 /* Build configuration list for PBXAggregateTarget "FrameworksJoinScript" */ = {
+		3AA6D47F20A2BE6D00DF9694 /* Build configuration list for PBXAggregateTarget "JoinScriptWorkspace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AA6D48020A2BE6D00DF9694 /* Debug */,
 				3AA6D48120A2BE6D00DF9694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AF5A6BE20A4302F0003ADE2 /* Build configuration list for PBXAggregateTarget "JoinScriptProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF5A6BF20A4302F0003ADE2 /* Debug */,
+				3AF5A6C020A4302F0003ADE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
