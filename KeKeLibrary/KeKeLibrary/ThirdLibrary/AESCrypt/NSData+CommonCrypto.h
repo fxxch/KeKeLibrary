@@ -38,14 +38,8 @@
 
 #import <Foundation/NSData.h>
 #import <Foundation/NSError.h>
-#import <CommonCrypto/CommonCryptor.h>
-#import <CommonCrypto/CommonHMAC.h>
 
 extern NSString * const kCommonCryptoErrorDomain;
-
-@interface NSError (CommonCryptoErrorDomain)
-+ (NSError *) errorWithCCCryptorStatus: (CCCryptorStatus) status;
-@end
 
 @interface NSData (CommonDigest)
 
@@ -74,39 +68,3 @@ extern NSString * const kCommonCryptoErrorDomain;
 
 @end
 
-@interface NSData (LowLevelCommonCryptor)
-
-- (NSData *) dataEncryptedUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                                   error: (CCCryptorStatus *) error;
-- (NSData *) dataEncryptedUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                                 options: (CCOptions) options
-                                   error: (CCCryptorStatus *) error;
-- (NSData *) dataEncryptedUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                    initializationVector: (id) iv		// data or string
-                                 options: (CCOptions) options
-                                   error: (CCCryptorStatus *) error;
-
-- (NSData *) decryptedDataUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                                   error: (CCCryptorStatus *) error;
-- (NSData *) decryptedDataUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                                 options: (CCOptions) options
-                                   error: (CCCryptorStatus *) error;
-- (NSData *) decryptedDataUsingAlgorithm: (CCAlgorithm) algorithm
-                                     key: (id) key		// data or string
-                    initializationVector: (id) iv		// data or string
-                                 options: (CCOptions) options
-                                   error: (CCCryptorStatus *) error;
-
-@end
-
-@interface NSData (CommonHMAC)
-
-- (NSData *) HMACWithAlgorithm: (CCHmacAlgorithm) algorithm;
-- (NSData *) HMACWithAlgorithm: (CCHmacAlgorithm) algorithm key: (id) key;
-
-@end
