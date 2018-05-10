@@ -11,7 +11,16 @@
 1、此框架里面引入了AFNetworking和FMDB等开源框架的源代码，所以在此感谢这两个框架的原著作者的贡献。
 
 ## 引入方式：
-pod 'KeKeLibrary'
+```
+1、git clone https://github.com/fxxch/KeKeLibrary.git
+```
+
+```
+2、pod 'KeKeLibrary'
+```
+这种方式引入到工程的时候，#import <KeKeLibrary/KeKeLibrary.h> 会编译报错，提示"Could not build module 'KeKeLibrary'"，暂时还未找到问题所在😂，期待大神支招。
+
+
 
 ## 期待：
 作者：刘波
