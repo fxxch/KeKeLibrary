@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.0.20"
+    s.version      = "0.0.21"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -84,10 +84,11 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-    //根据Tag
+  # 根据Tag
     s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :tag => s.version }
-    //根据提交的版本标识符
-    #s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :commit => '68defea78942ecc782ffde8f8ffa747872af226d'}
+  
+  # 根据提交的版本标识符
+  # s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :commit => 'f8509d887a3788a5d2673315fc0769bac4b4d903'}
  
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -161,19 +162,20 @@ Pod::Spec.new do |s|
                    "UIKit",
                    "UserNotifications",
                    "VideoToolbox",
-                   "WebKit
+                   "WebKit"
+
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
-    s.libraries = "libbz2", 
-                  "libc++",
-                  "libiconv",
-                  "libicucore",
-                  "libresolv",
-                  "libsqlite3",
-                  "libstdc++.6",
-                  "libstdc++",
-                  "libz"
+    s.libraries = "bz2", 
+                  "c++",
+                  "iconv",
+                  "icucore",
+                  "resolv",
+                  "sqlite3",
+                  "stdc++.6",
+                  "stdc++",
+                  "z"
 
 
 
@@ -198,7 +200,7 @@ Pod::Spec.new do |s|
   # s.ios.exclude_files = 'Classes/osx'
   # s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
-  //自己制作引用的framework
+  # 自己制作引用的framework
   # s.vendored_frameworks = 'Framework.framework'
   
     
