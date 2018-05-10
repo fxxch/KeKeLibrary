@@ -18,7 +18,8 @@
 ```
 2、pod 'KeKeLibrary'
 ```
-这种方式引入到工程的时候，#import <KeKeLibrary/KeKeLibrary.h> 会编译报错，提示"Could not build module 'KeKeLibrary'"，暂时还未找到问题所在😂，期待大神支招。
+pod 这种方式引入到工程的时候，#import <KeKeLibrary/KeKeLibrary.h> 会编译报错，提示"Could not build module 'KeKeLibrary'"，暂时还未找到问题所在😂，期待大神支招。
+
 
 
 
