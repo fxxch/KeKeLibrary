@@ -214,30 +214,30 @@
 		3AA6D47B20A2BBD200DF9694 /* KKUIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D46E20A2BBD200DF9694 /* KKUIToolbar.m */; };
 		3AA6D47C20A2BBD200DF9694 /* KKView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D47020A2BBD200DF9694 /* KKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA6D47D20A2BBD200DF9694 /* KKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D47120A2BBD200DF9694 /* KKView.m */; };
-		3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68A20A42F8A0003ADE2 /* AFCompatibilityMacros.h */; };
-		3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68B20A42F8A0003ADE2 /* AFHTTPSessionManager.h */; };
+		3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68A20A42F8A0003ADE2 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68B20A42F8A0003ADE2 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6A620A42F8A0003ADE2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A68C20A42F8A0003ADE2 /* AFHTTPSessionManager.m */; };
-		3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68D20A42F8A0003ADE2 /* AFNetworking.h */; };
-		3AF5A6A820A42F8A0003ADE2 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68E20A42F8A0003ADE2 /* AFNetworkReachabilityManager.h */; };
+		3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68D20A42F8A0003ADE2 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AF5A6A820A42F8A0003ADE2 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A68E20A42F8A0003ADE2 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6A920A42F8B0003ADE2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A68F20A42F8A0003ADE2 /* AFNetworkReachabilityManager.m */; };
-		3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69020A42F8A0003ADE2 /* AFSecurityPolicy.h */; };
+		3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69020A42F8A0003ADE2 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6AB20A42F8B0003ADE2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69120A42F8A0003ADE2 /* AFSecurityPolicy.m */; };
-		3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69220A42F8A0003ADE2 /* AFURLRequestSerialization.h */; };
+		3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69220A42F8A0003ADE2 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6AD20A42F8B0003ADE2 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69320A42F8A0003ADE2 /* AFURLRequestSerialization.m */; };
-		3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69420A42F8A0003ADE2 /* AFURLResponseSerialization.h */; };
+		3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69420A42F8A0003ADE2 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6AF20A42F8B0003ADE2 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69520A42F8A0003ADE2 /* AFURLResponseSerialization.m */; };
-		3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69620A42F8A0003ADE2 /* AFURLSessionManager.h */; };
+		3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69620A42F8A0003ADE2 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6B120A42F8B0003ADE2 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69720A42F8A0003ADE2 /* AFURLSessionManager.m */; };
-		3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69920A42F8A0003ADE2 /* FMDatabase.h */; };
+		3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69920A42F8A0003ADE2 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6B320A42F8B0003ADE2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69A20A42F8A0003ADE2 /* FMDatabase.m */; };
-		3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69B20A42F8A0003ADE2 /* FMDatabaseAdditions.h */; };
+		3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69B20A42F8A0003ADE2 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6B520A42F8B0003ADE2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69C20A42F8A0003ADE2 /* FMDatabaseAdditions.m */; };
-		3AF5A6B620A42F8B0003ADE2 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69D20A42F8A0003ADE2 /* FMDatabasePool.h */; };
+		3AF5A6B620A42F8B0003ADE2 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69D20A42F8A0003ADE2 /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6B720A42F8B0003ADE2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A69E20A42F8A0003ADE2 /* FMDatabasePool.m */; };
-		3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69F20A42F8A0003ADE2 /* FMDatabaseQueue.h */; };
+		3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A69F20A42F8A0003ADE2 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6B920A42F8B0003ADE2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A6A020A42F8A0003ADE2 /* FMDatabaseQueue.m */; };
-		3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A120A42F8A0003ADE2 /* FMDB.h */; };
-		3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A220A42F8A0003ADE2 /* FMResultSet.h */; };
+		3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A120A42F8A0003ADE2 /* FMDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5A6A220A42F8A0003ADE2 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF5A6BC20A42F8B0003ADE2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5A6A320A42F8A0003ADE2 /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
@@ -1369,11 +1369,9 @@
 			files = (
 				3AA6D47820A2BBD200DF9694 /* KKTextField.h in Headers */,
 				3AA6D3CD20A2BA6C00DF9694 /* KKRefreshHeaderView.h in Headers */,
-				3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */,
 				3AA6D3EA20A2BA6D00DF9694 /* AESCrypt.h in Headers */,
 				3AA6D3B720A2BA6C00DF9694 /* KanJiSort.h in Headers */,
 				3AA6D3D020A2BA6C00DF9694 /* KKScrollVewRefresh.h in Headers */,
-				3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */,
 				3AA6D41F20A2BA6D00DF9694 /* UIScreen+KKCategory.h in Headers */,
 				3AA6D40720A2BA6D00DF9694 /* NSNumber+KKCategory.h in Headers */,
 				3AA6D43920A2BA6D00DF9694 /* KKFormRequest.h in Headers */,
@@ -1392,8 +1390,6 @@
 				3AA6D3F220A2BA6D00DF9694 /* GetIPAddress.h in Headers */,
 				3AA6D40B20A2BA6D00DF9694 /* NSString+KKCategory.h in Headers */,
 				3AA6D40120A2BA6D00DF9694 /* NSDictionary+KKCategory.h in Headers */,
-				3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */,
-				3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */,
 				3AA6D43720A2BA6D00DF9694 /* AFHTTPSessionManager+KKExtention.h in Headers */,
 				3AA6D40320A2BA6D00DF9694 /* NSMutableArray+KKCategory.h in Headers */,
 				3AA6D47420A2BBD200DF9694 /* KKNavigationController.h in Headers */,
@@ -1427,23 +1423,17 @@
 				3AA6D41320A2BA6D00DF9694 /* UIDevice+KKCategory.h in Headers */,
 				3AA6D3D420A2BA6C00DF9694 /* KKToastView.h in Headers */,
 				3AA6D3FD20A2BA6D00DF9694 /* NSDate+KKCategory.h in Headers */,
-				3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */,
-				3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */,
-				3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */,
 				3AA6D3CB20A2BA6C00DF9694 /* KKRefreshFooterDraggingView.h in Headers */,
 				3AA6D3D820A2BA6D00DF9694 /* KKWaitingView.h in Headers */,
 				3AA6D44720A2BA6D00DF9694 /* KKSharedInstance.h in Headers */,
 				3AA6D42120A2BA6D00DF9694 /* UIScrollView+KKCategory.h in Headers */,
-				3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */,
 				3AA6D3E420A2BA6D00DF9694 /* KKWindowImageView.h in Headers */,
-				3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */,
 				3AA6D3C720A2BA6C00DF9694 /* KKPageScrollView.h in Headers */,
 				3AA6D43F20A2BA6D00DF9694 /* KKRequestParam.h in Headers */,
 				3AA6D47C20A2BBD200DF9694 /* KKView.h in Headers */,
 				3AA6D45920A2BA6D00DF9694 /* KeKeLibrary.h in Headers */,
 				3AA6D3B020A2BA6C00DF9694 /* KKAlertView.h in Headers */,
 				3AA6D41D20A2BA6D00DF9694 /* UINavigationController+KKCategory.h in Headers */,
-				3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */,
 				3AA6D3B220A2BA6C00DF9694 /* KKAuthorizedManager.h in Headers */,
 				3AA6D3C520A2BA6C00DF9694 /* KKPageControl.h in Headers */,
 				3AA6D47220A2BBD200DF9694 /* KKViewController.h in Headers */,
@@ -1457,8 +1447,20 @@
 				3AA6D3C120A2BA6C00DF9694 /* KKEmptyNoticeView.h in Headers */,
 				3AA6D40D20A2BA6D00DF9694 /* NSTimer+KKCategory.h in Headers */,
 				3AA6D3FF20A2BA6D00DF9694 /* NSDateFormatter+KKCategory.h in Headers */,
+				3AF5A6AA20A42F8B0003ADE2 /* AFSecurityPolicy.h in Headers */,
+				3AF5A6AE20A42F8B0003ADE2 /* AFURLResponseSerialization.h in Headers */,
+				3AF5A6A420A42F8A0003ADE2 /* AFCompatibilityMacros.h in Headers */,
+				3AF5A6B420A42F8B0003ADE2 /* FMDatabaseAdditions.h in Headers */,
+				3AF5A6B820A42F8B0003ADE2 /* FMDatabaseQueue.h in Headers */,
+				3AF5A6AC20A42F8B0003ADE2 /* AFURLRequestSerialization.h in Headers */,
+				3AF5A6B020A42F8B0003ADE2 /* AFURLSessionManager.h in Headers */,
+				3AF5A6B220A42F8B0003ADE2 /* FMDatabase.h in Headers */,
+				3AF5A6BB20A42F8B0003ADE2 /* FMResultSet.h in Headers */,
+				3AF5A6BA20A42F8B0003ADE2 /* FMDB.h in Headers */,
 				3AF5A6A820A42F8A0003ADE2 /* AFNetworkReachabilityManager.h in Headers */,
 				3AF5A6B620A42F8B0003ADE2 /* FMDatabasePool.h in Headers */,
+				3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */,
+				3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */,
 				3AA6D44520A2BA6D00DF9694 /* Reachability.h in Headers */,
 				3AA6D3A820A2BA6C00DF9694 /* KKCoreTextItem.h in Headers */,
 				3AA6D42B20A2BA6D00DF9694 /* UIView+KKCategory.h in Headers */,
@@ -1470,9 +1472,7 @@
 				3AA6D3BE20A2BA6C00DF9694 /* KKEmoticonView.h in Headers */,
 				3AA6D40920A2BA6D00DF9694 /* NSObject+KKCategory.h in Headers */,
 				3AA6D41720A2BA6D00DF9694 /* UIImage+KKCategory.h in Headers */,
-				3AF5A6A520A42F8A0003ADE2 /* AFHTTPSessionManager.h in Headers */,
 				3AA6D3AA20A2BA6C00DF9694 /* KKCoreTextLabel.h in Headers */,
-				3AF5A6A720A42F8A0003ADE2 /* AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
