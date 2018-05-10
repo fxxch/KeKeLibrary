@@ -84,7 +84,10 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
+    //根据Tag
     s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :tag => s.version }
+    //根据提交的版本标识符
+    #s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :commit => '68defea78942ecc782ffde8f8ffa747872af226d'}
  
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -96,7 +99,7 @@ Pod::Spec.new do |s|
   #
 
     s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.{h,m,c}"
-  # s.public_header_files = "KeKeLibrary/KeKeLibrary/KeKeLibrary.h"
+    s.public_header_files = "KeKeLibrary/KeKeLibrary/**/*.h"
   # s.exclude_files = "Classes/Exclude"
 
 
@@ -123,9 +126,55 @@ Pod::Spec.new do |s|
 
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
+    s.frameworks = "Accelerate",
+                   "AddressBook",
+                   "AddressBookUI",
+                   "AssetsLibrary",
+                   "AudioToolbox",
+                   "AVFoundation",
+                   "AVKit",
+                   "CFNetwork",
+                   "Contacts",
+                   "ContactsUI",
+                   "CoreAudio",
+                   "CoreGraphics",
+                   "CoreLocation",
+                   "CoreMedia",
+                   "CoreTelephony",
+                   "CoreText",
+                   "CoreVideo",
+                   "Foundation",
+                   "ImageIO",
+                   "JavaScriptCore",
+                   "MapKit",
+                   "MediaPlayer",
+                   "MediaToolbox",
+                   "MessageUI",
+                   "MobileCoreServices",
+                   "OpenAL",
+                   "OpenGLES",
+                   "Photos",
+                   "PhotosUI",
+                   "QuartzCore",
+                   "Security",
+                   "SystemConfiguration",
+                   "UIKit",
+                   "UserNotifications",
+                   "VideoToolbox",
+                   "WebKit
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
+    s.libraries = "libbz2", 
+                  "libc++",
+                  "libiconv",
+                  "libicucore",
+                  "libresolv",
+                  "libsqlite3",
+                  "libstdc++.6",
+                  "libstdc++",
+                  "libz"
+
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -149,9 +198,10 @@ Pod::Spec.new do |s|
   # s.ios.exclude_files = 'Classes/osx'
   # s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
+  //自己制作引用的framework
   # s.vendored_frameworks = 'Framework.framework'
   
-  # s.frameworks = 'Foundation'
+    
   # 1、s.license Pods依赖库使用的license类型，大家填上自己对应的选择即可。
   # 2、s.source_files 表示源文件的路径，注意这个路径是相对podspec文件而言的。
   # 3、s.frameworks 需要用到的frameworks，不需要加.frameworks后缀。
