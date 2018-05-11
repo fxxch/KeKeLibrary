@@ -24,6 +24,7 @@ FOUNDATION_EXPORT const unsigned char KeKeLibraryVersionString[];
 #import <KeKeLibrary/KeKeLibraryDefine.h>
 
 //==================== ThirdFrameWorks ====================
+#import <KeKeLibrary/KKThirdLibrary.h>
 
 
 

@@ -32,6 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */; };
 		3AA6D3A520A2BA6C00DF9694 /* KKCoreText.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */; };
 		3AA6D3A620A2BA6C00DF9694 /* KKCoreTextDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2A720A2BA6B00DF9694 /* KKCoreTextDBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA6D3A720A2BA6C00DF9694 /* KKCoreTextDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A820A2BA6B00DF9694 /* KKCoreTextDBManager.m */; };
@@ -242,6 +243,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKThirdLibrary.h; sourceTree = "<group>"; };
 		3A5E25A520A333D600938748 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = SOURCE_ROOT; };
 		3AA6D29820A2B99C00DF9694 /* KeKeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeKeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = KKCoreText.sqlite; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 		3AA6D30720A2BA6C00DF9694 /* ThirdLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */,
 				3AF5A68920A42F8A0003ADE2 /* AFNetworking */,
 				3AF5A69820A42F8A0003ADE2 /* FMDB */,
 				3AA6D30820A2BA6C00DF9694 /* AESCrypt */,
@@ -1368,6 +1371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA6D47820A2BBD200DF9694 /* KKTextField.h in Headers */,
+				3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */,
 				3AA6D3CD20A2BA6C00DF9694 /* KKRefreshHeaderView.h in Headers */,
 				3AA6D3EA20A2BA6D00DF9694 /* AESCrypt.h in Headers */,
 				3AA6D3B720A2BA6C00DF9694 /* KanJiSort.h in Headers */,
