@@ -86,7 +86,7 @@ Pod::Spec.new do |s|
 
   # 根据Tag
     s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :tag => s.version }
-  
+
   # 根据提交的版本标识符
   # s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :commit => 'f8509d887a3788a5d2673315fc0769bac4b4d903'}
  
@@ -99,7 +99,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-    s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.{h,m,c}"
+    s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.h"
     s.public_header_files = "KeKeLibrary/KeKeLibrary/**/*.h"
   # s.exclude_files = "Classes/Exclude"
 
