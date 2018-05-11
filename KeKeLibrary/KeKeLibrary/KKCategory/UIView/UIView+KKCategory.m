@@ -17,7 +17,6 @@
 #pragma mark == viewWillAppear、viewWillHidden
 #pragma mark ==================================================
 + (void)load{
-    [super load];
     
     Method sys_Method = class_getInstanceMethod(self, @selector(setHidden:));
     Method my_Method = class_getInstanceMethod(self, @selector(kk_setHidden:));

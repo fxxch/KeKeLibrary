@@ -40,6 +40,7 @@ FOUNDATION_EXPORT const unsigned char KeKeLibraryVersionString[];
 //========================================
 #import <KeKeLibrary/KKCategory.h>
 
+#import <KeKeLibrary/UIControl+KKCategory.h>
 #import <KeKeLibrary/NSArray+KKCategory.h>
 #import <KeKeLibrary/NSBundle+KKCategory.h>
 #import <KeKeLibrary/NSData+KKCategory.h>

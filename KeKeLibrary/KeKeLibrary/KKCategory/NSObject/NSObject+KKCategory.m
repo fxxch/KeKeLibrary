@@ -25,9 +25,6 @@ NSString * const NotificaitonLocalizationDidChange = @"NotificaitonLocalizationD
 }
 
 - (void)kk_dealloc{
-#ifdef DEBUG
-    NSLog(@"class:%@ 释放了",[self class]);
-#endif
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

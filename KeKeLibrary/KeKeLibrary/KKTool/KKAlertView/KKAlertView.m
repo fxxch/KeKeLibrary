@@ -99,7 +99,7 @@ static NSMutableDictionary  *KKAlertView_nowIsShowing;
 
 - (void)dealloc
 {
-    NSLog(@"KKAlertView dealloc");
+
 }
 
 #pragma mark ==================================================

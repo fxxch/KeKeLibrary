@@ -9,6 +9,7 @@
 #ifndef KKCategory_h
 #define KKCategory_h
 
+#import "UIControl+KKCategory.h"
 #import "NSArray+KKCategory.h"
 #import "NSBundle+KKCategory.h"
 #import "NSData+KKCategory.h"

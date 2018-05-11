@@ -13,7 +13,6 @@
 @implementation UIViewController (KKCategory)
 
 + (void)load{
-    [super load];
 
     Method sys_Method_viewWillAppear = class_getInstanceMethod(self, @selector(viewWillAppear:));
     Method sys_Method_viewDidAppear = class_getInstanceMethod(self, @selector(viewDidAppear:));

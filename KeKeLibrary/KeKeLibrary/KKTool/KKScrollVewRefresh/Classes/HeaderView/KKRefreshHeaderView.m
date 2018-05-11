@@ -43,8 +43,6 @@
 
 - (void)dealloc{
     [self unobserveAllNotification];
-    
-    NSLog(@"KKRefreshHeaderView dealloc");
 }
 
 #pragma mark ==================================================

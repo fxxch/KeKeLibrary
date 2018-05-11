@@ -35,8 +35,6 @@
 
 - (void)dealloc{
     [self unobserveAllNotification];
-    
-    NSLog(@"KKRefreshFooterAutoView dealloc");
 }
 
 #pragma mark ==================================================

@@ -33,6 +33,8 @@
 
 /* Begin PBXBuildFile section */
 		3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0784AD20A58C860094DBD9 /* UIControl+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0784AB20A58C860094DBD9 /* UIControl+KKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0784AE20A58C860094DBD9 /* UIControl+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */; };
 		3AA6D3A520A2BA6C00DF9694 /* KKCoreText.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */; };
 		3AA6D3A620A2BA6C00DF9694 /* KKCoreTextDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2A720A2BA6B00DF9694 /* KKCoreTextDBManager.h */; };
 		3AA6D3A720A2BA6C00DF9694 /* KKCoreTextDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A820A2BA6B00DF9694 /* KKCoreTextDBManager.m */; };
@@ -242,6 +244,8 @@
 
 /* Begin PBXFileReference section */
 		3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKThirdLibrary.h; sourceTree = "<group>"; };
+		3A0784AB20A58C860094DBD9 /* UIControl+KKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+KKCategory.h"; sourceTree = "<group>"; };
+		3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+KKCategory.m"; sourceTree = "<group>"; };
 		3A5E25A520A333D600938748 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = SOURCE_ROOT; };
 		3AA6D29820A2B99C00DF9694 /* KeKeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeKeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = KKCoreText.sqlite; sourceTree = "<group>"; };
@@ -462,6 +466,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A0784AA20A58C3D0094DBD9 /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				3A0784AB20A58C860094DBD9 /* UIControl+KKCategory.h */,
+				3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
 		3AA6D28E20A2B99C00DF9694 = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				3AA6D31720A2BA6C00DF9694 /* KKCategory.h */,
+				3A0784AA20A58C3D0094DBD9 /* UIControl */,
 				3AA6D31820A2BA6C00DF9694 /* NSArray */,
 				3AA6D31B20A2BA6C00DF9694 /* NSBundle */,
 				3AA6D31E20A2BA6C00DF9694 /* NSData */,
@@ -1468,6 +1482,7 @@
 				3AA6D40920A2BA6D00DF9694 /* NSObject+KKCategory.h in Headers */,
 				3AA6D41720A2BA6D00DF9694 /* UIImage+KKCategory.h in Headers */,
 				3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */,
+				3A0784AD20A58C860094DBD9 /* UIControl+KKCategory.h in Headers */,
 				3AA6D3AA20A2BA6C00DF9694 /* KKCoreTextLabel.h in Headers */,
 				3AA6D3A620A2BA6C00DF9694 /* KKCoreTextDBManager.h in Headers */,
 			);
@@ -1606,6 +1621,7 @@
 				3AA6D41E20A2BA6D00DF9694 /* UINavigationController+KKCategory.m in Sources */,
 				3AA6D3E120A2BA6D00DF9694 /* UIImageView+KKWebCache.m in Sources */,
 				3AA6D42020A2BA6D00DF9694 /* UIScreen+KKCategory.m in Sources */,
+				3A0784AE20A58C860094DBD9 /* UIControl+KKCategory.m in Sources */,
 				3AA6D3D120A2BA6C00DF9694 /* KKScrollVewRefresh.m in Sources */,
 				3AA6D3E520A2BA6D00DF9694 /* KKWindowImageView.m in Sources */,
 				3AF5A6AB20A42F8B0003ADE2 /* AFSecurityPolicy.m in Sources */,
@@ -1838,7 +1854,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1878,7 +1894,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1899,7 +1915,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1911,7 +1927,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1922,7 +1938,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1934,7 +1950,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

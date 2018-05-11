@@ -43,10 +43,7 @@
 @synthesize refreshImageStyle = _refreshImageStyle;
 
 - (void)dealloc{
-
     [self unobserveAllNotification];
-    
-    NSLog(@"KKRefreshFooterDraggingView dealloc");
 }
 
 #pragma mark ==================================================

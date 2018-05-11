@@ -629,10 +629,7 @@
     else{
 
     }
-    
-    NSDate *nowDate = [self nowSelectedData];
-    NSLog(@"%@",[NSDate getStringFromDate:nowDate dateFormatter:KKDateFormatter01]);
-    
+        
     [self reloadTitleLabel];
 }
 

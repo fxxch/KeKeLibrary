@@ -97,11 +97,6 @@ static NSMutableDictionary  *static_KKActSheet_allShowing;
 - (void)dealloc{
     [KKActionSheet deleteShowingViewWithIdentifier:self.myShowingIdentifier];
     self.myShowingIdentifier = nil;
-
-#ifdef DEBUG
-    NSLog(@"========== %@ dealloc",NSStringFromClass([self class]));
-#endif
-
 }
 
 #pragma mark ==================================================
