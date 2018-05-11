@@ -12,8 +12,6 @@
 #define HTTPMethod_POST    @"POST"
 #define HTTPMethod_GET     @"GET"
 
-@class KKUploadDataObject;
-
 @interface KKRequestParam : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary   *requestHeaderDic;//请求的头部
