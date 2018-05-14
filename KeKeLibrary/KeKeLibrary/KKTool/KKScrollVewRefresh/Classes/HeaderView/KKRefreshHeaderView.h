@@ -1,9 +1,9 @@
 //
 //  KKRefreshHeaderView.h
-//  KKLibrary
+//  TableViewRefreshDemo
 //
-//  Created by liubo on 13-6-27.
-//  Copyright (c) 2013年 KKLibrary. All rights reserved.
+//  Created by 刘 波 on 13-6-27.
+//  Copyright (c) 2013年 可可工作室. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -25,26 +25,8 @@ typedef enum{
 
 @protocol KKRefreshHeaderViewDelegate;
 
-@interface KKRefreshHeaderView : UIView{
-    
-    __weak id _delegate;
-    Class delegateClass;
+@interface KKRefreshHeaderView : UIView
 
-    KKHPullRefreshState _state;
-//    UILabel *_statusLabel;
-//    UIImageView *_arrowImageView;
-//    UIActivityIndicatorView *_activityView;
-    
-//    NSString *_statusTextForPulling;
-//    NSString *_statusTextForNormal;
-//    NSString *_statusTextForLoading;
-//    UIImage  *_refreshImageCustomer;
-    KKHPullRefreshImageStyle _refreshImageStyle;
-}
-
-@property(nonatomic,weak) id <KKRefreshHeaderViewDelegate> delegate;
-
-@property (nonatomic,assign)KKHPullRefreshState state;
 @property (nonatomic,strong)UILabel *statusLabel;
 @property (nonatomic,strong)UIImageView *arrowImageView;
 @property (nonatomic,strong)UIActivityIndicatorView *activityView;
@@ -56,6 +38,7 @@ typedef enum{
 @property (nonatomic,copy)UIImage  *refreshImageCustomer;
 @property (nonatomic,assign)KKHPullRefreshImageStyle refreshImageStyle;
 
+/* 以下两个方法已经废弃，无需再实现或者调用这两个方法了 */
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 
@@ -102,7 +85,7 @@ typedef enum{
 
 
 @property (nonatomic, strong, readonly) KKRefreshHeaderView *refreshHeader;
-@property (nonatomic, copy, readonly) NSNumber *haveHeader;
+@property (nonatomic, assign, readonly) BOOL haveHeader;
 
 @end
 

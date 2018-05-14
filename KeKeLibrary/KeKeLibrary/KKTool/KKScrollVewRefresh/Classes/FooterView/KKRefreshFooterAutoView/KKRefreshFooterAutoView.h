@@ -1,9 +1,9 @@
 //
 //  KKRefreshFooterAutoView.h
-//  KKLibrary
+//  TableViewRefreshDemo
 //
-//  Created by liubo on 13-6-27.
-//  Copyright (c) 2013年 KKLibrary. All rights reserved.
+//  Created by 刘 波 on 13-6-27.
+//  Copyright (c) 2013年 可可工作室. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,21 +16,8 @@ typedef enum{
 
 @protocol KKRefreshFooterAutoViewDelegate;
 
-@interface KKRefreshFooterAutoView : UIView{
-    __weak id _delegate;
-    Class delegateClass;
+@interface KKRefreshFooterAutoView : UIView
 
-	KKFAutoRefreshState      _state;
-//	UILabel                 *_statusLabel;
-//	UIActivityIndicatorView *_activityView;
-    
-//    NSString *_statusTextForNormal;
-//    NSString *_statusTextForLoading;
-}
-
-@property(nonatomic,weak) id<KKRefreshFooterAutoViewDelegate> delegate;
-
-@property (nonatomic,assign)KKFAutoRefreshState state;
 @property (nonatomic,strong)UILabel *statusLabel;
 @property (nonatomic,strong)UIActivityIndicatorView *activityView;
 
@@ -38,6 +25,7 @@ typedef enum{
 @property (nonatomic,copy)NSString *statusTextForNormal;//下拉可以刷新...
 @property (nonatomic,copy)NSString *statusTextForLoading;//更新中...
 
+/* 以下两个方法已经废弃，无需再实现或者调用这两个方法了 */
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 
@@ -77,10 +65,11 @@ typedef enum{
 - (void)startRefreshFooterAuto;
 
 /*停止 加载更多*/
+- (void)stopRefreshFooterAuto:(NSString*)aText;
 - (void)stopRefreshFooterAuto;
 
 @property (nonatomic, strong, readonly) KKRefreshFooterAutoView *refreshFooterAuto;
-@property (nonatomic, copy, readonly) NSNumber *haveFooterAuto;
+@property (nonatomic, assign, readonly) BOOL haveFooterAuto;
 
 @end
 

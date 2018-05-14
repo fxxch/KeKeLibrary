@@ -1,14 +1,14 @@
 //
 //  KKRefreshFooterDraggingView.m
-//  KKLibrary
+//  TableViewRefreshDemo
 //
-//  Created by liubo on 13-6-27.
-//  Copyright (c) 2013年 KKLibrary. All rights reserved.
+//  Created by 刘 波 on 13-6-27.
+//  Copyright (c) 2013年 可可工作室. All rights reserved.
 //
 
 #import "KKRefreshFooterDraggingView.h"
-#import "KKSharedInstance.h"
 #import "KKCategory.h"
+#import "KKSharedInstance.h"
 #import "KeKeLibraryDefine.h"
 
 #define TEXT_COLOR  [UIColor colorWithRed:0.49f green:0.50f blue:0.49f alpha:1.00f]
@@ -17,33 +17,50 @@
 #define EdgeInsets_Y 50.0f
 
 
-@interface KKRefreshFooterDraggingView ()
+@interface KKRefreshFooterDraggingView (){
+    __weak id _delegate;
+    Class delegateClass;
+}
 
-- (id)initWithScrollView:(UIScrollView*)scrollView delegate:(id<KKRefreshFooterDraggingViewDelegate>)aDelegate;
+@property(nonatomic,weak) id <KKRefreshFooterDraggingViewDelegate> delegate;
+@property(nonatomic,assign)KKFDraggingRefreshState state;
+
+- (id)initWithScrollView:(UIScrollView*)scrollView
+                delegate:(id<KKRefreshFooterDraggingViewDelegate>)aDelegate;
+
+- (void)addKVO_ForScrollView:(UIScrollView*)aScrollView;
+
+- (void)removeKVO_ForScrollView:(UIScrollView*)aScrollView;;
 
 - (void)startLoadingMore;
 
-- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView text:(NSString*)aText;
+- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView
+                                                 text:(NSString*)aText;
+
 - (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 
 
 @end
 
 @implementation KKRefreshFooterDraggingView
-@synthesize delegate=_delegate;
-@synthesize state = _state;
-//@synthesize statusLabel = _statusLabel;
-//@synthesize arrowImageView = _arrowImageView;
-//@synthesize activityView = _activityView;
-//
-//@synthesize statusTextForPulling = _statusTextForPulling;
-//@synthesize statusTextForNormal = _statusTextForNormal;
-//@synthesize statusTextForLoading = _statusTextForLoading;
-//@synthesize refreshImageCustomer = _refreshImageCustomer;
-@synthesize refreshImageStyle = _refreshImageStyle;
 
 - (void)dealloc{
     [self unobserveAllNotification];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    
+    // 如果不是UIScrollView，不做任何事情
+    if (newSuperview && ![newSuperview isKindOfClass:[UIScrollView class]]) return;
+    
+    UIScrollView *oldSuperScrollView = (UIScrollView*)self.superview;
+    
+    // 旧的父控件移除监听
+    [self removeKVO_ForScrollView:oldSuperScrollView];
+    
+    // 新的的父控件添加监听
+    [self addKVO_ForScrollView:(UIScrollView*)newSuperview];
 }
 
 #pragma mark ==================================================
@@ -71,23 +88,29 @@
         NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/whiteArrow.png", [[NSBundle mainBundle] bundlePath]];
         UIImage *image = [UIImage imageWithContentsOfFile:filepath];
         self.arrowImageView.image = image;
-//        self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         [self addSubview:self.arrowImageView];
         
         self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.activityView.frame = CGRectMake(105.0f, 15.0f, 20.0f, 20.0f);
         [self addSubview:self.activityView];
         
+        if ([[[UIDevice currentDevice] systemVersion] floatValue]>=11 &&
+            [scrollView isKindOfClass:[UITableView class]]) {
+            UITableView *table = (UITableView*)scrollView;
+            table.estimatedRowHeight = 0;
+            table.estimatedSectionHeaderHeight = 0;
+            table.estimatedSectionFooterHeight = 0;
+        }
+
         [self setState:KKFDraggingRefreshState_Normal];
         
         [scrollView addSubview:self];
-//        [scrollView setValue:self forKey:@"refreshFooterDragging"];
     }
     return self;
 }
 
 #pragma mark ==================================================
-#pragma mark == 自定义
+#pragma mark == 自定义样式
 #pragma mark ==================================================
 - (void)setRefreshImageCustomer:(UIImage *)refreshImageCustomer{
     _refreshImageCustomer = refreshImageCustomer;
@@ -114,7 +137,6 @@
     [self reload];
 }
 
-
 - (void)reload{
     
     if (self.refreshImageCustomer) {
@@ -125,31 +147,26 @@
             NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/whiteArrow.png", [[NSBundle mainBundle] bundlePath]];
             UIImage *image = [UIImage imageWithContentsOfFile:filepath];
             self.arrowImageView.image = image;
-//            self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         }
         else if (_refreshImageStyle==KKFDraggingRefreshImageStyle_Black){
             NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/blackArrow.png", [[NSBundle mainBundle] bundlePath]];
             UIImage *image = [UIImage imageWithContentsOfFile:filepath];
             self.arrowImageView.image = image;
-//            self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         }
         else if (_refreshImageStyle==KKFDraggingRefreshImageStyle_Blue){
             NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/blueArrow.png", [[NSBundle mainBundle] bundlePath]];
             UIImage *image = [UIImage imageWithContentsOfFile:filepath];
             self.arrowImageView.image = image;
-//            self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         }
         else if (_refreshImageStyle==KKFDraggingRefreshImageStyle_Gray){
             NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/grayArrow.png", [[NSBundle mainBundle] bundlePath]];
             UIImage *image = [UIImage imageWithContentsOfFile:filepath];
             self.arrowImageView.image = image;
-//            self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         }
         else if (_refreshImageStyle==KKFDraggingRefreshImageStyle_White){
             NSString *filepath = [NSString stringWithFormat:@"%@/KKScrollVewRefresh.bundle/whiteArrow.png", [[NSBundle mainBundle] bundlePath]];
             UIImage *image = [UIImage imageWithContentsOfFile:filepath];
             self.arrowImageView.image = image;
-//            self.arrowImageView.image = KKThemeImage(@"btn_Refresh");
         }
         else{
             
@@ -157,63 +174,6 @@
     }
     
     [self setState:_state];
-}
-
-#pragma mark ==================================================
-#pragma mark == 手动刷新
-#pragma mark ==================================================
-- (void)startLoadingMore{
-    if (_state == KKFDraggingRefreshState_Loading) {
-        return;
-    }
-    UIView *v = self.superview;
-    if ([v isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scrollView = (UIScrollView*)v;
-        if (!(_state == KKFDraggingRefreshState_Loading)) {
-            
-            if (scrollView.contentSize.height>scrollView.frame.size.height) {
-                if (scrollView.contentSize.height-scrollView.contentOffset.y<=scrollView.frame.size.height-EdgeInsets_Y) {
-                    [UIView beginAnimations:nil context:NULL];
-                    [UIView setAnimationDuration:0.2];
-                    UIEdgeInsets edgeInsets = scrollView.contentInset;
-                    [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                                 0.0f,
-                                                                 EdgeInsets_Y,
-                                                                 0.0f)];
-                    [UIView commitAnimations];
-                    
-                    [self setState:KKFDraggingRefreshState_Loading];
-
-                    Class currentClass = object_getClass(_delegate);
-                    if ((currentClass == delegateClass) &&
-                        [_delegate respondsToSelector:@selector(refreshTableFooterDraggingViewDidTriggerRefresh:)]) {
-                        [_delegate refreshTableFooterDraggingViewDidTriggerRefresh:self];
-                    }
-                }
-            }
-            else{
-                if (scrollView.contentOffset.y>EdgeInsets_Y) {
-                    
-                    [UIView beginAnimations:nil context:NULL];
-                    [UIView setAnimationDuration:0.2];
-                    UIEdgeInsets edgeInsets = scrollView.contentInset;
-                    [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                                 0.0f,
-                                                                 scrollView.frame.size.height-scrollView.contentSize.height+EdgeInsets_Y,
-                                                                 0.0f)];
-                    [UIView commitAnimations];
-                    
-                    [self setState:KKFDraggingRefreshState_Loading];
-
-                    Class currentClass = object_getClass(_delegate);
-                    if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterDraggingViewDidTriggerRefresh:)]) {
-                        [_delegate refreshTableFooterDraggingViewDidTriggerRefresh:self];
-                    }
-                }
-            }
-        }
-        [scrollView setContentOffset:CGPointMake(0, MAX(scrollView.contentSize.height, scrollView.frame.size.height)) animated:YES];
-    }
 }
 
 #pragma mark ==================================================
@@ -318,138 +278,180 @@
 }
 
 #pragma mark ==================================================
-#pragma mark == 滚动
+#pragma mark == KKRefreshFooterDraggingView 的私有方法
 #pragma mark ==================================================
-- (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y<0) {
-        return;
+/* 以下两个方法已经废弃，无需再实现或者调用这两个方法了 */
+- (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView{}
+- (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView{}
+
+/* 手动加载更多 */
+- (void)startLoadingMore{
+
+    UIScrollView *scrollView = (UIScrollView*)(self.superview);
+
+    if (scrollView.contentSize.height>scrollView.frame.size.height) {
+        [scrollView setContentOffset:CGPointMake(0, scrollView.contentSize.height-scrollView.frame.size.height+EdgeInsets_Y+2) animated:YES];
     }
-    
-    if (scrollView.contentSize.height < scrollView.frame.size.height) {
-        self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height);
+    else{
+        [scrollView setContentOffset:CGPointMake(0, EdgeInsets_Y+2) animated:YES];
     }
-    else {
-        self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
-    }
-    
-    if (scrollView.contentSize.height-scrollView.contentOffset.y>=scrollView.frame.size.height) {
-        return;
-    }
-    
-    if (scrollView.isDragging) {
-        if (scrollView.contentSize.height>scrollView.frame.size.height) {
-            if (_state == KKFDraggingRefreshState_Pulling
-                && (scrollView.contentSize.height-scrollView.contentOffset.y<scrollView.frame.size.height)
-                && (scrollView.contentSize.height-scrollView.contentOffset.y>scrollView.frame.size.height-EdgeInsets_Y)) {
-                
-                [self setState:KKFDraggingRefreshState_Normal];
-            }
-            else if (_state == KKFDraggingRefreshState_Normal
-                     && (scrollView.contentSize.height-scrollView.contentOffset.y<scrollView.frame.size.height)
-                     && (scrollView.contentSize.height-scrollView.contentOffset.y<scrollView.frame.size.height-EdgeInsets_Y)) {
-                
-                [self setState:KKFDraggingRefreshState_Pulling];
-            }
-        }
-        else{
-            if (_state == KKFDraggingRefreshState_Pulling
-                && (scrollView.contentOffset.y>0)
-                && (scrollView.contentOffset.y<EdgeInsets_Y)) {
-                
-                [self setState:KKFDraggingRefreshState_Normal];
-            }
-            else if (_state == KKFDraggingRefreshState_Normal
-                     && (scrollView.contentOffset.y>EdgeInsets_Y)) {
-                
-                [self setState:KKFDraggingRefreshState_Pulling];
-            }
-        }
-	}
 }
 
-- (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
-    if (scrollView.contentSize.height-scrollView.contentOffset.y>=scrollView.frame.size.height) {
-        return;
-    }
-    
-    if (_state != KKFDraggingRefreshState_Loading) {
-        if (scrollView.contentSize.height>scrollView.frame.size.height) {
-            if (scrollView.contentSize.height-scrollView.contentOffset.y<=scrollView.frame.size.height-EdgeInsets_Y) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.2];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                             0.0f,
-                                                             EdgeInsets_Y,
-                                                             0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFDraggingRefreshState_Loading];
-
-                Class currentClass = object_getClass(_delegate);
-                if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterDraggingViewDidTriggerRefresh:)]) {
-                    [_delegate refreshTableFooterDraggingViewDidTriggerRefresh:self];
-                }
-            }
-        }
-        else{
-            if (scrollView.contentOffset.y>EdgeInsets_Y) {
-                
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.2];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                             0.0f,
-                                                             scrollView.frame.size.height-scrollView.contentSize.height+EdgeInsets_Y,
-                                                             0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFDraggingRefreshState_Loading];
-
-                Class currentClass = object_getClass(_delegate);
-                if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterDraggingViewDidTriggerRefresh:)]) {
-                    [_delegate refreshTableFooterDraggingViewDidTriggerRefresh:self];
-                }
-            }
-        }
+/* 监听ScrollView的contentOffset值 */
+- (void)addKVO_ForScrollView:(UIScrollView*)aScrollView{
+    if (aScrollView) {
+        // 设置永远支持垂直弹簧效果
+        aScrollView.alwaysBounceVertical = YES;
         
+        NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
+
+        [aScrollView addObserver:self
+                      forKeyPath:@"contentOffset"
+                         options:options
+                         context:nil];
+        
+        [aScrollView addObserver:self
+                      forKeyPath:@"contentSize"
+                         options:options
+                         context:nil];
     }
-    
-    //    [MediaController playMedia:@"playend" type:@"wav" loopsNum:0];
 }
 
-- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView text:(NSString*)aText{
-    if (scrollView.contentSize.height < scrollView.frame.size.height) {
-        self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height);
+/* 取消监听ScrollView的contentOffset值 */
+- (void)removeKVO_ForScrollView:(UIScrollView*)aScrollView{
+    if (aScrollView) {
+        [aScrollView removeObserver:self forKeyPath:@"contentOffset"];
+        [aScrollView removeObserver:self forKeyPath:@"contentSize"];
     }
-    else {
-        self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
-    }
-    
-    [self setState:KKFDraggingRefreshState_Normal];
-    [self finished:scrollView];
 }
 
+/* 加载完毕 */
 - (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView{
+    [self refreshScrollViewDataSourceDidFinishedLoading:scrollView text:nil];
+}
+
+- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView
+                                                 text:(NSString*)aText{
+    
     if (scrollView.contentSize.height < scrollView.frame.size.height) {
         self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height);
     }
     else {
         self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
     }
-        
-    [self setState:KKFDraggingRefreshState_Normal];
-    [self finished:scrollView];
+    
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:scrollView forKey:@"scrollView"];
+    if (aText) {
+        [dictionary setObject:aText forKey:@"text"];
+    }
+
+    [self performSelector:@selector(finished:) withObject:dictionary afterDelay:0.5];
 }
 
-- (void)finished:(UIScrollView*)scrollView{
+- (void)finished:(NSDictionary*)dictionary{
     
+    __block UIScrollView *scrollView = [dictionary objectForKey:@"scrollView"];
+    __block NSString *text = [dictionary objectForKey:@"text"];
+    
+    KKWeakSelf(self);
     [UIView animateWithDuration:0.3 animations:^{
         UIEdgeInsets edgeInsets = scrollView.contentInset;
         [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
     } completion:^(BOOL finished) {
         
+        [weakself setState:KKFDraggingRefreshState_Normal];
+        if (text) {
+            weakself.statusLabel.text = text;
+        }
+        
     }];
+}
+
+
+#pragma mark ==================================================
+#pragma mark == 【KVO】
+#pragma mark ==================================================
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"contentOffset"]){
+        [self scrollViewContentOffsetChanged:[[change valueForKey:NSKeyValueChangeNewKey] CGPointValue]];
+    }
+    else if([keyPath isEqualToString:@"contentSize"]){
+        [self scrollViewContentSizeChanged:[[change valueForKey:NSKeyValueChangeNewKey] CGSizeValue]];
+    }
+    else{
+        
+    }
+}
+
+- (void)scrollViewContentOffsetChanged:(CGPoint)contentOffset{
+    
+    UIScrollView * scrollView = (UIScrollView *)self.superview;
+
+    if (scrollView.contentOffset.y<0) {
+        return;
+    }
+    
+    if (scrollView.contentOffset.y+scrollView.frame.size.height<=scrollView.contentSize.height) {
+        return;
+    }
+
+    if (_state == KKFDraggingRefreshState_Loading ){
+        return;
+    }
+    
+    CGFloat cha = 0;
+    CGFloat insetsBottom = 0;
+    if (scrollView.contentSize.height>scrollView.frame.size.height) {
+        cha = scrollView.contentOffset.y+scrollView.frame.size.height - scrollView.contentSize.height;
+        insetsBottom = EdgeInsets_Y;
+    }
+    else{
+        cha = scrollView.contentOffset.y;
+        insetsBottom = scrollView.frame.size.height-scrollView.contentSize.height+EdgeInsets_Y;
+    }
+    
+    if (scrollView.isDragging) {
+        
+        if (cha <= EdgeInsets_Y){
+            //将状态修改成 上拉加载更多
+            if (_state == KKFDraggingRefreshState_Pulling) {
+                [self setState:KKFDraggingRefreshState_Normal];
+            }
+        }
+        else{
+            //将状态修改成 释放加载
+            if (_state == KKFDraggingRefreshState_Normal) {
+                [self setState:KKFDraggingRefreshState_Pulling];
+            }
+        }
+    }
+    else{
+        if (cha > EdgeInsets_Y + 1){
+            
+            [self setState:KKFDraggingRefreshState_Loading];
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.2];
+            UIEdgeInsets edgeInsets = scrollView.contentInset;
+            [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f, insetsBottom, 0.0f)];
+            [UIView commitAnimations];
+            Class currentClass = object_getClass(_delegate);//添加了KVO currentClass变成了NSKVONotifying_Class
+            if (([[currentClass description] containsString:[delegateClass description]]) && [_delegate respondsToSelector:@selector(refreshTableFooterDraggingViewDidTriggerRefresh:)]) {
+                [_delegate refreshTableFooterDraggingViewDidTriggerRefresh:self];
+            }
+        }
+    }
+}
+
+- (void)scrollViewContentSizeChanged:(CGSize)contentSize{
+    
+    UIScrollView * scrollView = (UIScrollView *)self.superview;
+
+    CGRect rect = self.frame;
+    rect.origin.y = MAX(scrollView.frame.size.height, scrollView.contentSize.height);
+    self.frame = rect;
 }
 
 @end
@@ -462,12 +464,13 @@
 @dynamic refreshFooterDragging;
 @dynamic haveFooterDragging;
 
-- (void)setHaveFooter:(NSNumber *)haveFooterDragging{
-    objc_setAssociatedObject(self, @"haveFooterDragging", haveFooterDragging, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setHaveFooterDragging:(BOOL)haveFooterDragging {
+    objc_setAssociatedObject(self, @"haveFooterDragging", [NSNumber numberWithBool:haveFooterDragging], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(NSNumber *)haveFooterDragging{
-    return objc_getAssociatedObject(self, @"haveFooterDragging");
+- (BOOL)haveFooterDragging{
+    NSNumber *number = objc_getAssociatedObject(self, @"haveFooterDragging");
+    return [number boolValue];
 }
 
 - (void)setRefreshFooterDragging:(KKRefreshFooterDraggingView *)refreshFooterDragging{
@@ -487,11 +490,11 @@
 - (void)showRefreshFooterDraggingWithDelegate:(id<KKRefreshFooterDraggingViewDelegate>)aDelegate{
     if (!self.refreshFooterDragging) {
         KKRefreshFooterDraggingView *footerView = [[KKRefreshFooterDraggingView alloc] initWithScrollView:self delegate:aDelegate];
+        footerView.backgroundColor = [UIColor colorWithHexString:@"#EEEEEE"];
+        footerView.refreshImageStyle = KKFDraggingRefreshImageStyle_Black;
+        
         [self setRefreshFooterDragging:footerView];
-        footerView.backgroundColor = [UIColor clearColor];
-        footerView.statusLabel.textColor = [UIColor blackColor];
-        footerView.activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        self.haveFooter = [NSNumber numberWithBool:YES];
+        [self setHaveFooterDragging:YES];
     }
 }
 
@@ -501,7 +504,7 @@
         KKRefreshFooterDraggingView *footer = self.refreshFooterDragging;
         objc_removeAssociatedObjects(self.refreshFooterDragging);
         [footer removeFromSuperview];
-        self.haveFooter = [NSNumber numberWithBool:NO];
+        [self setHaveFooterDragging:NO];
     }
 }
 

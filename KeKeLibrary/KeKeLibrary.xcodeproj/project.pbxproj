@@ -78,8 +78,6 @@
 		3AA6D3CD20A2BA6C00DF9694 /* KKRefreshHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2E120A2BA6B00DF9694 /* KKRefreshHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA6D3CE20A2BA6C00DF9694 /* KKRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2E220A2BA6B00DF9694 /* KKRefreshHeaderView.m */; };
 		3AA6D3CF20A2BA6C00DF9694 /* KKScrollVewRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA6D2E320A2BA6B00DF9694 /* KKScrollVewRefresh.bundle */; };
-		3AA6D3D020A2BA6C00DF9694 /* KKScrollVewRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2E420A2BA6C00DF9694 /* KKScrollVewRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AA6D3D120A2BA6C00DF9694 /* KKScrollVewRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2E520A2BA6C00DF9694 /* KKScrollVewRefresh.m */; };
 		3AA6D3D220A2BA6C00DF9694 /* KKSegmentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2E720A2BA6C00DF9694 /* KKSegmentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA6D3D320A2BA6C00DF9694 /* KKSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2E820A2BA6C00DF9694 /* KKSegmentView.m */; };
 		3AA6D3D420A2BA6C00DF9694 /* KKToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2EA20A2BA6C00DF9694 /* KKToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -291,8 +289,6 @@
 		3AA6D2E120A2BA6B00DF9694 /* KKRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRefreshHeaderView.h; sourceTree = "<group>"; };
 		3AA6D2E220A2BA6B00DF9694 /* KKRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRefreshHeaderView.m; sourceTree = "<group>"; };
 		3AA6D2E320A2BA6B00DF9694 /* KKScrollVewRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KKScrollVewRefresh.bundle; sourceTree = "<group>"; };
-		3AA6D2E420A2BA6C00DF9694 /* KKScrollVewRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKScrollVewRefresh.h; sourceTree = "<group>"; };
-		3AA6D2E520A2BA6C00DF9694 /* KKScrollVewRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKScrollVewRefresh.m; sourceTree = "<group>"; };
 		3AA6D2E720A2BA6C00DF9694 /* KKSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSegmentView.h; sourceTree = "<group>"; };
 		3AA6D2E820A2BA6C00DF9694 /* KKSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSegmentView.m; sourceTree = "<group>"; };
 		3AA6D2EA20A2BA6C00DF9694 /* KKToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKToastView.h; sourceTree = "<group>"; };
@@ -684,8 +680,6 @@
 			children = (
 				3AA6D2D820A2BA6B00DF9694 /* Classes */,
 				3AA6D2E320A2BA6B00DF9694 /* KKScrollVewRefresh.bundle */,
-				3AA6D2E420A2BA6C00DF9694 /* KKScrollVewRefresh.h */,
-				3AA6D2E520A2BA6C00DF9694 /* KKScrollVewRefresh.m */,
 			);
 			path = KKScrollVewRefresh;
 			sourceTree = "<group>";
@@ -1382,7 +1376,6 @@
 				3AA6D3CD20A2BA6C00DF9694 /* KKRefreshHeaderView.h in Headers */,
 				3AA6D3EA20A2BA6D00DF9694 /* AESCrypt.h in Headers */,
 				3AA6D3B720A2BA6C00DF9694 /* KanJiSort.h in Headers */,
-				3AA6D3D020A2BA6C00DF9694 /* KKScrollVewRefresh.h in Headers */,
 				3AA6D41F20A2BA6D00DF9694 /* UIScreen+KKCategory.h in Headers */,
 				3AA6D40720A2BA6D00DF9694 /* NSNumber+KKCategory.h in Headers */,
 				3AA6D43920A2BA6D00DF9694 /* KKFormRequest.h in Headers */,
@@ -1622,7 +1615,6 @@
 				3AA6D3E120A2BA6D00DF9694 /* UIImageView+KKWebCache.m in Sources */,
 				3AA6D42020A2BA6D00DF9694 /* UIScreen+KKCategory.m in Sources */,
 				3A0784AE20A58C860094DBD9 /* UIControl+KKCategory.m in Sources */,
-				3AA6D3D120A2BA6C00DF9694 /* KKScrollVewRefresh.m in Sources */,
 				3AA6D3E520A2BA6D00DF9694 /* KKWindowImageView.m in Sources */,
 				3AF5A6AB20A42F8B0003ADE2 /* AFSecurityPolicy.m in Sources */,
 				3AA6D3BD20A2BA6C00DF9694 /* KKDateSelectView.m in Sources */,

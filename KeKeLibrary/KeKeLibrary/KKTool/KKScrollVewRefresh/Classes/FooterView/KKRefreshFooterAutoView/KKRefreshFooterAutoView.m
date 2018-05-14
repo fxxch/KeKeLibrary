@@ -1,40 +1,65 @@
 //
 //  KKRefreshFooterAutoView.m
-//  KKLibrary
+//  TableViewRefreshDemo
 //
-//  Created by liubo on 13-6-27.
-//  Copyright (c) 2013年 KKLibrary. All rights reserved.
+//  Created by 刘 波 on 13-6-27.
+//  Copyright (c) 2013年 可可工作室. All rights reserved.
 //
 
 #import "KKRefreshFooterAutoView.h"
 #import "KKCategory.h"
 #import "KKSharedInstance.h"
+#import "KeKeLibraryDefine.h"
 
 #define TEXT_COLOR   [UIColor whiteColor]
 #define FLIP_ANIMATION_DURATION 0.18f
+#define EdgeInsets_YY 50.0f
 
 
-@interface KKRefreshFooterAutoView ()
+@interface KKRefreshFooterAutoView (){
+    __weak id _delegate;
+    Class delegateClass;
+}
 
-- (id)initWithScrollView:(UIScrollView*)scrollView delegate:(id<KKRefreshFooterAutoViewDelegate>)aDelegate;
+@property(nonatomic,weak) id<KKRefreshFooterAutoViewDelegate> delegate;
+@property (nonatomic,assign)KKFAutoRefreshState state;
+
+- (id)initWithScrollView:(UIScrollView*)scrollView
+                delegate:(id<KKRefreshFooterAutoViewDelegate>)aDelegate;
+
+- (void)addKVO_ForScrollView:(UIScrollView*)aScrollView;
+
+- (void)removeKVO_ForScrollView:(UIScrollView*)aScrollView;;
 
 - (void)startLoadingMore;
+
+- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView
+                                                 text:(NSString*)aText;
 
 - (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 
 @end
 
 @implementation KKRefreshFooterAutoView
-@synthesize delegate=_delegate;
-@synthesize state = _state;
-//@synthesize statusLabel = _statusLabel;
-//@synthesize activityView = _activityView;
-//
-//@synthesize statusTextForNormal = _statusTextForNormal;
-//@synthesize statusTextForLoading = _statusTextForLoading;
+
 
 - (void)dealloc{
     [self unobserveAllNotification];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    
+    // 如果不是UIScrollView，不做任何事情
+    if (newSuperview && ![newSuperview isKindOfClass:[UIScrollView class]]) return;
+    
+    UIScrollView *oldSuperScrollView = (UIScrollView*)self.superview;
+    
+    // 旧的父控件移除监听
+    [self removeKVO_ForScrollView:oldSuperScrollView];
+    
+    // 新的的父控件添加监听
+    [self addKVO_ForScrollView:(UIScrollView*)newSuperview];
 }
 
 #pragma mark ==================================================
@@ -66,13 +91,12 @@
 		[self setState:KKFAutoRefreshState_Normal];
         
         [scrollView addSubview:self];
-//        [scrollView setValue:self forKey:@"refreshFooterAuto"];
     }
     return self;
 }
 
 #pragma mark ==================================================
-#pragma mark == 自定义
+#pragma mark == 自定义样式
 #pragma mark ==================================================
 - (void)setStatusTextForLoading:(NSString *)statusTextForLoading{
     _statusTextForLoading = statusTextForLoading;
@@ -88,79 +112,11 @@
     [self setState:_state];
 }
 
-
-#pragma mark ==================================================
-#pragma mark == 手动刷新
-#pragma mark ==================================================
-- (void)startLoadingMore{
-    if (_state == KKFAutoRefreshState_Loading) {
-        return;
-    }
-    UIView *v = self.superview;
-    if ([v isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scrollView = (UIScrollView*)v;
-        if (scrollView.contentSize.height>scrollView.frame.size.height) {
-            if (scrollView.contentSize.height-scrollView.contentOffset.y<scrollView.frame.size.height) {
-                
-                Class currentClass = object_getClass(_delegate);
-                if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterAutoViewDidTriggerRefresh:)]) {
-                    [UIView beginAnimations:nil context:NULL];
-                    [UIView setAnimationDuration:0.3];
-                    UIEdgeInsets edgeInsets = scrollView.contentInset;
-                    [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,50.0f, 0.0f)];
-                    [UIView commitAnimations];
-                    
-                    [self setState:KKFAutoRefreshState_Loading];
-                    [_delegate refreshTableFooterAutoViewDidTriggerRefresh:self];
-                }
-            }
-            else{
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.3];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFAutoRefreshState_Normal];
-            }
-        }
-        else{
-            if (scrollView.contentOffset.y>0) {
-                
-                Class currentClass = object_getClass(_delegate);
-                if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterAutoViewDidTriggerRefresh:)]) {
-                    [UIView beginAnimations:nil context:NULL];
-                    [UIView setAnimationDuration:0.3];
-                    UIEdgeInsets edgeInsets = scrollView.contentInset;
-                    [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                                 0.0f,
-                                                                 scrollView.frame.size.height-scrollView.contentSize.height+50,
-                                                                 0.0f)];
-                    [UIView commitAnimations];
-                    
-                    [self setState:KKFAutoRefreshState_Loading];
-                    [_delegate refreshTableFooterAutoViewDidTriggerRefresh:self];
-                }
-            }
-            else{
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.3];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFAutoRefreshState_Normal];
-            }
-        }
-        [scrollView setContentOffset:CGPointMake(0, MAX(scrollView.contentSize.height, scrollView.frame.size.height)) animated:YES];
-    }
-}
-
 #pragma mark ==================================================
 #pragma mark == 状态设置
 #pragma mark ==================================================
 - (void)setState:(KKFAutoRefreshState)aState{
-	switch (aState) {
+    switch (aState) {
         case KKFAutoRefreshState_Normal:{
             NSString *showText = nil;
             if (self.statusTextForNormal) {
@@ -170,13 +126,12 @@
                 showText = KILocalization(@"加载更多...");
             }
             
-            
             CGSize size = [self.statusLabel.text sizeWithFont:self.statusLabel.font maxSize:CGSizeMake(self.frame.size.width, 100)];
             
             self.statusLabel.frame = CGRectMake((self.frame.size.width-size.width)/2.0, 15.0f, size.width, 20.0f);
             self.statusLabel.text = showText;
-			[self.activityView stopAnimating];
-			break;
+            [self.activityView stopAnimating];
+            break;
         }
         case KKFAutoRefreshState_Loading:{
             NSString *showText = nil;
@@ -192,113 +147,173 @@
             self.activityView.frame = CGRectMake((self.frame.size.width-size.width-20-10)/2.0, 15.0f, 20.0f, 20.0f);
             self.statusLabel.frame = CGRectMake(CGRectGetMaxX(self.activityView.frame)+10, 15.0f, size.width, 20.0f);
             self.statusLabel.text = showText;
-			[self.activityView startAnimating];
+            [self.activityView startAnimating];
             break;
         }
-		default:
-			break;
-	}
-	_state = aState;
+        default:
+            break;
+    }
+    _state = aState;
 }
 
 #pragma mark ==================================================
-#pragma mark == 滚动
+#pragma mark == KKRefreshFooterDraggingView 的私有方法
 #pragma mark ==================================================
-- (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView {
+/* 以下两个方法已经废弃，无需再实现或者调用这两个方法了 */
+- (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView{}
+- (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView{}
+
+
+/* 手动加载更多 */
+- (void)startLoadingMore{
+    
+    UIScrollView *scrollView = (UIScrollView*)(self.superview);
+    
+    if (scrollView.contentSize.height>scrollView.frame.size.height) {
+        [scrollView setContentOffset:CGPointMake(0, scrollView.contentSize.height-scrollView.frame.size.height+EdgeInsets_YY) animated:YES];
+    }
+    else{
+        [scrollView setContentOffset:CGPointMake(0, EdgeInsets_YY) animated:YES];
+    }
+}
+
+/* 监听ScrollView的contentOffset值 */
+- (void)addKVO_ForScrollView:(UIScrollView*)aScrollView{
+    if (aScrollView) {
+        // 设置永远支持垂直弹簧效果
+        aScrollView.alwaysBounceVertical = YES;
+        
+        NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
+        
+        [aScrollView addObserver:self
+                      forKeyPath:@"contentOffset"
+                         options:options
+                         context:nil];
+        
+        [aScrollView addObserver:self
+                      forKeyPath:@"contentSize"
+                         options:options
+                         context:nil];
+    }
+}
+
+/* 取消监听ScrollView的contentOffset值 */
+- (void)removeKVO_ForScrollView:(UIScrollView*)aScrollView{
+    if (aScrollView) {
+        [aScrollView removeObserver:self forKeyPath:@"contentOffset"];
+        [aScrollView removeObserver:self forKeyPath:@"contentSize"];
+    }
+}
+
+/* 加载完毕 */
+- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView{
+    [self refreshScrollViewDataSourceDidFinishedLoading:scrollView text:nil];
+}
+
+- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView
+                                                 text:(NSString*)aText{
+    
+    if (scrollView.contentSize.height < scrollView.frame.size.height) {
+        self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height);
+    }
+    else {
+        self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
+    }
+    
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:scrollView forKey:@"scrollView"];
+    if (aText) {
+        [dictionary setObject:aText forKey:@"text"];
+    }
+    
+    [self performSelector:@selector(finished:) withObject:dictionary afterDelay:0.5];
+}
+
+- (void)finished:(NSDictionary*)dictionary{
+    
+    __block UIScrollView *scrollView = [dictionary objectForKey:@"scrollView"];
+    __block NSString *text = [dictionary objectForKey:@"text"];
+    
+    KKWeakSelf(self);
+    [UIView animateWithDuration:0.3 animations:^{
+        UIEdgeInsets edgeInsets = scrollView.contentInset;
+        [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
+    } completion:^(BOOL finished) {
+        
+        [weakself setState:KKFAutoRefreshState_Normal];
+        if (text) {
+            weakself.statusLabel.text = text;
+        }
+        
+    }];
+}
+
+#pragma mark ==================================================
+#pragma mark == 【KVO】
+#pragma mark ==================================================
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"contentOffset"]){
+        [self scrollViewContentOffsetChanged:[[change valueForKey:NSKeyValueChangeNewKey] CGPointValue]];
+    }
+    else if([keyPath isEqualToString:@"contentSize"]){
+        [self scrollViewContentSizeChanged:[[change valueForKey:NSKeyValueChangeNewKey] CGSizeValue]];
+    }
+    else{
+        
+    }
+}
+
+- (void)scrollViewContentOffsetChanged:(CGPoint)contentOffset{
+    
+    UIScrollView * scrollView = (UIScrollView *)self.superview;
+    
     if (scrollView.contentOffset.y<0) {
         return;
     }
     
-    if (scrollView.contentSize.height < scrollView.frame.size.height) {
-        self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, 416);
-    }
-    else {
-        self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
+    if (scrollView.contentOffset.y+scrollView.frame.size.height<=scrollView.contentSize.height) {
+        return;
     }
     
     if (_state == KKFAutoRefreshState_Loading) {
         return;
     }
     
-    if (scrollView.contentSize.height-scrollView.contentOffset.y>=scrollView.frame.size.height) {
-        return;
-    }
-    
+    CGFloat cha = 0;
+    CGFloat insetsBottom = 0;
     if (scrollView.contentSize.height>scrollView.frame.size.height) {
-        if (scrollView.contentSize.height-scrollView.contentOffset.y<=scrollView.frame.size.height) {
-            
-            Class currentClass = object_getClass(_delegate);
-            if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterAutoViewDidTriggerRefresh:)]) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.3];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,50.0f, 0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFAutoRefreshState_Loading];
-                [_delegate refreshTableFooterAutoViewDidTriggerRefresh:self];
-            }
-        }
-        else{
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDuration:0.3];
-            UIEdgeInsets edgeInsets = scrollView.contentInset;
-            [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
-            [UIView commitAnimations];
-            
-            [self setState:KKFAutoRefreshState_Normal];
-        }
+        cha = scrollView.contentOffset.y+scrollView.frame.size.height - scrollView.contentSize.height;
+        insetsBottom = EdgeInsets_YY;
     }
     else{
-        if (scrollView.contentOffset.y>0) {
-            
-            Class currentClass = object_getClass(_delegate);
-            if ((currentClass == delegateClass) && [_delegate respondsToSelector:@selector(refreshTableFooterAutoViewDidTriggerRefresh:)]) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:0.3];
-                UIEdgeInsets edgeInsets = scrollView.contentInset;
-                [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top,
-                                                             0.0f,
-                                                             scrollView.frame.size.height-scrollView.contentSize.height+50,
-                                                             0.0f)];
-                [UIView commitAnimations];
-                
-                [self setState:KKFAutoRefreshState_Loading];
-                [_delegate refreshTableFooterAutoViewDidTriggerRefresh:self];
-            }
-        }
-        else{
-            [UIView setAnimationDuration:0.3];
-            UIEdgeInsets edgeInsets = scrollView.contentInset;
-            [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
-            [UIView commitAnimations];
-            
-            [self setState:KKFAutoRefreshState_Normal];
-            [UIView beginAnimations:nil context:NULL];
+        cha = scrollView.contentOffset.y;
+        insetsBottom = scrollView.frame.size.height-scrollView.contentSize.height+EdgeInsets_YY;
+    }
+        
+    if (cha > 5.0f){
+        
+        [self setState:KKFAutoRefreshState_Loading];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.2];
+        UIEdgeInsets edgeInsets = scrollView.contentInset;
+        [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f, insetsBottom, 0.0f)];
+        [UIView commitAnimations];
+        Class currentClass = object_getClass(_delegate);//添加了KVO currentClass变成了NSKVONotifying_Class
+        if (([[currentClass description] containsString:[delegateClass description]]) && [_delegate respondsToSelector:@selector(refreshTableFooterAutoViewDidTriggerRefresh:)]) {
+            [_delegate refreshTableFooterAutoViewDidTriggerRefresh:self];
         }
     }
-
 }
 
-- (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
-
-}
-
-- (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView{
-    if (scrollView.contentSize.height < scrollView.frame.size.height) {
-        self.frame = CGRectMake(0, scrollView.frame.size.height, scrollView.frame.size.width, 416);
-    }
-    else {
-        self.frame = CGRectMake(0, scrollView.contentSize.height,scrollView.frame.size.width, scrollView.contentSize.height);
-    }
+- (void)scrollViewContentSizeChanged:(CGSize)contentSize{
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    UIEdgeInsets edgeInsets = scrollView.contentInset;
-    [scrollView setContentInset:UIEdgeInsetsMake(edgeInsets.top, 0.0f,0.0f, 0.0f)];
-    [UIView commitAnimations];
+    UIScrollView * scrollView = (UIScrollView *)self.superview;
     
-    [self setState:KKFAutoRefreshState_Normal];
+    CGRect rect = self.frame;
+    rect.origin.y = MAX(scrollView.frame.size.height, scrollView.contentSize.height);
+    self.frame = rect;
 }
 
 @end
@@ -310,12 +325,13 @@
 @dynamic refreshFooterAuto;
 @dynamic haveFooterAuto;
 
-- (void)setHaveFooterAuto:(NSNumber *)haveFooterAuto{
-    objc_setAssociatedObject(self, @"haveFooterAuto", haveFooterAuto, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setHaveFooterAuto:(BOOL)haveFooterAuto{
+    objc_setAssociatedObject(self, @"haveFooterAuto", [NSNumber numberWithBool:haveFooterAuto], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(NSNumber *)haveFooterAuto{
-    return objc_getAssociatedObject(self, @"haveFooterAuto");
+- (BOOL)haveFooterAuto{
+    NSNumber *number = objc_getAssociatedObject(self, @"haveFooterAuto");
+    return [number boolValue];
 }
 
 - (void)setRefreshFooterAuto:(KKRefreshFooterAutoView *)refreshFooterAuto{
@@ -335,11 +351,13 @@
 - (void)showRefreshFooterAutoWithDelegate:(id<KKRefreshFooterAutoViewDelegate>)aDelegate{
     if (!self.refreshFooterAuto) {
         KKRefreshFooterAutoView *footerView = [[KKRefreshFooterAutoView alloc] initWithScrollView:self delegate:aDelegate];
-        [self setRefreshFooterAuto:footerView];
-        footerView.backgroundColor = [UIColor clearColor];
+        
+        footerView.backgroundColor = [UIColor colorWithHexString:@"#EEEEEE"];
         footerView.statusLabel.textColor = [UIColor blackColor];
         footerView.activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        self.haveFooterAuto = [NSNumber numberWithBool:YES];
+
+        [self setRefreshFooterAuto:footerView];
+        [self setHaveFooterAuto:YES];
     }
 }
 
@@ -349,8 +367,9 @@
         KKRefreshFooterAutoView *footer = self.refreshFooterAuto;
         objc_removeAssociatedObjects(self.refreshFooterAuto);
         [footer removeFromSuperview];
-        self.haveFooterAuto = [NSNumber numberWithBool:NO];
+        [self setHaveFooterAuto:NO];
     }
+
 }
 
 /*开始 加载更多*/
@@ -362,12 +381,17 @@
 
 
 /*停止 加载更多*/
+- (void)stopRefreshFooterAuto:(NSString*)aText{
+    if (self.refreshFooterAuto) {
+        [self.refreshFooterAuto refreshScrollViewDataSourceDidFinishedLoading:self text:aText];
+    }
+}
+
 - (void)stopRefreshFooterAuto{
     if (self.refreshFooterAuto) {
         [self.refreshFooterAuto refreshScrollViewDataSourceDidFinishedLoading:self];
     }
 }
-
 
 
 @end

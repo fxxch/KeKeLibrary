@@ -89,7 +89,9 @@ FOUNDATION_EXPORT const unsigned char KeKeLibraryVersionString[];
 #import <KeKeLibrary/KKKeyChainManager.h>
 #import <KeKeLibrary/KKPageControl.h>
 #import <KeKeLibrary/KKPageScrollView.h>
-#import <KeKeLibrary/KKScrollVewRefresh.h>
+#import <KeKeLibrary/KKRefreshHeaderView.h>
+#import <KeKeLibrary/KKRefreshFooterDraggingView.h>
+#import <KeKeLibrary/KKRefreshFooterAutoView.h>
 #import <KeKeLibrary/KKSegmentView.h>
 #import <KeKeLibrary/KKWindowImageView.h>
 #import <KeKeLibrary/KKCoreTextLabel.h>
