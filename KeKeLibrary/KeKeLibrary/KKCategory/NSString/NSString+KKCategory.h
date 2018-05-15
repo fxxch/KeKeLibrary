@@ -319,7 +319,7 @@
  @param from 截取起始位置
  @return 截取的子字符串
  */
-- (NSString *)substringFromIndex_Safe:(NSUInteger)from;
+- (NSString *_Nullable)substringFromIndex_Safe:(NSUInteger)from;
 
 /****************************************  substringFromIndex:  ***********************************/
 /**
@@ -328,7 +328,7 @@
  @param to 截取终点位置
  @return 返回截取的字符串
  */
-- (NSString *)substringToIndex_Safe:(NSUInteger)to;
+- (NSString *_Nullable)substringToIndex_Safe:(NSUInteger)to;
 
 /*********************************** rangeOfString:options:range:locale:  ***************************/
 /**
@@ -340,7 +340,7 @@
  @param locale 本地化
  @return 返回搜索到的字符串 范围
  */
-- (NSRange)rangeOfString_Safe:(NSString *)searchString
+- (NSRange)rangeOfString_Safe:(NSString *_Nullable)searchString
                       options:(NSStringCompareOptions)mask
                         range:(NSRange)rangeOfReceiverToSearch
                        locale:(nullable NSLocale *)locale;
@@ -352,6 +352,6 @@
  @param range 指定的范围
  @return 返回截取的字符串
  */
-- (NSString *)substringWithRange_Safe:(NSRange)range;
+- (NSString *_Nullable)substringWithRange_Safe:(NSRange)range;
 
 @end
