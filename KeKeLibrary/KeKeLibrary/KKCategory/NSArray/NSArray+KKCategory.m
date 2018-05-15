@@ -138,4 +138,36 @@
     }
 }
 
+#pragma mark ==================================================
+#pragma mark == KKSafe
+#pragma mark ==================================================
+/**
+ 安全取元素
+ 
+ @param index 索引值
+ @return 结果
+ */
+- (id)objectAtIndex_Safe:(NSUInteger)index{
+    if (index<[self count]) {
+        return [self objectAtIndex:index];
+    }
+    else{
+        return nil;
+    }
+}
+
+/**
+ 安全取元素
+ 
+ @param index 索引值
+ @return 结果
+ */
+- (id)objectAtIndexedSubscript_Safe:(NSUInteger)index{
+    if (index<[self count]) {
+        return [self objectAtIndexedSubscript:index];
+    }
+    else{
+        return nil;
+    }
+}
 @end

@@ -40,5 +40,7 @@
 #import "UIViewController+KKCategory.h"
 #import "UIWebView+KKCategory.h"
 #import "UIWindow+KKCategory.h"
+#import "NSMutableDictionary+KKCategory.h"
+#import "NSMutableString+KKCategory.h"
 
 #endif /* KKCategory_h */

@@ -35,6 +35,10 @@
 		3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0784A420A53DC80094DBD9 /* KKThirdLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A0784AD20A58C860094DBD9 /* UIControl+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0784AB20A58C860094DBD9 /* UIControl+KKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A0784AE20A58C860094DBD9 /* UIControl+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */; };
+		3A7DD21420AAC72F0002CCDE /* NSMutableDictionary+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7DD21220AAC72F0002CCDE /* NSMutableDictionary+KKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A7DD21520AAC72F0002CCDE /* NSMutableDictionary+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD21320AAC72F0002CCDE /* NSMutableDictionary+KKCategory.m */; };
+		3A7DD21920AAC8530002CCDE /* NSMutableString+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7DD21720AAC8530002CCDE /* NSMutableString+KKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A7DD21A20AAC8530002CCDE /* NSMutableString+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD21820AAC8530002CCDE /* NSMutableString+KKCategory.m */; };
 		3AA6D3A520A2BA6C00DF9694 /* KKCoreText.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */; };
 		3AA6D3A620A2BA6C00DF9694 /* KKCoreTextDBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA6D2A720A2BA6B00DF9694 /* KKCoreTextDBManager.h */; };
 		3AA6D3A720A2BA6C00DF9694 /* KKCoreTextDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6D2A820A2BA6B00DF9694 /* KKCoreTextDBManager.m */; };
@@ -245,6 +249,10 @@
 		3A0784AB20A58C860094DBD9 /* UIControl+KKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+KKCategory.h"; sourceTree = "<group>"; };
 		3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+KKCategory.m"; sourceTree = "<group>"; };
 		3A5E25A520A333D600938748 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = SOURCE_ROOT; };
+		3A7DD21220AAC72F0002CCDE /* NSMutableDictionary+KKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+KKCategory.h"; sourceTree = "<group>"; };
+		3A7DD21320AAC72F0002CCDE /* NSMutableDictionary+KKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+KKCategory.m"; sourceTree = "<group>"; };
+		3A7DD21720AAC8530002CCDE /* NSMutableString+KKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+KKCategory.h"; sourceTree = "<group>"; };
+		3A7DD21820AAC8530002CCDE /* NSMutableString+KKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+KKCategory.m"; sourceTree = "<group>"; };
 		3AA6D29820A2B99C00DF9694 /* KeKeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeKeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA6D2A620A2BA6B00DF9694 /* KKCoreText.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = KKCoreText.sqlite; sourceTree = "<group>"; };
 		3AA6D2A720A2BA6B00DF9694 /* KKCoreTextDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCoreTextDBManager.h; sourceTree = "<group>"; };
@@ -469,6 +477,24 @@
 				3A0784AC20A58C860094DBD9 /* UIControl+KKCategory.m */,
 			);
 			path = UIControl;
+			sourceTree = "<group>";
+		};
+		3A7DD21120AAC7120002CCDE /* NSMutableDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD21220AAC72F0002CCDE /* NSMutableDictionary+KKCategory.h */,
+				3A7DD21320AAC72F0002CCDE /* NSMutableDictionary+KKCategory.m */,
+			);
+			path = NSMutableDictionary;
+			sourceTree = "<group>";
+		};
+		3A7DD21620AAC82F0002CCDE /* NSMutableString */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD21720AAC8530002CCDE /* NSMutableString+KKCategory.h */,
+				3A7DD21820AAC8530002CCDE /* NSMutableString+KKCategory.m */,
+			);
+			path = NSMutableString;
 			sourceTree = "<group>";
 		};
 		3AA6D28E20A2B99C00DF9694 = {
@@ -869,6 +895,8 @@
 				3AA6D32720A2BA6C00DF9694 /* NSDictionary */,
 				3AA6D32A20A2BA6C00DF9694 /* NSMutableArray */,
 				3AA6D32D20A2BA6C00DF9694 /* NSMutableData */,
+				3A7DD21120AAC7120002CCDE /* NSMutableDictionary */,
+				3A7DD21620AAC82F0002CCDE /* NSMutableString */,
 				3AA6D33020A2BA6C00DF9694 /* NSNumber */,
 				3AA6D33320A2BA6C00DF9694 /* NSObject */,
 				3AA6D33620A2BA6C00DF9694 /* NSString */,
@@ -1475,6 +1503,8 @@
 				3AA6D40920A2BA6D00DF9694 /* NSObject+KKCategory.h in Headers */,
 				3AA6D41720A2BA6D00DF9694 /* UIImage+KKCategory.h in Headers */,
 				3A0784A520A53DC80094DBD9 /* KKThirdLibrary.h in Headers */,
+				3A7DD21420AAC72F0002CCDE /* NSMutableDictionary+KKCategory.h in Headers */,
+				3A7DD21920AAC8530002CCDE /* NSMutableString+KKCategory.h in Headers */,
 				3A0784AD20A58C860094DBD9 /* UIControl+KKCategory.h in Headers */,
 				3AA6D3AA20A2BA6C00DF9694 /* KKCoreTextLabel.h in Headers */,
 				3AA6D3A620A2BA6C00DF9694 /* KKCoreTextDBManager.h in Headers */,
@@ -1609,6 +1639,7 @@
 				3AA6D42420A2BA6D00DF9694 /* UISearchBar+KKCategory.m in Sources */,
 				3AA6D3F320A2BA6D00DF9694 /* GetIPAddress.m in Sources */,
 				3AA6D42820A2BA6D00DF9694 /* UITableViewCell+KKCategory.m in Sources */,
+				3A7DD21A20AAC8530002CCDE /* NSMutableString+KKCategory.m in Sources */,
 				3AA6D3CE20A2BA6C00DF9694 /* KKRefreshHeaderView.m in Sources */,
 				3AA6D42220A2BA6D00DF9694 /* UIScrollView+KKCategory.m in Sources */,
 				3AA6D41E20A2BA6D00DF9694 /* UINavigationController+KKCategory.m in Sources */,
@@ -1653,6 +1684,7 @@
 				3AA6D3FA20A2BA6D00DF9694 /* NSBundle+KKCategory.m in Sources */,
 				3AA6D47320A2BBD200DF9694 /* KKViewController.m in Sources */,
 				3AA6D3C220A2BA6C00DF9694 /* KKEmptyNoticeView.m in Sources */,
+				3A7DD21520AAC72F0002CCDE /* NSMutableDictionary+KKCategory.m in Sources */,
 				3AA6D3DD20A2BA6D00DF9694 /* KKWindowActionViewItem.m in Sources */,
 				3AA6D44620A2BA6D00DF9694 /* Reachability.m in Sources */,
 				3AF5A6BC20A42F8B0003ADE2 /* FMResultSet.m in Sources */,

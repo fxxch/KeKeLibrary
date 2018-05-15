@@ -58,4 +58,23 @@
  */
 + (nullable NSArray*)arrayFromJSONString:(nullable NSString*)aJsonString;
 
+#pragma mark ==================================================
+#pragma mark == KKSafe
+#pragma mark ==================================================
+/**
+ 安全取元素
+ 
+ @param index 索引值
+ @return 结果
+ */
+- (id)objectAtIndex_Safe:(NSUInteger)index;
+
+/**
+ 安全取元素
+ 
+ @param index 索引值
+ @return 结果
+ */
+- (id)objectAtIndexedSubscript_Safe:(NSUInteger)index;
+
 @end

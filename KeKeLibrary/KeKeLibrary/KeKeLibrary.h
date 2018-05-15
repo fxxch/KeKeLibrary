@@ -71,6 +71,8 @@ FOUNDATION_EXPORT const unsigned char KeKeLibraryVersionString[];
 #import <KeKeLibrary/UIViewController+KKCategory.h>
 #import <KeKeLibrary/UIWebView+KKCategory.h>
 #import <KeKeLibrary/UIWindow+KKCategory.h>
+#import <KeKeLibrary/NSMutableDictionary+KKCategory.h>
+#import <KeKeLibrary/NSMutableString+KKCategory.h>
 
 //========================================
 //== KKTool
