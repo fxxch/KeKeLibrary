@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.0.29"
+    s.version      = "0.0.30"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -99,7 +99,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-    s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.{h,c}"
+    s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.{h,m,c}"
     s.public_header_files = "KeKeLibrary/KeKeLibrary/**/*.h"
   # s.exclude_files = "Classes/Exclude"
 
