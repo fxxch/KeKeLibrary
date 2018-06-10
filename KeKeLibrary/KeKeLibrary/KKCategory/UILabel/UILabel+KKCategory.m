@@ -119,15 +119,15 @@
  @param text 文字
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text{
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text{
     
-    return [UILabel labelWithTextColor:textColor
-                                  font:[UIFont systemFontOfSize:fontSize]
-                                  text:text
-                                 lines:1
-                              maxWidth:KKApplicationWidth];
+    return [UILabel kk_initWithTextColor:textColor
+                                    font:[UIFont systemFontOfSize:fontSize]
+                                    text:text
+                                   lines:1
+                                maxWidth:KKApplicationWidth];
 }
 
 /**
@@ -139,16 +139,16 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                maxWidth:(CGFloat)maxWidth{
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                  maxWidth:(CGFloat)maxWidth{
     
-    return [UILabel labelWithTextColor:textColor
-                                  font:[UIFont systemFontOfSize:fontSize]
-                                  text:text
-                                 lines:1
-                              maxWidth:maxWidth];
+    return [UILabel kk_initWithTextColor:textColor
+                                    font:[UIFont systemFontOfSize:fontSize]
+                                    text:text
+                                   lines:1
+                                maxWidth:maxWidth];
 }
 
 /**
@@ -161,17 +161,17 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth{
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                     lines:(NSInteger)lines
+                                  maxWidth:(CGFloat)maxWidth{
     
-    return [UILabel labelWithTextColor:textColor
-                                  font:[UIFont systemFontOfSize:fontSize]
-                                  text:text
-                                 lines:lines
-                              maxWidth:maxWidth];
+    return [UILabel kk_initWithTextColor:textColor
+                                    font:[UIFont systemFontOfSize:fontSize]
+                                    text:text
+                                   lines:lines
+                                maxWidth:maxWidth];
 }
 
 /**
@@ -184,17 +184,17 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                            fontSizeBold:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth{
-    
-    return [UILabel labelWithTextColor:textColor
-                                  font:[UIFont boldSystemFontOfSize:fontSize]
-                                  text:text
-                                 lines:lines
-                              maxWidth:maxWidth];
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                              fontSizeBold:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                     lines:(NSInteger)lines
+                                  maxWidth:(CGFloat)maxWidth{
+
+    return [UILabel kk_initWithTextColor:textColor
+                                    font:[UIFont boldSystemFontOfSize:fontSize]
+                                    text:text
+                                   lines:lines
+                                maxWidth:maxWidth];
 }
 
 
@@ -208,12 +208,12 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                    font:(nullable UIFont *)font
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth{
-    
++ (instancetype)kk_initWithTextColor:(nullable UIColor *)textColor
+                                font:(nullable UIFont *)font
+                                text:(nullable NSString *)text
+                               lines:(NSInteger)lines
+                            maxWidth:(CGFloat)maxWidth{
+
     CGSize size = CGSizeZero;
     if (lines==0) {
         size = [text sizeWithFont:font maxSize:CGSizeMake(maxWidth, 10000)];
@@ -224,7 +224,7 @@
     }
     
     UILabel * lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    lb.textColor = textColor;
+    lb.textColor = textColor?textColor:[UIColor blackColor];
     lb.textAlignment = NSTextAlignmentLeft;
     lb.font = font;
     lb.text = text;

@@ -25,9 +25,32 @@ static const char *UIControl_acceptEventTime = "UIControl_acceptEventTime";
 
 // 在load时执行hook
 + (void)load {
-    Method sys_Method   = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
-    Method my_Method    = class_getInstanceMethod(self, @selector(cs_sendAction:to:forEvent:));
-    method_exchangeImplementations(sys_Method, my_Method);
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+
+        SEL sys_SEL = @selector(sendAction:to:forEvent:);
+        SEL my_SEL = @selector(cs_sendAction:to:forEvent:);
+
+        Method sys_Method   = class_getInstanceMethod(self, sys_SEL);
+        Method my_Method    = class_getInstanceMethod(self, my_SEL);
+
+        BOOL didAddMethod = class_addMethod([self class],
+                                            sys_SEL,
+                                            method_getImplementation(my_Method),
+                                            method_getTypeEncoding(my_Method));
+        
+        if (didAddMethod) {
+            class_replaceMethod([self class],
+                                my_SEL,
+                                method_getImplementation(sys_Method),
+                                method_getTypeEncoding(sys_Method));
+        }
+        else {
+            method_exchangeImplementations(sys_Method, my_Method);
+        }
+
+    });
 }
 
 - (void)cs_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {

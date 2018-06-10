@@ -38,9 +38,9 @@
  @param text 文字
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text;
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text;
 
 /**
  快速创建UILabel （行数默认一行，宽度默认屏幕宽度）
@@ -51,10 +51,11 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                maxWidth:(CGFloat)maxWidth;
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                  maxWidth:(CGFloat)maxWidth;
+
 /**
  快速创建UILabel
  
@@ -65,11 +66,11 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                fontSize:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth;
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                                  fontSize:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                     lines:(NSInteger)lines
+                                  maxWidth:(CGFloat)maxWidth;
 
 /**
  快速创建UILabel
@@ -81,11 +82,11 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                            fontSizeBold:(NSInteger)fontSize
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth;
++ (nullable UILabel *)kk_initWithTextColor:(nullable UIColor *)textColor
+                              fontSizeBold:(NSInteger)fontSize
+                                      text:(nullable NSString *)text
+                                     lines:(NSInteger)lines
+                                  maxWidth:(CGFloat)maxWidth;
 
 /**
  快速创建UILabel
@@ -97,10 +98,10 @@
  @param maxWidth 最大宽度
  @return UILabel
  */
-+ (nullable UILabel *)labelWithTextColor:(nullable UIColor *)textColor
-                                    font:(nullable UIFont *)font
-                                    text:(nullable NSString *)text
-                                   lines:(NSInteger)lines
-                                maxWidth:(CGFloat)maxWidth;
++ (instancetype _Nullable )kk_initWithTextColor:(nullable UIColor *)textColor
+                                font:(nullable UIFont *)font
+                                text:(nullable NSString *)text
+                               lines:(NSInteger)lines
+                            maxWidth:(CGFloat)maxWidth;
 
 @end

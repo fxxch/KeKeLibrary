@@ -46,4 +46,17 @@ typedef NS_ENUM(NSInteger, TableViewCellPositionType){
  */
 - (TableViewCellPositionType)tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath;
 
+/**
+ 快速创建TableView
+ 
+ @param frame frame
+ @param style style
+ @param delegate delegate
+ @param datasource datasource
+ @return UITableView
+ */
++ (instancetype _Nonnull )kk_initWithFrame:(CGRect)frame
+                           style:(UITableViewStyle)style
+                                  delegate:(_Nonnull id <UITableViewDelegate>)delegate
+                                datasource:(_Nonnull id<UITableViewDataSource>)datasource;
 @end

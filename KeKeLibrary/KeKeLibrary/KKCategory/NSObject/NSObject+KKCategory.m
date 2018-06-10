@@ -17,11 +17,31 @@ NSString * const NotificaitonLocalizationDidChange = @"NotificaitonLocalizationD
 
 + (void)load{
 
-    Method sys_Method = class_getInstanceMethod(self, NSSelectorFromString(@"dealloc"));
-    Method my_Method = class_getInstanceMethod(self, @selector(kk_dealloc));
-    
-    method_exchangeImplementations(sys_Method, my_Method);
-
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        SEL sys_SEL = NSSelectorFromString(@"dealloc");
+        SEL my_SEL = @selector(kk_dealloc);
+        
+        Method sys_Method   = class_getInstanceMethod(self, sys_SEL);
+        Method my_Method    = class_getInstanceMethod(self, my_SEL);
+        
+        BOOL didAddMethod = class_addMethod([self class],
+                                            sys_SEL,
+                                            method_getImplementation(my_Method),
+                                            method_getTypeEncoding(my_Method));
+        
+        if (didAddMethod) {
+            class_replaceMethod([self class],
+                                my_SEL,
+                                method_getImplementation(sys_Method),
+                                method_getTypeEncoding(sys_Method));
+        }
+        else {
+            method_exchangeImplementations(sys_Method, my_Method);
+        }
+        
+    });
 }
 
 - (void)kk_dealloc{

@@ -86,4 +86,34 @@
     return position;
 }
 
+
+/**
+ 快速创建TableView
+
+ @param frame frame
+ @param style style
+ @param delegate delegate
+ @param datasource datasource
+ @return UITableView
+ */
++ (instancetype)kk_initWithFrame:(CGRect)frame
+                           style:(UITableViewStyle)style
+                        delegate:(id<UITableViewDelegate>)delegate
+                      datasource:(id<UITableViewDataSource>)datasource{
+
+    UITableView *table = [[UITableView alloc]initWithFrame:frame style:style];
+    table.backgroundColor = [UIColor clearColor];
+    table.backgroundView.backgroundColor = [UIColor clearColor];
+    table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    table.backgroundView = nil;
+    table.delegate = delegate;
+    table.dataSource = datasource;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=11) {
+        table.estimatedRowHeight = 0;
+        table.estimatedSectionHeaderHeight = 0;
+        table.estimatedSectionFooterHeight = 0;
+    }
+    return table;
+}
+
 @end
