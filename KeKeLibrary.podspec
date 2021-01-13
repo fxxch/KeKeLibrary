@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.0.32"
+    s.version      = "0.1.0"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -99,8 +99,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-    s.source_files  = "KeKeLibrary/KeKeLibrary/**/*.{h,m,c}"
-    s.public_header_files = "KeKeLibrary/KeKeLibrary/**/*.h"
+    s.source_files  = "KKLibrary/Classes/**/*.{h,m,c}"
+    s.public_header_files = "KKLibrary/Classes/**/*.h"
   # s.exclude_files = "Classes/Exclude"
 
 
@@ -114,7 +114,7 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-    s.resources = "KeKeLibrary/KeKeLibrary/**/*.{bundle,sqlite}"  
+    s.resources = "KeKeLibrary/KeKeLibrary/**/*.{bundle,sqlite,caf,txt,plist}"  
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -127,56 +127,10 @@ Pod::Spec.new do |s|
 
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
-    s.frameworks = "Accelerate",
-                   "AddressBook",
-                   "AddressBookUI",
-                   "AssetsLibrary",
-                   "AudioToolbox",
-                   "AVFoundation",
-                   "AVKit",
-                   "CFNetwork",
-                   "Contacts",
-                   "ContactsUI",
-                   "CoreAudio",
-                   "CoreGraphics",
-                   "CoreLocation",
-                   "CoreMedia",
-                   "CoreTelephony",
-                   "CoreText",
-                   "CoreVideo",
-                   "Foundation",
-                   "ImageIO",
-                   "JavaScriptCore",
-                   "MapKit",
-                   "MediaPlayer",
-                   "MediaToolbox",
-                   "MessageUI",
-                   "MobileCoreServices",
-                   "OpenAL",
-                   "OpenGLES",
-                   "Photos",
-                   "PhotosUI",
-                   "QuartzCore",
-                   "Security",
-                   "SystemConfiguration",
-                   "UIKit",
-                   "UserNotifications",
-                   "VideoToolbox",
-                   "WebKit"
 
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
-    s.libraries = "bz2", 
-                  "c++",
-                  "iconv",
-                  "icucore",
-                  "resolv",
-                  "sqlite3",
-                  "stdc++.6",
-                  "stdc++",
-                  "z"
-
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
