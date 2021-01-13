@@ -10,10 +10,5 @@
 #define KKThirdLibrary_h
 
 #import "FMDB.h"
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabasePool.h"
-#import "FMDatabaseQueue.h"
-#import "FMResultSet.h"
 
 #endif /* KKThirdLibrary_h */
