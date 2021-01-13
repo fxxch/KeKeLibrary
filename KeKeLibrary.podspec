@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.1.0"
+    s.version      = "0.1.1"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -85,7 +85,8 @@ Pod::Spec.new do |s|
   #
 
   # 根据Tag
-    s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :tag => s.version }
+  # s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :tag => s.version }
+    s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git" }
 
   # 根据提交的版本标识符
   # s.source       = { :git => "https://github.com/fxxch/KeKeLibrary.git", :commit => 'f8509d887a3788a5d2673315fc0769bac4b4d903'}
