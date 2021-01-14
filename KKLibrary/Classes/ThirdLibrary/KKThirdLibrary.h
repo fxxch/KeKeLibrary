@@ -9,6 +9,6 @@
 #ifndef KKThirdLibrary_h
 #define KKThirdLibrary_h
 
-#import "FMDB.h"
+#import <FMDB/FMDB.h>
 
 #endif /* KKThirdLibrary_h */
