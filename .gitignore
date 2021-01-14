@@ -54,6 +54,10 @@ DerivedData/
 Pods/
 *.lock
 
+KKLibraryDemo_Pod/Pods/
+KKLibraryDemo_Pod/Podfile.lock
+KKLibraryDemo_Pod/KKLibraryDemo_Pod.xcworkspace
+
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.

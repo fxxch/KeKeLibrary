@@ -12,6 +12,7 @@
 #import "UIView+KKCategory.h"
 #import "NSObject+KKCategory.h"
 #import "NSString+KKCategory.h"
+#import "KKLog.h"
 
 @implementation NSBundle (KKCategory)
 
@@ -48,13 +49,23 @@
 }
 
 + (nullable NSBundle*)kkLibraryBundle{
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Frameworks/KKFramework.framework" ofType:nil];
-    if (bundlePath) {
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSString *bundlePath_copy = [[NSBundle mainBundle] pathForResource:@"Frameworks/KKFramework.framework" ofType:nil];
+    if (bundlePath_copy) {
+        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath_copy];
+        KKLogInfoFormat(@"KKLibraryBundle: %@",bundlePath_copy);
         return bundle;
     }
     else {
-        return [NSBundle mainBundle];
+        NSString *bundlePath_pod = [[NSBundle mainBundle] pathForResource:@"Frameworks/KeKeLibrary.framework" ofType:nil];
+        if (bundlePath_pod) {
+            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath_pod];
+            KKLogInfoFormat(@"KKLibraryBundle: %@",bundlePath_pod);
+            return bundle;
+        }
+        else{
+            KKLogInfoFormat(@"MainBundle");
+            return [NSBundle mainBundle];
+        }
     }
 }
 

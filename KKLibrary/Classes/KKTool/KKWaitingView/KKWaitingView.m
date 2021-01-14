@@ -142,8 +142,14 @@
     
     }
     for (NSInteger i=1; i<=35; i++) {
-        NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-        NSString *filepath = [NSString stringWithFormat:@"%@/KKWaitingView.bundle/%@/%02ld_%@.png",bundlePath,imageType,(long)i,imageType];
+        NSString *bundlePath = [[NSBundle kkLibraryBundle] bundlePath];
+        NSString *filepath = nil;
+        if ([bundlePath hasSuffix:@"/"]) {
+            filepath = [NSString stringWithFormat:@"%@KKWaitingView.bundle/%@/%02ld_%@.png",bundlePath,imageType,(long)i,imageType];
+        }
+        else{
+            filepath = [NSString stringWithFormat:@"%@/KKWaitingView.bundle/%@/%02ld_%@.png",bundlePath,imageType,(long)i,imageType];
+        }
         UIImage *image = [UIImage imageWithContentsOfFile:filepath];
         if (image) {
             [animationImages addObject:image];
