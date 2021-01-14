@@ -1263,6 +1263,7 @@
 		3A654492258CC1C800942E7E /* KKFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KKFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A654494258CC1C800942E7E /* KKFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKFramework.h; sourceTree = "<group>"; };
 		3A654495258CC1C800942E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A69A81C25AFDDF40003048B /* KeKeLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeKeLibrary.h; sourceTree = "<group>"; };
 		3A9542A523700AF800684636 /* libKKLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKKLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA02E34258E4857004AF28A /* KKLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKLibrary.h; sourceTree = "<group>"; };
 		5377F6D9A7D233604E528895 /* Pods_KKLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2912,6 +2913,7 @@
 		3A654613258CC75300942E7E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3A69A81C25AFDDF40003048B /* KeKeLibrary.h */,
 				3A6542C7258B5B1000942E7E /* KKLibraryDefine.h */,
 				3A65406F258B5B0E00942E7E /* KKBase */,
 				3A654213258B5B0F00942E7E /* KKCategory */,

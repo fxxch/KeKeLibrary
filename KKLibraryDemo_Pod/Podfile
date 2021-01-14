@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '10.0'
+
+target 'KKLibraryDemo_Pod' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # Pods for KKLibraryDemo_Pod
+  
+  use_frameworks!
+
+  pod 'KeKeLibrary'
+
+end
