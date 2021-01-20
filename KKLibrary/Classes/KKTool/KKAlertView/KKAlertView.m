@@ -70,6 +70,7 @@
 #define KKAlert_TextMinHeight 50
 
 static NSMutableDictionary  *KKAlertView_nowIsShowing;
+static UIWindow  *KKAlertView_currentKeyWindow;
 
 @interface KKAlertView ()<UITextViewDelegate>{
     __weak id<KKAlertViewDelegate> _myDelegate;
@@ -274,6 +275,9 @@ static NSMutableDictionary  *KKAlertView_nowIsShowing;
     }
     [KKAlertView_nowIsShowing setObject:self forKey:self.myShowingIdentifier];
     self.windowLevel = UIWindowLevelAlert;
+    if (KKAlertView_currentKeyWindow==nil) {
+        KKAlertView_currentKeyWindow = [UIApplication sharedApplication].keyWindow;
+    }
     [self makeKeyAndVisible];
 
     self.backgroundBlackButton.alpha = 0;
@@ -305,6 +309,10 @@ static NSMutableDictionary  *KKAlertView_nowIsShowing;
         [KKAlertView_nowIsShowing removeObjectForKey:self.myShowingIdentifier];
         if ([KKAlertView_nowIsShowing count]==0) {
             KKAlertView_nowIsShowing = nil;
+            if (KKAlertView_currentKeyWindow) {
+                [KKAlertView_currentKeyWindow makeKeyWindow];
+            }
+            KKAlertView_currentKeyWindow = nil;
         }
     }];
 }

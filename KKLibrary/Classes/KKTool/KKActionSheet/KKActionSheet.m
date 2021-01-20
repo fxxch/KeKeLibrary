@@ -67,6 +67,7 @@
 #define KKA_ButtonHeight 49
 
 static NSMutableDictionary  *static_KKActSheet_allShowing;
+static UIWindow  *KKActionSheet_currentKeyWindow;
 
 @interface KKActionSheet ()<UITextViewDelegate>{
     __weak id<KKActionSheetDelegate> _myDelegate;
@@ -254,6 +255,9 @@ static NSMutableDictionary  *static_KKActSheet_allShowing;
     }
     [static_KKActSheet_allShowing setObject:self forKey:self.myShowingIdentifier];
     self.windowLevel = UIWindowLevelAlert;
+    if (KKActionSheet_currentKeyWindow==nil) {
+        KKActionSheet_currentKeyWindow = [UIApplication sharedApplication].keyWindow;
+    }
     [self makeKeyAndVisible];
     
     self.backgroundBlackButton.alpha = 0;
@@ -298,6 +302,10 @@ static NSMutableDictionary  *static_KKActSheet_allShowing;
         [static_KKActSheet_allShowing removeObjectForKey:self.myShowingIdentifier];
         if ([static_KKActSheet_allShowing count]==0) {
             static_KKActSheet_allShowing = nil;
+            if (KKActionSheet_currentKeyWindow) {
+                [KKActionSheet_currentKeyWindow makeKeyWindow];
+            }
+            KKActionSheet_currentKeyWindow = nil;
         }
     }];
 }

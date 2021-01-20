@@ -2680,8 +2680,8 @@
 		3A654267258B5B0F00942E7E /* NSString */ = {
 			isa = PBXGroup;
 			children = (
-				3A654268258B5B0F00942E7E /* NSString+KKCategory.m */,
 				3A654269258B5B0F00942E7E /* NSString+KKCategory.h */,
+				3A654268258B5B0F00942E7E /* NSString+KKCategory.m */,
 				3A65426A258B5B0F00942E7E /* URL_EXPRESSION_URL.txt */,
 			);
 			path = NSString;

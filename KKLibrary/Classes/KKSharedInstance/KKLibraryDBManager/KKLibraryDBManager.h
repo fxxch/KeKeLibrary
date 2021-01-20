@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FMDB/FMDB.h>
+#import <fmdb/FMDB.h>
 
 @interface FMDatabase (KKExtention)
 

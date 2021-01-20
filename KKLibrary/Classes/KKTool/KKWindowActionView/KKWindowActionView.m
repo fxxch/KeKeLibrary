@@ -55,6 +55,7 @@
 #define KKWA_ButtonHeight 60.0f
 
 static KKWindowActionView  *static_KKWindowActionView;
+static UIWindow  *KKWindowActionView_currentKeyWindow;
 
 @interface KKWindowActionView (){
     __weak id<KKWindowActionViewDelegate> _myDelegate;
@@ -213,6 +214,9 @@ static KKWindowActionView  *static_KKWindowActionView;
         [subWindow endEditing:YES];
     }
     self.windowLevel = UIWindowLevelAlert;
+    if (KKWindowActionView_currentKeyWindow==nil) {
+        KKWindowActionView_currentKeyWindow = [UIApplication sharedApplication].keyWindow;
+    }
     [self makeKeyAndVisible];
     
     CGRect frame0 = CGRectMake(0, KKApplicationHeight, self.frame.size.width, self.contentScrollView.frame.size.height);
@@ -240,7 +244,10 @@ static KKWindowActionView  *static_KKWindowActionView;
         [self resignKeyWindow];
         self.alpha = 0;
         static_KKWindowActionView = nil;
-        
+        if (KKWindowActionView_currentKeyWindow) {
+            [KKWindowActionView_currentKeyWindow makeKeyWindow];
+        }
+        KKWindowActionView_currentKeyWindow = nil;
     }];
 }
 

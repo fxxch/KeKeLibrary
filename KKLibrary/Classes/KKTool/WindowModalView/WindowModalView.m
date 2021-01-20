@@ -14,6 +14,7 @@
 #define KKWM_ButtonHeight 90.0f
 
 static WindowModalView  *static_WindowModalView;
+static UIWindow  *WindowModalView_currentKeyWindow;
 
 @interface WindowModalView ()
 
@@ -147,6 +148,9 @@ static WindowModalView  *static_WindowModalView;
         [subWindow endEditing:YES];
     }
     self.windowLevel = UIWindowLevelAlert;
+    if (WindowModalView_currentKeyWindow==nil) {
+        WindowModalView_currentKeyWindow = [UIApplication sharedApplication].keyWindow;
+    }
     [self makeKeyAndVisible];
     
     CGRect frame0 = CGRectMake(0, KKApplicationHeight, self.frame.size.width, self.contentScrollView.frame.size.height);
@@ -174,7 +178,10 @@ static WindowModalView  *static_WindowModalView;
         [self resignKeyWindow];
         self.alpha = 0;
         static_WindowModalView = nil;
-
+        if (WindowModalView_currentKeyWindow) {
+            [WindowModalView_currentKeyWindow makeKeyWindow];
+        }
+        WindowModalView_currentKeyWindow = nil;
     }];
 }
 
