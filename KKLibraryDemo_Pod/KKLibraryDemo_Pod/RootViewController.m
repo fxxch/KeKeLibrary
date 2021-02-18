@@ -87,6 +87,29 @@
 //    self.count++;
 //    [self performSelector:@selector(hideWaitingView) withObject:nil afterDelay:3.0];
 
+    [self showActionBBBBB:__PRETTY_FUNCTION__ line:__LINE__];
+    
+    KKLogEmpty(@"empty");
+    KKLogVerbose(@"Verbose");
+    KKLogVerboseFormat(@"Verbose %@",@"Format");
+    
+    KKLogDebug(@"Debug");
+    KKLogDebugFormat(@"Debug %@",@"Format");
+
+    
+    KKLogInfo(@"Info");
+    KKLogInfoFormat(@"Info %@",@"Format");
+
+    KKLogWarning(@"Warning");
+    KKLogWarningFormat(@"Warning %@",@"Format");
+
+    KKLogError(@"Error");
+    KKLogErrorFormat(@"Error %@",@"Format");
+
+}
+
+- (void)showActionBBBBB:(const char [37])fuction line:(int)aLine{
+//    NSLog((@"%s [Line %d] "), fuction, aLine);
 }
 
 - (void)hideWaitingView{
