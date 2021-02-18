@@ -24,7 +24,7 @@ versionFull=${version1}.${version2}.${version3}
 versionString_new=${head}${versionFull}\"
 
 #将新的完整版本号保存到文件KeKeLibrary.podspec里面(20s就是第20行，ns就是第n行)
-sed -i '' "20s/${versionString_old}/${versionString_new}/" KeKeLibrary.podspec
+sed -i '' "23s/${versionString_old}/${versionString_new}/" KeKeLibrary.podspec
 echo "version_new:"${versionString_new}
 
 echo ""
