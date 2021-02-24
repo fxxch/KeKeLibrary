@@ -11,7 +11,6 @@
 #import "KKLibraryDefine.h"
 #import "KKToastView.h"
 #import "KKSharedInstance.h"
-#import "KKTool.h"
 
 @interface KKAlbumManager ()
 

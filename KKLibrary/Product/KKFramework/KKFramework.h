@@ -29,7 +29,7 @@ FOUNDATION_EXPORT double KKFrameworkVersionNumber;
 //========================================
 //== KKTool
 //========================================
-#import "KKTool.h"
+#import "KKToolSimple.h"
 
 //========================================
 //== KKSharedInstance

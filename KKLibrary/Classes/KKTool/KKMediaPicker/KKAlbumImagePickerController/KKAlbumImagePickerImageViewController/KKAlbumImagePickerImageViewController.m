@@ -20,7 +20,7 @@
 #import "KKAlbumImagePickerDirectoryList.h"
 #import "KKAlbumImagePickerNavTitleBar.h"
 #import "AlbumImageCollectionViewCell.h"
-#import "KKAuthorizedManager.h"
+#import "KKAuthorizedAlbum.h"
 
 @interface KKAlbumImagePickerImageViewController ()
 <UICollectionViewDataSource,
@@ -73,7 +73,7 @@ KKAlbumImagePickerNavTitleBarDelegate>
     [self initWaitingView];
     [self observeNotification:NotificationName_KKAlbumManagerLoadSourceFinished selector:@selector(Notification_KKAlbumManagerLoadSourceFinished:)];
     
-    BOOL authorized = [KKAuthorizedManager.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
+    BOOL authorized = [KKAuthorizedAlbum.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
     if (authorized) {        
         // 为了防止界面卡住，可以异步执行
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

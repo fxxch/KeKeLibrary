@@ -14,7 +14,7 @@
 #import "KKImageCropperViewController.h"
 #import "KKCameraImageShowViewController.h"
 #import "KKCategory.h"
-#import "KKAuthorizedManager.h"
+#import "KKAuthorizedCamera.h"
 #import "KKAlertView.h"
 #import "KKCameraHelper.h"
 #import "KKCameraWaitingView.h"
@@ -97,7 +97,7 @@ AVCapturePhotoCaptureDelegate>
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     
-    BOOL authorized = [KKAuthorizedManager.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil];
+    BOOL authorized = [KKAuthorizedCamera.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil];
     if (authorized) {
         self.cameraHelper = [[KKCameraHelper alloc] init];
         [self.cameraHelper startMotionManager];

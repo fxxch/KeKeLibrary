@@ -10,7 +10,9 @@
 #import "KKViewController.h"
 #import "KKLibraryDefine.h"
 #import "KKCategory.h"
-#import "KKTool.h"
+#import "KKAuthorizedAlbum.h"
+#import "KKWindowActionView.h"
+#import "KKToastView.h"
 
 @interface KKWindowImageShowView ()<KKWindowActionViewDelegate,KKWindowImageShowItemViewDelegate>
 
@@ -297,7 +299,7 @@
 #pragma mark ==================================================
 - (void) saveNowImage:(UIImage*)aImage{
     if (aImage) {
-        BOOL authorized = [KKAuthorizedManager.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
+        BOOL authorized = [KKAuthorizedAlbum.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
         if (authorized) {
             UIImageWriteToSavedPhotosAlbum(aImage, self, @selector(image:didFinishSavingWithError:contextInfo:),nil);
         }

@@ -8,6 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		043E382AEB9D8078E6DCD093 /* Pods_KKLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5377F6D9A7D233604E528895 /* Pods_KKLibrary.framework */; };
+		3A09865C25E63322001A7F99 /* KKAuthorizedAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09865A25E63322001A7F99 /* KKAuthorizedAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09865D25E63322001A7F99 /* KKAuthorizedAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09865B25E63322001A7F99 /* KKAuthorizedAlbum.m */; };
+		3A09865E25E63322001A7F99 /* KKAuthorizedAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09865B25E63322001A7F99 /* KKAuthorizedAlbum.m */; };
+		3A09866625E63408001A7F99 /* KKAuthorizedBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09866425E63408001A7F99 /* KKAuthorizedBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09866725E63408001A7F99 /* KKAuthorizedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09866525E63408001A7F99 /* KKAuthorizedBase.m */; };
+		3A09866825E63408001A7F99 /* KKAuthorizedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09866525E63408001A7F99 /* KKAuthorizedBase.m */; };
+		3A09867925E639FE001A7F99 /* KKAuthorizedCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09867725E639FE001A7F99 /* KKAuthorizedCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09867A25E639FE001A7F99 /* KKAuthorizedCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09867825E639FE001A7F99 /* KKAuthorizedCamera.m */; };
+		3A09867B25E639FE001A7F99 /* KKAuthorizedCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09867825E639FE001A7F99 /* KKAuthorizedCamera.m */; };
+		3A09868525E63B24001A7F99 /* KKAuthorizedContacts.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09868325E63B24001A7F99 /* KKAuthorizedContacts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09868625E63B24001A7F99 /* KKAuthorizedContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09868425E63B24001A7F99 /* KKAuthorizedContacts.m */; };
+		3A09868725E63B24001A7F99 /* KKAuthorizedContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09868425E63B24001A7F99 /* KKAuthorizedContacts.m */; };
+		3A09868F25E63BBD001A7F99 /* KKAuthorizedLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09868D25E63BBD001A7F99 /* KKAuthorizedLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09869025E63BBD001A7F99 /* KKAuthorizedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09868E25E63BBD001A7F99 /* KKAuthorizedLocation.m */; };
+		3A09869125E63BBD001A7F99 /* KKAuthorizedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09868E25E63BBD001A7F99 /* KKAuthorizedLocation.m */; };
+		3A09869B25E63C82001A7F99 /* KKAuthorizedNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A09869925E63C82001A7F99 /* KKAuthorizedNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A09869C25E63C82001A7F99 /* KKAuthorizedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09869A25E63C82001A7F99 /* KKAuthorizedNotification.m */; };
+		3A09869D25E63C82001A7F99 /* KKAuthorizedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A09869A25E63C82001A7F99 /* KKAuthorizedNotification.m */; };
+		3A0986A325E63D0D001A7F99 /* KKAuthorizedMicrophone.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986A125E63D0D001A7F99 /* KKAuthorizedMicrophone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986A425E63D0D001A7F99 /* KKAuthorizedMicrophone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986A225E63D0D001A7F99 /* KKAuthorizedMicrophone.m */; };
+		3A0986A525E63D0D001A7F99 /* KKAuthorizedMicrophone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986A225E63D0D001A7F99 /* KKAuthorizedMicrophone.m */; };
+		3A0986AD25E63DEC001A7F99 /* KKAuthorizedMusic.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986AB25E63DEC001A7F99 /* KKAuthorizedMusic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986AE25E63DEC001A7F99 /* KKAuthorizedMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986AC25E63DEC001A7F99 /* KKAuthorizedMusic.m */; };
+		3A0986AF25E63DEC001A7F99 /* KKAuthorizedMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986AC25E63DEC001A7F99 /* KKAuthorizedMusic.m */; };
+		3A0986B725E63E7C001A7F99 /* KKAuthorizedCellularData.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986B525E63E7C001A7F99 /* KKAuthorizedCellularData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986B825E63E7C001A7F99 /* KKAuthorizedCellularData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986B625E63E7C001A7F99 /* KKAuthorizedCellularData.m */; };
+		3A0986B925E63E7C001A7F99 /* KKAuthorizedCellularData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0986B625E63E7C001A7F99 /* KKAuthorizedCellularData.m */; };
+		3A0986C325E64402001A7F99 /* KKToolSimple.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKToolSimple.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986C725E644BB001A7F99 /* KKToolAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986C625E644BB001A7F99 /* KKToolAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986CD25E644E0001A7F99 /* KKToolCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986CC25E644E0001A7F99 /* KKToolCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0986DB25E6481D001A7F99 /* KKToolSimple.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKToolSimple.h */; };
+		3A0986DC25E6481D001A7F99 /* KKToolAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986C625E644BB001A7F99 /* KKToolAlbum.h */; };
+		3A0986DD25E6481D001A7F99 /* KKToolCamera.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986CC25E644E0001A7F99 /* KKToolCamera.h */; };
+		3A0986E825E648C6001A7F99 /* KKAuthorizedBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09866425E63408001A7F99 /* KKAuthorizedBase.h */; };
+		3A0986E925E648C6001A7F99 /* KKAuthorizedCellularData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986B525E63E7C001A7F99 /* KKAuthorizedCellularData.h */; };
+		3A0986EA25E648C6001A7F99 /* KKAuthorizedMusic.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986AB25E63DEC001A7F99 /* KKAuthorizedMusic.h */; };
+		3A0986EB25E648C6001A7F99 /* KKAuthorizedMicrophone.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986A125E63D0D001A7F99 /* KKAuthorizedMicrophone.h */; };
+		3A0986EC25E648C6001A7F99 /* KKAuthorizedNotification.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09869925E63C82001A7F99 /* KKAuthorizedNotification.h */; };
+		3A0986ED25E648C6001A7F99 /* KKAuthorizedLocation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09868D25E63BBD001A7F99 /* KKAuthorizedLocation.h */; };
+		3A0986EE25E648C6001A7F99 /* KKAuthorizedContacts.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09868325E63B24001A7F99 /* KKAuthorizedContacts.h */; };
+		3A0986EF25E648C6001A7F99 /* KKAuthorizedCamera.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09867725E639FE001A7F99 /* KKAuthorizedCamera.h */; };
+		3A0986F025E648C6001A7F99 /* KKAuthorizedAlbum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A09865A25E63322001A7F99 /* KKAuthorizedAlbum.h */; };
 		3A6542C8258B5B1000942E7E /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A654072258B5B0E00942E7E /* KLTNavigationController.m */; };
 		3A6542C9258B5B1000942E7E /* KLTNavigationControllerScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A654075258B5B0E00942E7E /* KLTNavigationControllerScreenshot.m */; };
 		3A6542CA258B5B1000942E7E /* AnimationContollerScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A654077258B5B0E00942E7E /* AnimationContollerScreenshot.m */; };
@@ -26,7 +68,6 @@
 		3A6542D8258B5B1000942E7E /* KKUserDefaultsManagerDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540A8258B5B0E00942E7E /* KKUserDefaultsManagerDB.m */; };
 		3A6542D9258B5B1000942E7E /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540AA258B5B0E00942E7E /* KKUserDefaultsManager.m */; };
 		3A6542DA258B5B1000942E7E /* KKToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540AD258B5B0E00942E7E /* KKToastView.m */; };
-		3A6542DB258B5B1000942E7E /* KKAuthorizedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540B1258B5B0E00942E7E /* KKAuthorizedManager.m */; };
 		3A6542DC258B5B1000942E7E /* KKRefreshFooterTouchStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540BA258B5B0E00942E7E /* KKRefreshFooterTouchStateView.m */; };
 		3A6542DD258B5B1000942E7E /* KKRefreshFooterTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540BB258B5B0E00942E7E /* KKRefreshFooterTouchView.m */; };
 		3A6542DE258B5B1000942E7E /* KKRefreshFooterAutoStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540C0258B5B0E00942E7E /* KKRefreshFooterAutoStateView.m */; };
@@ -237,9 +278,7 @@
 		3A6543FD258CBBF300942E7E /* NSMutableString+KKCategory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A654296258B5B0F00942E7E /* NSMutableString+KKCategory.h */; };
 		3A6543FE258CBBF300942E7E /* UITextField+KKCategory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A654299258B5B0F00942E7E /* UITextField+KKCategory.h */; };
 		3A6543FF258CBBF300942E7E /* NSDate+KKCategory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A65429B258B5B0F00942E7E /* NSDate+KKCategory.h */; };
-		3A654401258CBC1700942E7E /* KKTool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540F2258B5B0E00942E7E /* KKTool.h */; };
 		3A654402258CBC1700942E7E /* KKToastView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540AE258B5B0E00942E7E /* KKToastView.h */; };
-		3A654403258CBC1700942E7E /* KKAuthorizedManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540B0258B5B0E00942E7E /* KKAuthorizedManager.h */; };
 		3A654404258CBC1700942E7E /* KKRefreshFooterTouchView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540B7258B5B0E00942E7E /* KKRefreshFooterTouchView.h */; };
 		3A654405258CBC1700942E7E /* KKRefreshFooterTouchStateView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540B9258B5B0E00942E7E /* KKRefreshFooterTouchStateView.h */; };
 		3A654406258CBC1700942E7E /* KKRefreshFooterAutoView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6540BD258B5B0E00942E7E /* KKRefreshFooterAutoView.h */; };
@@ -405,7 +444,6 @@
 		3A6544D8258CC1EC00942E7E /* KKUserDefaultsManagerDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540A8258B5B0E00942E7E /* KKUserDefaultsManagerDB.m */; };
 		3A6544D9258CC1EC00942E7E /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540AA258B5B0E00942E7E /* KKUserDefaultsManager.m */; };
 		3A6544DA258CC1EC00942E7E /* KKToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540AD258B5B0E00942E7E /* KKToastView.m */; };
-		3A6544DB258CC1EC00942E7E /* KKAuthorizedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540B1258B5B0E00942E7E /* KKAuthorizedManager.m */; };
 		3A6544DC258CC1EC00942E7E /* KKRefreshFooterTouchStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540BA258B5B0E00942E7E /* KKRefreshFooterTouchStateView.m */; };
 		3A6544DD258CC1EC00942E7E /* KKRefreshFooterTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540BB258B5B0E00942E7E /* KKRefreshFooterTouchView.m */; };
 		3A6544DE258CC1EC00942E7E /* KKRefreshFooterAutoStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6540C0258B5B0E00942E7E /* KKRefreshFooterAutoStateView.m */; };
@@ -566,9 +604,7 @@
 		3A654586258CC2AE00942E7E /* KKFileCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540A4258B5B0E00942E7E /* KKFileCacheManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A654587258CC2AE00942E7E /* KKUserDefaultsManagerDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540A9258B5B0E00942E7E /* KKUserDefaultsManagerDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A654588258CC2AE00942E7E /* KKUserDefaultsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540A6258B5B0E00942E7E /* KKUserDefaultsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A654589258CC2AF00942E7E /* KKTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540F2258B5B0E00942E7E /* KKTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A65458A258CC2AF00942E7E /* KKToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540AE258B5B0E00942E7E /* KKToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A65458B258CC2AF00942E7E /* KKAuthorizedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540B0258B5B0E00942E7E /* KKAuthorizedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A65458C258CC2AF00942E7E /* KKRefreshFooterTouchView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540B7258B5B0E00942E7E /* KKRefreshFooterTouchView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A65458D258CC2AF00942E7E /* KKRefreshFooterTouchStateView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540B9258B5B0E00942E7E /* KKRefreshFooterTouchStateView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A65458E258CC2AF00942E7E /* KKRefreshFooterAutoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6540BD258B5B0E00942E7E /* KKRefreshFooterAutoView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -784,9 +820,19 @@
 			dstPath = include/KKTool;
 			dstSubfolderSpec = 16;
 			files = (
-				3A654401258CBC1700942E7E /* KKTool.h in CopyFiles */,
+				3A0986E825E648C6001A7F99 /* KKAuthorizedBase.h in CopyFiles */,
+				3A0986E925E648C6001A7F99 /* KKAuthorizedCellularData.h in CopyFiles */,
+				3A0986EA25E648C6001A7F99 /* KKAuthorizedMusic.h in CopyFiles */,
+				3A0986EB25E648C6001A7F99 /* KKAuthorizedMicrophone.h in CopyFiles */,
+				3A0986EC25E648C6001A7F99 /* KKAuthorizedNotification.h in CopyFiles */,
+				3A0986ED25E648C6001A7F99 /* KKAuthorizedLocation.h in CopyFiles */,
+				3A0986EE25E648C6001A7F99 /* KKAuthorizedContacts.h in CopyFiles */,
+				3A0986EF25E648C6001A7F99 /* KKAuthorizedCamera.h in CopyFiles */,
+				3A0986F025E648C6001A7F99 /* KKAuthorizedAlbum.h in CopyFiles */,
+				3A0986DB25E6481D001A7F99 /* KKToolSimple.h in CopyFiles */,
+				3A0986DC25E6481D001A7F99 /* KKToolAlbum.h in CopyFiles */,
+				3A0986DD25E6481D001A7F99 /* KKToolCamera.h in CopyFiles */,
 				3A654402258CBC1700942E7E /* KKToastView.h in CopyFiles */,
-				3A654403258CBC1700942E7E /* KKAuthorizedManager.h in CopyFiles */,
 				3A654404258CBC1700942E7E /* KKRefreshFooterTouchView.h in CopyFiles */,
 				3A654405258CBC1700942E7E /* KKRefreshFooterTouchStateView.h in CopyFiles */,
 				3A654406258CBC1700942E7E /* KKRefreshFooterAutoView.h in CopyFiles */,
@@ -926,6 +972,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A09865A25E63322001A7F99 /* KKAuthorizedAlbum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedAlbum.h; sourceTree = "<group>"; };
+		3A09865B25E63322001A7F99 /* KKAuthorizedAlbum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedAlbum.m; sourceTree = "<group>"; };
+		3A09866425E63408001A7F99 /* KKAuthorizedBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedBase.h; sourceTree = "<group>"; };
+		3A09866525E63408001A7F99 /* KKAuthorizedBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedBase.m; sourceTree = "<group>"; };
+		3A09867725E639FE001A7F99 /* KKAuthorizedCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedCamera.h; sourceTree = "<group>"; };
+		3A09867825E639FE001A7F99 /* KKAuthorizedCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedCamera.m; sourceTree = "<group>"; };
+		3A09868325E63B24001A7F99 /* KKAuthorizedContacts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedContacts.h; sourceTree = "<group>"; };
+		3A09868425E63B24001A7F99 /* KKAuthorizedContacts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedContacts.m; sourceTree = "<group>"; };
+		3A09868D25E63BBD001A7F99 /* KKAuthorizedLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedLocation.h; sourceTree = "<group>"; };
+		3A09868E25E63BBD001A7F99 /* KKAuthorizedLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedLocation.m; sourceTree = "<group>"; };
+		3A09869925E63C82001A7F99 /* KKAuthorizedNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedNotification.h; sourceTree = "<group>"; };
+		3A09869A25E63C82001A7F99 /* KKAuthorizedNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedNotification.m; sourceTree = "<group>"; };
+		3A0986A125E63D0D001A7F99 /* KKAuthorizedMicrophone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedMicrophone.h; sourceTree = "<group>"; };
+		3A0986A225E63D0D001A7F99 /* KKAuthorizedMicrophone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedMicrophone.m; sourceTree = "<group>"; };
+		3A0986AB25E63DEC001A7F99 /* KKAuthorizedMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedMusic.h; sourceTree = "<group>"; };
+		3A0986AC25E63DEC001A7F99 /* KKAuthorizedMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedMusic.m; sourceTree = "<group>"; };
+		3A0986B525E63E7C001A7F99 /* KKAuthorizedCellularData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedCellularData.h; sourceTree = "<group>"; };
+		3A0986B625E63E7C001A7F99 /* KKAuthorizedCellularData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedCellularData.m; sourceTree = "<group>"; };
+		3A0986C225E64402001A7F99 /* KKToolSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKToolSimple.h; sourceTree = "<group>"; };
+		3A0986C625E644BB001A7F99 /* KKToolAlbum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKToolAlbum.h; sourceTree = "<group>"; };
+		3A0986CC25E644E0001A7F99 /* KKToolCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKToolCamera.h; sourceTree = "<group>"; };
 		3A654071258B5B0E00942E7E /* AnimationContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContoller.h; sourceTree = "<group>"; };
 		3A654072258B5B0E00942E7E /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
 		3A654074258B5B0E00942E7E /* KLTNavigationControllerScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTNavigationControllerScreenshot.h; sourceTree = "<group>"; };
@@ -966,8 +1033,6 @@
 		3A6540AA258B5B0E00942E7E /* KKUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUserDefaultsManager.m; sourceTree = "<group>"; };
 		3A6540AD258B5B0E00942E7E /* KKToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKToastView.m; sourceTree = "<group>"; };
 		3A6540AE258B5B0E00942E7E /* KKToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKToastView.h; sourceTree = "<group>"; };
-		3A6540B0258B5B0E00942E7E /* KKAuthorizedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAuthorizedManager.h; sourceTree = "<group>"; };
-		3A6540B1258B5B0E00942E7E /* KKAuthorizedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAuthorizedManager.m; sourceTree = "<group>"; };
 		3A6540B3258B5B0E00942E7E /* KKScrollVewRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KKScrollVewRefresh.bundle; sourceTree = "<group>"; };
 		3A6540B7258B5B0E00942E7E /* KKRefreshFooterTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRefreshFooterTouchView.h; sourceTree = "<group>"; };
 		3A6540B9258B5B0E00942E7E /* KKRefreshFooterTouchStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRefreshFooterTouchStateView.h; sourceTree = "<group>"; };
@@ -1009,7 +1074,6 @@
 		3A6540EE258B5B0E00942E7E /* WindowModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowModalView.h; sourceTree = "<group>"; };
 		3A6540F0258B5B0E00942E7E /* KKDataPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKDataPickerView.m; sourceTree = "<group>"; };
 		3A6540F1258B5B0E00942E7E /* KKDataPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKDataPickerView.h; sourceTree = "<group>"; };
-		3A6540F2258B5B0E00942E7E /* KKTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKTool.h; sourceTree = "<group>"; };
 		3A6540F4258B5B0E00942E7E /* KKWindowActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWindowActionView.m; sourceTree = "<group>"; };
 		3A6540F5258B5B0E00942E7E /* KKWindowActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKWindowActionView.h; sourceTree = "<group>"; };
 		3A6540F7258B5B0E00942E7E /* KKWindowActionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKWindowActionViewItem.h; sourceTree = "<group>"; };
@@ -1294,6 +1358,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A09865925E63305001A7F99 /* KKAuthorizedAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				3A09865A25E63322001A7F99 /* KKAuthorizedAlbum.h */,
+				3A09865B25E63322001A7F99 /* KKAuthorizedAlbum.m */,
+			);
+			path = KKAuthorizedAlbum;
+			sourceTree = "<group>";
+		};
+		3A09866325E633F6001A7F99 /* KKAuthorizedBase */ = {
+			isa = PBXGroup;
+			children = (
+				3A09866425E63408001A7F99 /* KKAuthorizedBase.h */,
+				3A09866525E63408001A7F99 /* KKAuthorizedBase.m */,
+			);
+			path = KKAuthorizedBase;
+			sourceTree = "<group>";
+		};
+		3A09867625E639D5001A7F99 /* KKAuthorizedCamera */ = {
+			isa = PBXGroup;
+			children = (
+				3A09867725E639FE001A7F99 /* KKAuthorizedCamera.h */,
+				3A09867825E639FE001A7F99 /* KKAuthorizedCamera.m */,
+			);
+			path = KKAuthorizedCamera;
+			sourceTree = "<group>";
+		};
+		3A09868225E63AF4001A7F99 /* KKAuthorizedContacts */ = {
+			isa = PBXGroup;
+			children = (
+				3A09868325E63B24001A7F99 /* KKAuthorizedContacts.h */,
+				3A09868425E63B24001A7F99 /* KKAuthorizedContacts.m */,
+			);
+			path = KKAuthorizedContacts;
+			sourceTree = "<group>";
+		};
+		3A09868C25E63BAB001A7F99 /* KKAuthorizedLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3A09868D25E63BBD001A7F99 /* KKAuthorizedLocation.h */,
+				3A09868E25E63BBD001A7F99 /* KKAuthorizedLocation.m */,
+			);
+			path = KKAuthorizedLocation;
+			sourceTree = "<group>";
+		};
+		3A09869825E63C6F001A7F99 /* KKAuthorizedNotification */ = {
+			isa = PBXGroup;
+			children = (
+				3A09869925E63C82001A7F99 /* KKAuthorizedNotification.h */,
+				3A09869A25E63C82001A7F99 /* KKAuthorizedNotification.m */,
+			);
+			path = KKAuthorizedNotification;
+			sourceTree = "<group>";
+		};
+		3A0986A025E63CF6001A7F99 /* KKAuthorizedMicrophone */ = {
+			isa = PBXGroup;
+			children = (
+				3A0986A125E63D0D001A7F99 /* KKAuthorizedMicrophone.h */,
+				3A0986A225E63D0D001A7F99 /* KKAuthorizedMicrophone.m */,
+			);
+			path = KKAuthorizedMicrophone;
+			sourceTree = "<group>";
+		};
+		3A0986AA25E63DD6001A7F99 /* KKAuthorizedMusic */ = {
+			isa = PBXGroup;
+			children = (
+				3A0986AB25E63DEC001A7F99 /* KKAuthorizedMusic.h */,
+				3A0986AC25E63DEC001A7F99 /* KKAuthorizedMusic.m */,
+			);
+			path = KKAuthorizedMusic;
+			sourceTree = "<group>";
+		};
+		3A0986B425E63E5F001A7F99 /* KKAuthorizedCellularData */ = {
+			isa = PBXGroup;
+			children = (
+				3A0986B525E63E7C001A7F99 /* KKAuthorizedCellularData.h */,
+				3A0986B625E63E7C001A7F99 /* KKAuthorizedCellularData.m */,
+			);
+			path = KKAuthorizedCellularData;
+			sourceTree = "<group>";
+		};
 		3A65406F258B5B0E00942E7E /* KKBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1477,7 +1622,9 @@
 		3A6540AB258B5B0E00942E7E /* KKTool */ = {
 			isa = PBXGroup;
 			children = (
-				3A6540F2258B5B0E00942E7E /* KKTool.h */,
+				3A0986C225E64402001A7F99 /* KKToolSimple.h */,
+				3A0986C625E644BB001A7F99 /* KKToolAlbum.h */,
+				3A0986CC25E644E0001A7F99 /* KKToolCamera.h */,
 				3A6540AC258B5B0E00942E7E /* KKToastView */,
 				3A6540AF258B5B0E00942E7E /* KKAuthorizedManager */,
 				3A6540B2258B5B0E00942E7E /* KKScrollVewRefresh */,
@@ -1523,8 +1670,15 @@
 		3A6540AF258B5B0E00942E7E /* KKAuthorizedManager */ = {
 			isa = PBXGroup;
 			children = (
-				3A6540B0258B5B0E00942E7E /* KKAuthorizedManager.h */,
-				3A6540B1258B5B0E00942E7E /* KKAuthorizedManager.m */,
+				3A09866325E633F6001A7F99 /* KKAuthorizedBase */,
+				3A0986B425E63E5F001A7F99 /* KKAuthorizedCellularData */,
+				3A0986AA25E63DD6001A7F99 /* KKAuthorizedMusic */,
+				3A0986A025E63CF6001A7F99 /* KKAuthorizedMicrophone */,
+				3A09869825E63C6F001A7F99 /* KKAuthorizedNotification */,
+				3A09868C25E63BAB001A7F99 /* KKAuthorizedLocation */,
+				3A09868225E63AF4001A7F99 /* KKAuthorizedContacts */,
+				3A09867625E639D5001A7F99 /* KKAuthorizedCamera */,
+				3A09865925E63305001A7F99 /* KKAuthorizedAlbum */,
 			);
 			path = KKAuthorizedManager;
 			sourceTree = "<group>";
@@ -2995,6 +3149,9 @@
 				3A654547258CC2AC00942E7E /* AnimationContoller.h in Headers */,
 				3A654548258CC2AC00942E7E /* KLTNavigationController.h in Headers */,
 				3A654549258CC2AC00942E7E /* KLTNavigationControllerScreenshot.h in Headers */,
+				3A0986CD25E644E0001A7F99 /* KKToolCamera.h in Headers */,
+				3A0986C325E64402001A7F99 /* KKToolSimple.h in Headers */,
+				3A0986C725E644BB001A7F99 /* KKToolAlbum.h in Headers */,
 				3A65454A258CC2AC00942E7E /* AnimationContollerScreenshot.h in Headers */,
 				3A65454B258CC2AC00942E7E /* KKTextView.h in Headers */,
 				3A65454C258CC2AC00942E7E /* KKUIToolbar.h in Headers */,
@@ -3058,9 +3215,7 @@
 				3A654586258CC2AE00942E7E /* KKFileCacheManager.h in Headers */,
 				3A654587258CC2AE00942E7E /* KKUserDefaultsManagerDB.h in Headers */,
 				3A654588258CC2AE00942E7E /* KKUserDefaultsManager.h in Headers */,
-				3A654589258CC2AF00942E7E /* KKTool.h in Headers */,
 				3A65458A258CC2AF00942E7E /* KKToastView.h in Headers */,
-				3A65458B258CC2AF00942E7E /* KKAuthorizedManager.h in Headers */,
 				3A65458C258CC2AF00942E7E /* KKRefreshFooterTouchView.h in Headers */,
 				3A65458D258CC2AF00942E7E /* KKRefreshFooterTouchStateView.h in Headers */,
 				3A65458E258CC2AF00942E7E /* KKRefreshFooterAutoView.h in Headers */,
@@ -3146,7 +3301,16 @@
 				3A6545DE258CC2B200942E7E /* KKQRCodeBackgroundAlphaView.h in Headers */,
 				3A6545DF258CC2B200942E7E /* KKQRCodeManager.h in Headers */,
 				3A6545E0258CC2B200942E7E /* KKComparer.h in Headers */,
+				3A09866625E63408001A7F99 /* KKAuthorizedBase.h in Headers */,
 				3A6545E1258CC2B200942E7E /* KanJiSort.h in Headers */,
+				3A09865C25E63322001A7F99 /* KKAuthorizedAlbum.h in Headers */,
+				3A0986B725E63E7C001A7F99 /* KKAuthorizedCellularData.h in Headers */,
+				3A0986AD25E63DEC001A7F99 /* KKAuthorizedMusic.h in Headers */,
+				3A09868F25E63BBD001A7F99 /* KKAuthorizedLocation.h in Headers */,
+				3A0986A325E63D0D001A7F99 /* KKAuthorizedMicrophone.h in Headers */,
+				3A09867925E639FE001A7F99 /* KKAuthorizedCamera.h in Headers */,
+				3A09868525E63B24001A7F99 /* KKAuthorizedContacts.h in Headers */,
+				3A09869B25E63C82001A7F99 /* KKAuthorizedNotification.h in Headers */,
 				3A6545E3258CC2B200942E7E /* KKPageScrollView.h in Headers */,
 				3A6545E4258CC2B200942E7E /* KKGetIPAddress.h in Headers */,
 				3A6545E5258CC2B200942E7E /* KKIPAddress.h in Headers */,
@@ -3318,6 +3482,7 @@
 				3A65449C258CC1EC00942E7E /* AnimationContoller.m in Sources */,
 				3A65449D258CC1EC00942E7E /* KLTNavigationController.m in Sources */,
 				3A65449E258CC1EC00942E7E /* KLTNavigationControllerScreenshot.m in Sources */,
+				3A0986AF25E63DEC001A7F99 /* KKAuthorizedMusic.m in Sources */,
 				3A65449F258CC1EC00942E7E /* AnimationContollerScreenshot.m in Sources */,
 				3A6544A0258CC1EC00942E7E /* KKTextView.m in Sources */,
 				3A6544A1258CC1EC00942E7E /* KKUIToolbar.m in Sources */,
@@ -3327,6 +3492,7 @@
 				3A6544A5258CC1EC00942E7E /* KKViewController.m in Sources */,
 				3A6544A6258CC1EC00942E7E /* UIImage+KKCategory.m in Sources */,
 				3A6544A7258CC1EC00942E7E /* NSDictionary+KKCategory.m in Sources */,
+				3A09867B25E639FE001A7F99 /* KKAuthorizedCamera.m in Sources */,
 				3A6544A8258CC1EC00942E7E /* UIScrollView+KKCategory.m in Sources */,
 				3A6544A9258CC1EC00942E7E /* UIScreen+KKCategory.m in Sources */,
 				3A6544AA258CC1EC00942E7E /* UIWindow+KKCategory.m in Sources */,
@@ -3352,6 +3518,7 @@
 				3A6544BE258CC1EC00942E7E /* UIBezierPath+KKCategory.m in Sources */,
 				3A6544BF258CC1EC00942E7E /* UIImageView+KKCategory.m in Sources */,
 				3A6544C0258CC1EC00942E7E /* NSString+KKCategory.m in Sources */,
+				3A0986B925E63E7C001A7F99 /* KKAuthorizedCellularData.m in Sources */,
 				3A6544C1258CC1EC00942E7E /* UIViewController+KKCategory.m in Sources */,
 				3A6544C2258CC1EC00942E7E /* UINavigationController+KKCategory.m in Sources */,
 				3A6544C3258CC1EC00942E7E /* UITableView+KKCategory.m in Sources */,
@@ -3378,8 +3545,8 @@
 				3A6544D8258CC1EC00942E7E /* KKUserDefaultsManagerDB.m in Sources */,
 				3A6544D9258CC1EC00942E7E /* KKUserDefaultsManager.m in Sources */,
 				3A6544DA258CC1EC00942E7E /* KKToastView.m in Sources */,
-				3A6544DB258CC1EC00942E7E /* KKAuthorizedManager.m in Sources */,
 				3A6544DC258CC1EC00942E7E /* KKRefreshFooterTouchStateView.m in Sources */,
+				3A09869D25E63C82001A7F99 /* KKAuthorizedNotification.m in Sources */,
 				3A6544DD258CC1EC00942E7E /* KKRefreshFooterTouchView.m in Sources */,
 				3A6544DE258CC1EC00942E7E /* KKRefreshFooterAutoStateView.m in Sources */,
 				3A6544DF258CC1EC00942E7E /* KKRefreshFooterAutoView.m in Sources */,
@@ -3388,6 +3555,7 @@
 				3A6544E2258CC1EC00942E7E /* KKRefreshHeaderStateView.m in Sources */,
 				3A6544E3258CC1EC00942E7E /* KKRefreshHeaderView.m in Sources */,
 				3A6544E4258CC1EC00942E7E /* KKWindowMenuItem.m in Sources */,
+				3A0986A525E63D0D001A7F99 /* KKAuthorizedMicrophone.m in Sources */,
 				3A6544E5258CC1EC00942E7E /* KKWindowMenuView.m in Sources */,
 				3A6544E6258CC1EC00942E7E /* KKTextEditViewStyle.m in Sources */,
 				3A6544E7258CC1EC00942E7E /* KKTextEditViewController.m in Sources */,
@@ -3416,6 +3584,7 @@
 				3A6544FE258CC1EC00942E7E /* KKWebBrowserViewController.m in Sources */,
 				3A6544FF258CC1EC00942E7E /* KKSegmentView.m in Sources */,
 				3A654500258CC1EC00942E7E /* KKEmptyNoticeView.m in Sources */,
+				3A09865E25E63322001A7F99 /* KKAuthorizedAlbum.m in Sources */,
 				3A654501258CC1EC00942E7E /* UICollectionView+KKEmptyNoticeView.m in Sources */,
 				3A654502258CC1EC00942E7E /* UITableView+KKEmptyNoticeView.m in Sources */,
 				3A654503258CC1EC00942E7E /* KKCameraImageShowViewController.m in Sources */,
@@ -3432,6 +3601,7 @@
 				3A65450E258CC1EC00942E7E /* KKAlbumImagePickerNavTitleBar.m in Sources */,
 				3A65450F258CC1EC00942E7E /* KKAlbumImagePickerDirectoryList.m in Sources */,
 				3A654510258CC1EC00942E7E /* AlbumImageCollectionViewCell.m in Sources */,
+				3A09866825E63408001A7F99 /* KKAuthorizedBase.m in Sources */,
 				3A654511258CC1EC00942E7E /* KKAlbumImageToolBar.m in Sources */,
 				3A654512258CC1EC00942E7E /* KKAlbumImagePickerController.m in Sources */,
 				3A654513258CC1EC00942E7E /* KKAlbumImagePickerManager.m in Sources */,
@@ -3448,11 +3618,13 @@
 				3A65451E258CC1ED00942E7E /* KKAlbumDirectoryModal.m in Sources */,
 				3A65451F258CC1ED00942E7E /* KKAlbumAssetModalPreviewController.m in Sources */,
 				3A654520258CC1ED00942E7E /* KKAlbumAssetModalPreviewItem.m in Sources */,
+				3A09869125E63BBD001A7F99 /* KKAuthorizedLocation.m in Sources */,
 				3A654521258CC1ED00942E7E /* KKAlbumAssetModalPreviewView.m in Sources */,
 				3A654522258CC1ED00942E7E /* KKCameraCaptureTopBar.m in Sources */,
 				3A654523258CC1ED00942E7E /* KKCameraCaptureDataModal.m in Sources */,
 				3A654524258CC1ED00942E7E /* XLCircle.m in Sources */,
 				3A654525258CC1ED00942E7E /* XLCircleProgress.m in Sources */,
+				3A09868725E63B24001A7F99 /* KKAuthorizedContacts.m in Sources */,
 				3A654526258CC1ED00942E7E /* KKCameraCaptureShowViewController.m in Sources */,
 				3A654527258CC1ED00942E7E /* KKCameraCaptureViewController.m in Sources */,
 				3A654528258CC1ED00942E7E /* KKAlbumAssetModalVideoPlayBar.m in Sources */,
@@ -3482,6 +3654,7 @@
 				3A65434E258B5B1100942E7E /* UIScreen+KKCategory.m in Sources */,
 				3A65433D258B5B1100942E7E /* KKQRCodeScanViewController.m in Sources */,
 				3A654364258B5B1100942E7E /* UIBezierPath+KKCategory.m in Sources */,
+				3A0986AE25E63DEC001A7F99 /* KKAuthorizedMusic.m in Sources */,
 				3A654391258B60BC00942E7E /* NSString+KKBase64.m in Sources */,
 				3A654330258B5B1100942E7E /* KKAlbumAssetModalPreviewController.m in Sources */,
 				3A65435E258B5B1100942E7E /* NSMutableDictionary+KKCategory.m in Sources */,
@@ -3491,6 +3664,7 @@
 				3A654398258B616000942E7E /* NSData+KKBase64.m in Sources */,
 				3A654365258B5B1100942E7E /* UIImageView+KKCategory.m in Sources */,
 				3A6542CD258B5B1000942E7E /* KKUIToolbar.m in Sources */,
+				3A09867A25E639FE001A7F99 /* KKAuthorizedCamera.m in Sources */,
 				3A654315258B5B1100942E7E /* KKCameraImageShowItemView.m in Sources */,
 				3A65436F258B5B1100942E7E /* NSMutableArray+KKCategory.m in Sources */,
 				3A654314258B5B1100942E7E /* KKCameraImageShowViewController.m in Sources */,
@@ -3516,6 +3690,7 @@
 				3A6542CE258B5B1000942E7E /* KKView.m in Sources */,
 				3A654380258B5B1100942E7E /* KKAESCrypt.m in Sources */,
 				3A654350258B5B1100942E7E /* UILabel+KKCategory.m in Sources */,
+				3A0986B825E63E7C001A7F99 /* KKAuthorizedCellularData.m in Sources */,
 				3A654354258B5B1100942E7E /* UIButton+KKCategory.m in Sources */,
 				3A6542E8258B5B1000942E7E /* KKWindowImageItem.m in Sources */,
 				3A65432C258B5B1100942E7E /* KKImageCropperView.m in Sources */,
@@ -3544,6 +3719,7 @@
 				3A65433E258B5B1100942E7E /* KKQRCodeScanNavigarionBar.m in Sources */,
 				3A654306258B5B1100942E7E /* KKLog.m in Sources */,
 				3A65435B258B5B1100942E7E /* UIButton+KKWebCache.m in Sources */,
+				3A09869C25E63C82001A7F99 /* KKAuthorizedNotification.m in Sources */,
 				3A654325258B5B1100942E7E /* KKAlbumImageShowToolBar.m in Sources */,
 				3A654319258B5B1100942E7E /* KKCameraImagePickerController.m in Sources */,
 				3A654363258B5B1100942E7E /* UICollectionView+KKCategory.m in Sources */,
@@ -3552,6 +3728,7 @@
 				3A6542E2258B5B1000942E7E /* KKRefreshHeaderStateView.m in Sources */,
 				3A654320258B5B1100942E7E /* KKAlbumImagePickerDirectoryList.m in Sources */,
 				3A654332258B5B1100942E7E /* KKAlbumAssetModalPreviewView.m in Sources */,
+				3A0986A425E63D0D001A7F99 /* KKAuthorizedMicrophone.m in Sources */,
 				3A65432F258B5B1100942E7E /* KKAlbumDirectoryModal.m in Sources */,
 				3A654302258B5B1100942E7E /* KKReachability.m in Sources */,
 				3A654375258B5B1100942E7E /* NSMutableString+KKCategory.m in Sources */,
@@ -3580,6 +3757,7 @@
 				3A65436B258B5B1100942E7E /* UIControl+KKCategory.m in Sources */,
 				3A654316258B5B1100942E7E /* KKCameraImageShowToolBar.m in Sources */,
 				3A6542DC258B5B1000942E7E /* KKRefreshFooterTouchStateView.m in Sources */,
+				3A09865D25E63322001A7F99 /* KKAuthorizedAlbum.m in Sources */,
 				3A654336258B5B1100942E7E /* XLCircleProgress.m in Sources */,
 				3A6542D9258B5B1000942E7E /* KKUserDefaultsManager.m in Sources */,
 				3A65430F258B5B1100942E7E /* KKWebBrowserViewController.m in Sources */,
@@ -3596,6 +3774,7 @@
 				3A654303258B5B1100942E7E /* KKNetWorkObserver.m in Sources */,
 				3A6542D6258B5B1000942E7E /* KKFileCacheManagerDB.m in Sources */,
 				3A654329258B5B1100942E7E /* KKAlbumImageShowItemView.m in Sources */,
+				3A09866725E63408001A7F99 /* KKAuthorizedBase.m in Sources */,
 				3A654307258B5B1100942E7E /* KKCycleProgressView.m in Sources */,
 				3A6542E4258B5B1000942E7E /* KKWindowMenuItem.m in Sources */,
 				3A6542CC258B5B1000942E7E /* KKTextView.m in Sources */,
@@ -3612,11 +3791,13 @@
 				3A65433A258B5B1100942E7E /* KKAlbumAssetModalVideoPlayView.m in Sources */,
 				3A654331258B5B1100942E7E /* KKAlbumAssetModalPreviewItem.m in Sources */,
 				3A6542DE258B5B1000942E7E /* KKRefreshFooterAutoStateView.m in Sources */,
+				3A09869025E63BBD001A7F99 /* KKAuthorizedLocation.m in Sources */,
 				3A6542D8258B5B1000942E7E /* KKUserDefaultsManagerDB.m in Sources */,
 				3A65435C258B5B1100942E7E /* KKWebCache.m in Sources */,
 				3A6542D2258B5B1000942E7E /* KKLibraryLocalization.m in Sources */,
 				3A65432D258B5B1100942E7E /* KKAlbumManager.m in Sources */,
 				3A65431C258B5B1100942E7E /* KKCameraHelper.m in Sources */,
+				3A09868625E63B24001A7F99 /* KKAuthorizedContacts.m in Sources */,
 				3A6542ED258B5B1000942E7E /* WindowModalView.m in Sources */,
 				3A654333258B5B1100942E7E /* KKCameraCaptureTopBar.m in Sources */,
 				3A65430C258B5B1100942E7E /* KKAlertView.m in Sources */,
@@ -3634,7 +3815,6 @@
 				3A654321258B5B1100942E7E /* AlbumImageCollectionViewCell.m in Sources */,
 				3A654360258B5B1100942E7E /* UITextView+KKCategory.m in Sources */,
 				3A65433C258B5B1100942E7E /* KKPageControl.m in Sources */,
-				3A6542DB258B5B1000942E7E /* KKAuthorizedManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

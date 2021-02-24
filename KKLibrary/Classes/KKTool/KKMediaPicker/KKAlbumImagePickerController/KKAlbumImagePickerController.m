@@ -8,7 +8,6 @@
 
 #import "KKAlbumImagePickerController.h"
 #import "KKFileCacheManager.h"
-#import "KKAuthorizedManager.h"
 #import "KKAlbumImagePickerImageViewController.h"
 #import "KKLibraryDefine.h"
 #import "KKCategory.h"

@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "KKCameraCaptureTopBar.h"
 #import "KKCategory.h"
-#import "KKAuthorizedManager.h"
+#import "KKAuthorizedCamera.h"
 #import "KKCameraHelper.h"
 #import "KKCameraWaitingView.h"
 #import "XLCircleProgress.h"
@@ -97,7 +97,7 @@ KKCameraCaptureShowDelegate>
     self.view.backgroundColor = [UIColor blackColor];
     self.dataModal = [[KKCameraCaptureDataModal alloc] init];
 
-    BOOL authorized = [KKAuthorizedManager.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil];
+    BOOL authorized = [KKAuthorizedCamera.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil];
     if (authorized) {
         [self.dataModal startMotionManager];
 

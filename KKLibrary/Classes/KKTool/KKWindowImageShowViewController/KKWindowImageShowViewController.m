@@ -11,7 +11,7 @@
 #import "KKCategory.h"
 #import "KKLibraryLocalizationDefineKeys.h"
 #import "KKLocalizationManager.h"
-#import "KKAuthorizedManager.h"
+#import "KKAuthorizedAlbum.h"
 #import "KKToastView.h"
 
 @interface KKWindowImageShowViewController ()<KKWindowImageShowViewDelegate,KKWindowActionViewDelegate>
@@ -180,7 +180,7 @@
 #pragma mark == 保存图片
 #pragma mark ==================================================
 - (void) saveNowImage:(UIImage*)aImage{
-    BOOL authorized = [KKAuthorizedManager.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
+    BOOL authorized = [KKAuthorizedAlbum.defaultManager isAlbumAuthorized_ShowAlert:YES andAPPName:nil];
     if (authorized) {
         UIImageWriteToSavedPhotosAlbum(aImage, self, @selector(image:didFinishSavingWithError:contextInfo:),nil);
     }

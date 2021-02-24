@@ -13,7 +13,7 @@
 #import "KKQRCodeManager.h"
 #import "KKToastView.h"
 #import "KKLocalizationManager.h"
-#import "KKAuthorizedManager.h"
+#import "KKAuthorizedCamera.h"
 #import "KKLibraryDefine.h"
 #import "KKQRCodeBackgroundAlphaView.h"
 #import "KKAlbumImagePickerController.h"
@@ -349,7 +349,7 @@ typedef NS_ENUM(NSInteger,KKQRCodeScanVCStatus) {
 }
 
 - (void)albumButtonClicked:(KKButton *)sender{
-    if ([KKAuthorizedManager.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil]) {
+    if ([KKAuthorizedCamera.defaultManager isCameraAuthorized_ShowAlert:YES andAPPName:nil]) {
         KKAlbumImagePickerController *vc = [[KKAlbumImagePickerController alloc] initWithDelegate:self numberOfPhotosNeedSelected:1 cropEnable:NO cropSize:CGSizeMake(KKApplicationWidth*2, KKScreenHeight*2) assetMediaType:KKAssetMediaType_ImageNormal];
         if ([UIDevice isSystemVersionBigerThan:@"13.0"]) {
             vc.modalPresentationStyle = UIModalPresentationFullScreen;

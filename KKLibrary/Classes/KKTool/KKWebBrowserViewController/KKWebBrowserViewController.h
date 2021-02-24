@@ -8,7 +8,8 @@
 
 #import "KKViewController.h"
 #import "KKCategory.h"
-#import "KKTool.h"
+#import "KKButton.h"
+#import "KKToastView.h"
 #import "KKThemeManager.h"
 #import "KKLocalizationManager.h"
 #import "KKLibraryDefine.h"

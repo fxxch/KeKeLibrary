@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KKTool.h"
+#import "KKButton.h"
+#import "KKEmptyNoticeView.h"
 
 @protocol UICollectionViewEmptyNoticeViewDelegate;
 
