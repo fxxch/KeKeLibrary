@@ -1,13 +1,13 @@
 //
-//  KKToolSimple.h
+//  KKTool.h
 //  KKLibrary
 //
 //  Created by 刘波 on 2021/2/24.
 //  Copyright © 2021 KKLibrary. All rights reserved.
 //
 
-#ifndef KKToolSimple_h
-#define KKToolSimple_h
+#ifndef KKTool_h
+#define KKTool_h
 
 #pragma mark ==================================================
 #pragma mark == 其他公共组件
@@ -141,4 +141,4 @@
 //#import "KKVersionManager.h"
 
 
-#endif /* KKToolSimple_h */
+#endif /* KKTool_h */
