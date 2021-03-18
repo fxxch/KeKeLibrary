@@ -7,17 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11FFD4142601D6F400A99A57 /* KKLibraryDemoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFD4132601D6F300A99A57 /* KKLibraryDemoTestViewController.m */; };
+		11FFD41F2601E07D00A99A57 /* Docomo_SF.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11FFD41E2601E07D00A99A57 /* Docomo_SF.plist */; };
+		11FFD43226033D5100A99A57 /* DocomoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFD43126033D5100A99A57 /* DocomoTestViewController.m */; };
+		11FFD43626033E4200A99A57 /* Default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11FFD43526033E4200A99A57 /* Default.bundle */; };
 		3A69A7DD25AFD8DA0003048B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7DC25AFD8DA0003048B /* AppDelegate.m */; };
 		3A69A7E025AFD8DA0003048B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7DF25AFD8DA0003048B /* SceneDelegate.m */; };
 		3A69A7E825AFD8DC0003048B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A69A7E725AFD8DC0003048B /* Assets.xcassets */; };
 		3A69A7EB25AFD8DC0003048B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69A7E925AFD8DC0003048B /* LaunchScreen.storyboard */; };
 		3A69A7EE25AFD8DC0003048B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7ED25AFD8DC0003048B /* main.m */; };
 		3A69A7F925AFD93F0003048B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7F825AFD93E0003048B /* RootViewController.m */; };
-		3A69A7FE25AFD9810003048B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7FC25AFD9810003048B /* TestViewController.m */; };
 		473E96F4102948C1B5A4AB2C /* Pods_KKLibraryDemo_Pod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11FFD4122601D6F300A99A57 /* KKLibraryDemoTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKLibraryDemoTestViewController.h; sourceTree = "<group>"; };
+		11FFD4132601D6F300A99A57 /* KKLibraryDemoTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKLibraryDemoTestViewController.m; sourceTree = "<group>"; };
+		11FFD41E2601E07D00A99A57 /* Docomo_SF.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Docomo_SF.plist; sourceTree = "<group>"; };
+		11FFD43026033D5100A99A57 /* DocomoTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocomoTestViewController.h; sourceTree = "<group>"; };
+		11FFD43126033D5100A99A57 /* DocomoTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocomoTestViewController.m; sourceTree = "<group>"; };
+		11FFD43526033E4200A99A57 /* Default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Default.bundle; sourceTree = "<group>"; };
 		13693AABC3845B25DE625DFD /* Pods-KKLibraryDemo_Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKLibraryDemo_Pod.debug.xcconfig"; path = "Target Support Files/Pods-KKLibraryDemo_Pod/Pods-KKLibraryDemo_Pod.debug.xcconfig"; sourceTree = "<group>"; };
 		3A69A7D825AFD8DA0003048B /* KKLibraryDemo_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKLibraryDemo_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A69A7DB25AFD8DA0003048B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -30,8 +39,6 @@
 		3A69A7ED25AFD8DC0003048B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A69A7F725AFD93E0003048B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3A69A7F825AFD93E0003048B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		3A69A7FC25AFD9810003048B /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		3A69A7FD25AFD9810003048B /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		7BFF0AA58500A957608C2BCC /* Pods-KKLibraryDemo_Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKLibraryDemo_Pod.release.xcconfig"; path = "Target Support Files/Pods-KKLibraryDemo_Pod/Pods-KKLibraryDemo_Pod.release.xcconfig"; sourceTree = "<group>"; };
 		EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKLibraryDemo_Pod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,6 +61,24 @@
 				EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		11FFD4112601D6CD00A99A57 /* KKLibraryDemoTest */ = {
+			isa = PBXGroup;
+			children = (
+				11FFD4122601D6F300A99A57 /* KKLibraryDemoTestViewController.h */,
+				11FFD4132601D6F300A99A57 /* KKLibraryDemoTestViewController.m */,
+			);
+			path = KKLibraryDemoTest;
+			sourceTree = "<group>";
+		};
+		11FFD42F26033D3D00A99A57 /* DocomoTest */ = {
+			isa = PBXGroup;
+			children = (
+				11FFD43026033D5100A99A57 /* DocomoTestViewController.h */,
+				11FFD43126033D5100A99A57 /* DocomoTestViewController.m */,
+			);
+			path = DocomoTest;
 			sourceTree = "<group>";
 		};
 		3A69A7CF25AFD8DA0003048B = {
@@ -81,14 +106,16 @@
 				3A69A7DC25AFD8DA0003048B /* AppDelegate.m */,
 				3A69A7DE25AFD8DA0003048B /* SceneDelegate.h */,
 				3A69A7DF25AFD8DA0003048B /* SceneDelegate.m */,
+				11FFD42F26033D3D00A99A57 /* DocomoTest */,
+				11FFD4112601D6CD00A99A57 /* KKLibraryDemoTest */,
 				3A69A7F725AFD93E0003048B /* RootViewController.h */,
 				3A69A7F825AFD93E0003048B /* RootViewController.m */,
-				3A69A7FD25AFD9810003048B /* TestViewController.h */,
-				3A69A7FC25AFD9810003048B /* TestViewController.m */,
 				3A69A7E725AFD8DC0003048B /* Assets.xcassets */,
 				3A69A7E925AFD8DC0003048B /* LaunchScreen.storyboard */,
-				3A69A7EC25AFD8DC0003048B /* Info.plist */,
 				3A69A7ED25AFD8DC0003048B /* main.m */,
+				3A69A7EC25AFD8DC0003048B /* Info.plist */,
+				11FFD43526033E4200A99A57 /* Default.bundle */,
+				11FFD41E2601E07D00A99A57 /* Docomo_SF.plist */,
 			);
 			path = KKLibraryDemo_Pod;
 			sourceTree = "<group>";
@@ -162,6 +189,8 @@
 			files = (
 				3A69A7EB25AFD8DC0003048B /* LaunchScreen.storyboard in Resources */,
 				3A69A7E825AFD8DC0003048B /* Assets.xcassets in Resources */,
+				11FFD41F2601E07D00A99A57 /* Docomo_SF.plist in Resources */,
+				11FFD43626033E4200A99A57 /* Default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +247,8 @@
 				3A69A7EE25AFD8DC0003048B /* main.m in Sources */,
 				3A69A7E025AFD8DA0003048B /* SceneDelegate.m in Sources */,
 				3A69A7F925AFD93F0003048B /* RootViewController.m in Sources */,
-				3A69A7FE25AFD9810003048B /* TestViewController.m in Sources */,
+				11FFD43226033D5100A99A57 /* DocomoTestViewController.m in Sources */,
+				11FFD4142601D6F400A99A57 /* KKLibraryDemoTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,9 +392,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thundersoft.weima3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.LawLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeiMa3_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = KeKeStudio_LawLibrary_Dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -383,9 +413,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thundersoft.weima3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.LawLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = WeiMa3_AdHoc;
+				PROVISIONING_PROFILE_SPECIFIER = KeKeStudio_LawLibrary_AdHoc;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

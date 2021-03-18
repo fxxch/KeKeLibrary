@@ -198,5 +198,33 @@
 }
 
 
+/**
+ 随机生成颜色
+ @return 结果
+ */
++ (nonnull UIColor *)RandomColorRGB{
+    
+    CGFloat r_Value = arc4random_uniform(256);
+    CGFloat g_Value = arc4random_uniform(256);
+    CGFloat b_Value = arc4random_uniform(256);
+    CGFloat a_Value = 255.0;
+    
+    return [UIColor colorWithRed:(r_Value)/255.0 green:(g_Value)/255.0 blue:(b_Value)/255.0 alpha:(a_Value)/255.0];
+}
+
+/**
+ 随机生成颜色
+ @return 结果
+ */
++ (nonnull UIColor *)RandomColorRGBA{
+    
+    CGFloat r_Value = arc4random_uniform(256);
+    CGFloat g_Value = arc4random_uniform(256);
+    CGFloat b_Value = arc4random_uniform(256);
+    CGFloat a_Value = arc4random_uniform(256);
+    
+    return [UIColor colorWithRed:(r_Value)/255.0 green:(g_Value)/255.0 blue:(b_Value)/255.0 alpha:(a_Value)/255.0];
+}
+
 
 @end

@@ -5,9 +5,9 @@
 //  Created by 刘波 on 2020/11/24.
 //
 
-#import <UIKit/UIKit.h>
+#import <KeKeLibrary/KeKeLibrary.h>
 
-@interface RootViewController : UIViewController
+@interface RootViewController : KKViewController
 
 
 @end

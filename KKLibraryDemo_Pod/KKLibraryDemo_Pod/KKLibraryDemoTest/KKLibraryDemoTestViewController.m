@@ -1,24 +1,23 @@
 //
-//  TestViewController.m
-//  Clover
+//  KKLibraryDemoTestViewController.m
+//  KKLibraryDemo_Pod
 //
-//  Created by 刘波 on 2020/11/19.
-//  Copyright © 2020 guiming.zheng. All rights reserved.
+//  Created by edward lannister on 2021/3/17.
 //
 
-#import "TestViewController.h"
-#import <KeKeLibrary/KeKeLibrary.h>
+#import "KKLibraryDemoTestViewController.h"
 
-@interface TestViewController ()<UITableViewDelegate,UITableViewDataSource,KKRefreshHeaderViewDelegate>
+@interface KKLibraryDemoTestViewController ()<UITableViewDelegate,UITableViewDataSource,KKRefreshHeaderViewDelegate>
 
 @property (nonatomic , strong) UITableView *table;
 
 @end
 
-@implementation TestViewController
+@implementation KKLibraryDemoTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"KKRefreshHeader";
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, KKStatusBarAndNavBarHeight, KKScreenWidth, KKScreenHeight-KKStatusBarAndNavBarHeight) style:UITableViewStylePlain];
     self.table.backgroundColor = [UIColor orangeColor];
@@ -111,9 +110,10 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld_%ld",indexPath.section,indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld_%ld",(long)indexPath.section,(long)indexPath.row];
     
     return cell;
 
 }
+
 @end

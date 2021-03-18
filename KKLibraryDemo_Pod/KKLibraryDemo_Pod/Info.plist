@@ -2,8 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SF_SchemeURL</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -57,6 +64,120 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms-apps://itunes.apple.com</string>
+		<string>videos</string>
+		<string>fmip1</string>
+		<string>itms</string>
+		<string>music</string>
+		<string>x-web-search</string>
+		<string>shoebox</string>
+		<string>calshow</string>
+		<string>findmyfriends</string>
+		<string>videos</string>
+		<string>maps</string>
+		<string>message</string>
+		<string>sms</string>
+		<string>mobilenotes</string>
+		<string>photos-redirect</string>
+		<string>findmy</string>
+		<string>applestore</string>
+		<string>pmsg</string>
+		<string>saigai-docomo-top</string>
+		<string>com.nttdocomo.mb.dvideo.launchplayer</string>
+		<string>jp.co.nttdocomo.animestore.launchStmPlayer</string>
+		<string>dcmdcs</string>
+		<string>djobsw</string>
+		<string>dhits</string>
+		<string>com-nttdocomo-dbook</string>
+		<string>com-nttdocomo-dmagazine</string>
+		<string>dcmmusic</string>
+		<string>dpayment</string>
+		<string>com.nttdocomo.dpoint.idmanager</string>
+		<string>MoveAndFlick</string>
+		<string>com.nttdocomo.dagent</string>
+		<string>MyDocomo</string>
+		<string>abematv</string>
+		<string>com.amazon.mobile.shopping</string>
+		<string>jpameblo</string>
+		<string>imoji</string>
+		<string>bmapsapp</string>
+		<string>googlechrome</string>
+		<string>doordash</string>
+		<string>fb</string>
+		<string>geo</string>
+		<string>comgooglemaps</string>
+		<string>googleapp</string>
+		<string>googletranslate</string>
+		<string>googledrive</string>
+		<string>googlephotos</string>
+		<string>yjgyao</string>
+		<string>instagram</string>
+		<string>kindle</string>
+		<string>line</string>
+		<string>linemusic</string>
+		<string>lyft</string>
+		<string>fb-messenger</string>
+		<string>mixi</string>
+		<string>navitime</string>
+		<string>nflx</string>
+		<string>nhknetradio</string>
+		<string>nicovideo</string>
+		<string>radiko</string>
+		<string>simplenote</string>
+		<string>sleepmeisterlite</string>
+		<string>snapchat</string>
+		<string>spotify</string>
+		<string>snssdk1180</string>
+		<string>timetree</string>
+		<string>trill</string>
+		<string>twitter</string>
+		<string>uber</string>
+		<string>ubereats</string>
+		<string>udcast</string>
+		<string>udtalkapp</string>
+		<string>univoiceblind</string>
+		<string>ustream</string>
+		<string>ytransit</string>
+		<string>yjweather</string>
+		<string>yelp</string>
+		<string>youtube</string>
+		<string>youtubemusic</string>
+		<string>com.trad-inc.TradRakuRakuAppV2</string>
+		<string>gunosy</string>
+		<string>gnavi</string>
+		<string>jalan</string>
+		<string>yj-sports-sportsnavi</string>
+		<string>sportsbull</string>
+		<string>yj-sports-npblive</string>
+		<string>jp.gocro.smartnews</string>
+		<string>sejapp</string>
+		<string>japantaxi</string>
+		<string>jp.co.hyojito</string>
+		<string>newspass</string>
+		<string>fungoout</string>
+		<string>piccoma</string>
+		<string>mercari</string>
+		<string>hinanjyojp</string>
+		<string>mcdonaldsjp</string>
+		<string>mizuhoapp</string>
+		<string>jp.co.smbc.direct</string>
+		<string>jp.mufg.bk.applisp.01</string>
+		<string>MPDeviceLaunchByBrowser</string>
+		<string>Rakuten</string>
+		<string>rakutenbank</string>
+		<string>pointpartner</string>
+		<string>pointclub</string>
+		<string>lawson</string>
+		<string>ekispert</string>
+		<string>com.ekitan.EkitanTransit</string>
+		<string>kinoppy</string>
+		<string>sankei-shimbun</string>
+		<string>navitimetransfer</string>
+		<string>yjtransit</string>
+		<string>fb389986581019224tabelog</string>
 	</array>
 </dict>
 </plist>
