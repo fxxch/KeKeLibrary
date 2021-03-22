@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, KKWaitingViewType){
 @interface KKWaitingView : KKView
 
 @property (nonatomic,assign)KKWaitingViewType type;
-@property (nonatomic,strong)UILabel *textLabel;
 @property (nonatomic,copy)NSString *text;
 @property (nonatomic,assign)BOOL blackBackground;
 

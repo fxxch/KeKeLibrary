@@ -46,6 +46,27 @@
     self.mainScrollView.contentSize = CGSizeMake(KKScreenWidth, offsetY);
 }
 
+#pragma mark ****************************************
+#pragma mark 屏幕方向
+#pragma mark ****************************************
+//1.决定当前界面是否开启自动转屏，如果返回NO，后面两个方法也不会被调用，只是会支持默认的方向
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+//2.返回支持的旋转方向（当前viewcontroller支持哪些转屏方向）
+//iPad设备上，默认返回值UIInterfaceOrientationMaskAllButUpSideDwon
+//iPad设备上，默认返回值是UIInterfaceOrientationMaskAll
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
+
+//3.返回进入界面默认显示方向
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+
 #pragma mark ==================================================
 #pragma mark == KKAlertView
 #pragma mark ==================================================
@@ -123,7 +144,7 @@
     }
     
     self.count++;
-    [self performSelector:@selector(hideWaitingView) withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(hideWaitingView) withObject:nil afterDelay:5.0];
 }
 
 - (void)hideWaitingView{

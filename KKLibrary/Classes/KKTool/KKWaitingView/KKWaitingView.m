@@ -14,9 +14,12 @@
 
 #define KKWaitingView_TagWindow 2017080901
 #define KKWaitingView_TagView 2017080902
+#define KKWaitingView_OffsetY 0
+
 
 @interface KKWaitingView ()
 
+@property (nonatomic , weak) UIView *cusView;
 
 @end
 
@@ -110,6 +113,7 @@
         self.text = aText;
         self.blackBackground = aBlackBackground;
         self.backgroundColor = [UIColor clearColor];
+        self.cusView = aCustomerView;
         
         [[UIWindow currentKeyWindow] endEditing:YES];
         
@@ -118,10 +122,33 @@
     return self;
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    if (self.superview) {
+                
+        self.frame = self.superview.bounds;
+        
+        BOOL cus = NO;
+        for (UIView *subView in [self subviews]) {
+            if (subView==self.cusView) {
+                subView.frame = CGRectMake((self.frame.size.width-subView.frame.size.width)/2.0, (self.frame.size.height-subView.frame.size.height)/2.0-KKWaitingView_OffsetY, subView.frame.size.width, subView.frame.size.height);
+                cus = YES;
+                break;
+            }
+        }
+        if (cus==NO) {
+            [self removeAllSubviews];
+            [self initUIWithCustomerView:self.cusView];
+        }
+        
+        KKLogDebugFormat(@"layoutSubviews: %@",(NSStringFromCGRect(self.superview.frame)));
+    }
+}
+
 - (void)initUIWithCustomerView:(UIView*)aCustomerView{
-    
+
     if (aCustomerView) {
-        aCustomerView.frame = CGRectMake((KKApplicationWidth-aCustomerView.frame.size.width)/2.0, (self.frame.size.height-aCustomerView.frame.size.height)/2.0-50, aCustomerView.frame.size.width, aCustomerView.frame.size.height);
+        aCustomerView.frame = CGRectMake((self.frame.size.width-aCustomerView.frame.size.width)/2.0, (self.frame.size.height-aCustomerView.frame.size.height)/2.0-KKWaitingView_OffsetY, aCustomerView.frame.size.width, aCustomerView.frame.size.height);
         [self addSubview:aCustomerView];
         return;
     }
@@ -168,7 +195,7 @@
         CGFloat img_width = 40;
         CGFloat img_height = 40;
         CGFloat spaceBetween = 25;
-        CGFloat text_width = KKApplicationWidth-160;
+        CGFloat text_width = self.frame.size.width-160;
 
         UIColor *textColor = [UIColor whiteColor];
         UIFont *textFont = [UIFont systemFontOfSize:15];
@@ -178,7 +205,7 @@
             spaceBetween = 0;
         }
 
-        CGFloat Y = (self.frame.size.height-img_height-spaceBetween-size.height)/2.0-50;
+        CGFloat Y = (self.frame.size.height-img_height-spaceBetween-size.height)/2.0-KKWaitingView_OffsetY;
         
         
         //黑色框
@@ -219,7 +246,7 @@
         CGFloat img_width = 40;
         CGFloat img_height = 40;
         CGFloat spaceBetween = 25;
-        CGFloat bigBox_width = KKApplicationWidth-160;
+        CGFloat bigBox_width = self.frame.size.width-160;
         CGFloat text_width = bigBox_width-30;
         
         UIColor *textColor = [UIColor whiteColor];
@@ -228,7 +255,7 @@
         CGSize  textSize = [self.text sizeWithFont:textFont maxWidth:text_width];
         //文字长度超过一行
         if (textSize.height>fontSize.height+1) {
-            bigBox_width = KKApplicationWidth-160;
+            bigBox_width = self.frame.size.width-160;
             text_width = bigBox_width-30;
         }
         //文字长度不超过一行
@@ -255,7 +282,7 @@
             bigBox_width = bigBox_height;
         }
         
-        CGFloat Y = (button.frame.size.height-bigBox_height)/2.0-50;
+        CGFloat Y = (button.frame.size.height-bigBox_height)/2.0-KKWaitingView_OffsetY;
         
         //大黑色框
         UIView *bigBoxView = [[UIView alloc] initWithFrame:CGRectMake((button.frame.size.width-bigBox_width)/2.0, Y, bigBox_width, bigBox_height)];
