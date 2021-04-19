@@ -93,7 +93,7 @@
         // iPhone12、iPhone12Pro
         CGSize iPhone12_Size = CGSizeMake(1170, 2532);
         // iPhone12ProMax
-        CGSize iPhone12ProMax_Size = CGSizeMake(1248, 2778);
+        CGSize iPhone12ProMax_Size = CGSizeMake(1284, 2778);
         
         if (CGSizeEqualToSize(iPhoneX_Size, screenSize) ||
             CGSizeEqualToSize(iPhoneXR_Size, screenSize) ||
