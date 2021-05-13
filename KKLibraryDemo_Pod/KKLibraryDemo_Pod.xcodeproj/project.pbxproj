@@ -39,6 +39,7 @@
 		3A69A7ED25AFD8DC0003048B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A69A7F725AFD93E0003048B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3A69A7F825AFD93E0003048B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		3A7E9B49264B72E800C4DA62 /* KKLibraryDemo_Pod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KKLibraryDemo_Pod.entitlements; sourceTree = "<group>"; };
 		7BFF0AA58500A957608C2BCC /* Pods-KKLibraryDemo_Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKLibraryDemo_Pod.release.xcconfig"; path = "Target Support Files/Pods-KKLibraryDemo_Pod/Pods-KKLibraryDemo_Pod.release.xcconfig"; sourceTree = "<group>"; };
 		EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKLibraryDemo_Pod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,6 +103,7 @@
 		3A69A7DA25AFD8DA0003048B /* KKLibraryDemo_Pod */ = {
 			isa = PBXGroup;
 			children = (
+				3A7E9B49264B72E800C4DA62 /* KKLibraryDemo_Pod.entitlements */,
 				3A69A7DB25AFD8DA0003048B /* AppDelegate.h */,
 				3A69A7DC25AFD8DA0003048B /* AppDelegate.m */,
 				3A69A7DE25AFD8DA0003048B /* SceneDelegate.h */,
@@ -384,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KKLibraryDemo_Pod/KKLibraryDemo_Pod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L76KY7YU4W;
@@ -392,9 +395,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.LawLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.library.poddemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = KeKeStudio_LawLibrary_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = KeKeLibraryPodDemo_Dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -405,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KKLibraryDemo_Pod/KKLibraryDemo_Pod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L76KY7YU4W;
@@ -413,9 +417,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.LawLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekestudio.library.poddemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = KeKeStudio_LawLibrary_AdHoc;
+				PROVISIONING_PROFILE_SPECIFIER = KeKeLibraryPodDemo_AdHoc;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

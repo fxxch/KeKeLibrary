@@ -68,11 +68,11 @@
 //        NSString *download_url = [dic validStringForKey:@"download_url"];
         NSURL *url = [NSURL URLWithString:scheme];
         if (url && [[UIApplication sharedApplication] canOpenURL:url]) {
-            NSLog(@"schema can open : 【YES】 %@",scheme);
+            KKLogDebugFormat(@"schema can open : 【YES】 %@",scheme);
             [self.dataSourceYES addObject:dicN];
         }
         else{
-            NSLog(@"schema can open : 【NO】 %@",scheme);
+            KKLogDebugFormat(@"schema can open : 【NO】 %@",scheme);
             [self.dataSourceNO addObject:dicN];
         }
     }
@@ -166,7 +166,7 @@
     if (url) {
         NSDictionary *options = [NSDictionary dictionary];
         [[UIApplication sharedApplication] openURL:url options:options completionHandler:^(BOOL success) {
-            NSLog(@"%@",success?@"YES":@"NO");
+            KKLogDebugFormat(@"%@",success?@"YES":@"NO");
         }];
     }
     else{

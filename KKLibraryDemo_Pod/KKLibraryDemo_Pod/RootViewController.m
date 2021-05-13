@@ -187,7 +187,7 @@
 }
 
 - (void)showActionBBBBB:(const char [37])fuction line:(int)aLine{
-//    NSLog((@"%s [Line %d] "), fuction, aLine);
+//    KKLogDebugFormat((@"%s [Line %d] "), fuction, aLine);
 }
 
 #pragma mark ==================================================

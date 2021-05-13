@@ -45,7 +45,8 @@
     }
     [aView addSubview:subView];
     [aView bringSubviewToFront:subView];
-    
+    subView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     return subView;
 }
 
@@ -67,7 +68,8 @@
     }
     [aView addSubview:subView];
     [aView bringSubviewToFront:subView];
-    
+    subView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     return subView;
 }
 

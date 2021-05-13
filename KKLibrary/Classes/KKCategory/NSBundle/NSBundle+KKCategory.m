@@ -119,21 +119,24 @@
     }
     
     NSString *bundleFilePath = @"";
-    if ([NSString isStringNotEmpty:aBasePath]) {
-        if ([aBasePath hasSuffix:@"/"]) {
-            bundleFilePath = [NSString stringWithFormat:@"%@%@",aBasePath,bundleName];
+    bundleFilePath = [[NSBundle mainBundle] pathForResource:bundleName ofType:nil];
+    if ([NSString isStringEmpty:bundleFilePath]) {
+        if ([NSString isStringNotEmpty:aBasePath]) {
+            if ([aBasePath hasSuffix:@"/"]) {
+                bundleFilePath = [NSString stringWithFormat:@"%@%@",aBasePath,bundleName];
+            }
+            else{
+                bundleFilePath = [NSString stringWithFormat:@"%@/%@",aBasePath,bundleName];
+            }
+            if ([[NSFileManager defaultManager] fileExistsAtPath:bundleFilePath]==NO) {
+                return nil;
+            }
         }
         else{
-            bundleFilePath = [NSString stringWithFormat:@"%@/%@",aBasePath,bundleName];
-        }
-        if ([[NSFileManager defaultManager] fileExistsAtPath:bundleFilePath]==NO) {
-            return nil;
+            bundleFilePath = [[NSBundle kkLibraryBundle] pathForResource:bundleName ofType:nil];
         }
     }
-    else{
-        bundleFilePath = [[NSBundle kkLibraryBundle] pathForResource:bundleName ofType:nil];
-    }
-    
+
     if ([NSString isStringEmpty:bundleFilePath]) {
         return nil;
     }
