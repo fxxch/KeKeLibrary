@@ -183,7 +183,7 @@
 }
 
 #pragma mark ==================================================
-#pragma mark == 普通设置
+#pragma mark == 截图
 #pragma mark ==================================================
 /**
  截图
@@ -191,45 +191,119 @@
  @return UIImage
  */
 - (nullable UIImage *)snapshot {
-    
-    //2015-05-14 刘波
-    // 使用上下文截图,并使用指定的区域裁剪,模板代码
-    // 开启上下文,使用参数之后,截出来的是原图（YES  0.0 质量高）
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0.0);
-    // 要裁剪的矩形范围
-    CGRect rect = self.bounds;
-    //注：iOS7以后renderInContext：由drawViewHierarchyInRect：afterScreenUpdates：替代
-    
-    [self drawViewHierarchyInRect:rect afterScreenUpdates:YES];
-    // 从上下文中,取出UIImage
-    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 千万记得,结束上下文(移除栈顶的基于当前位图的图形上下文)
-    UIGraphicsEndImageContext();
-    
-    // 添加截取好的图片到图片数组
-    if (snapshot) {
-        //self.lastVCScreenShotImg = snapshot;
-        return snapshot;
+
+    UIImage *image_normal = [self kk_snapshotImage_normal];
+    if (image_normal && [image_normal isKindOfClass:[UIImage class]]) {
+        return image_normal;
     }
     else{
-        return nil;
+        UIImage *image_opengl = [self kk_snapshotImage_opengl];
+        if (image_opengl && [image_opengl isKindOfClass:[UIImage class]]) {
+            return image_opengl;
+        }
+        else{
+            return nil;
+        }
     }
-    
-    
-//    //2014-10-20 刘波
-//    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
-//    //    if (UIGraphicsBeginImageContextWithOptions != NULL) {
-//    //        UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
-//    //    } else {
-//    //        UIGraphicsBeginImageContext(self.bounds.size);
-//    //    }
-//    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return image;
 }
 
+/**
+ ①普通的截图
+ 该API仅可以在未使用layer和OpenGL渲染的视图上使用
+ 这种是最最普通的截图，针对一般的视图上添加视图的情况，基本都可以使用。
+ @return 截取的图片
+ */
+- (nullable UIImage *)kk_snapshotImage_normal
+{
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size,NO,[UIScreen mainScreen].scale);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return snapshotImage;
+}
+
+/**
+ ②针对有用过OpenGL渲染过的视图截图
+ 如果一些视图是用OpenGL渲染出来的，那么使用上面①的方式就无法截图到OpenGL渲染的部分，这时候就要用到改进后的截图方案②
+ @return 截取的图片
+ */
+- (nullable UIImage *)kk_snapshotImage_opengl
+{
+    CGSize size = self.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(size,NO,[UIScreen mainScreen].scale);
+    CGRect rect =  self.bounds;
+    [self drawViewHierarchyInRect:rect afterScreenUpdates:YES];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return snapshotImage;
+}
+
+/**
+ 截图
+ ③以UIView 的形式返回(_UIReplicantView)
+ 有一些特殊的Layer（比如：AVCaptureVideoPreviewLayer 和 AVSampleBufferDisplayLayer） 添加到某个View 上后，使用上面的几种方式都无法截取到Layer上的内容，这个时候可以使用系统的一个API，但是该API只能返回一个UIView，返回的UIView 可以修改frame 等参数
+ 遗留问题：
+ 通过方式三截取的UIView，无法转换为UIImage，我试过将返回的截图View写入位图再转换成UIImage，但是返回的UIImage 要么为空，要么没有内容。如果有人知道解决方案请告知我。
+ @return 截取出来的图片转换的视图
+ */
+- (nullable UIView *)kk_snapshotImage_view
+{
+    UIView *snapView = [self snapshotViewAfterScreenUpdates:YES];
+    return snapView;
+}
+
+#pragma mark ==================================================
+#pragma mark == 从一个视频流的画面截图（视频流是openGL渲染的，无法常规截图）
+#pragma mark ==================================================
+/**
+ 使用OpenGL截图 获取一个view的截图,注意,只能截取能看的见的部分
+ #import <OpenGLES/ES2/gl.h>
+ #import <OpenGLES/ES2/glext.h>
+ #import <GLKit/GLKit.h>
+ @param view 视频流的播放View
+ @return image
+ */
+- (nullable UIImage *)kk_snapshotImage_fromOpenGLStreamView{
+    int width = self.width;//352; //视频宽度*3
+    int height = self.height;//288;//视频宽度*3
+    
+    NSInteger myDataLength = width * height * 4;
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    for(int y = 0; y < height; y++) {
+        for(int x = 0; x < width* 4; x++) {
+            buffer2[(int)((height-1 - y) * width * 4 + x)] = buffer[(int)(y * 4 * width + x)];
+        }
+    }
+    free(buffer);
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    //    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGBitmapInfo bitmapInfo = (CGBitmapInfo)kCGImageAlphaNoneSkipLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(width , height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    // then make the uiimage from that
+    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
+    
+    return myImage;
+}
+
+
+#pragma mark ==================================================
+#pragma mark == 普通设置
+#pragma mark ==================================================
 - (void)clearBackgroundColor {
     [self setBackgroundColor:[UIColor clearColor]];
 }

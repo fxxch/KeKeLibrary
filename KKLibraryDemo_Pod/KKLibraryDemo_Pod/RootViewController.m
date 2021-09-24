@@ -8,6 +8,7 @@
 #import "RootViewController.h"
 #import "KKLibraryDemoTestViewController.h"
 #import "DocomoTestViewController.h"
+#import "NetworkHelper.h"
 
 #define TSRandom(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:255.0/255.0]
 #define TSRandomColor TSRandom(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
@@ -41,6 +42,7 @@
 //    offsetY = [self initButtonTest_KKLog:offsetY];
     offsetY = [self initButtonTest_DocomoSchemeTest:offsetY];
     offsetY = [self initButtonTest_DocomoDownLoadURLTest:offsetY];
+    offsetY = [self initButtonTest_NetworkHelperTest:offsetY];
 
     offsetY = offsetY + 30;
     self.mainScrollView.contentSize = CGSizeMake(KKScreenWidth, offsetY);
@@ -228,6 +230,54 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark ==================================================
+#pragma mark == NetworkHelperTest
+#pragma mark ==================================================
+-(CGFloat)initButtonTest_NetworkHelperTest:(CGFloat)offset{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(15, offset, KKScreenWidth-30, 40);
+    button.backgroundColor = TSRandomColor;
+    [button setTitle:@"NetworkHelperTest" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(test_NetworkHelperTest) forControlEvents:UIControlEventTouchUpInside];
+    [self.mainScrollView addSubview:button];
+    [button setCornerRadius:20];
+    return offset+button.height+30;
+}
 
+- (void)test_NetworkHelperTest{
+    
+    BOOL whetherConnectedNetwork = [NetworkHelper whetherConnectedNetwork];
+    NSString *haveNet = nil;
+    if (whetherConnectedNetwork) {
+        haveNet = @"有网络";
+        NSLog(@"有网络");
+    }
+    else{
+        haveNet = @"无网络";
+        NSLog(@"无网络");
+    }
+    
+    NSString* getNetworkType = [NetworkHelper getNetworkType];
+    NSLog(@"%@",getNetworkType);
+
+    NSString* getSignalStrength = [NetworkHelper getSignalStrength];
+    NSLog(@"%@",getSignalStrength);
+
+    NSString* getSignalStrengthBar = [NetworkHelper getSignalStrengthBar];
+    NSLog(@"%@",getSignalStrengthBar);
+
+    NSString* getInternetfaceFormated = [[NetworkHelper defaultManager] getInternetfaceFormated];
+    NSLog(@"%@",getInternetfaceFormated);
+
+    NSString *message = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n当前网速:%@\n",haveNet,getNetworkType,getSignalStrength,getSignalStrengthBar,getInternetfaceFormated];
+    KKAlertView *alert = [[KKAlertView alloc] initWithTitle:nil subTitle:nil message:message delegate:self buttonTitles:@"OK",nil];
+    [alert show];
+
+//    dbm是无线信号的强度单位。一般在 -90 ~ 0之间。
+//    一般情况下：
+//    -50~0之间信号强度很好，使用感知好。
+//    -70~-50之间信号强度好。使用感知略差，但体验上无明显影响。
+//    -70以下 信号就不是太好了，使用上感知就不好。
+}
 
 @end

@@ -59,6 +59,9 @@
 #import "KKGetIPAddress.h"
 #import "KKIPAddress.h"
 
+//获取网速与网络状态/*❤️*/
+#import "KKNetWorkHelper.h"
+
 //AES加密/*❤️*/
 #import "KKAESCrypt.h"
 #import "NSData+KKCommonCryptor.h"

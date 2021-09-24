@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import <UserNotifications/UserNotifications.h>
+#import "SmartHomeCaptureViewController.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -19,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    RootViewController *vc = [[RootViewController alloc] init];
+//    RootViewController *vc = [[RootViewController alloc] init];
+    SmartHomeCaptureViewController *vc = [[SmartHomeCaptureViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -35,17 +37,6 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
     return YES;
 }
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return YES;
-
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation {
-    return YES;
-
-}
-
 
 #pragma mark - UISceneSession lifecycle
 
