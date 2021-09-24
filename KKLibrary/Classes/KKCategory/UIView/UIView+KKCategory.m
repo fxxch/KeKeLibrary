@@ -12,6 +12,9 @@
 #import "KKView.h"
 #import "CALayer+KKCategory.h"
 #import "KKLibraryDefine.h"
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+#import <GLKit/GLKit.h>
 
 #define CAGradientLayerTag 2019093001
 
