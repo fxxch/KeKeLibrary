@@ -12,6 +12,9 @@
 #import "KKView.h"
 #import "CALayer+KKCategory.h"
 #import "KKLibraryDefine.h"
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+#import <GLKit/GLKit.h>
 
 #define CAGradientLayerTag 2019093001
 
@@ -252,6 +255,51 @@
 {
     UIView *snapView = [self snapshotViewAfterScreenUpdates:YES];
     return snapView;
+}
+
+#pragma mark ==================================================
+#pragma mark == 从一个视频流的画面截图（视频流是openGL渲染的，无法常规截图）
+#pragma mark ==================================================
+/**
+ 使用OpenGL截图 获取一个view的截图,注意,只能截取能看的见的部分
+ #import <OpenGLES/ES2/gl.h>
+ #import <OpenGLES/ES2/glext.h>
+ #import <GLKit/GLKit.h>
+ @return image
+ */
+- (nullable UIImage *)kk_snapshotImage_fromOpenGLStreamView{
+    int width = self.width;//352; //视频宽度*3
+    int height = self.height;//288;//视频宽度*3
+    
+    NSInteger myDataLength = width * height * 4;
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    for(int y = 0; y < height; y++) {
+        for(int x = 0; x < width* 4; x++) {
+            buffer2[(int)((height-1 - y) * width * 4 + x)] = buffer[(int)(y * 4 * width + x)];
+        }
+    }
+    free(buffer);
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    //    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGBitmapInfo bitmapInfo = (CGBitmapInfo)kCGImageAlphaNoneSkipLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(width , height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    // then make the uiimage from that
+    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
+    
+    return myImage;
 }
 
 #pragma mark ==================================================

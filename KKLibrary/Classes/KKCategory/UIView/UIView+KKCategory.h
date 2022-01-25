@@ -67,6 +67,43 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
  */
 - (nullable UIImage *)snapshot;
 
+/**
+ ①普通的截图
+ 该API仅可以在未使用layer和OpenGL渲染的视图上使用
+ 这种是最最普通的截图，针对一般的视图上添加视图的情况，基本都可以使用。
+ @return 截取的图片
+ */
+- (nullable UIImage *)kk_snapshotImage_normal;
+
+/**
+ ②针对有用过OpenGL渲染过的视图截图
+ 如果一些视图是用OpenGL渲染出来的，那么使用上面①的方式就无法截图到OpenGL渲染的部分，这时候就要用到改进后的截图方案②
+ @return 截取的图片
+ */
+- (nullable UIImage *)kk_snapshotImage_opengl;
+
+/**
+ 截图
+ ③以UIView 的形式返回(_UIReplicantView)
+ 有一些特殊的Layer（比如：AVCaptureVideoPreviewLayer 和 AVSampleBufferDisplayLayer） 添加到某个View 上后，使用上面的几种方式都无法截取到Layer上的内容，这个时候可以使用系统的一个API，但是该API只能返回一个UIView，返回的UIView 可以修改frame 等参数
+ 遗留问题：
+ 通过方式三截取的UIView，无法转换为UIImage，我试过将返回的截图View写入位图再转换成UIImage，但是返回的UIImage 要么为空，要么没有内容。如果有人知道解决方案请告知我。
+ @return 截取出来的图片转换的视图
+ */
+- (nullable UIView *)kk_snapshotImage_view;
+
+#pragma mark ==================================================
+#pragma mark == 从一个视频流的画面截图（视频流是openGL渲染的，无法常规截图）
+#pragma mark ==================================================
+/**
+ 使用OpenGL截图 获取一个view的截图,注意,只能截取能看的见的部分
+ #import <OpenGLES/ES2/gl.h>
+ #import <OpenGLES/ES2/glext.h>
+ #import <GLKit/GLKit.h>
+ @return image
+ */
+- (nullable UIImage *)kk_snapshotImage_fromOpenGLStreamView;
+
 #pragma mark ==================================================
 #pragma mark == 普通设置
 #pragma mark ==================================================

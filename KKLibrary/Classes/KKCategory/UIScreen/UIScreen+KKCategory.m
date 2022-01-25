@@ -98,7 +98,7 @@
         iPhoneXView.tag = 2018070299;
         //        iPhoneXView.backgroundColor = [UIColor redColor];
         iPhoneXView.userInteractionEnabled = NO;
-        iPhoneXView.autoresizingMask = UIViewContentModeTop;
+        iPhoneXView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [aView addSubview:iPhoneXView];
     }
 }
