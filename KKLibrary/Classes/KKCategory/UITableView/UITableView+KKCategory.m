@@ -125,6 +125,11 @@
             // Fallback on earlier versions
         }
     }
+    
+    if (@available(iOS 15.0, *)) {
+        table.sectionHeaderTopPadding = 0;
+    }
+    
     return table;
 }
 
@@ -155,6 +160,9 @@
         } else {
             // Fallback on earlier versions
         }
+    }
+    if (@available(iOS 15.0, *)) {
+        table.sectionHeaderTopPadding = 0;
     }
     return table;
 }

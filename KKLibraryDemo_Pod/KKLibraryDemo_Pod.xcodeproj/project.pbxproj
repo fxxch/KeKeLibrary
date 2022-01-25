@@ -11,12 +11,15 @@
 		11FFD41F2601E07D00A99A57 /* Docomo_SF.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11FFD41E2601E07D00A99A57 /* Docomo_SF.plist */; };
 		11FFD43226033D5100A99A57 /* DocomoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFD43126033D5100A99A57 /* DocomoTestViewController.m */; };
 		11FFD43626033E4200A99A57 /* Default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11FFD43526033E4200A99A57 /* Default.bundle */; };
+		3A424F18269D973A00AE54AA /* SmartHomeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A424F17269D973A00AE54AA /* SmartHomeCaptureViewController.m */; };
+		3A424F1D269D975600AE54AA /* SmartHomeCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A424F1C269D975600AE54AA /* SmartHomeCaptureView.m */; };
 		3A69A7DD25AFD8DA0003048B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7DC25AFD8DA0003048B /* AppDelegate.m */; };
 		3A69A7E025AFD8DA0003048B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7DF25AFD8DA0003048B /* SceneDelegate.m */; };
 		3A69A7E825AFD8DC0003048B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A69A7E725AFD8DC0003048B /* Assets.xcassets */; };
 		3A69A7EB25AFD8DC0003048B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69A7E925AFD8DC0003048B /* LaunchScreen.storyboard */; };
 		3A69A7EE25AFD8DC0003048B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7ED25AFD8DC0003048B /* main.m */; };
 		3A69A7F925AFD93F0003048B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69A7F825AFD93E0003048B /* RootViewController.m */; };
+		3AB14557268DB61A00A244B7 /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB14556268DB61A00A244B7 /* NetworkHelper.m */; };
 		473E96F4102948C1B5A4AB2C /* Pods_KKLibraryDemo_Pod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,10 @@
 		11FFD43126033D5100A99A57 /* DocomoTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocomoTestViewController.m; sourceTree = "<group>"; };
 		11FFD43526033E4200A99A57 /* Default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Default.bundle; sourceTree = "<group>"; };
 		13693AABC3845B25DE625DFD /* Pods-KKLibraryDemo_Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKLibraryDemo_Pod.debug.xcconfig"; path = "Target Support Files/Pods-KKLibraryDemo_Pod/Pods-KKLibraryDemo_Pod.debug.xcconfig"; sourceTree = "<group>"; };
+		3A424F16269D973A00AE54AA /* SmartHomeCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartHomeCaptureViewController.h; sourceTree = "<group>"; };
+		3A424F17269D973A00AE54AA /* SmartHomeCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartHomeCaptureViewController.m; sourceTree = "<group>"; };
+		3A424F1B269D975600AE54AA /* SmartHomeCaptureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartHomeCaptureView.h; sourceTree = "<group>"; };
+		3A424F1C269D975600AE54AA /* SmartHomeCaptureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartHomeCaptureView.m; sourceTree = "<group>"; };
 		3A69A7D825AFD8DA0003048B /* KKLibraryDemo_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKLibraryDemo_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A69A7DB25AFD8DA0003048B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A69A7DC25AFD8DA0003048B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +47,8 @@
 		3A69A7F725AFD93E0003048B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3A69A7F825AFD93E0003048B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3A7E9B49264B72E800C4DA62 /* KKLibraryDemo_Pod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KKLibraryDemo_Pod.entitlements; sourceTree = "<group>"; };
+		3AB14555268DB61A00A244B7 /* NetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkHelper.h; sourceTree = "<group>"; };
+		3AB14556268DB61A00A244B7 /* NetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkHelper.m; sourceTree = "<group>"; };
 		7BFF0AA58500A957608C2BCC /* Pods-KKLibraryDemo_Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKLibraryDemo_Pod.release.xcconfig"; path = "Target Support Files/Pods-KKLibraryDemo_Pod/Pods-KKLibraryDemo_Pod.release.xcconfig"; sourceTree = "<group>"; };
 		EB834EB017E9AD12DCDE39F0 /* Pods_KKLibraryDemo_Pod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KKLibraryDemo_Pod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +91,17 @@
 			path = DocomoTest;
 			sourceTree = "<group>";
 		};
+		3A424F15269D970A00AE54AA /* SmartHomeCapture */ = {
+			isa = PBXGroup;
+			children = (
+				3A424F16269D973A00AE54AA /* SmartHomeCaptureViewController.h */,
+				3A424F17269D973A00AE54AA /* SmartHomeCaptureViewController.m */,
+				3A424F1B269D975600AE54AA /* SmartHomeCaptureView.h */,
+				3A424F1C269D975600AE54AA /* SmartHomeCaptureView.m */,
+			);
+			path = SmartHomeCapture;
+			sourceTree = "<group>";
+		};
 		3A69A7CF25AFD8DA0003048B = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +123,7 @@
 		3A69A7DA25AFD8DA0003048B /* KKLibraryDemo_Pod */ = {
 			isa = PBXGroup;
 			children = (
+				3A424F15269D970A00AE54AA /* SmartHomeCapture */,
 				3A7E9B49264B72E800C4DA62 /* KKLibraryDemo_Pod.entitlements */,
 				3A69A7DB25AFD8DA0003048B /* AppDelegate.h */,
 				3A69A7DC25AFD8DA0003048B /* AppDelegate.m */,
@@ -118,6 +139,8 @@
 				3A69A7EC25AFD8DC0003048B /* Info.plist */,
 				11FFD43526033E4200A99A57 /* Default.bundle */,
 				11FFD41E2601E07D00A99A57 /* Docomo_SF.plist */,
+				3AB14555268DB61A00A244B7 /* NetworkHelper.h */,
+				3AB14556268DB61A00A244B7 /* NetworkHelper.m */,
 			);
 			path = KKLibraryDemo_Pod;
 			sourceTree = "<group>";
@@ -249,6 +272,9 @@
 				3A69A7EE25AFD8DC0003048B /* main.m in Sources */,
 				3A69A7E025AFD8DA0003048B /* SceneDelegate.m in Sources */,
 				3A69A7F925AFD93F0003048B /* RootViewController.m in Sources */,
+				3A424F18269D973A00AE54AA /* SmartHomeCaptureViewController.m in Sources */,
+				3AB14557268DB61A00A244B7 /* NetworkHelper.m in Sources */,
+				3A424F1D269D975600AE54AA /* SmartHomeCaptureView.m in Sources */,
 				11FFD43226033D5100A99A57 /* DocomoTestViewController.m in Sources */,
 				11FFD4142601D6F400A99A57 /* KKLibraryDemoTestViewController.m in Sources */,
 			);

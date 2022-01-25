@@ -58,7 +58,7 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
 - (void)viewDidDisappear:(BOOL)animated;
 
 #pragma mark ==================================================
-#pragma mark == 普通设置
+#pragma mark == 截图
 #pragma mark ==================================================
 /**
  截图
@@ -67,6 +67,9 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
  */
 - (nullable UIImage *)snapshot;
 
+#pragma mark ==================================================
+#pragma mark == 普通设置
+#pragma mark ==================================================
 - (void)clearBackgroundColor;
 
 - (void)removeAllSubviews;
