@@ -8,9 +8,9 @@
 
 #import "NSDate+KKCategory.h"
 #import "NSDateFormatter+KKCategory.h"
+#import "NSCalendar+KKCategory.h"
 #import "NSString+KKCategory.h"
 #include <mach/mach_time.h>
-#import "KKLocalizationManager.h"
 #import "KKLog.h"
 
 @implementation NSDate (KKCategory)
@@ -79,11 +79,11 @@
  */
 - (NSUInteger)numberOfDaysInMonth {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_8_0
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+    return [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSDayCalendarUnit
                                               inUnit:NSMonthCalendarUnit
                                              forDate:self].length;
 #else
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay
+    return [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSCalendarUnitDay
                                               inUnit:NSCalendarUnitMonth
                                              forDate:self].length;
 #endif
@@ -98,11 +98,11 @@
  */
 - (NSUInteger)weeksOfMonth {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_8_0
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSWeekCalendarUnit
+    return [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSWeekCalendarUnit
                                               inUnit:NSMonthCalendarUnit
                                              forDate:self].length;
 #else
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitWeekOfMonth
+    return [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSCalendarUnitWeekOfMonth
                                               inUnit:NSCalendarUnitMonth
                                              forDate:self].length;
 #endif
@@ -118,7 +118,7 @@
 - (nullable NSDate *)previousDate {
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setDay:-1];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                          toDate:self
                                                         options:0];
 }
@@ -131,7 +131,7 @@
 - (nullable NSDate *)nextDate {
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setDay:1];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                          toDate:self
                                                         options:0];
 }
@@ -146,12 +146,12 @@
     NSDate *date = nil;
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_8_0
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSWeekCalendarUnit
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSWeekCalendarUnit
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
 #else
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitWeekOfMonth
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSCalendarUnitWeekOfMonth
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
@@ -186,7 +186,7 @@
     [dateComp setWeekOfMonth:1];
 #endif
     
-    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                           toDate:self
                                                          options:0] firstDayOfWeek];
 }
@@ -210,12 +210,12 @@
     NSDate *date = nil;
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_8_0
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSMonthCalendarUnit
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
 #else
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitMonth
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSCalendarUnitMonth
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
@@ -256,7 +256,7 @@
 - (nullable NSDate *)firstDayOfPreviousMonth {
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setMonth:-1];
-    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                           toDate:self
                                                          options:0] firstDayOfMonth];
 }
@@ -269,7 +269,7 @@
 - (nullable NSDate *)firstDayOfNextMonth {
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setMonth:1];
-    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                           toDate:self
                                                          options:0] firstDayOfMonth];
 }
@@ -284,12 +284,12 @@
     NSDate *date = nil;
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_8_0
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSQuarterCalendarUnit
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSQuarterCalendarUnit
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
 #else
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitQuarter
+    BOOL ok = [[NSCalendar kk_gregorianCalendar] rangeOfUnit:NSCalendarUnitQuarter
                                               startDate:&date
                                                interval:NULL
                                                 forDate:self];
@@ -309,7 +309,7 @@
 - (nullable NSDate *)lastDayOfQuarter {
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setQuarter:1];
-    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                           toDate:self
                                                          options:0] lastDayOfMonth];
 }
@@ -322,7 +322,7 @@
 - (nullable NSDate *)theDayOfNextMonth{
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setMonth:1];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                          toDate:self
                                                         options:0];
 }
@@ -335,7 +335,7 @@
 - (nullable NSDate *)theDayOfNextWeek{
     NSDateComponents *dateComp = [[NSDateComponents alloc] init];
     [dateComp setWeekday:7];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComp
+    return [[NSCalendar kk_gregorianCalendar] dateByAddingComponents:dateComp
                                                          toDate:self
                                                         options:0];
 }
@@ -564,82 +564,6 @@
         return [NSString stringWithFormat:@"%02d:%02d",MM,SS];
     }
 }
-
-#pragma mark ==================================================
-#pragma mark == 会话列表时间格式
-#pragma mark ==================================================
-+ (NSString*_Nonnull)timeForConversationList:(NSTimeInterval)chatTime nowTimestamp:(NSTimeInterval)nowTimestamp {
-    if (chatTime<1 || nowTimestamp<1) {
-        return @"";
-    }
-    
-    //会话时间
-    NSDate *dateChat = [NSDate dateWithTimeIntervalSince1970:chatTime];
-    NSString *yyyymmddChat = [NSDate getStringFromDate:dateChat dateFormatter:@"yyyy-MM-dd"];
-    
-    //当前时间(今天)
-    NSDate *dateNow = [NSDate dateWithTimeIntervalSince1970:nowTimestamp];
-    NSString *yyyymmddNow = [NSDate getStringFromDate:dateNow dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmddNow]) {
-        NSString *result = [NSDate getStringFromDate:dateChat dateFormatter:@"HH:mm"];
-        return result?result : @"";
-    }
-    //昨天（1天前）
-    NSDate *date01 = dateNow.previousDate;
-    NSString *yyyymmdd01 = [NSDate getStringFromDate:date01 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd01]) {
-        return  KKLocalization(@"一天前");
-    }
-
-    //前天（2天前）
-    NSDate *date02 = date01.previousDate;
-    NSString *yyyymmdd02 = [NSDate getStringFromDate:date02 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd02]) {
-        return  KKLocalization(@"两天前");
-    }
-
-    //（3天前）
-    NSDate *date03 = date02.previousDate;
-    NSString *yyyymmdd03 = [NSDate getStringFromDate:date03 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd03]) {
-        return  KKLocalization(@"三天前");
-    }
-
-    //（4天前）
-    NSDate *date04 = date03.previousDate;
-    NSString *yyyymmdd04 = [NSDate getStringFromDate:date04 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd04]) {
-        return  KKLocalization(@"四天前");
-    }
-
-    //（5天前）
-    NSDate *date05 = date04.previousDate;
-    NSString *yyyymmdd05 = [NSDate getStringFromDate:date05 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd05]) {
-        return  KKLocalization(@"五天前");
-    }
-
-    //（6天前）
-    NSDate *date06 = date05.previousDate;
-    NSString *yyyymmdd06 = [NSDate getStringFromDate:date06 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd06]) {
-        return  KKLocalization(@"六天前");
-    }
-
-    //（7天前）
-    NSDate *date07 = date06.previousDate;
-    NSString *yyyymmdd07 = [NSDate getStringFromDate:date07 dateFormatter:@"yyyy-MM-dd"];
-    if ([yyyymmddChat isEqualToString:yyyymmdd07]) {
-        return  KKLocalization(@"七天前");
-    }
-
-    NSString *mm = [NSDate getStringFromDate:dateChat dateFormatter:@"MM"];
-    NSString *dd = [NSDate getStringFromDate:dateChat dateFormatter:@"dd"];
-    NSString *vMM = mm?mm : @"";
-    NSString *vDD = dd?dd : @"";
-    return KKLocalizationWithFormat(@"common.dateFormat.MMDD",vMM,vDD);
-}
-
 
 
 @end

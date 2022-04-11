@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   #
 
     s.name         = "KeKeLibrary"
-    s.version      = "0.1.25"
+    s.version      = "0.1.26"
     s.summary      = "A marquee view used on iOS."
 
   # This description is used to generate tags and improve search results.

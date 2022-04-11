@@ -244,11 +244,6 @@
 
 + (NSString*_Nonnull)timeDurationFormatShortString:(NSTimeInterval)timeInterval;
 
-#pragma mark ==================================================
-#pragma mark == 会话列表时间格式
-#pragma mark ==================================================
-+ (NSString*_Nonnull)timeForConversationList:(NSTimeInterval)chatTime nowTimestamp:(NSTimeInterval)nowTimestamp;
-
 
 @end
 

@@ -12,6 +12,7 @@
 #import "CALayer+KKCategory.h"
 #import "NSArray+KKCategory.h"
 #import "NSBundle+KKCategory.h"
+#import "NSCalendar+KKCategory.h"
 #import "NSData+KKCategory.h"
 #import "NSDate+KKCategory.h"
 #import "NSDateFormatter+KKCategory.h"

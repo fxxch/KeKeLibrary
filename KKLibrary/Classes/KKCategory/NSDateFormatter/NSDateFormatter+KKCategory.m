@@ -7,6 +7,7 @@
 //
 
 #import "NSDateFormatter+KKCategory.h"
+#import "NSCalendar+KKCategory.h"
 
 @implementation NSDateFormatter (KKCategory)
 
@@ -18,18 +19,26 @@
 + (nonnull NSDateFormatter*)defaultFormatter{
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //①： ① or ②，one of both ok
+//    formatterDate.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    //②： ① or ②,one of both ok
+    dateFormatter.locale = [NSLocale systemLocale];
     
-    //    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    //    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    //    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-    
-    //    NSLocale *en_US_POSIX_Locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    //    [dateFormatter setLocale:en_US_POSIX_Locale];
-    [dateFormatter setLocale:[NSLocale systemLocale]];
-    
+    NSCalendar *calendar = [NSCalendar kk_gregorianCalendar];
+    [dateFormatter setCalendar:calendar];
     return dateFormatter;
-}
 
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//
+//    //    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+//    //    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+//    //    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+//    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+//
+//    //    NSLocale *en_US_POSIX_Locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+//    //    [dateFormatter setLocale:en_US_POSIX_Locale];
+//    [dateFormatter setLocale:[NSLocale systemLocale]];
+//    return dateFormatter;
+}
 
 @end
