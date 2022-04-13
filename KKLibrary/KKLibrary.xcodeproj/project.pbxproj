@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		043E382AEB9D8078E6DCD093 /* Pods_KKLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5377F6D9A7D233604E528895 /* Pods_KKLibrary.framework */; };
+		11120C492806B27000FF4C1F /* NSCalendar+KKCategory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 111A3BC028046B5600CBBBC1 /* NSCalendar+KKCategory.h */; };
 		111A3BC128046B5600CBBBC1 /* NSCalendar+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A3BBF28046B5600CBBBC1 /* NSCalendar+KKCategory.m */; };
 		111A3BC228046B5600CBBBC1 /* NSCalendar+KKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A3BBF28046B5600CBBBC1 /* NSCalendar+KKCategory.m */; };
-		111A3BC328046B5600CBBBC1 /* NSCalendar+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 111A3BC028046B5600CBBBC1 /* NSCalendar+KKCategory.h */; };
+		111A3BC328046B5600CBBBC1 /* NSCalendar+KKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 111A3BC028046B5600CBBBC1 /* NSCalendar+KKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A0986C325E64402001A7F99 /* KKTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A0986DB25E6481D001A7F99 /* KKTool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKTool.h */; };
 		3A6542C8258B5B1000942E7E /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A654072258B5B0E00942E7E /* KLTNavigationController.m */; };
@@ -480,7 +481,7 @@
 		3A86124925E6559E001EFE14 /* KeKeLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A69A81C25AFDDF40003048B /* KeKeLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA02E37258E488C004AF28A /* KKLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AA02E34258E4857004AF28A /* KKLibrary.h */; };
 		3AA02E3E258FA7BE004AF28A /* KKThirdLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A6542A3258B5B0F00942E7E /* KKThirdLibrary.h */; };
-		3AF3787526FD7818005B5A7B /* KKNetWorkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF3787326FD7818005B5A7B /* KKNetWorkHelper.h */; };
+		3AF3787526FD7818005B5A7B /* KKNetWorkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF3787326FD7818005B5A7B /* KKNetWorkHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF3787626FD7818005B5A7B /* KKNetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3787426FD7818005B5A7B /* KKNetWorkHelper.m */; };
 		3AF3787726FD7818005B5A7B /* KKNetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3787426FD7818005B5A7B /* KKNetWorkHelper.m */; };
 		4A75ADE884A4B5C789BDAFA3 /* Pods_KKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9570A5FB04554B70ED310CCD /* Pods_KKFramework.framework */; };
@@ -531,6 +532,7 @@
 			dstPath = include/KKCategory;
 			dstSubfolderSpec = 16;
 			files = (
+				11120C492806B27000FF4C1F /* NSCalendar+KKCategory.h in CopyFiles */,
 				3A6543D2258CBBF300942E7E /* KKCategory.h in CopyFiles */,
 				3A6543D3258CBBF300942E7E /* UIImage+KKCategory.h in CopyFiles */,
 				3A6543D4258CBBF300942E7E /* NSDictionary+KKCategory.h in CopyFiles */,
@@ -2209,7 +2211,6 @@
 				3A654565258CC2AD00942E7E /* NSMutableDictionary+KKCategory.h in Headers */,
 				3A654566258CC2AD00942E7E /* NSData+KKCategory.h in Headers */,
 				3A654567258CC2AD00942E7E /* UITextView+KKCategory.h in Headers */,
-				3AF3787526FD7818005B5A7B /* KKNetWorkHelper.h in Headers */,
 				3A654568258CC2AD00942E7E /* UIDevice+KKCategory.h in Headers */,
 				3A654569258CC2AD00942E7E /* NSURL+KKCategory.h in Headers */,
 				3A65456A258CC2AD00942E7E /* UICollectionView+KKCategory.h in Headers */,
@@ -2235,7 +2236,6 @@
 				3A65457E258CC2AE00942E7E /* NSDate+KKCategory.h in Headers */,
 				3A65457F258CC2AE00942E7E /* KKLibraryLocalization.h in Headers */,
 				3A654580258CC2AE00942E7E /* KKLibraryLocalizationDefineKeys.h in Headers */,
-				111A3BC328046B5600CBBBC1 /* NSCalendar+KKCategory.h in Headers */,
 				3A654581258CC2AE00942E7E /* KKSharedInstance.h in Headers */,
 				3A654582258CC2AE00942E7E /* KKLibraryDBManager.h in Headers */,
 				3A654583258CC2AE00942E7E /* KKThemeManager.h in Headers */,
@@ -2290,6 +2290,8 @@
 				3A6545E7258CC2B200942E7E /* NSData+KKBase64.h in Headers */,
 				3A6545E8258CC2B200942E7E /* NSString+KKBase64.h in Headers */,
 				3A6545E9258CC2B200942E7E /* KKAESCrypt.h in Headers */,
+				3AF3787526FD7818005B5A7B /* KKNetWorkHelper.h in Headers */,
+				111A3BC328046B5600CBBBC1 /* NSCalendar+KKCategory.h in Headers */,
 				3A6545EA258CC2B200942E7E /* KKThirdLibrary.h in Headers */,
 				3A86124925E6559E001EFE14 /* KeKeLibrary.h in Headers */,
 			);
