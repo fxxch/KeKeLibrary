@@ -226,15 +226,7 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
     
     //    [self openNavigationBarShadow];
     [self closeNavigationBarShadow];
-    
-    if (@available(iOS 13.0, *)) {
-        UINavigationBarAppearance *navBarApperance = [UINavigationBarAppearance new];
-        [navBarApperance configureWithOpaqueBackground];
-        navBarApperance.backgroundColor = navigationBarColor;
-        self.navigationController.navigationBar.standardAppearance = navBarApperance;
-        self.navigationController.navigationBar.scrollEdgeAppearance = navBarApperance;
-    }
-    
+        
     //导航栏背景透明
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     //导航栏底部线清除
