@@ -39,6 +39,7 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
 @property (nonatomic,assign)UIStatusBarAnimation kk_statusBarAnimation;
 
 @property (nonatomic,weak)UIView *kk_beginEditeView;
+@property (nonatomic,assign)CGFloat  kk_mainScrollOriginContentOffsetY;
 @property (nonatomic,assign)CGSize  kk_mainScrollOriginContentSize;
 @property (nonatomic,assign)CGFloat kk_keyboardHeightAlways;
 @property (nonatomic,assign)CGFloat kk_keyboardAnimationTimeAlways;
@@ -226,7 +227,7 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
     
     //    [self openNavigationBarShadow];
     [self closeNavigationBarShadow];
-        
+    
     //导航栏背景透明
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     //导航栏底部线清除
@@ -689,8 +690,12 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
     }
     
     if (CGSizeEqualToSize(self.kk_mainScrollOriginContentSize, CGSizeZero)) {
-        self.kk_mainScrollOriginContentSize = mainScrollView.contentSize;
+        if (CGSizeEqualToSize(mainScrollView.contentSize, CGSizeZero)) {
+            self.kk_mainScrollOriginContentSize = mainScrollView.frame.size;
+        }
     }
+    
+    self.kk_mainScrollOriginContentOffsetY = mainScrollView.contentOffset.y;
     
     CGFloat selfViewHeight = self.view.frame.size.height;
     
@@ -769,11 +774,14 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
     
     mainScrollView.contentSize = self.kk_mainScrollOriginContentSize;
     
-    if (mainScrollView.contentOffset.y+mainScrollView.frame.size.height>mainScrollView.contentSize.height) {
-        CGFloat newContentOffsetY = MAX(mainScrollView.contentSize.height-mainScrollView.frame.size.height, 0);
-        [mainScrollView setContentOffset:CGPointMake(0, newContentOffsetY) animated:YES];
-    }
+//    if (mainScrollView.contentOffset.y+mainScrollView.frame.size.height>mainScrollView.contentSize.height) {
+//        CGFloat newContentOffsetY = MAX(mainScrollView.contentSize.height-mainScrollView.frame.size.height, 0);
+//        [mainScrollView setContentOffset:CGPointMake(0, newContentOffsetY) animated:YES];
+//    }
     
+    [mainScrollView setContentOffset:CGPointMake(0, self.kk_mainScrollOriginContentOffsetY) animated:YES];
+
+    self.kk_mainScrollOriginContentOffsetY = 0;
     self.kk_mainScrollOriginContentSize = CGSizeZero;
     self.kk_beginEditeView = nil;
 }
@@ -793,9 +801,9 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
         NSMutableArray *array = [NSMutableArray array];
         
         for (UIView *subView in [mainScrollView subviews]) {
-            if ([subView isKindOfClass:[UITextView class]] ||
-                [subView isKindOfClass:[UITextField class]] ) {
-                
+            if (([subView isKindOfClass:[UITextView class]] && [(UITextView*)subView isEditable]) ||
+                ([subView isKindOfClass:[UITextField class]] && [(UITextField*)subView isUserInteractionEnabled]) ) {
+                                
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                 
                 [dic setObject:subView forKey:@"view"];

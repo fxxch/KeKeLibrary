@@ -15,6 +15,7 @@
 @interface KKView ()<KKUIToolbarDelegate>
 
 @property (nonatomic,weak)UIView *kk_beginEditeView;
+@property (nonatomic,assign)CGFloat  kk_mainScrollOriginContentOffsetY;
 @property (nonatomic,assign)CGSize  kk_mainScrollOriginContentSize;
 @property (nonatomic,assign)CGFloat kk_keyboardHeightAlways;
 @property (nonatomic,assign)CGFloat kk_keyboardAnimationTimeAlways;
@@ -331,9 +332,13 @@
     }
     
     if (CGSizeEqualToSize(self.kk_mainScrollOriginContentSize, CGSizeZero)) {
-        self.kk_mainScrollOriginContentSize = mainScrollView.contentSize;
+        if (CGSizeEqualToSize(mainScrollView.contentSize, CGSizeZero)) {
+            self.kk_mainScrollOriginContentSize = mainScrollView.frame.size;
+        }
     }
-    
+
+    self.kk_mainScrollOriginContentOffsetY = mainScrollView.contentOffset.y;
+
     CGFloat selfViewHeight = self.frame.size.height;
     
     CGRect selfRectToWindow = [self convertRect:self.bounds toView:[UIWindow currentKeyWindow]];
@@ -411,11 +416,14 @@
 
     mainScrollView.contentSize = self.kk_mainScrollOriginContentSize;
 
-    if (mainScrollView.contentOffset.y+mainScrollView.frame.size.height>mainScrollView.contentSize.height) {
-        CGFloat newContentOffsetY = MAX(mainScrollView.contentSize.height-mainScrollView.frame.size.height, 0);
-        [mainScrollView setContentOffset:CGPointMake(0, newContentOffsetY) animated:YES];
-    }
+//    if (mainScrollView.contentOffset.y+mainScrollView.frame.size.height>mainScrollView.contentSize.height) {
+//        CGFloat newContentOffsetY = MAX(mainScrollView.contentSize.height-mainScrollView.frame.size.height, 0);
+//        [mainScrollView setContentOffset:CGPointMake(0, newContentOffsetY) animated:YES];
+//    }
     
+    [mainScrollView setContentOffset:CGPointMake(0, self.kk_mainScrollOriginContentOffsetY) animated:YES];
+
+    self.kk_mainScrollOriginContentOffsetY = 0;
     self.kk_mainScrollOriginContentSize = CGSizeZero;
     self.kk_beginEditeView = nil;
 }
@@ -434,9 +442,9 @@
     else{
         NSMutableArray *array = [NSMutableArray array];
         for (UIView *subView in [mainScrollView subviews]) {
-            if ([subView isKindOfClass:[UITextView class]] ||
-                [subView isKindOfClass:[UITextField class]] ) {
-                
+            if (([subView isKindOfClass:[UITextView class]] && [(UITextView*)subView isEditable]) ||
+                ([subView isKindOfClass:[UITextField class]] && [(UITextField*)subView isUserInteractionEnabled]) ) {
+
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                 
                 [dic setObject:subView forKey:@"view"];
