@@ -16,7 +16,7 @@
 #import "KKLog.h"
 
 @implementation UIImageView (KKWebCache)
-@dynamic imageDataURLString;
+@dynamic kk_imageDataURLString;
 
 #pragma mark ==================================================
 #pragma mark == 【黑魔法】方法替换
@@ -59,53 +59,53 @@
 #pragma mark ==================================================
 #pragma mark ==扩展
 #pragma mark ==================================================
-- (void)setImageDataURLString:(NSString *)imageDataURLString{
-    objc_setAssociatedObject(self, @"imageDataURLString_ImageView", imageDataURLString, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setKk_imageDataURLString:(NSString *)kk_imageDataURLString{
+    objc_setAssociatedObject(self, @"kk_imageDataURLString", kk_imageDataURLString, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
--(NSString *)imageDataURLString{
-    return objc_getAssociatedObject(self, @"imageDataURLString_ImageView");
+-(NSString *)kk_imageDataURLString{
+    return objc_getAssociatedObject(self, @"kk_imageDataURLString");
 }
 
 #pragma mark ==================================================
 #pragma mark ==设置图片
 #pragma mark ==================================================
 /*普通*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder{
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder{
     
-    [self setImageWithURL:url
-         placeholderImage:placeholder
-        showActivityStyle:KKActivityIndicatorViewStyleNone
-                completed:nil];
+    [self kk_setImageWithURL:url
+            placeholderImage:placeholder
+           showActivityStyle:KKActivityIndicatorViewStyleNone
+                   completed:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle{
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle{
     
-    [self setImageWithURL:url
-         placeholderImage:placeholder
-        showActivityStyle:aStyle
-                completed:nil];
+    [self kk_setImageWithURL:url
+            placeholderImage:placeholder
+           showActivityStyle:aStyle
+                   completed:nil];
 }
 
 
 /*GCD*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-              completed:(KKImageLoadCompletedBlock)completedBlock{
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                 completed:(KKImageLoadCompletedBlock)completedBlock{
     
-    [self setImageWithURL:url
-         placeholderImage:placeholder
-        showActivityStyle:KKActivityIndicatorViewStyleNone
-                completed:completedBlock];
+    [self kk_setImageWithURL:url
+            placeholderImage:placeholder
+           showActivityStyle:KKActivityIndicatorViewStyleNone
+                   completed:completedBlock];
 }
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-              completed:(KKImageLoadCompletedBlock)completedBlock{
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                 completed:(KKImageLoadCompletedBlock)completedBlock{
     
     [self setImage:placeholder];
     
@@ -115,70 +115,70 @@
             completedBlock(nil,nil,NO);
         }
         
-        [self setImageDataURLString:nil];
+        self.kk_imageDataURLString = nil;
         
-        if (placeholder==nil) [self addPlaceHolderView];
+        if (placeholder==nil) [self kk_addPlaceHolderView];
         
         return;
     }
     else{
         //加载本地
         if ([KKFileCacheManager isExistCacheData:[url absoluteString]]) {
-            [self setImageWithURL_ForLocal:url  completed:completedBlock];
+            [self kk_setImageWithURL_ForLocal:url  completed:completedBlock];
         }
         //加载网络
         else{
-            [self setImageWithURL_ForRemote:url
-                           placeholderImage:placeholder
-                          showActivityStyle:aStyle
-                                  completed:completedBlock];
+            [self kk_setImageWithURL_ForRemote:url
+                              placeholderImage:placeholder
+                             showActivityStyle:aStyle
+                                     completed:completedBlock];
         }
     }
 }
 
 /* 加载本地图片 */
-- (void)setImageWithURL_ForLocal:(NSURL *)url
-                       completed:(KKImageLoadCompletedBlock)completedBlock{
+- (void)kk_setImageWithURL_ForLocal:(NSURL *)url
+                          completed:(KKImageLoadCompletedBlock)completedBlock{
 
 //    KKLogInfoFormat(@"UIImageView+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
 
-    [self removePlaceHolderView];
+    [self kk_removePlaceHolderView];
 
     NSData *data = [KKFileCacheManager readCacheData:[url absoluteString]];
-    [self showImageData:data inFrame:self.frame];
+    [self kk_showImageData:data inFrame:self.frame];
     
     if(completedBlock){
         completedBlock(data,nil,NO);
     }
     
-    [self setImageDataURLString:nil];
+    self.kk_imageDataURLString = nil;
 }
 
 /* 加载网络图片 */
-- (void)setImageWithURL_ForRemote:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-                        completed:(KKImageLoadCompletedBlock)completedBlock{
+- (void)kk_setImageWithURL_ForRemote:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                   showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                           completed:(KKImageLoadCompletedBlock)completedBlock{
 
     KKLogInfoFormat(@"UIImageView+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
 
-    [self setImageDataURLString:[url absoluteString]];
+    self.kk_imageDataURLString = [url absoluteString];
     
-    if ([NSString isStringEmpty:[url absoluteString]]) {
+    if ([NSString kk_isStringEmpty:[url absoluteString]]) {
         if (completedBlock) {
             completedBlock(nil,nil,NO);
         }
         
-        [self setImageDataURLString:nil];
-        
-        if (placeholder==nil) [self addPlaceHolderView];
+        self.kk_imageDataURLString = nil;
+
+        if (placeholder==nil) [self kk_addPlaceHolderView];
         
         return;
     }
     
-    if (placeholder==nil) [self addPlaceHolderView];
+    if (placeholder==nil) [self kk_addPlaceHolderView];
     
-    [self addActivityIndicatorView:aStyle];
+    [self kk_addActivityIndicatorView:aStyle];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
         
@@ -188,24 +188,24 @@
         NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:reque completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
                         
             //是最后一个请求
-            if ([[response.URL absoluteString] isEqualToString:[weakself imageDataURLString]]) {
-                NSData *imageData = [KKWebCache saveWebImage:location response:response identifier:weakself.imageDataURLString];
+            if ([[response.URL absoluteString] isEqualToString:weakself.kk_imageDataURLString]) {
+                NSData *imageData = [KKWebCache saveWebImage:location response:response identifier:weakself.kk_imageDataURLString];
 
                 if (imageData) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         //刷新界面
-                        [weakself showImageData:imageData inFrame:weakself.frame];
+                        [weakself kk_showImageData:imageData inFrame:weakself.frame];
                         
                         //返回块
                         if (completedBlock) {
                             completedBlock(imageData,error,YES);
                         }
                         
-                        [weakself setImageDataURLString:nil];
+                        weakself.kk_imageDataURLString = nil;
                         
                         //移除转圈圈
-                        [weakself removeActivityIndicatorView];
-                        [weakself removePlaceHolderView];
+                        [weakself kk_removeActivityIndicatorView];
+                        [weakself kk_removePlaceHolderView];
                     });
                 }
                 else{
@@ -217,10 +217,10 @@
                             completedBlock(nil,error,YES);
                         }
                         
-                        [weakself setImageDataURLString:nil];
-                        
+                        weakself.kk_imageDataURLString = nil;
+
                         //移除转圈圈
-                        [weakself removeActivityIndicatorView];
+                        [weakself kk_removeActivityIndicatorView];
                     });
                 }
                 
@@ -237,7 +237,7 @@
 #pragma mark ==================================================
 #pragma mark == 等待视图
 #pragma mark ==================================================
-- (void)addActivityIndicatorView:(KKActivityIndicatorViewStyle)aStyle{
+- (void)kk_addActivityIndicatorView:(KKActivityIndicatorViewStyle)aStyle{
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -330,7 +330,7 @@
     });
 }
 
-- (void)removeActivityIndicatorView{
+- (void)kk_removeActivityIndicatorView{
     dispatch_async(dispatch_get_main_queue(), ^{
         for (UIView *activeView in [self subviews]) {
             if ([activeView isKindOfClass:[UIActivityIndicatorView class]] && activeView.tag==20141024) {
@@ -347,38 +347,38 @@
 /**
  添加占位视图
  */
-- (void)addPlaceHolderView{
-    [self removePlaceHolderView];
+- (void)kk_addPlaceHolderView{
+    [self kk_removePlaceHolderView];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        imageView.backgroundColor = [UIColor colorWithHexString:@"F8F8F8"];
+        imageView.backgroundColor = [UIColor kk_colorWithHexString:@"F8F8F8"];
         imageView.tag = 2018063001;
         [self addSubview:imageView];
-        [imageView sendToBack];
+        [imageView kk_sendToBack];
         
-        UIImage *image = nil;
-        
-        @try {
-            image = [NSObject defaultImage];
-        } @catch (NSException *exception) {
-            
-        } @finally {
-            if (image) {
-                CGSize imageSize = image.size;
-                
-                if (image.size.width>imageView.frame.size.width ||
-                    image.size.height>imageView.frame.size.height ) {
-                    
-                    imageSize = CGSizeMake(image.size.width/2.0, image.size.height/2.0);
-                }
-                
-                UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake((imageView.frame.size.width-imageSize.width)/2.0, (imageView.frame.size.height-imageSize.height)/2.0, imageSize.width, imageSize.height)];
-                icon.image = image;
-                [imageView addSubview:icon];
-            }
-        }
+//        UIImage *image = nil;
+//
+//        @try {
+//            image = [NSObject kk_defaultImage];
+//        } @catch (NSException *exception) {
+//
+//        } @finally {
+//            if (image) {
+//                CGSize imageSize = image.size;
+//
+//                if (image.size.width>imageView.frame.size.width ||
+//                    image.size.height>imageView.frame.size.height ) {
+//
+//                    imageSize = CGSizeMake(image.size.width/2.0, image.size.height/2.0);
+//                }
+//
+//                UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake((imageView.frame.size.width-imageSize.width)/2.0, (imageView.frame.size.height-imageSize.height)/2.0, imageSize.width, imageSize.height)];
+//                icon.image = image;
+//                [imageView addSubview:icon];
+//            }
+//        }
         
     });
 }
@@ -386,7 +386,7 @@
 /**
  移除占位视图
  */
-- (void)removePlaceHolderView{
+- (void)kk_removePlaceHolderView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [[self viewWithTag:2018063001] removeFromSuperview];
     });

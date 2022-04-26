@@ -123,7 +123,7 @@
 
 - (void)drawRect:(CGRect)rect{
     
-    if([NSString isStringNotEmpty:self.placeholder] ||
+    if([NSString kk_isStringNotEmpty:self.placeholder] ||
        _attributedPlaceholder
        )
     {
@@ -131,7 +131,7 @@
         {
             NSString *wo = @"我";
             
-            CGSize size = [wo sizeWithFont:self.font maxSize:CGSizeMake(1000, 1000)];
+            CGSize size = [wo kk_sizeWithFont:self.font maxSize:CGSizeMake(1000, 1000)];
             
             self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.placeHolderLabelEdgeInsets.left,self.placeHolderLabelEdgeInsets.top,self.bounds.size.width-self.placeHolderLabelEdgeInsets.top,size.height)];
             self.placeHolderLabel.lineBreakMode = NSLineBreakByCharWrapping;
@@ -156,8 +156,8 @@
         [self sendSubviewToBack:self.placeHolderLabel];
     }
     
-    if( [NSString isStringEmpty:self.text] &&
-       ([NSString isStringNotEmpty:self.placeholder] || self.attributedPlaceholder) )
+    if( [NSString kk_isStringEmpty:self.text] &&
+       ([NSString kk_isStringNotEmpty:self.placeholder] || self.attributedPlaceholder) )
     {
         [[self viewWithTag:20170811] setAlpha:1];
     }

@@ -16,7 +16,7 @@
 #pragma mark ==================================================
 #pragma mark ==设置样式
 #pragma mark ==================================================
-- (void)setTextColor:(nullable UIColor *)textColor
+- (void)kk_setTextColor:(nullable UIColor *)textColor
                range:(NSRange)range{
     
     NSMutableAttributedString *text = nil;
@@ -35,7 +35,7 @@
     [self setAttributedText: text];
 }
 
-- (void)setFont:(nullable UIFont *)font
+- (void)kk_setFont:(nullable UIFont *)font
           range:(NSRange)range{
 
     NSMutableAttributedString *text = nil;
@@ -54,7 +54,7 @@
     [self setAttributedText: text];
 }
 
-- (void)setTextColor:(nullable UIColor *)textColor afterOccurenceOfString:(nullable NSString*)separator{
+- (void)kk_setTextColor:(nullable UIColor *)textColor afterOccurenceOfString:(nullable NSString*)separator{
     
     NSRange range;
     if (self.attributedText && self.attributedText.length>0) {
@@ -68,12 +68,11 @@
     {
         range.location ++;
         range.length = self.text.length - range.location;
-        [self setTextColor:textColor range:range];
+        [self kk_setTextColor:textColor range:range];
     }
 }
 
-- (void)setFont:(nullable UIFont *)font afterOccurenceOfString:(nullable NSString*)separator
-{
+- (void)kk_setFont:(nullable UIFont *)font afterOccurenceOfString:(nullable NSString*)separator{
     
     NSRange range;
     if (self.attributedText && self.attributedText.length>0) {
@@ -87,12 +86,11 @@
     {
         range.location ++;
         range.length = self.text.length - range.location;
-        [self setFont:font range:range];
+        [self kk_setFont:font range:range];
     }
 }
 
-- (void)setTextColor:(nullable UIColor *)textColor contentString:(nullable NSString *)string
-{
+- (void)kk_setTextColor:(nullable UIColor *)textColor contentString:(nullable NSString *)string{
     if (!string.length) {
         return;
     }
@@ -107,12 +105,11 @@
 
     if (range.location != NSNotFound)
     {
-        [self setTextColor:textColor range:range];
+        [self kk_setTextColor:textColor range:range];
     }
 }
 
-- (void)setFont:(nullable UIFont *)font contentString:(nullable NSString *)contentString
-{
+- (void)kk_setFont:(nullable UIFont *)font contentString:(nullable NSString *)contentString{
     if (!contentString.length) {
         return;
     }
@@ -135,17 +132,16 @@
     
     if (range_front.location != NSNotFound)
     {
-        [self setFont:font range:range_front];
+        [self kk_setFont:font range:range_front];
     }
     
     if (range_end.location != NSNotFound)
     {
-        [self setFont:font range:range_end];
+        [self kk_setFont:font range:range_end];
     }
 }
 
-- (void)setUnderLine:(nullable UIColor *)underLineColor
-               range:(NSRange)range{
+- (void)kk_setUnderLine:(nullable UIColor *)underLineColor range:(NSRange)range{
     
     NSMutableAttributedString *text = nil;
     if (self.attributedText && self.attributedText.length>0) {
@@ -167,7 +163,7 @@
     [self setAttributedText: text];
 }
 
-- (void)setUnderLine:(nullable UIColor *)underLineColor contentString:(nullable NSString *)contentString{
+- (void)kk_setUnderLine:(nullable UIColor *)underLineColor contentString:(nullable NSString *)contentString{
     if (!contentString.length) {
         return;
     }
@@ -186,12 +182,11 @@
 
     if (range.location != NSNotFound)
     {
-        [self setUnderLine:underLineColor range:range];
+        [self kk_setUnderLine:underLineColor range:range];
     }
 }
 
-- (void)setCenterLine:(nullable UIColor *)centerLineColor
-                range:(NSRange)range{
+- (void)kk_setCenterLine:(nullable UIColor *)centerLineColor range:(NSRange)range{
     
     NSMutableAttributedString *text = nil;
     if (self.attributedText && self.attributedText.length>0) {
@@ -214,7 +209,7 @@
     [self setAttributedText: text];
 }
 
-- (void)setCenterLine:(nullable UIColor *)centerLineColor contentString:(nullable NSString *)contentString{
+- (void)kk_setCenterLine:(nullable UIColor *)centerLineColor contentString:(nullable NSString *)contentString{
     if (!contentString.length) {
         return;
     }
@@ -233,20 +228,9 @@
     
     if (range.location != NSNotFound)
     {
-        [self setCenterLine:centerLineColor range:range];
+        [self kk_setCenterLine:centerLineColor range:range];
     }
 }
-
-
-//- (void)setLineHeightMargin:(CGFloat)margin
-//{
-//    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
-//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-//    style.lineSpacing = margin;//行距
-//    [style setLineBreakMode:NSLineBreakByTruncatingTail];
-//    [text addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0,  self.text.length)];
-//    [self setAttributedText: text];
-//}
 
 #pragma mark ==================================================
 #pragma mark ==创建UILabel
@@ -328,11 +312,11 @@
 
     CGSize size = CGSizeZero;
     if (lines==0) {
-        size = [text sizeWithFont:font maxSize:CGSizeMake(maxWidth, 10000)];
+        size = [text kk_sizeWithFont:font maxSize:CGSizeMake(maxWidth, 10000)];
     }
     else{
-        CGFloat height = [UIFont heightForFont:font numberOfLines:lines];
-        size = [text sizeWithFont:font maxSize:CGSizeMake(maxWidth, height)];
+        CGFloat height = [UIFont kk_heightForFont:font numberOfLines:lines];
+        size = [text kk_sizeWithFont:font maxSize:CGSizeMake(maxWidth, height)];
     }
     
     UILabel * lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
@@ -344,21 +328,5 @@
     lb.backgroundColor = [UIColor clearColor];
     return lb;
 }
-
-+ (UILabel *)createNewlabelWithColor:(UIColor *)color andFont:(UIFont *)font andTextAlignment:(NSTextAlignment)textAlign{
-    
-    return [UILabel createNewlabelWithColor:color andFont:font andTextAlignment:textAlign andLineNum:1];
-}
-
-+ (UILabel *)createNewlabelWithColor:(UIColor *)color andFont:(UIFont *)font andTextAlignment:(NSTextAlignment)textAlign andLineNum:(NSInteger)lineNum{
- 
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = color;
-    label.textAlignment = textAlign;
-    label.font = font;
-    label.numberOfLines = lineNum;
-    return label;
-}
-
 
 @end

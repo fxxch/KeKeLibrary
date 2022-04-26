@@ -16,7 +16,7 @@
 @implementation KKFileCacheManager
 
 - (void)dealloc{
-    [self unobserveAllNotification];
+    [self kk_unobserveAllNotification];
 }
 
 + (KKFileCacheManager *_Nonnull)defaultManager{
@@ -33,11 +33,11 @@
     self = [super init];
     if (self) {
         // Init the memory cache
-        NSString *nameData = [NSString stringWithFormat:@"%@.MemoryCacheData",[NSBundle bundleIdentifier]];
+        NSString *nameData = [NSString stringWithFormat:@"%@.MemoryCacheData",[NSBundle kk_bundleIdentifier]];
         self.memoryCacheData = [[NSCache alloc] init];
         self.memoryCacheData.name = nameData;
         
-        NSString *nameImage = [NSString stringWithFormat:@"%@.MemoryCacheImage",[NSBundle bundleIdentifier]];
+        NSString *nameImage = [NSString stringWithFormat:@"%@.MemoryCacheImage",[NSBundle kk_bundleIdentifier]];
         self.memoryCacheImage = [[NSCache alloc] init];
         self.memoryCacheImage.name = nameImage;
         
@@ -69,17 +69,17 @@
  */
 + (NSString*_Nullable)createFilePathInCacheDirectory:(NSString*_Nullable)aCacheDirectory
                                         fileFullName:(NSString*_Nullable)aFileFullName{
-    if ([NSString isStringEmpty:aCacheDirectory]) {
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
         KKLogErrorFormat(@"创建文件失败：aCacheDirectory：%@",KKValidString(aCacheDirectory));
         return nil;
     }
-    if ([NSString isStringEmpty:aFileFullName]) {
+    if ([NSString kk_isStringEmpty:aFileFullName]) {
         KKLogErrorFormat(@"创建文件失败：aFileName：%@",KKValidString(aFileFullName));
         return nil;
     }
     
     NSString *aExtension = [aFileFullName pathExtension];
-    if ([NSString isStringEmpty:aExtension]) {
+    if ([NSString kk_isStringEmpty:aExtension]) {
         KKLogErrorFormat(@"缓存文件失败：aExtension：%@",KKValidString(aExtension));
         return nil;
     }
@@ -99,7 +99,7 @@
         }
     }
     
-    NSString *expectFileName = [NSFileManager realFileNameForExpectFileName:aFileFullName inPath:fileFullDirectoryPath];
+    NSString *expectFileName = [NSFileManager kk_realFileNameForExpectFileName:aFileFullName inPath:fileFullDirectoryPath];
     //文件完整目录
     NSString *fileFullPath = [fileFullDirectoryPath stringByAppendingPathComponent:expectFileName];
     
@@ -131,31 +131,31 @@
         return NO;
     }
     
-    if ([NSString isStringEmpty:aCacheDirectory]) {
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
         KKLogErrorFormat(@"缓存文件失败：aCacheDirectory：%@",KKValidString(aCacheDirectory));
         return NO;
     }
     
-    if ([NSString isStringEmpty:aIdentifier]) {
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
         KKLogErrorFormat(@"缓存文件失败：aIdentifier：%@",KKValidString(aIdentifier));
         return NO;
     }
 
-    if ([NSString isStringEmpty:aDisplayFullName]) {
+    if ([NSString kk_isStringEmpty:aDisplayFullName]) {
         KKLogErrorFormat(@"缓存文件失败：aDisplayFullName：%@",KKValidString(aDisplayFullName));
         return NO;
     }
 
     NSString *aExtension = [aDisplayFullName pathExtension];
-    if ([NSString isStringEmpty:aExtension]) {
+    if ([NSString kk_isStringEmpty:aExtension]) {
         KKLogErrorFormat(@"缓存文件失败：aExtension：%@",KKValidString(aExtension));
         return NO;
     }
 
     NSString *extraInformationJson = @"";
-    if ([NSDictionary isDictionaryNotEmpty:aDataInformation]) {
-        extraInformationJson = [aDataInformation translateToJSONString];
-        if ([NSString isStringEmpty:extraInformationJson]) {
+    if ([NSDictionary kk_isDictionaryNotEmpty:aDataInformation]) {
+        extraInformationJson = [aDataInformation kk_translateToJSONString];
+        if ([NSString kk_isStringEmpty:extraInformationJson]) {
             KKLogErrorFormat(@"缓存文件失败(附加信息不能够转换成json字符串)：aDataInformation：%@",aDataInformation);
             return NO;
         }
@@ -180,7 +180,7 @@
         }
     }
     
-    NSString *expectFileName = [NSFileManager realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
+    NSString *expectFileName = [NSFileManager kk_realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
     //文件完整目录
     NSString *fileFullPath = [fileFullDirectoryPath stringByAppendingPathComponent:expectFileName];
 
@@ -226,26 +226,26 @@
         return nil;
     }
     
-    if ([NSString isStringEmpty:aCacheDirectory]) {
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
         KKLogErrorFormat(@"缓存文件失败：aCacheDirectory：%@",KKValidString(aCacheDirectory));
         return nil;
     }
 
-    if ([NSString isStringEmpty:aDisplayFullName]) {
+    if ([NSString kk_isStringEmpty:aDisplayFullName]) {
         KKLogErrorFormat(@"缓存文件失败：aDisplayFullName：%@",KKValidString(aDisplayFullName));
         return nil;
     }
 
     NSString *aExtension = [aDisplayFullName pathExtension];
-    if ([NSString isStringEmpty:aExtension]) {
+    if ([NSString kk_isStringEmpty:aExtension]) {
         KKLogErrorFormat(@"缓存文件失败：aExtension：%@",KKValidString(aExtension));
         return nil;
     }
 
     NSString *extraInformationJson = @"";
-    if ([NSDictionary isDictionaryNotEmpty:aDataInformation]) {
-        extraInformationJson = [aDataInformation translateToJSONString];
-        if ([NSString isStringEmpty:extraInformationJson]) {
+    if ([NSDictionary kk_isDictionaryNotEmpty:aDataInformation]) {
+        extraInformationJson = [aDataInformation kk_translateToJSONString];
+        if ([NSString kk_isStringEmpty:extraInformationJson]) {
             KKLogErrorFormat(@"缓存文件失败(附加信息不能够转换成json字符串)：aDataInformation：%@",aDataInformation);
             return nil;
         }
@@ -254,7 +254,7 @@
     //文件标识符 20141212_094434_123999
     NSString *identifier = [KKFileCacheManager createRandomFileName];
     
-    NSString *realDisplayName = [aDisplayFullName fileNameWithOutExtention];
+    NSString *realDisplayName = [aDisplayFullName kk_fileNameWithOutExtention];
 
     //KK缓存目录
     NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
@@ -271,7 +271,7 @@
         }
     }
     
-    NSString *expectFileName = [NSFileManager realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
+    NSString *expectFileName = [NSFileManager kk_realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
     //文件完整目录
     NSString *fileFullPath = [fileFullDirectoryPath stringByAppendingPathComponent:expectFileName];
     
@@ -309,7 +309,7 @@
  @return 函数调用成功返回 结果
  */
 + (BOOL)isExistCacheData:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringNotEmpty:aIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aIdentifier]) {
         NSString *fileFullPath = [KKFileCacheManager cacheDataPath:aIdentifier];
         if (fileFullPath && [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath]) {
 //            KKLogInfoFormat(@"KKFileCacheManager缓存存在:  %@",KKValidString(aIdentifier));
@@ -331,13 +331,13 @@
  @return 函数调用成功返回 文件路径
  */
 + (NSString*_Nullable)cacheDataPath:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringNotEmpty:aIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aIdentifier]) {
 
         NSDictionary *document = [KKFileCacheManagerDB DBQuery_KKFileCache_WithIdentifer:aIdentifier];
-        if ([NSDictionary isDictionaryNotEmpty:document]) {
-            NSString *aCacheDirectory = [document validStringForKey:Table_KKFileCacheManager_cache_directory];
-            NSString *aExtension = [document validStringForKey:Table_KKFileCacheManager_extention];
-            NSString *aLocalFullName = [document validStringForKey:Table_KKFileCacheManager_local_full_name];
+        if ([NSDictionary kk_isDictionaryNotEmpty:document]) {
+            NSString *aCacheDirectory = [document kk_validStringForKey:Table_KKFileCacheManager_cache_directory];
+            NSString *aExtension = [document kk_validStringForKey:Table_KKFileCacheManager_extention];
+            NSString *aLocalFullName = [document kk_validStringForKey:Table_KKFileCacheManager_local_full_name];
 
             //KK缓存目录
             NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
@@ -370,7 +370,7 @@
  @return 函数调用成功返回 文件信息
  */
 + (NSDictionary*_Nullable)cacheDataInformation:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringNotEmpty:aIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aIdentifier]) {
         NSDictionary *document = [KKFileCacheManagerDB DBQuery_KKFileCache_WithIdentifer:aIdentifier];
         return document;
     }
@@ -397,7 +397,7 @@
 }
 
 + (BOOL)deleteCacheData:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringEmpty:aIdentifier]) {
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
         return NO;
     }
 
@@ -405,7 +405,7 @@
     
     if ([KKFileCacheManager isExistCacheData:aIdentifier]) {
         NSString *fileFullPath = [KKFileCacheManager cacheDataPath:aIdentifier];
-        BOOL result = [NSFileManager deleteFileAtPath:fileFullPath];
+        BOOL result = [NSFileManager kk_deleteFileAtPath:fileFullPath];
         if (result) {
             [KKFileCacheManagerDB DBDelete_KKFileCache_WithIdentifer:aIdentifier];
             return YES;
@@ -427,7 +427,7 @@
 + (BOOL)deleteCacheDataAll{
     NSArray *allCache = [KKFileCacheManagerDB allCacheDocumentInformation];
     for (NSInteger i=0; i<[allCache count]; i++) {
-        NSString *aIdentifier = [[allCache objectAtIndex:i] validStringForKey:Table_KKFileCacheManager_identifier];
+        NSString *aIdentifier = [[allCache objectAtIndex:i] kk_validStringForKey:Table_KKFileCacheManager_identifier];
         [KKFileCacheManager deleteCacheData:aIdentifier];
     }
     return YES;
@@ -438,13 +438,13 @@
  @param aCacheDirectory 文件夹名称【例如：Web_Image、Album_Image…… 】
  */
 + (BOOL)deleteCacheDataInCacheDirectory:(NSString*_Nullable)aCacheDirectory{
-    if ([NSString isStringEmpty:aCacheDirectory]) {
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
         return YES;
     }
 
     NSArray *allCache = [KKFileCacheManagerDB DBQuery_KKFileCache_WithCacheDirectory:aCacheDirectory];
     for (NSInteger i=0; i<[allCache count]; i++) {
-        NSString *aIdentifier = [[allCache objectAtIndex:i] validStringForKey:Table_KKFileCacheManager_identifier];
+        NSString *aIdentifier = [[allCache objectAtIndex:i] kk_validStringForKey:Table_KKFileCacheManager_identifier];
         [KKFileCacheManager deleteCacheData:aIdentifier];
     }
 
@@ -461,7 +461,7 @@
  */
 + (NSString*_Nonnull)createRandomFileName{
     //当前时间
-    NSDateFormatter *dateFormatter = [NSDateFormatter defaultFormatter];
+    NSDateFormatter *dateFormatter = [NSDateFormatter kk_defaultFormatter];
     [dateFormatter setDateFormat:@"YYYYMMdd_HHmmss_SSS"];
     NSString *dateStr = [dateFormatter stringFromDate:[NSDate date]];
     
@@ -479,7 +479,7 @@
 /// @param aDirectoryName 文件夹名称
 + (NSString*_Nonnull)kkCacheDirectoryFullPath:(NSString*_Nullable)aDirectoryName{
     //缓存目录
-    NSString *cachesDirectory = [NSFileManager cachesDirectory];
+    NSString *cachesDirectory = [NSFileManager kk_cachesDirectory];
     //文件完整目录
     NSString *fileFullDirectoryPath = [NSString stringWithFormat:@"%@/%@/%@",cachesDirectory,KKFileCacheManager_CacheDirectoryOfRoot,aDirectoryName];
     return fileFullDirectoryPath;
@@ -490,7 +490,7 @@
 + (void)deleteCacheDirectory:(NSString*_Nullable)aDirectoryName{
     //缓存目录
     NSString *cachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aDirectoryName];
-    [NSFileManager deleteDirectoryAtPath:cachesDirectory];
+    [NSFileManager kk_deleteDirectoryAtPath:cachesDirectory];
 }
 
 
@@ -504,7 +504,7 @@
 }
 
 + (void)deleteWebCacheData{
-    [NSFileManager deleteDirectoryAtPath:[KKFileCacheManager webCachePath]];
+    [NSFileManager kk_deleteDirectoryAtPath:[KKFileCacheManager webCachePath]];
 }
 
 

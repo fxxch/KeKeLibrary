@@ -31,7 +31,6 @@
 #import "UIBezierPath+KKCategory.h"
 #import "UIButton+KKCategory.h"
 #import "UIButton+KKWebCache.h"
-#import "UICollectionView+KKCategory.h"
 #import "UIColor+KKCategory.h"
 #import "UIControl+KKCategory.h"
 #import "UIDevice+KKCategory.h"
@@ -52,6 +51,5 @@
 #import "UIView+KKCategory.h"
 #import "UIViewController+KKCategory.h"
 #import "UIWindow+KKCategory.h"
-#import "UIGestureRecognizer+KKCategory.h"
 
 #endif /* KKCategory_h */

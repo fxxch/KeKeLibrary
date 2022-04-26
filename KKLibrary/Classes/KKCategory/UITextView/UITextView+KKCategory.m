@@ -13,7 +13,7 @@
 
 @implementation UITextView (KKCategory)
 
-- (void)checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
+- (void)kk_checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
     int maxLength = length;
     if (maxLength<=0) return ;
 
@@ -22,7 +22,7 @@
     if ( [selectedRange isEmpty] || selectedRange==nil) {
         NSUInteger textLenth = 0;
         if (englishHalf) {
-            textLenth = [self.text realLenth];
+            textLenth = [self.text kk_realLenth];
         }
         else{
             textLenth = [self.text length];
@@ -32,7 +32,7 @@
                 NSString *tempString = nil;
                 for (NSInteger i=0; i<[self.text length]; i++) {
                     tempString = [self.text substringToIndex:i];
-                    if ([tempString realLenth]>maxLength) {
+                    if ([tempString kk_realLenth]>maxLength) {
                         tempString = [self.text substringToIndex:i-1];
                         break;
                     }

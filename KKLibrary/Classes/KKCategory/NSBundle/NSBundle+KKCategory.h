@@ -14,58 +14,45 @@
 #pragma mark ==================================================
 #pragma mark ==Bundle相关
 #pragma mark ==================================================
-+ (nullable NSString *)bundleIdentifier;
++ (nullable NSString *)kk_bundleIdentifier;
 
-+ (nullable NSString *)bundleName;
++ (nullable NSString *)kk_bundleName;
 
-+ (nullable NSString *)bundleBuildVersion;
++ (nullable NSString *)kk_bundleBuildVersion;
 
-+ (nullable NSString *)bundleVersion;
++ (nullable NSString *)kk_bundleVersion;
 
-+ (float)bundleMiniumOSVersion;
++ (float)kk_bundleMiniumOSVersion;
 
-+ (nullable NSString *)bundlePath;
++ (nullable NSString *)kk_bundlePath;
 
-+ (int)buildXcodeVersion;
++ (int)kk_buildXcodeVersion;
 
-+ (nullable NSBundle*)kkLibraryBundle;
++ (nullable NSBundle*)kk_kkLibraryBundle;
 
 #pragma mark ==================================================
 #pragma mark ==路径相关
 #pragma mark ==================================================
-+ (nullable NSString *)homeDirectory;
++ (nullable NSString *)kk_homeDirectory;
 
-+ (nullable NSString *)documentDirectory;
++ (nullable NSString *)kk_documentDirectory;
 
-+ (nullable NSString *)libaryDirectory;
++ (nullable NSString *)kk_libaryDirectory;
 
-+ (nullable NSString *)tmpDirectory;
++ (nullable NSString *)kk_tmpDirectory;
 
-+ (nullable NSString *)temporaryDirectory;
++ (nullable NSString *)kk_temporaryDirectory;
 
-+ (nullable NSString *)cachesDirectory;
++ (nullable NSString *)kk_cachesDirectory;
 
 #pragma mark ==================================================
 #pragma mark == 获取图片资源
 #pragma mark ==================================================
-+ (nullable UIImage*)imageInBundle:(NSString*_Nullable)aBundleName
-                         imageName:(NSString*_Nullable)aImageName;
++ (nullable UIImage*)kk_imageInBundle:(NSString*_Nullable)aBundleName
+                            imageName:(NSString*_Nullable)aImageName;
 
-+ (nullable UIImage*)imageInBundle:(NSString*_Nullable)aBundleName
-                         imageName:(NSString*_Nullable)aImageName
-                          basePath:(NSString*_Nullable)aBasePath;
-
-#pragma mark ==================================================
-#pragma mark ==检查新版本
-#pragma mark ==================================================
-typedef void(^CheckAppVersionCompletedBlock)(BOOL haveNewVersion,
-                                             NSString * _Nullable newVersion,
-                                             NSString * _Nullable appID,
-                                             NSString * _Nullable newVersionDescription,
-                                             NSString * _Nullable releaseNotes);
-
-+ (void)checkAppVersionWithAppid:(nullable NSString *)appid
-       needShowNewVersionMessage:(BOOL)needShow
-                       completed:(CheckAppVersionCompletedBlock _Nullable )completedBlock;
++ (nullable UIImage*)kk_imageInBundle:(NSString*_Nullable)aBundleName
+                            imageName:(NSString*_Nullable)aImageName
+                             basePath:(NSString*_Nullable)aBasePath;
 
 @end

@@ -19,7 +19,7 @@
 #define CAGradientLayerTag 2019093001
 
 @implementation UIView (KKCategory)
-@dynamic tagInfo;
+@dynamic kk_tagInfo;
 @dynamic kk_CornerRadius;
 @dynamic kk_CornerRadiusType;
 
@@ -88,12 +88,12 @@
     [self kk_setFrame:frame];
     if (self.kk_CornerRadiusType!=KKCornerRadiusType_None) {
         //边框
-        CAShapeLayer *layer =  (CAShapeLayer*)[self.layer layerWithTag:2018111101];
+        CAShapeLayer *layer =  (CAShapeLayer*)[self.layer kk_layerWithTag:2018111101];
         if (layer) {
-            [self setCornerRadius:self.kk_CornerRadius type:self.kk_CornerRadiusType borderColor:[UIColor colorWithCGColor:layer.strokeColor] borderWidth:layer.lineWidth];
+            [self kk_setCornerRadius:self.kk_CornerRadius type:self.kk_CornerRadiusType borderColor:[UIColor colorWithCGColor:layer.strokeColor] borderWidth:layer.lineWidth];
         }
         else {
-            [self setCornerRadius:self.kk_CornerRadius type:self.kk_CornerRadiusType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:layer.lineWidth];
+            [self kk_setCornerRadius:self.kk_CornerRadius type:self.kk_CornerRadiusType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:layer.lineWidth];
         }
     }
 }
@@ -159,12 +159,12 @@
     }
 }
 
-- (void)setTagInfo:(id)tagInfo{
-    objc_setAssociatedObject(self, @"tagInfo", tagInfo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKk_tagInfo:(id)kk_tagInfo{
+    objc_setAssociatedObject(self, @"kk_tagInfo", kk_tagInfo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)tagInfo {
-    return objc_getAssociatedObject(self, @"tagInfo");
+- (id)kk_tagInfo {
+    return objc_getAssociatedObject(self, @"kk_tagInfo");
 }
 
 - (void)setKk_CornerRadiusType:(KKCornerRadiusType)kk_CornerRadiusType{
@@ -193,7 +193,7 @@
  
  @return UIImage
  */
-- (nullable UIImage *)snapshot {
+- (nullable UIImage *)kk_snapshot {
 
     UIImage *image_normal = [self kk_snapshotImage_normal];
     if (image_normal && [image_normal isKindOfClass:[UIImage class]]) {
@@ -268,8 +268,8 @@
  @return image
  */
 - (nullable UIImage *)kk_snapshotImage_fromOpenGLStreamView{
-    int width = self.width;//352; //视频宽度*3
-    int height = self.height;//288;//视频宽度*3
+    int width = self.kk_width;//352; //视频宽度*3
+    int height = self.kk_height;//288;//视频宽度*3
     
     NSInteger myDataLength = width * height * 4;
     // allocate array and read pixels into it.
@@ -305,49 +305,49 @@
 #pragma mark ==================================================
 #pragma mark == 普通设置
 #pragma mark ==================================================
-- (void)clearBackgroundColor {
+- (void)kk_clearBackgroundColor {
     [self setBackgroundColor:[UIColor clearColor]];
 }
 
-- (void)removeAllSubviews{
+- (void)kk_removeAllSubviews{
     for (UIView *subView in [self subviews]) {
         [subView removeFromSuperview];
     }
 }
 
-- (void)setBackgroundImage:(nullable UIImage *)image {
+- (void)kk_setBackgroundImage:(nullable UIImage *)image {
     UIColor *color = [UIColor colorWithPatternImage:image];
     [self setBackgroundColor:color];
 }
 
-- (void)setIndex:(NSInteger)index {
+- (void)kk_setIndex:(NSInteger)index {
     if (self.superview != nil) {
         [self.superview insertSubview:self atIndex:index];
     }
 }
 
-- (void)bringToFront {
+- (void)kk_bringToFront {
     if (self.superview != nil) {
         [self.superview bringSubviewToFront:self];
     }
 }
 
-- (void)sendToBack {
+- (void)kk_sendToBack {
     if (self.superview != nil) {
         [self.superview sendSubviewToBack:self];
     }
 }
 
-- (nullable UIViewController *)viewController {
-    return (UIViewController *)[self traverseResponderChainForUIViewController];
+- (nullable UIViewController *)kk_viewController {
+    return (UIViewController *)[self kk_traverseResponderChainForUIViewController];
 }
 
-- (nullable id)traverseResponderChainForUIViewController {
+- (nullable id)kk_traverseResponderChainForUIViewController {
     id nextResponder = [self nextResponder];
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         return nextResponder;
     } else if ([nextResponder isKindOfClass:[UIView class]]) {
-        return [nextResponder traverseResponderChainForUIViewController];
+        return [nextResponder kk_traverseResponderChainForUIViewController];
     } else {
         return nil;
     }
@@ -362,18 +362,19 @@
  @param endHexColor 结束颜色
  @return 结果
  */
-- (id)initWithFrame:(CGRect)frame startHexColor:(nullable NSString*)startHexColor
+- (id)initWithFrame:(CGRect)frame
+      startHexColor:(nullable NSString*)startHexColor
         endHexColor:(nullable NSString*)endHexColor{
     
     self = [self initWithFrame:frame];
     if (self) {
         if (startHexColor && endHexColor) {
             CAGradientLayer *gLayer = [CAGradientLayer layer];
-            gLayer.tag = CAGradientLayerTag;
+            gLayer.kk_tag = CAGradientLayerTag;
             gLayer.frame = self.bounds;
             gLayer.colors =     [NSArray arrayWithObjects:
-                                 (id)[UIColor colorWithHexString:startHexColor].CGColor,
-                                 (id)[UIColor colorWithHexString:endHexColor].CGColor, nil];
+                                 (id)[UIColor kk_colorWithHexString:startHexColor].CGColor,
+                                 (id)[UIColor kk_colorWithHexString:endHexColor].CGColor, nil];
             
             [self.layer insertSublayer:gLayer atIndex:0];
 
@@ -385,19 +386,19 @@
     return self;
 }
 
-- (void)setBackgroundColorFromColor:(nullable UIColor*)startUIColor
-                            toColor:(nullable UIColor*)endUIColor
-                          direction:(UIViewGradientColorDirection)direction{
+- (void)kk_setBackgroundColorFromColor:(nullable UIColor*)startUIColor
+                               toColor:(nullable UIColor*)endUIColor
+                             direction:(UIViewGradientColorDirection)direction{
     
     if (! (startUIColor && endUIColor)) {
         return;
     }
     
-    CALayer *layer = [self.layer layerWithTag:CAGradientLayerTag];
+    CALayer *layer = [self.layer kk_layerWithTag:CAGradientLayerTag];
     [layer removeFromSuperlayer];
     
     CAGradientLayer *gLayer = [CAGradientLayer layer];
-    gLayer.tag = CAGradientLayerTag;
+    gLayer.kk_tag = CAGradientLayerTag;
     gLayer.colors =     [NSArray arrayWithObjects:
                          (id)startUIColor.CGColor,
                          (id)endUIColor.CGColor, nil];
@@ -430,25 +431,25 @@
 #pragma mark ==================================================
 #pragma mark == 设置遮罩相关UIBezierPath
 #pragma mark ==================================================
-@dynamic bezierPath;
+@dynamic kk_bezierPath;
 
-- (void)setBezierPath:(UIBezierPath *)bezierPath{
-    objc_setAssociatedObject(self, @"bezierPath", bezierPath, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setKk_bezierPath:(UIBezierPath *)kk_bezierPath{
+    objc_setAssociatedObject(self, @"kk_bezierPath", kk_bezierPath, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (UIBezierPath *)bezierPath {
-    return objc_getAssociatedObject(self, @"bezierPath");
+- (UIBezierPath *)kk_bezierPath {
+    return objc_getAssociatedObject(self, @"kk_bezierPath");
 }
 
-- (void)setMaskWithPath:(nullable UIBezierPath*)path {
-    [self setMaskWithPath:path borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
+- (void)kk_setMaskWithPath:(nullable UIBezierPath*)path {
+    [self kk_setMaskWithPath:path borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
 }
 
-- (void)setMaskWithPath:(nullable UIBezierPath*)path
-            borderColor:(nullable UIColor*)borderColor
-            borderWidth:(float)borderWidth{
+- (void)kk_setMaskWithPath:(nullable UIBezierPath*)path
+               borderColor:(nullable UIColor*)borderColor
+               borderWidth:(float)borderWidth{
     
-    self.bezierPath = path;
+    self.kk_bezierPath = path;
     
     //路径
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
@@ -460,11 +461,11 @@
     //边框
     if (borderColor && borderWidth>0) {
 
-        CALayer *layer =  [self.layer layerWithTag:2018111101];
+        CALayer *layer =  [self.layer kk_layerWithTag:2018111101];
         [layer removeFromSuperlayer];
 
         CAShapeLayer *maskBorderLayer = [[CAShapeLayer alloc] init];
-        maskBorderLayer.tag = 2018111101;
+        maskBorderLayer.kk_tag = 2018111101;
         maskBorderLayer.path = [path CGPath];
         maskBorderLayer.fillColor = [[UIColor clearColor] CGColor];
         maskBorderLayer.strokeColor = [borderColor CGColor];
@@ -473,12 +474,12 @@
     }
 }
 
-- (BOOL)containsPoint:(CGPoint)point{
-    if (self.bezierPath) {
-        return [[self bezierPath] containsPoint:point];
+- (BOOL)kk_containsPoint:(CGPoint)point{
+    if (self.kk_bezierPath) {
+        return [[self kk_bezierPath] containsPoint:point];
     }
     else{
-        return [self containsPoint:point];
+        return [self kk_containsPoint:point];
     }
 }
 
@@ -488,7 +489,7 @@
 /*
  这个实现方法里maskToBounds会触发离屏渲染(offscreen rendering)，GPU在当前屏幕缓冲区外新开辟一个渲染缓冲区进行工作，也就是离屏渲染，这会给我们带来额外的性能损耗，如果这样的圆角操作达到一定数量，会触发缓冲区的频繁合并和上下文的的频繁切换，性能的代价会宏观地表现在用户体验上<掉帧>不建议使用.
  */
-- (void)setCornerRadius:(CGFloat)radius {    
+- (void)kk_setCornerRadius:(CGFloat)radius {
     //只需要设置layer层的两个属性
     //设置圆角
     self.layer.cornerRadius = radius;
@@ -497,31 +498,31 @@
     //    [self setCornerRadius:radius type:KKCornerRadiusType_All];
 }
 
-- (void)setCornerRadius:(CGFloat)radius
-                   type:(KKCornerRadiusType)aType{
+- (void)kk_setCornerRadius:(CGFloat)radius
+                      type:(KKCornerRadiusType)aType{
     //边框
-    CAShapeLayer *layer =  (CAShapeLayer*)[self.layer layerWithTag:2018111101];
+    CAShapeLayer *layer =  (CAShapeLayer*)[self.layer kk_layerWithTag:2018111101];
     if (layer) {
-        [self setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:layer.strokeColor] borderWidth:layer.lineWidth];
+        [self kk_setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:layer.strokeColor] borderWidth:layer.lineWidth];
     }
     else{
         CGFloat borderWidth = self.layer.borderWidth;
         if (borderWidth>0.2) {
-            NSString *borderColor = [UIColor hexStringFromColor:[UIColor colorWithCGColor:self.layer.borderColor]];
-            [self setBorderColor:nil width:0];
-            [self setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
-            [self setBorderColor:[UIColor colorWithHexString:borderColor] width:borderWidth];
+            NSString *borderColor = [UIColor kk_hexStringFromColor:[UIColor colorWithCGColor:self.layer.borderColor]];
+            [self kk_setBorderColor:nil width:0];
+            [self kk_setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
+            [self kk_setBorderColor:[UIColor kk_colorWithHexString:borderColor] width:borderWidth];
         }
         else{
-            [self setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
+            [self kk_setCornerRadius:radius type:aType borderColor:[UIColor colorWithCGColor:self.layer.borderColor] borderWidth:self.layer.borderWidth];
         }
     }
 }
 
-- (void)setCornerRadius:(CGFloat)radius
-                   type:(KKCornerRadiusType)aType
-            borderColor:(nullable UIColor*)borderColor
-            borderWidth:(float)borderWidth{
+- (void)kk_setCornerRadius:(CGFloat)radius
+                      type:(KKCornerRadiusType)aType
+               borderColor:(nullable UIColor*)borderColor
+               borderWidth:(float)borderWidth{
 
     KKCornerRadiusType inType = aType;
     if (inType==KKCornerRadiusType_All) {
@@ -608,17 +609,17 @@
         [bezierPath closePath];
     }
     
-    [self setMaskWithPath:bezierPath borderColor:borderColor borderWidth:borderWidth];
+    [self kk_setMaskWithPath:bezierPath borderColor:borderColor borderWidth:borderWidth];
 }
 
 
 #pragma mark ==================================================
 #pragma mark == 设置边框（①如果有另外UIBezierPath、设置遮罩，②否则就设置默认）
 #pragma mark ==================================================
-- (void)setBorderColor:(nullable UIColor *)color
-                 width:(CGFloat)width {
-    if (self.bezierPath) {
-        [self setMaskWithPath:self.bezierPath borderColor:color borderWidth:width];
+- (void)kk_setBorderColor:(nullable UIColor *)color
+                    width:(CGFloat)width {
+    if (self.kk_bezierPath) {
+        [self kk_setMaskWithPath:self.kk_bezierPath borderColor:color borderWidth:width];
     }
     else{
         [self.layer setBorderWidth:width];
@@ -629,11 +630,11 @@
 #pragma mark ==================================================
 #pragma mark == 设置阴影
 #pragma mark ==================================================
-- (void)setShadowColor:(nullable UIColor *)color
-               opacity:(CGFloat)opacity
-                offset:(CGSize)offset
-            blurRadius:(CGFloat)blurRadius
-            shadowPath:(nullable CGPathRef)shadowPath{
+- (void)kk_setShadowColor:(nullable UIColor *)color
+                  opacity:(CGFloat)opacity
+                   offset:(CGSize)offset
+               blurRadius:(CGFloat)blurRadius
+               shadowPath:(nullable CGPathRef)shadowPath{
     
     /*通过设置1.2.3步导航阴影就可以出现,如果对阴影有特别的需要,可再设置4.5这两个步骤.*/
     
@@ -663,9 +664,9 @@
  @param lineWidth 虚线的宽度
  @param lineDashPattern 虚线的间隔
  */
-- (void)setDottedLineWithStrokeColor:(UIColor *)strokeColor
-                           lineWidth:(CGFloat)lineWidth
-                     lineDashPattern:(NSArray<NSNumber *> *)lineDashPattern{
+- (void)kk_setDottedLineWithStrokeColor:(UIColor *)strokeColor
+                              lineWidth:(CGFloat)lineWidth
+                        lineDashPattern:(NSArray<NSNumber *> *)lineDashPattern{
     
     CAShapeLayer *border = [CAShapeLayer layer];
     
@@ -691,106 +692,106 @@
 #pragma mark ==================================================
 #pragma mark == frame相关
 #pragma mark ==================================================
-- (CGPoint) topLeft{
+- (CGPoint)kk_topLeft{
     CGFloat x = self.frame.origin.x;
     CGFloat y = self.frame.origin.y;
     return CGPointMake(x, y);
 }
 
-- (CGPoint) topRight{
+- (CGPoint)kk_topRight{
     CGFloat x = self.frame.origin.x + self.frame.size.width;
     CGFloat y = self.frame.origin.y;
     return CGPointMake(x, y);
 }
 
-- (CGPoint) bottomLeft{
+- (CGPoint)kk_bottomLeft{
     CGFloat x = self.frame.origin.x;
     CGFloat y = self.frame.origin.y + self.frame.size.height;
     return CGPointMake(x, y);
 }
 
-- (CGPoint) bottomRight{
+- (CGPoint)kk_bottomRight{
     CGFloat x = self.frame.origin.x + self.frame.size.width;
     CGFloat y = self.frame.origin.y + self.frame.size.height;
     return CGPointMake(x, y);
 }
 
-- (CGFloat) width{
+- (CGFloat)kk_width{
     return self.frame.size.width;
 }
 
-- (void) setWidth: (CGFloat) newwidth{
+- (void)kk_setWidth: (CGFloat) newwidth{
     CGRect newframe = self.frame;
     newframe.size.width = newwidth;
     self.frame = newframe;
 }
 
-- (CGFloat) height{
+- (CGFloat)kk_height{
     return self.frame.size.height;
 }
 
-- (void) setHeight: (CGFloat) newheight{
+- (void)kk_setHeight: (CGFloat) newheight{
     CGRect newframe = self.frame;
     newframe.size.height = newheight;
     self.frame = newframe;
 }
 
-- (CGFloat) left{
+- (CGFloat)kk_left{
     return self.frame.origin.x;
 }
 
-- (void) setLeft: (CGFloat) newleft{
+- (void)kk_setLeft: (CGFloat) newleft{
     CGRect newframe = self.frame;
     newframe.origin.x = newleft;
     self.frame = newframe;
 }
 
-- (CGFloat) right{
+- (CGFloat)kk_right{
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void) setRight: (CGFloat) newright{
+- (void)kk_setRight: (CGFloat) newright{
     CGFloat delta = newright - (self.frame.origin.x + self.frame.size.width);
     CGRect newframe = self.frame;
     newframe.origin.x += delta ;
     self.frame = newframe;
 }
 
-- (CGFloat) top{
+- (CGFloat)kk_top{
     return self.frame.origin.y;
 }
 
-- (void) setTop: (CGFloat) newtop{
+- (void)kk_setTop: (CGFloat) newtop{
     CGRect newframe = self.frame;
     newframe.origin.y = newtop;
     self.frame = newframe;
 }
 
-- (CGFloat) bottom{
+- (CGFloat)kk_bottom{
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void) setBottom: (CGFloat) newbottom{
+- (void)kk_setBottom: (CGFloat) newbottom{
     CGRect newframe = self.frame;
     newframe.origin.y = newbottom - self.frame.size.height;
     self.frame = newframe;
 }
 
-- (CGFloat)centerX{
+- (CGFloat)kk_centerX{
     return self.center.x;
 }
 
-- (void)setCenterX:(CGFloat)centerX{
+- (void)kk_setCenterX:(CGFloat)centerX{
     CGPoint center = self.center;
     center.x = centerX;
     self.center = center;
 }
 
-- (CGFloat)centerY{
+- (CGFloat)kk_centerY{
     return self.center.y;
 }
 
-- (void)setCenterY:(CGFloat)centerY{
+- (void)kk_setCenterY:(CGFloat)centerY{
     CGPoint center = self.center;
     center.y = centerY;
     self.center = center;
@@ -799,7 +800,7 @@
 #pragma mark ==================================================
 #pragma mark == 缩放动画
 #pragma mark ==================================================
-- (void)showZoomAnimation{
+- (void)kk_showZoomAnimation{
     CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     
     animation.duration = 0.5;

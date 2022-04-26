@@ -28,98 +28,98 @@
  
  @return 日
  */
-- (NSUInteger)day;
+- (NSUInteger)kk_day;
 
 /**
  周（周一、周二、周三……）
  
  @return 周
  */
-- (NSUInteger)weekday;
+- (NSUInteger)kk_weekday;
 
 /**
  月份
  
  @return 月份
  */
-- (NSUInteger)month;
+- (NSUInteger)kk_month;
 
 /**
  年份
  
  @return 年份
  */
-- (NSUInteger)year;
+- (NSUInteger)kk_year;
 
 /**
  计算某个月的总天数
  
  @return 天数
  */
-- (NSUInteger)numberOfDaysInMonth;
+- (NSUInteger)kk_numberOfDaysInMonth;
 
 /**
  计算某个月的总周数
  
  @return 周数
  */
-- (NSUInteger)weeksOfMonth;
+- (NSUInteger)kk_weeksOfMonth;
 
 /**
  前一天
  
  @return 前一天
  */
-- (nullable NSDate *)previousDate;
+- (nullable NSDate *)kk_previousDate;
 
 /**
  后一天
  
  @return 后一天
  */
-- (nullable NSDate *)nextDate;
+- (nullable NSDate *)kk_nextDate;
 
 /**
  某周的第一天
  
  @return 某周的第一天
  */
-- (nullable NSDate *)firstDayOfWeek;
+- (nullable NSDate *)kk_firstDayOfWeek;
 
 /**
  某周的最后一天
  
  @return 某周的最后一天
  */
-- (nullable NSDate *)lastDayOfWeek;
+- (nullable NSDate *)kk_lastDayOfWeek;
 
 /**
  下一周的第一天
  
  @return 下一周的第一天
  */
-- (nullable NSDate *)firstDayOfNextWeek;
+- (nullable NSDate *)kk_firstDayOfNextWeek;
 
 /**
  下一周的最后一天
  
  @return 下一周的最后一天
  */
-- (nullable NSDate *)lastDayOfNextWeek;
+- (nullable NSDate *)kk_lastDayOfNextWeek;
 
 /**
  某月的第一天
  
  @return 某月的第一天
  */
-- (nullable NSDate *)firstDayOfMonth;
+- (nullable NSDate *)kk_firstDayOfMonth;
 
 /**
  某月的最后一天
  
  @return 某月的最后一天
  */
-- (nullable NSDate *)lastDayOfMonth;
+- (nullable NSDate *)kk_lastDayOfMonth;
 
 
 /**
@@ -127,21 +127,21 @@
  
  @return 某个月的第一天是周几？
  */
-- (NSUInteger)weekdayOfFirstDayInMonth;
+- (NSUInteger)kk_weekdayOfFirstDayInMonth;
 
 /**
  某个月的上个月的第一天？
  
  @return 某个月的上个月的第一天？
  */
-- (nullable NSDate *)firstDayOfPreviousMonth;
+- (nullable NSDate *)kk_firstDayOfPreviousMonth;
 
 /**
  某个月的下个月的第一天？
  
  @return 某个月的下个月的第一天？
  */
-- (nullable NSDate *)firstDayOfNextMonth;
+- (nullable NSDate *)kk_firstDayOfNextMonth;
 
 
 /**
@@ -149,28 +149,28 @@
  
  @return 某个季度的第一天
  */
-- (nullable NSDate *)firstDayOfQuarter;
+- (nullable NSDate *)kk_firstDayOfQuarter;
 
 /**
  某个季度的最后一天
  
  @return 某个季度的最后一天
  */
-- (nullable NSDate *)lastDayOfQuarter;
+- (nullable NSDate *)kk_lastDayOfQuarter;
 
 /**
  下个月的第一天
  
  @return 下个月的第一天
  */
-- (nullable NSDate *)theDayOfNextMonth;
+- (nullable NSDate *)kk_theDayOfNextMonth;
 
 /**
  下周的第一天
  
  @return 下周的第一天
  */
-- (nullable NSDate *)theDayOfNextWeek;
+- (nullable NSDate *)kk_theDayOfNextWeek;
 
 /**
  返回指定日期格式的字符串
@@ -178,7 +178,7 @@
  @param formatterString 日期格式
  @return 结果
  */
-+ (nullable NSString*)getStringWithFormatter:(nullable NSString*)formatterString;
++ (nullable NSString*)kk_getStringWithFormatter:(nullable NSString*)formatterString;
 
 
 /**
@@ -188,8 +188,8 @@
  @param formatterString 需要转换成的日期格式
  @return 结果
  */
-+ (nullable NSString*)getStringFromDate:(nullable NSDate*)date
-                          dateFormatter:(nullable NSString*)formatterString;
++ (nullable NSString*)kk_getStringFromDate:(nullable NSDate*)date
+                             dateFormatter:(nullable NSString*)formatterString;
 
 
 /**
@@ -199,8 +199,8 @@
  @param formatterString 日期字符串的格式
  @return 日期
  */
-+ (nullable NSDate*)getDateFromString:(nullable NSString*)string
-                        dateFormatter:(nullable NSString*)formatterString;
++ (nullable NSDate*)kk_getDateFromString:(nullable NSString*)string
+                           dateFormatter:(nullable NSString*)formatterString;
 
 
 /**
@@ -211,7 +211,7 @@
  @return 结果
  
  */
-+ (BOOL)isDate:(nullable NSDate*)date01 earlierThanDate:(nullable NSDate*)date02;
++ (BOOL)kk_isDate:(nullable NSDate*)date01 earlierThanDate:(nullable NSDate*)date02;
 
 /**
  时间1 是否 > 时间2
@@ -220,7 +220,7 @@
  @param date02 时间2
  @return YES NO
  */
-+ (BOOL)isDate:(nullable NSDate*)date01 laterThanDate:(nullable NSDate*)date02;
++ (BOOL)kk_isDate:(nullable NSDate*)date01 laterThanDate:(nullable NSDate*)date02;
 
 /**
  将日期字符串转换成日期
@@ -232,17 +232,17 @@
  #define KKDateFormatter04 @"yyyy-MM-dd"
  @return 日期
  */
-+ (nullable NSDate *)dateFromString:(NSString*_Nullable)aString;
++ (nullable NSDate *)kk_dateFromString:(NSString*_Nullable)aString;
 
 /* 代码调试的时候，执行的时间。返回格式 @"yyyy-MM-dd HH:mm:ss SSS" */
-+ (NSString*_Nonnull)timeFormateStringForDebugCodeExecution;
++ (NSString*_Nonnull)kk_timeFormateStringForDebugCodeExecution;
 
 /* 代码调试的时候，执行的时间。返回格式 @"HHmmssSSS" */
-+ (NSString*_Nonnull)timestampStringForDebugCodeExecution;
++ (NSString*_Nonnull)kk_timestampStringForDebugCodeExecution;
 
-+ (NSString*_Nonnull)timeDurationFormatFullString:(NSTimeInterval)timeInterval;
++ (NSString*_Nonnull)kk_timeDurationFormatFullString:(NSTimeInterval)timeInterval;
 
-+ (NSString*_Nonnull)timeDurationFormatShortString:(NSTimeInterval)timeInterval;
++ (NSString*_Nonnull)kk_timeDurationFormatShortString:(NSTimeInterval)timeInterval;
 
 
 @end

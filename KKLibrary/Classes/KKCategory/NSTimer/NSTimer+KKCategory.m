@@ -10,18 +10,18 @@
 
 @implementation NSTimer (KKCategory)
 
-+ (NSTimer *_Nullable)scheduledTimerWithTimeInterval:(NSTimeInterval)interval
-                                               block:(void(^_Nullable)(void))block
-                                             repeats:(BOOL)repeats{
++ (NSTimer *_Nullable)kk_scheduledTimerWithTimeInterval:(NSTimeInterval)interval
+                                                  block:(void(^_Nullable)(void))block
+                                                repeats:(BOOL)repeats{
     NSTimer *timer = [self scheduledTimerWithTimeInterval:interval
                                                    target:self
-                                                 selector:@selector(blockInvoke:)
+                                                 selector:@selector(kk_blockInvoke:)
                                                  userInfo:block
                                                   repeats:repeats];
     return timer;
 }
 
-+ (void)blockInvoke:(NSTimer *)timer {
++ (void)kk_blockInvoke:(NSTimer *)timer {
     void (^block)(void) = timer.userInfo;
     if (block) {
         block();

@@ -10,9 +10,9 @@
 
 @interface UIScrollView (KKCategory)
 
-- (void)scrollToTopWithAnimated:(BOOL)animated;
+- (void)kk_scrollToTopWithAnimated:(BOOL)animated;
 
-- (void)scrollToBottomWithAnimated:(BOOL)animated;
-- (void)scrollToBottomWithAnimated:(BOOL)animated afterDelay:(CGFloat)delay;
+- (void)kk_scrollToBottomWithAnimated:(BOOL)animated;
+- (void)kk_scrollToBottomWithAnimated:(BOOL)animated afterDelay:(CGFloat)delay;
 
 @end

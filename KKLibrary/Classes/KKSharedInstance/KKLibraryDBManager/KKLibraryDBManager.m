@@ -69,7 +69,7 @@
     //拷贝已经存在的（内置）数据库文件 到 document目录下
     NSFileManager* file = [NSFileManager defaultManager];
     if (![file fileExistsAtPath:dbPath]) {
-        NSString* path = [[NSBundle kkLibraryBundle] pathForResource:KKLibraryDBManager_DBName ofType:nil];
+        NSString* path = [[NSBundle kk_kkLibraryBundle] pathForResource:KKLibraryDBManager_DBName ofType:nil];
         NSError* error = nil;
         [file copyItemAtPath:path toPath:dbPath error:&error];
     }
@@ -233,10 +233,10 @@
                     [ParameterDictionary setObject:(NSString*)value forKey:columnName];
                 }
                 else if (value && [value isKindOfClass:[NSDictionary class]]){
-                    [ParameterDictionary setObject:(NSString*)[(NSDictionary*)value translateToJSONString] forKey:columnName];
+                    [ParameterDictionary setObject:(NSString*)[(NSDictionary*)value kk_translateToJSONString] forKey:columnName];
                 }
                 else if (value && [value isKindOfClass:[NSArray class]]){
-                    [ParameterDictionary setObject:(NSString*)[(NSArray*)value translateToJSONString] forKey:columnName];
+                    [ParameterDictionary setObject:(NSString*)[(NSArray*)value kk_translateToJSONString] forKey:columnName];
                 }
                 else if (value && [value isKindOfClass:[NSNumber class]]){
                     [ParameterDictionary setObject:[(NSNumber*)value stringValue] forKey:columnName];

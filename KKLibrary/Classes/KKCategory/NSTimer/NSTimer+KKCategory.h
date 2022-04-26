@@ -32,8 +32,8 @@
  *
  *
  *************************************************************/
-+ (NSTimer *_Nullable)scheduledTimerWithTimeInterval:(NSTimeInterval)interval
-                                               block:(void(^_Nullable)(void))block
-                                             repeats:(BOOL)repeats;
++ (NSTimer *_Nullable)kk_scheduledTimerWithTimeInterval:(NSTimeInterval)interval
+                                                  block:(void(^_Nullable)(void))block
+                                                repeats:(BOOL)repeats;
 
 @end

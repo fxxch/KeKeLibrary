@@ -20,7 +20,7 @@
  @param from 截取起始位置
  @return 截取的子字符串
  */
-- (NSString *)substringFromIndex_Safe:(NSUInteger)from {
+- (NSString *)kk_substringFromIndex_Safe:(NSUInteger)from {
     if (from > self.length ) {
         return nil;
     }
@@ -35,7 +35,7 @@
  @param to 截取终点位置
  @return 返回截取的字符串
  */
-- (NSString *)substringToIndex_Safe:(NSUInteger)to {
+- (NSString *)kk_substringToIndex_Safe:(NSUInteger)to {
     if (to > self.length ) {
         return nil;
     }
@@ -54,10 +54,10 @@
  @param locale 本地化
  @return 返回搜索到的字符串 范围
  */
-- (NSRange)rangeOfString_Safe:(NSString *)searchString
-                      options:(NSStringCompareOptions)mask
-                        range:(NSRange)rangeOfReceiverToSearch
-                       locale:(nullable NSLocale *)locale {
+- (NSRange)kk_rangeOfString_Safe:(NSString *)searchString
+                         options:(NSStringCompareOptions)mask
+                           range:(NSRange)rangeOfReceiverToSearch
+                          locale:(nullable NSLocale *)locale {
     if (!searchString) {
         searchString = self;
     }
@@ -87,7 +87,7 @@
  @param range 指定的范围
  @return 返回截取的字符串
  */
-- (NSString *)substringWithRange_Safe:(NSRange)range {
+- (NSString *)kk_substringWithRange_Safe:(NSRange)range {
     if (range.location > self.length) {
         return nil;
     }
@@ -109,7 +109,7 @@
  
  @param aString 追加的字符串
  */
-- (void)appendString_Safe:(NSString *)aString {
+- (void)kk_appendString_Safe:(NSString *)aString {
     if (!aString) {
         return;
     }

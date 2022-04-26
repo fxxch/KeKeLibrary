@@ -9,7 +9,6 @@
 #import "NSObject+KKCategory.h"
 #import <objc/runtime.h>
 #import "NSString+KKCategory.h"
-#import "KKThemeManager.h"
 #import "KKFileCacheManager.h"
 #import "UIImage+KKCategory.h"
 
@@ -28,10 +27,10 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  @param name 通知名称
  @param selector 处理事件
  */
-- (void)observeNotification:(nullable NSString *)name
-                   selector:(nullable SEL)selector {
+- (void)kk_observeNotification:(nullable NSString *)name
+                      selector:(nullable SEL)selector {
     if (name && selector) {
-        [self unobserveNotification:name];
+        [self kk_unobserveNotification:name];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:selector
                                                      name:name
@@ -45,8 +44,8 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param name 通知名称
  */
-- (void)unobserveNotification:(nullable NSString *)name {
-    if ([NSString isStringNotEmpty:name]) {
+- (void)kk_unobserveNotification:(nullable NSString *)name {
+    if ([NSString kk_isStringNotEmpty:name]) {
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:name
                                                       object:nil];
@@ -57,7 +56,7 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  取消所有监听通知
  
  */
-- (void)unobserveAllNotification {
+- (void)kk_unobserveAllNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -66,9 +65,9 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param name 通知名称
  */
-- (void)postNotification:(nullable NSString *)name {
-    if ([NSString isStringNotEmpty:name]) {
-        [self postNotification:name object:nil];
+- (void)kk_postNotification:(nullable NSString *)name {
+    if ([NSString kk_isStringNotEmpty:name]) {
+        [self kk_postNotification:name object:nil];
     }
 }
 
@@ -78,9 +77,9 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  @param name 通知名称
  @param object 对象
  */
-- (void)postNotification:(nullable NSString *)name
-                  object:(nullable id)object {
-    if ([NSString isStringNotEmpty:name]) {
+- (void)kk_postNotification:(nullable NSString *)name
+                     object:(nullable id)object {
+    if ([NSString kk_isStringNotEmpty:name]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:name object:object];
     }
 }
@@ -92,64 +91,13 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  @param object 对象
  @param userInfo 信息
  */
-- (void)postNotification:(nullable NSString *)name
-                  object:(nullable id)object
-                userInfo:(nullable NSDictionary *)userInfo {
-    if ([NSString isStringNotEmpty:name]) {
+- (void)kk_postNotification:(nullable NSString *)name
+                     object:(nullable id)object
+                   userInfo:(nullable NSDictionary *)userInfo {
+    if ([NSString kk_isStringNotEmpty:name]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:name object:object userInfo:userInfo];
     }
 }
-
-#pragma mark ==================================================
-#pragma mark == 主题通知
-#pragma mark ==================================================
-/**
- 监听主题修改通知
- */
-- (void)observeThemeChangeNotification {
-    [self changeTheme];
-    [self observeNotification:NotificationThemeDidChange selector:@selector(changeTheme)];
-}
-
-/**
- 取消监听主题修改通知
- */
-- (void)unobserveThemeChangeNotification {
-    [self unobserveNotification:NotificationThemeDidChange];
-}
-
-/**
- 主题修改
- */
-- (void)changeTheme {
-    //在ViewController、view中重写
-}
-
-#pragma mark ==================================================
-#pragma mark == 语言通知
-#pragma mark ==================================================
-/**
- 监听语言修改通知
- */
-- (void)observeLocalizationChangeNotification {
-    [self changeLocalization];
-    [self observeNotification:NotificationLocalizationDidChange selector:@selector(changeLocalization)];
-}
-
-/**
- 取消监听语言修改通知
- */
-- (void)unobserveLocalizationChangeNotification {
-    [self unobserveNotification:NotificationLocalizationDidChange];
-}
-
-/**
- 语言修改
- */
-- (void)changeLocalization {
-    //在ViewController、view中重写
-}
-
 
 #pragma mark ==================================================
 #pragma mark == 调用苹果系统应用的方法，打电话、发邮件、发短信、打开URL等
@@ -159,7 +107,7 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param url url
  */
-- (void)openURL:(nullable NSURL *)url {
+- (void)kk_openURL:(nullable NSURL *)url {
 
     NSDictionary *options = [NSDictionary dictionary];
     [[UIApplication sharedApplication] openURL:url options:options completionHandler:^(BOOL success) {
@@ -173,9 +121,9 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param mail mail
  */
-- (void)sendMail:(nullable NSString *)mail {
+- (void)kk_sendMail:(nullable NSString *)mail {
     NSString *url = [NSString stringWithFormat:@"mailto://%@", mail];
-    [self openURL:[NSURL URLWithString:url]];
+    [self kk_openURL:[NSURL URLWithString:url]];
 }
 
 /**
@@ -183,9 +131,9 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param number number
  */
-- (void)sendSMS:(nullable NSString *)number {
+- (void)kk_sendSMS:(nullable NSString *)number {
     NSString *url = [NSString stringWithFormat:@"sms://%@", number];
-    [self openURL:[NSURL URLWithString:url]];
+    [self kk_openURL:[NSURL URLWithString:url]];
 }
 
 /**
@@ -193,9 +141,9 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
  
  @param number number
  */
-- (void)callNumber:(nullable NSString *)number {
+- (void)kk_callNumber:(nullable NSString *)number {
     NSString *url = [NSString stringWithFormat:@"tel://%@", number];
-    [self openURL:[NSURL URLWithString:url]];
+    [self kk_openURL:[NSURL URLWithString:url]];
 }
 
 
@@ -207,7 +155,7 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
 
  @return Logo图片
  */
-+(UIImage*)appIconImage{
++(UIImage*)kk_appIconImage{
     NSDictionary *mainBundle_infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSDictionary *CFBundleIcons = [mainBundle_infoDictionary objectForKey:@"CFBundleIcons"];
     NSDictionary *CFBundlePrimaryIcon = [CFBundleIcons objectForKey:@"CFBundlePrimaryIcon"];
@@ -221,41 +169,6 @@ NSAttributedStringKey const NotificationLocalizationDidChange = @"NotificationLo
     }
     
     return [UIImage imageNamed:fileName];
-}
-
-/**
- 返回占位图片
- 
- @return 占位图片
- */
-+(UIImage*)defaultImage{
-    return KKThemeImage(@"placeholder_image");
-}
-
-/**
- 返回占位图片
- 
- @param aSize 需要多大的图片
- @return 占位图片
- */
-+(UIImage*)defaultImage_withSize:(CGSize)aSize{
-//    NSDictionary *mainBundle_infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    NSDictionary *CFBundleIcons = [mainBundle_infoDictionary objectForKey:@"CFBundleIcons"];
-//    NSDictionary *CFBundlePrimaryIcon = [CFBundleIcons objectForKey:@"CFBundlePrimaryIcon"];
-//    NSArray *CFBundleIconFiles = [CFBundlePrimaryIcon objectForKey:@"CFBundleIconFiles"];
-//    NSString *fileName = nil;
-//    if (CFBundleIconFiles && [CFBundleIconFiles count]>0) {
-//        fileName = [CFBundleIconFiles lastObject];
-//    }
-//    if (!fileName) {
-//        fileName = @"icon180";
-//    }
-//
-//    return [UIImage imageNamed:fileName];
-    
-    UIImage *image = KKThemeImage(@"placeholder_image");
-    
-    return [image imageByScalingProportionallyToSize:aSize];
 }
 
 

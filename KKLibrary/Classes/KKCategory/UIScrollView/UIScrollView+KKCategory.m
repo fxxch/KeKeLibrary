@@ -10,19 +10,19 @@
 
 @implementation UIScrollView (KKCategory)
 
-- (void)scrollToTopWithAnimated:(BOOL)animated{
+- (void)kk_scrollToTopWithAnimated:(BOOL)animated{
     [self setContentOffset:CGPointMake(0, 0) animated:animated];
 }
 
-- (void)scrollToBottomWithAnimated:(BOOL)animated{
-    [self performSelector:@selector(scrollToBottomWithAnimated_20151211:) withObject:[NSNumber numberWithBool:animated]];
+- (void)kk_scrollToBottomWithAnimated:(BOOL)animated{
+    [self performSelector:@selector(kk_scrollToBottomWithAnimated_20151211:) withObject:[NSNumber numberWithBool:animated]];
 }
 
-- (void)scrollToBottomWithAnimated:(BOOL)animated afterDelay:(CGFloat)delay{
-    [self performSelector:@selector(scrollToBottomWithAnimated_20151211:) withObject:[NSNumber numberWithBool:animated] afterDelay:delay];
+- (void)kk_scrollToBottomWithAnimated:(BOOL)animated afterDelay:(CGFloat)delay{
+    [self performSelector:@selector(kk_scrollToBottomWithAnimated_20151211:) withObject:[NSNumber numberWithBool:animated] afterDelay:delay];
 }
 
-- (void)scrollToBottomWithAnimated_20151211:(NSNumber*)animated{
+- (void)kk_scrollToBottomWithAnimated_20151211:(NSNumber*)animated{
     
     CGFloat contentSizeHeight = 0;
     if ([self isKindOfClass:[UICollectionView class]]) {

@@ -18,8 +18,8 @@
 + (BOOL)DBInsert_KKUserDefaults_WithUserIdentifier:(NSString*_Nullable)aUserIdentifier
                                                key:(NSString*_Nullable)aKey
                                                value:(NSString*_Nullable)aValue{
-    if ([NSString isStringEmpty:aKey] ||
-        [NSString isStringEmpty:aValue] ) {
+    if ([NSString kk_isStringEmpty:aKey] ||
+        [NSString kk_isStringEmpty:aValue] ) {
         return NO;
     }
 
@@ -27,7 +27,7 @@
                                                                     key:aKey];
 
     NSMutableDictionary *aInformation = [NSMutableDictionary dictionary];
-    if ([NSString isStringNotEmpty:aUserIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aUserIdentifier]) {
         [aInformation setObject:aUserIdentifier forKey:Table_KKUserDefaultsManager_user_identifier];
     } else {
         [aInformation setObject:@"" forKey:Table_KKUserDefaultsManager_user_identifier];
@@ -46,11 +46,11 @@
  */
 + (NSString*_Nullable)DBQuery_KKUserDefaults_WithUserIdentifier:(NSString*_Nullable)aUserIdentifier
                                                             key:(NSString*_Nullable)aKey{
-    if ([NSString isStringEmpty:aKey]) {
+    if ([NSString kk_isStringEmpty:aKey]) {
         return nil;
     }
 
-    if ([NSString isStringNotEmpty:aUserIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aUserIdentifier]) {
         NSString *selectSql = [NSString stringWithFormat:@" SELECT * FROM %@ "
                                " where %@ = ? and %@ = ?",TableName_KKUserDefaultsManager,Table_KKUserDefaultsManager_user_identifier,Table_KKUserDefaultsManager_key];
 
@@ -65,7 +65,7 @@
             [rs close];
         }];
 
-        return [dic validStringForKey:Table_KKUserDefaultsManager_value];
+        return [dic kk_validStringForKey:Table_KKUserDefaultsManager_value];
     } else {
         NSString *selectSql = [NSString stringWithFormat:@" SELECT * FROM %@ "
                                " where %@ = ?",TableName_KKUserDefaultsManager,Table_KKUserDefaultsManager_key];
@@ -81,7 +81,7 @@
             [rs close];
         }];
 
-        return [dic validStringForKey:Table_KKUserDefaultsManager_value];
+        return [dic kk_validStringForKey:Table_KKUserDefaultsManager_value];
     }
 }
 
@@ -90,11 +90,11 @@
  */
 + (BOOL)DBDelete_KKUserDefaults_WithUserIdentifier:(NSString*_Nullable)aUserIdentifier
                                                key:(NSString*_Nullable)aKey{
-    if ([NSString isStringEmpty:aKey]) {
+    if ([NSString kk_isStringEmpty:aKey]) {
         return NO;
     }
 
-    if ([NSString isStringNotEmpty:aUserIdentifier]) {
+    if ([NSString kk_isStringNotEmpty:aUserIdentifier]) {
         __block BOOL result = NO;
 
         NSString *deleteSql = [NSString stringWithFormat:@"Delete From %@ "
@@ -147,7 +147,7 @@
  删除消息
  */
 + (BOOL)DBDelete_KKUserDefaults_WithUserIdentifier:(NSString*_Nullable)aUserIdentifier{
-    if ([NSString isStringEmpty:aUserIdentifier]) {
+    if ([NSString kk_isStringEmpty:aUserIdentifier]) {
         return NO;
     }
 

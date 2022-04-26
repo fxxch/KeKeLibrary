@@ -11,8 +11,8 @@
 
 @interface CALayer (KKCategory)
 
-@property (nonatomic,assign) NSInteger tag;
+@property (nonatomic,assign) NSInteger kk_tag;
 
-- (CALayer *)layerWithTag:(NSInteger)tag;
+- (CALayer *)kk_layerWithTag:(NSInteger)tag;
 
 @end

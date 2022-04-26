@@ -26,12 +26,12 @@ typedef NS_ENUM(NSInteger, ButtonContentTitlePosition) {
 
 @interface UIButton (KKCategory)
 
-- (void)setBackgroundColor:(nullable UIColor *)backgroundColor
-                  forState:(UIControlState)controlState;
+- (void)kk_setBackgroundColor:(nullable UIColor *)backgroundColor
+                     forState:(UIControlState)controlState;
 
-- (void)setBackgroundImage:(nullable UIImage *)image
-                  forState:(UIControlState)state
-               contentMode:(UIViewContentMode)contentMode;
+- (void)kk_setBackgroundImage:(nullable UIImage *)image
+                     forState:(UIControlState)state
+                  contentMode:(UIViewContentMode)contentMode;
 
 /**
  设置UIButton的图片和标题的对其方式
@@ -41,16 +41,16 @@ typedef NS_ENUM(NSInteger, ButtonContentTitlePosition) {
  aSpace 图片与标题之间是否留间隙，间隙大小
  aEdgeInsets 整体靠左、靠右对其的时候，是否要紧靠边缘。当aEdgeInsets的left、right为0的时候就是紧靠边缘
  */
-- (void)setButtonContentAlignment:(ButtonContentAlignment)contentAlignment
-         ButtonContentLayoutModal:(ButtonContentLayoutModal)contentLayoutModal
-       ButtonContentTitlePosition:(ButtonContentTitlePosition)contentTitlePosition
-        SapceBetweenImageAndTitle:(CGFloat)aSpace
-                       EdgeInsets:(UIEdgeInsets)aEdgeInsets;
+- (void)kk_setButtonContentAlignment:(ButtonContentAlignment)contentAlignment
+            buttonContentLayoutModal:(ButtonContentLayoutModal)contentLayoutModal
+          buttonContentTitlePosition:(ButtonContentTitlePosition)contentTitlePosition
+           sapceBetweenImageAndTitle:(CGFloat)aSpace
+                          edgeInsets:(UIEdgeInsets)aEdgeInsets;
 
 + (UIButton*_Nonnull)kk_initWithFrame:(CGRect)aFrame
-                        title:(NSString*_Nullable)aTitle
-                    titleFont:(UIFont*_Nullable)aFont
-                   titleColor:(UIColor*_Nullable)aTitleColor
-              backgroundColor:(UIColor*_Nullable)aBackgroundColor;
+                                title:(NSString*_Nullable)aTitle
+                            titleFont:(UIFont*_Nullable)aFont
+                           titleColor:(UIColor*_Nullable)aTitleColor
+                      backgroundColor:(UIColor*_Nullable)aBackgroundColor;
 
 @end

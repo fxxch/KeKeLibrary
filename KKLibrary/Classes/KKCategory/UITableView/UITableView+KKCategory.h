@@ -22,21 +22,21 @@ typedef NS_ENUM(NSInteger, TableViewCellPositionType){
  
  @param image image
  */
-- (void)setBackgroundImage:(nullable UIImage *)image;
+- (void)kk_setBackgroundImage:(nullable UIImage *)image;
 
 /**
  设置背景颜色
  
  @param color color
  */
-- (void)setBackgroundColor:(nullable UIColor *)color;
+- (void)kk_setBackgroundColor:(nullable UIColor *)color;
 
 /**
  设置行分割线
  
  @param image image
  */
-- (void)setSeparatorImage:(nullable UIImage *)image;
+- (void)kk_setSeparatorImage:(nullable UIImage *)image;
 
 /**
  当前行所处的位置
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, TableViewCellPositionType){
  @param indexPath indexPath
  @return TableViewCellPositionType
  */
-- (TableViewCellPositionType)tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath;
+- (TableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath;
 
 /**
  快速创建TableView
@@ -60,16 +60,4 @@ typedef NS_ENUM(NSInteger, TableViewCellPositionType){
                                   delegate:(_Nonnull id <UITableViewDelegate>)delegate
                                 datasource:(_Nonnull id<UITableViewDataSource>)datasource;
 
-
-/**
- 快速创建TableView
-
- @param style style
- @param delegate delegate
- @param datasource datasource
- @return UITableView
- */
-+ (instancetype _Nonnull )createNewTableWithstyle:(UITableViewStyle)style
-                                  delegate:(_Nonnull id <UITableViewDelegate>)delegate
-                                datasource:(_Nonnull id<UITableViewDataSource>)datasource;
 @end

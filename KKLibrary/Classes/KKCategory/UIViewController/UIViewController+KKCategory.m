@@ -90,23 +90,23 @@
         }
         method_exchangeImplementations(sys_Method_viewDidDisappear, my_Method_viewDidDisappear);
 
-        //presentViewController:animated:completion:
-        SEL sys_SEL_presentViewController = @selector(presentViewController:animated:completion:);
-        Method sys_Method_presentViewController = class_getInstanceMethod(self, sys_SEL_presentViewController);
-        SEL my_SEL_presentViewController = @selector(kk_presentViewController:animated:completion:);
-        Method my_Method_presentViewController = class_getInstanceMethod(self, my_SEL_presentViewController);
-        BOOL didAddMethod_presentViewController = class_addMethod([self class],
-                                                          sys_SEL_presentViewController,
-                                                          method_getImplementation(my_Method_presentViewController),
-                                                          method_getTypeEncoding(my_Method_presentViewController));
-        
-        if (didAddMethod_presentViewController) {
-            class_replaceMethod([self class],
-                                my_SEL_presentViewController,
-                                method_getImplementation(sys_Method_presentViewController),
-                                method_getTypeEncoding(sys_Method_presentViewController));
-        }
-        method_exchangeImplementations(sys_Method_presentViewController, my_Method_presentViewController);
+//        //presentViewController:animated:completion:
+//        SEL sys_SEL_presentViewController = @selector(presentViewController:animated:completion:);
+//        Method sys_Method_presentViewController = class_getInstanceMethod(self, sys_SEL_presentViewController);
+//        SEL my_SEL_presentViewController = @selector(kk_presentViewController:animated:completion:);
+//        Method my_Method_presentViewController = class_getInstanceMethod(self, my_SEL_presentViewController);
+//        BOOL didAddMethod_presentViewController = class_addMethod([self class],
+//                                                          sys_SEL_presentViewController,
+//                                                          method_getImplementation(my_Method_presentViewController),
+//                                                          method_getTypeEncoding(my_Method_presentViewController));
+//
+//        if (didAddMethod_presentViewController) {
+//            class_replaceMethod([self class],
+//                                my_SEL_presentViewController,
+//                                method_getImplementation(sys_Method_presentViewController),
+//                                method_getTypeEncoding(sys_Method_presentViewController));
+//        }
+//        method_exchangeImplementations(sys_Method_presentViewController, my_Method_presentViewController);
     });
 }
 
@@ -158,9 +158,14 @@
     }
 }
 
-- (void)kk_presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^ __nullable)(void))completion{
+//- (void)kk_presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^ __nullable)(void))completion{
+//    viewControllerToPresent.modalPresentationStyle =  UIModalPresentationFullScreen;
+//    [self kk_presentViewController:viewControllerToPresent animated:flag completion:completion];
+//}
+
+- (void)kk_fullPresentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^ __nullable)(void))completion{
     viewControllerToPresent.modalPresentationStyle =  UIModalPresentationFullScreen;
-    [self kk_presentViewController:viewControllerToPresent animated:flag completion:completion];
+    [self presentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
 @end

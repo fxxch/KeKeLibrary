@@ -15,7 +15,7 @@
  
  @param color color
  */
-- (void)setBackgroundViewColor:(nullable UIColor *)color {
+- (void)kk_setBackgroundViewColor:(nullable UIColor *)color {
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
     
@@ -37,12 +37,12 @@
  
  @param image image
  */
-- (void)setBackgroundViewImage:(nullable UIImage *)image  {
+- (void)kk_setBackgroundViewImage:(nullable UIImage *)image  {
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
 
     if (image == nil) {
-        [self setBackgroundViewColor:nil];
+        [self kk_setBackgroundViewColor:nil];
         return ;
     }
     
@@ -65,7 +65,7 @@
  
  @param color color
  */
-- (void)setSelectedBackgroundViewColor:(nullable UIColor *)color {
+- (void)kk_setSelectedBackgroundViewColor:(nullable UIColor *)color {
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
 
@@ -85,12 +85,12 @@
  
  @param image image
  */
-- (void)setSelectedBackgroundViewImage:(nullable UIImage *)image {
+- (void)kk_setSelectedBackgroundViewImage:(nullable UIImage *)image {
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
 
     if (image == nil) {
-        [self setSelectedBackgroundViewColor:nil];
+        [self kk_setSelectedBackgroundViewColor:nil];
         return ;
     }
     

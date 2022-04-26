@@ -20,7 +20,7 @@
  @param from 截取起始位置
  @return 截取的子字符串
  */
-- (NSString *_Nullable)substringFromIndex_Safe:(NSUInteger)from;
+- (NSString *_Nullable)kk_substringFromIndex_Safe:(NSUInteger)from;
 
 
 /****************************************  substringFromIndex:  ***********************************/
@@ -30,7 +30,7 @@
  @param to 截取终点位置
  @return 返回截取的字符串
  */
-- (NSString *_Nullable)substringToIndex_Safe:(NSUInteger)to;
+- (NSString *_Nullable)kk_substringToIndex_Safe:(NSUInteger)to;
 
 /*********************************** rangeOfString:options:range:locale:  ***************************/
 /**
@@ -42,10 +42,10 @@
  @param locale 本地化
  @return 返回搜索到的字符串 范围
  */
-- (NSRange)rangeOfString_Safe:(NSString *_Nullable)searchString
-                      options:(NSStringCompareOptions)mask
-                        range:(NSRange)rangeOfReceiverToSearch
-                       locale:(nullable NSLocale *)locale;
+- (NSRange)kk_rangeOfString_Safe:(NSString *_Nullable)searchString
+                         options:(NSStringCompareOptions)mask
+                           range:(NSRange)rangeOfReceiverToSearch
+                          locale:(nullable NSLocale *)locale;
 
 
 /*********************************** substringWithRange:  ***************************/
@@ -55,7 +55,7 @@
  @param range 指定的范围
  @return 返回截取的字符串
  */
-- (NSString *_Nullable)substringWithRange_Safe:(NSRange)range;
+- (NSString *_Nullable)kk_substringWithRange_Safe:(NSRange)range;
 
 /*********************************** safeMutable_appendString:  ***************************/
 /**
@@ -63,6 +63,6 @@
  
  @param aString 追加的字符串
  */
-- (void)appendString_Safe:(NSString *_Nullable)aString;
+- (void)kk_appendString_Safe:(NSString *_Nullable)aString;
 
 @end

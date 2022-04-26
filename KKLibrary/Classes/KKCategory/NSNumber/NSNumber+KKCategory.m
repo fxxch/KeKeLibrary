@@ -11,12 +11,12 @@
 @implementation NSNumber (KKCategory)
 
 //产生>= from <=to 的随机数
-+(NSInteger)randomIntegerBetween:(int)from and:(int)to{
++(NSInteger)kk_randomIntegerBetween:(int)from and:(int)to{
     return (int)(from + (arc4random() % (to - from + 1)));
 }
 
 /*是否是整数*/
-- (BOOL)isInt{
+- (BOOL)kk_isInt{
     if (strcmp([self objCType], @encode(int)) == 0)
     {
         return YES;
@@ -28,7 +28,7 @@
 
 
 /*是否是整数*/
-- (BOOL)isInteger{
+- (BOOL)kk_isInteger{
     if (strcmp([self objCType], @encode(long)) == 0)
     {
         return YES;
@@ -39,7 +39,7 @@
 }
 
 /*是否是浮点数*/
-- (BOOL)isFloat{
+- (BOOL)kk_isFloat{
     if (strcmp([self objCType], @encode(float)) == 0)
     {
         return YES;
@@ -50,7 +50,7 @@
 }
 
 /*是否是高精度浮点数*/
-- (BOOL)isDouble{
+- (BOOL)kk_isDouble{
     if (strcmp([self objCType], @encode(double)) == 0)
     {
         return YES;

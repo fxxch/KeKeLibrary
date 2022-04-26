@@ -16,7 +16,7 @@
  @param aParms ViewController初始化需要的参数
  @return 返回ViewController
  */
-- (nullable UIViewController*)pushViewController:(nullable NSString*)aViewControllerName
-                                       withParms:(nullable NSDictionary*)aParms;
+- (nullable UIViewController*)kk_pushViewController:(nullable NSString*)aViewControllerName
+                                          withParms:(nullable NSDictionary*)aParms;
 
 @end

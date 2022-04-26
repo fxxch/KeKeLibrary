@@ -11,52 +11,52 @@
 
 @interface UIButton (KKWebCache)
 
-@property (nonatomic, copy, readonly) NSString *imageDataURLString;
+@property (nonatomic, copy, readonly) NSString *kk_imageDataURLString;
 
-- (void)showGIFSubView:(NSData*)data;
+- (void)kk_showGIFSubView:(NSData*)data;
 
 
 
 
 /*无状态*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
 
 /*状态*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-               forState:(KKControlState)state;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                  forState:(KKControlState)state;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-               forState:(KKControlState)state
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                  forState:(KKControlState)state
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
 
 /*GCD块*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
 /*GCD块+状态*/
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-               forState:(KKControlState)state
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                  forState:(KKControlState)state
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-               forState:(KKControlState)state
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                  forState:(KKControlState)state
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
 
 
@@ -64,45 +64,45 @@
 #pragma mark ==设置图片 setBackgroundImageWithURL
 #pragma mark ==================================================
 /*无状态*/
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder;
 
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                   showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
 
 
 /*状态*/
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                         forState:(KKControlState)state;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                            forState:(KKControlState)state;
 
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                         forState:(KKControlState)state
-                showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                            forState:(KKControlState)state
+                   showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
 
 /*GCD块*/
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                        completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                           completed:(KKImageLoadCompletedBlock)completedBlock;
 
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-                        completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                   showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                           completed:(KKImageLoadCompletedBlock)completedBlock;
 
 /*GCD块+状态*/
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                         forState:(KKControlState)state
-                        completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                            forState:(KKControlState)state
+                           completed:(KKImageLoadCompletedBlock)completedBlock;
 
-- (void)setBackgroundImageWithURL:(NSURL *)url
-                 placeholderImage:(UIImage *)placeholder
-                         forState:(KKControlState)state
-                showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-                        completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setBackgroundImageWithURL:(NSURL *)url
+                    placeholderImage:(UIImage *)placeholder
+                            forState:(KKControlState)state
+                   showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                           completed:(KKImageLoadCompletedBlock)completedBlock;
 
 
 

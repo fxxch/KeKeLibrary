@@ -18,7 +18,7 @@
  
  @param aKey key
  */
-- (void)removeObjectForKey_Safe:(id<NSCopying>)aKey;
+- (void)kk_removeObjectForKey_Safe:(id<NSCopying>)aKey;
 
 /**
  将键值对 添加 到 NSMutableDictionary 内
@@ -26,6 +26,6 @@
  @param anObject 值
  @param aKey 键
  */
-- (void)setObject_Safe:(id)anObject forKey:(id<NSCopying>)aKey;
+- (void)kk_setObject_Safe:(id)anObject forKey:(id<NSCopying>)aKey;
 
 @end

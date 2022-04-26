@@ -10,8 +10,6 @@
 #define KKSharedInstance_h
 
 #import "KKFileCacheManager.h"
-#import "KKLocalizationManager.h"
-#import "KKThemeManager.h"
 #import "KKUserDefaultsManager.h"
 
 /* 缓存一些相关数据，比如文件缓存和UserDefaults缓存 */

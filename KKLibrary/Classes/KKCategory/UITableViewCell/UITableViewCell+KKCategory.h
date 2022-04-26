@@ -15,27 +15,27 @@
  
  @param color color
  */
-- (void)setBackgroundViewColor:(nullable UIColor *)color;
+- (void)kk_setBackgroundViewColor:(nullable UIColor *)color;
 
 /**
  设置未选中时候的图片
  
  @param image image
  */
-- (void)setBackgroundViewImage:(nullable UIImage *)image;
+- (void)kk_setBackgroundViewImage:(nullable UIImage *)image;
 
 /**
  设置选中时候的颜色
  
  @param color color
  */
-- (void)setSelectedBackgroundViewColor:(nullable UIColor *)color;
+- (void)kk_setSelectedBackgroundViewColor:(nullable UIColor *)color;
 
 /**
  设置选中时候的图片
  
  @param image image
  */
-- (void)setSelectedBackgroundViewImage:(nullable UIImage *)image;
+- (void)kk_setSelectedBackgroundViewImage:(nullable UIImage *)image;
 
 @end

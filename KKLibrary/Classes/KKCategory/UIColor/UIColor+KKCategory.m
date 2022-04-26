@@ -16,7 +16,7 @@
  @param color 颜色
  @return 结果
  */
-+ (nonnull NSString *)hexStringFromColor:(nullable UIColor *)color{
++ (nonnull NSString *)kk_hexStringFromColor:(nullable UIColor *)color{
     
     const CGFloat* rgba = CGColorGetComponents(color.CGColor);
     
@@ -60,9 +60,9 @@
  @param hexString 十六进制颜色
  @return 结果
  */
-+ (nonnull UIColor *)colorWithHexString:(nonnull NSString *)hexString {
++ (nonnull UIColor *)kk_colorWithHexString:(nonnull NSString *)hexString {
     
-    return [UIColor colorWithHexString:hexString alpha:1];
+    return [UIColor kk_colorWithHexString:hexString alpha:1];
 
 }
 
@@ -73,7 +73,7 @@
  @param alphaValue 透明度
  @return 结果
  */
-+ (nonnull UIColor *)colorWithHexString:(nonnull NSString *)hexString alpha:(CGFloat)alphaValue{
++ (nonnull UIColor *)kk_colorWithHexString:(nonnull NSString *)hexString alpha:(CGFloat)alphaValue{
     
     NSString *colorString = [[hexString stringByReplacingOccurrencesOfString: @"#"withString: @""] uppercaseString];
     
@@ -84,45 +84,45 @@
             
         case 3: // #RGB
             
-            red   = [self colorComponentFrom: colorString start: 0 length: 1];
+            red   = [self kk_colorComponentFrom: colorString start: 0 length: 1];
             
-            green = [self colorComponentFrom: colorString start: 1 length: 1];
+            green = [self kk_colorComponentFrom: colorString start: 1 length: 1];
             
-            blue  = [self colorComponentFrom: colorString start: 2 length: 1];
+            blue  = [self kk_colorComponentFrom: colorString start: 2 length: 1];
             
             break;
             
         case 4: // #ARGB
             
-            alpha = [self colorComponentFrom: colorString start: 0 length: 1];
+            alpha = [self kk_colorComponentFrom: colorString start: 0 length: 1];
             
-            red   = [self colorComponentFrom: colorString start: 1 length: 1];
+            red   = [self kk_colorComponentFrom: colorString start: 1 length: 1];
             
-            green = [self colorComponentFrom: colorString start: 2 length: 1];
+            green = [self kk_colorComponentFrom: colorString start: 2 length: 1];
             
-            blue  = [self colorComponentFrom: colorString start: 3 length: 1];
+            blue  = [self kk_colorComponentFrom: colorString start: 3 length: 1];
             
             break;
             
         case 6: // #RRGGBB
             
-            red   = [self colorComponentFrom: colorString start: 0 length: 2];
+            red   = [self kk_colorComponentFrom: colorString start: 0 length: 2];
             
-            green = [self colorComponentFrom: colorString start: 2 length: 2];
+            green = [self kk_colorComponentFrom: colorString start: 2 length: 2];
             
-            blue  = [self colorComponentFrom: colorString start: 4 length: 2];
+            blue  = [self kk_colorComponentFrom: colorString start: 4 length: 2];
             
             break;
             
         case 8: // #AARRGGBB
             
-            alpha = [self colorComponentFrom: colorString start: 0 length: 2];
+            alpha = [self kk_colorComponentFrom: colorString start: 0 length: 2];
             
-            red   = [self colorComponentFrom: colorString start: 2 length: 2];
+            red   = [self kk_colorComponentFrom: colorString start: 2 length: 2];
             
-            green = [self colorComponentFrom: colorString start: 4 length: 2];
+            green = [self kk_colorComponentFrom: colorString start: 4 length: 2];
             
-            blue  = [self colorComponentFrom: colorString start: 6 length: 2];
+            blue  = [self kk_colorComponentFrom: colorString start: 6 length: 2];
             
             break;
             
@@ -138,7 +138,7 @@
     
 }
 
-+ (CGFloat) colorComponentFrom: (nullable NSString *) string start: (NSUInteger) start length: (NSUInteger) length {
++ (CGFloat)kk_colorComponentFrom: (nullable NSString *) string start: (NSUInteger) start length: (NSUInteger) length {
     
     NSString *substring = [string substringWithRange: NSMakeRange(start, length)];
     
@@ -159,7 +159,7 @@
  @param color color
  @return 结果
  */
-+ (nonnull NSArray *)RGBAValue:(nonnull UIColor*)color{
++ (nonnull NSArray *)kk_RGBAValue:(nonnull UIColor*)color{
     CGColorRef colorRef = [color CGColor];
     int numComponents = (int)CGColorGetNumberOfComponents(colorRef);
     NSMutableArray *arrary = [NSMutableArray array];
@@ -190,10 +190,10 @@
  @param alpha alpha（0-1）
  @return return 结果
  */
-+ (nonnull UIColor *)colorWithR:(CGFloat)rValue
-                              G:(CGFloat)gValue
-                              B:(CGFloat)bValue
-                          alpha:(CGFloat)alpha{
++ (nonnull UIColor *)kk_colorWithR:(CGFloat)rValue
+                                 G:(CGFloat)gValue
+                                 B:(CGFloat)bValue
+                             alpha:(CGFloat)alpha{
     return [UIColor colorWithRed:(rValue/255.0f) green:(gValue/255.0f) blue:(bValue/255.0f) alpha:alpha];
 }
 
@@ -202,7 +202,7 @@
  随机生成颜色
  @return 结果
  */
-+ (nonnull UIColor *)RandomColorRGB{
++ (nonnull UIColor *)kk_RandomColorRGB{
     
     CGFloat r_Value = arc4random_uniform(256);
     CGFloat g_Value = arc4random_uniform(256);
@@ -216,7 +216,7 @@
  随机生成颜色
  @return 结果
  */
-+ (nonnull UIColor *)RandomColorRGBA{
++ (nonnull UIColor *)kk_RandomColorRGBA{
     
     CGFloat r_Value = arc4random_uniform(256);
     CGFloat g_Value = arc4random_uniform(256);

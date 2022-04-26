@@ -21,20 +21,7 @@ UIKIT_EXTERN NSNotificationName const NotificationName_ViewControllerWillDealloc
 
 @interface KKViewController : UIViewController
 
-@property (nonatomic,assign)BOOL autoProceeKeyboard;
-@property (nonatomic,assign)BOOL endEditingWhenTouchBackground;
 @property (nonatomic,strong)NSMutableDictionary *superParmsDictionary;
-
-- (void)setStatusBarHidden:(BOOL)hidden;
-
-- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
-
-- (void)setStatusBarHidden:(BOOL)hidden
-            statusBarStyle:(UIStatusBarStyle)barStyle
-             withAnimation:(UIStatusBarAnimation)animation;
-
-/* 子类可重写该方法，不重写的话默认是白色 */
-- (UIColor*)kk_DefaultNavigationBarBackgroundColor;
 
 /**
  初始化
@@ -43,34 +30,61 @@ UIKIT_EXTERN NSNotificationName const NotificationName_ViewControllerWillDealloc
  */
 - (instancetype)initWithParms:(NSDictionary*)aParms;
 
-#pragma mark ============================================================
+#pragma mark ==================================================
+#pragma mark == 强制关闭黑暗模式
+#pragma mark ==================================================
+- (void)forceCloseDarkStyle;
+
+#pragma mark ==================================================
 #pragma mark == 边缘返回
-#pragma mark ============================================================
+#pragma mark ==================================================
 - (void)openInteractivePopGestureRecognizer;
 
 - (void)closeInteractivePopGestureRecognizer;
 
-#pragma mark ****************************************
-#pragma mark 默认导航返回样式
-#pragma mark ****************************************
-- (KKButton*)showNavigationDefaultBackButton_ForNavDismiss;
+#pragma mark ==================================================
+#pragma mark == StatusBar
+#pragma mark ==================================================
+- (void)setStatusBarHidden:(BOOL)hidden;
 
-- (KKButton*)showNavigationDefaultBackButton_ForNavPopBack;
+- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
 
-- (KKButton*)showNavigationDefaultBackButton_ForVCDismiss;
+- (void)setStatusBarHidden:(BOOL)hidden
+            statusBarStyle:(UIStatusBarStyle)barStyle
+             withAnimation:(UIStatusBarAnimation)animation;
 
-#pragma mark ****************************************
-#pragma mark 返回事件
-#pragma mark ****************************************
+#pragma mark ==================================================
+#pragma mark == Back Event
+#pragma mark ==================================================
 - (void)navigationControllerDismiss;
 
 - (void)navigationControllerPopBack;
 
 - (void)viewControllerDismiss;
 
-#pragma mark ****************************************
-#pragma mark 设置导航
-#pragma mark ****************************************
+#pragma mark ==================================================
+#pragma mark == NavigationBar UI
+#pragma mark ==================================================
+/* 子类可重写该方法，不重写的话默认是白色 */
+- (UIColor*)kk_DefaultNavigationBarBackgroundColor;
+
+/**
+ 打开导航条的阴影，可以在 [super viewWillAppear:animated];之后调用
+ */
+- (void)openNavigationBarShadow;
+
+/**
+ 关闭导航条的阴影，可以在 [super viewWillAppear:animated];之后调用
+ */
+- (void)closeNavigationBarShadow;
+
+- (void)closeNavigationBarTranslucent;
+
+- (void)openNavigationBarTranslucent;
+
+#pragma mark ==================================================
+#pragma mark == NavigationBar Button
+#pragma mark ==================================================
 - (KKButton*)setNavLeftButtonImage:(UIImage *)image
                     highlightImage:(UIImage *)highlightImage
                           selector:(SEL)selecter;
@@ -97,41 +111,6 @@ UIKIT_EXTERN NSNotificationName const NotificationName_ViewControllerWillDealloc
 
 - (KKButton*)setNavRightButtonForFixedSpaceWithWithSize:(CGSize)size;
 
-/**
- 打开导航条的阴影，可以在 [super viewWillAppear:animated];之后调用
- */
-- (void)openNavigationBarShadow;
-
-/**
- 关闭导航条的阴影，可以在 [super viewWillAppear:animated];之后调用
- */
-- (void)closeNavigationBarShadow;
-
-
-#pragma mark ==================================================
-#pragma mark == 键盘相关
-#pragma mark ==================================================
-/*监听键盘事件
- - (void)viewDidAppear:(BOOL)animated{
- [super viewDidAppear:animated];
- [self addKeyboardNotification];
- }
- */
-
-- (void)addKeyboardNotification;
-/*取消监听键盘事件
- - (void)viewWillDisappear:(BOOL)animated{
- [super viewWillDisappear:animated];
- [self removeKeyboardNotification];
- }
- */
-- (void)removeKeyboardNotification;
-
-/* 子类处理 */
-- (void)keyboardWillShowWithAnimationDuration:(NSTimeInterval)animationDuration keyBoardRect:(CGRect)keyBoardRect;
-
-/* 子类处理 */
-- (void)keyboardWillHideWithAnimationDuration:(NSTimeInterval)animationDuration keyBoardRect:(CGRect)keyBoardRect;
 
 
 @end

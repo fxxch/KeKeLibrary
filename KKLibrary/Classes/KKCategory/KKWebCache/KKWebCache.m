@@ -36,21 +36,21 @@
         NSData *data = [NSData dataWithContentsOfFile:file];
 
         if (data && data.length>0 &&
-            ([[UIImage contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_JPG] ||
-             [[UIImage contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_PNG] ||
-             [[UIImage contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_BMP] ||
-             [[UIImage contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_GIF] ||
-             [[UIImage contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_TIFF] )) {
+            ([[UIImage kk_contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_JPG] ||
+             [[UIImage kk_contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_PNG] ||
+             [[UIImage kk_contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_BMP] ||
+             [[UIImage kk_contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_GIF] ||
+             [[UIImage kk_contentTypeExtensionForImageData:data] isEqualToString:UIImageExtensionType_TIFF] )) {
 
             //缓存图片
             NSString *fileName = [file lastPathComponent];
             NSString *pathExt = [fileName pathExtension];
             NSString *displayFullName = @"";
-            if ([NSString isStringNotEmpty:pathExt] &&
+            if ([NSString kk_isStringNotEmpty:pathExt] &&
                 [fileName rangeOfString:[NSString stringWithFormat:@".%@",pathExt]].length>0) {
                 displayFullName = [file lastPathComponent];
             } else {
-                NSString *extention = [UIImage contentTypeExtensionForImageData:data];
+                NSString *extention = [UIImage kk_contentTypeExtensionForImageData:data];
                 NSString *radom = [KKFileCacheManager createRandomFileName];
                 displayFullName = [NSString stringWithFormat:@"%@.%@",radom,extention];
             }

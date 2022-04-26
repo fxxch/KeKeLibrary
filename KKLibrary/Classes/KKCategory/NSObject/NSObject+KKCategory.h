@@ -23,8 +23,8 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  @param name 通知名称
  @param selector 处理事件
  */
-- (void)observeNotification:(nullable NSString *)name
-                   selector:(nullable SEL)selector;
+- (void)kk_observeNotification:(nullable NSString *)name
+                      selector:(nullable SEL)selector;
 
 
 /**
@@ -32,20 +32,20 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  
  @param name 通知名称
  */
-- (void)unobserveNotification:(nullable NSString *)name;
+- (void)kk_unobserveNotification:(nullable NSString *)name;
 
 /**
  取消所有监听通知
  
  */
-- (void)unobserveAllNotification;
+- (void)kk_unobserveAllNotification;
 
 /**
  发送通知
  
  @param name 通知名称
  */
-- (void)postNotification:(nullable NSString *)name;
+- (void)kk_postNotification:(nullable NSString *)name;
 
 /**
  发送通知
@@ -53,8 +53,8 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  @param name 通知名称
  @param object 对象
  */
-- (void)postNotification:(nullable NSString *)name
-                  object:(nullable id)object;
+- (void)kk_postNotification:(nullable NSString *)name
+                     object:(nullable id)object;
 
 /**
  发送通知
@@ -63,46 +63,9 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  @param object 对象
  @param userInfo 信息
  */
-- (void)postNotification:(nullable NSString *)name
-                  object:(nullable id)object
-                userInfo:(nullable NSDictionary *)userInfo;
-
-#pragma mark ==================================================
-#pragma mark == 主题通知
-#pragma mark ==================================================
-/**
- 监听主题修改通知
- */
-- (void)observeThemeChangeNotification;
-
-/**
- 取消监听主题修改通知
- */
-- (void)unobserveThemeChangeNotification;
-
-/**
- 主题修改
- */
-- (void)changeTheme;
-
-#pragma mark ==================================================
-#pragma mark == 语言通知
-#pragma mark ==================================================
-/**
- 监听语言修改通知
- */
-- (void)observeLocalizationChangeNotification;
-
-/**
- 取消监听语言修改通知
- */
-- (void)unobserveLocalizationChangeNotification;
-
-/**
- 语言修改
- */
-- (void)changeLocalization;
-
+- (void)kk_postNotification:(nullable NSString *)name
+                     object:(nullable id)object
+                   userInfo:(nullable NSDictionary *)userInfo;
 
 #pragma mark ==================================================
 #pragma mark == 调用苹果系统应用的方法，打电话、发邮件、发短信、打开URL等
@@ -112,7 +75,7 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  
  @param url url
  */
-- (void)openURL:(nullable NSURL *)url;
+- (void)kk_openURL:(nullable NSURL *)url;
 
 
 /**
@@ -120,21 +83,21 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  
  @param mail mail
  */
-- (void)sendMail:(nullable NSString *)mail;
+- (void)kk_sendMail:(nullable NSString *)mail;
 
 /**
  发短信
  
  @param number number
  */
-- (void)sendSMS:(nullable NSString *)number;
+- (void)kk_sendSMS:(nullable NSString *)number;
 
 /**
  打电话
  
  @param number number
  */
-- (void)callNumber:(nullable NSString *)number;
+- (void)kk_callNumber:(nullable NSString *)number;
 
 #pragma mark ==================================================
 #pragma mark == 图片相关
@@ -144,22 +107,7 @@ UIKIT_EXTERN NSAttributedStringKey _Nonnull const NotificationLocalizationDidCha
  
  @return Logo图片
  */
-+(UIImage*_Nullable)appIconImage;
-
-/**
- 返回占位图片
- 
- @return 占位图片
- */
-+(UIImage*_Nullable)defaultImage;
-
-/**
- 返回占位图片
- 
- @param aSize 需要多大的图片
- @return 占位图片
- */
-+(UIImage*_Nullable)defaultImage_withSize:(CGSize)aSize;
++(UIImage*_Nullable)kk_appIconImage;
 
 
 @end

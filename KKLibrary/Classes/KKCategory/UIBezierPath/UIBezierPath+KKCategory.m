@@ -10,7 +10,7 @@
 
 @implementation UIBezierPath (KKCategory)
 
-+ (UIBezierPath *)chatBoxRightShape:(CGRect)originalFrame{
++ (UIBezierPath *)kk_chatBoxRightShape:(CGRect)originalFrame{
     
     CGRect frame = originalFrame;
     CGFloat width = frame.size.width;
@@ -61,7 +61,7 @@
     
 }
 
-+ (UIBezierPath *)chatBoxLeftShape:(CGRect)originalFrame{
++ (UIBezierPath *)kk_chatBoxLeftShape:(CGRect)originalFrame{
     
     CGRect frame = originalFrame;
     CGFloat width = frame.size.width;

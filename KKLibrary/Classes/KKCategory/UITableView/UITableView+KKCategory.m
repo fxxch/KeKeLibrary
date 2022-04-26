@@ -16,7 +16,7 @@
  
  @param image image
  */
-- (void)setBackgroundImage:(nullable UIImage *)image {
+- (void)kk_setBackgroundImage:(nullable UIImage *)image {
     static NSUInteger BACKGROUND_IMAGE_VIEW_TAG = 91798;
     UIImageView *imageView = (UIImageView *)[self viewWithTag:BACKGROUND_IMAGE_VIEW_TAG];
     if (imageView == nil) {
@@ -33,7 +33,7 @@
  
  @param color color
  */
-- (void)setBackgroundColor:(nullable UIColor *)color {
+- (void)kk_setBackgroundColor:(nullable UIColor *)color {
     static NSUInteger BACKGROUND_VIEW_TAG = 91799;
     UIView *backgroundView = [self viewWithTag:BACKGROUND_VIEW_TAG];
     if (backgroundView == nil) {
@@ -50,7 +50,7 @@
  
  @param image image
  */
-- (void)setSeparatorImage:(nullable UIImage *)image {
+- (void)kk_setSeparatorImage:(nullable UIImage *)image {
     UIColor *separatorColor = [UIColor colorWithPatternImage:image];
     [self setSeparatorColor:separatorColor];
 }
@@ -62,7 +62,7 @@
  @param indexPath indexPath
  @return TableViewCellPositionType
  */
-- (TableViewCellPositionType)tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath{
+- (TableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath{
     
     TableViewCellPositionType position;
     if (indexPath.row==0) {
@@ -115,7 +115,7 @@
     table.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     table.showsVerticalScrollIndicator = NO;
     table.clipsToBounds = YES;
-    if ([UIDevice isSystemVersionBigerThan:@"11.0"]) {
+    if ([UIDevice kk_isSystemVersionBigerThan:@"11.0"]) {
         table.estimatedRowHeight = 0;
         table.estimatedSectionHeaderHeight = 0;
         table.estimatedSectionFooterHeight = 0;
@@ -133,37 +133,4 @@
     return table;
 }
 
-
-/**
- 快速创建TableView
- 
- @param style style
- @param delegate delegate
- @param datasource datasource
- @return UITableView
- */
-+ (instancetype _Nonnull )createNewTableWithstyle:(UITableViewStyle)style
-                                         delegate:(_Nonnull id <UITableViewDelegate>)delegate
-                                       datasource:(_Nonnull id<UITableViewDataSource>)datasource{
-    
-    UITableView *table = [[UITableView alloc] init];
-    table.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //    table.backgroundView = nil;
-    table.delegate = delegate;
-    table.dataSource = datasource;
-    if ([UIDevice isSystemVersionBigerThan:@"11.0"]) {
-        table.estimatedRowHeight = 0;
-        table.estimatedSectionHeaderHeight = 0;
-        table.estimatedSectionFooterHeight = 0;
-        if (@available(iOS 11.0, *)) {
-            table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    if (@available(iOS 15.0, *)) {
-        table.sectionHeaderTopPadding = 0;
-    }
-    return table;
-}
 @end

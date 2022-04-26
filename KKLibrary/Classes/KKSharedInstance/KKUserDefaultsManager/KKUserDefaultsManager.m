@@ -20,7 +20,7 @@
 #pragma mark ==================================================
 + (BOOL)setObject:(id _Nullable)anObject forKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier{
     
-    if ([NSString isStringEmpty:aKey] || !anObject) {
+    if ([NSString kk_isStringEmpty:aKey] || !anObject) {
         return NO;
     }
 
@@ -29,7 +29,7 @@
     }
     else if ([anObject isKindOfClass:[NSNumber class]]) {
         NSString *jsonString = [(NSNumber*)anObject stringValue];
-        if ([NSString isStringNotEmpty:jsonString]) {
+        if ([NSString kk_isStringNotEmpty:jsonString]) {
             return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
@@ -37,8 +37,8 @@
         }
     }
     else if ([anObject isKindOfClass:[NSDictionary class]]) {
-        NSString *jsonString = [(NSDictionary*)anObject translateToJSONString];
-        if ([NSString isStringNotEmpty:jsonString]) {
+        NSString *jsonString = [(NSDictionary*)anObject kk_translateToJSONString];
+        if ([NSString kk_isStringNotEmpty:jsonString]) {
             return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
@@ -46,8 +46,8 @@
         }
     }
     else if ([anObject isKindOfClass:[NSArray class]]){
-        NSString *jsonString = [(NSArray*)anObject translateToJSONString];
-        if ([NSString isStringNotEmpty:jsonString]) {
+        NSString *jsonString = [(NSArray*)anObject kk_translateToJSONString];
+        if ([NSString kk_isStringNotEmpty:jsonString]) {
             return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
@@ -66,22 +66,22 @@
 
 + (id _Nullable)objectForKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier{
     
-    if ([NSString isStringEmpty:aKey]) {
+    if ([NSString kk_isStringEmpty:aKey]) {
         return nil;
     }
 
     NSString *jsonString = [KKUserDefaultsManagerDB DBQuery_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey];
-    NSDictionary *dic = [NSDictionary dictionaryFromJSONString:jsonString];
-    if ([NSDictionary isDictionaryNotEmpty:dic]) {
+    NSDictionary *dic = [NSDictionary kk_dictionaryFromJSONString:jsonString];
+    if ([NSDictionary kk_isDictionaryNotEmpty:dic]) {
         return dic;
     }
 
-    NSArray *arr = [NSArray arrayFromJSONString:jsonString];
-    if ([NSArray isArrayNotEmpty:arr]) {
+    NSArray *arr = [NSArray kk_arrayFromJSONString:jsonString];
+    if ([NSArray kk_isArrayNotEmpty:arr]) {
         return arr;
     }
 
-    if ([NSString isStringEmpty:jsonString]) {
+    if ([NSString kk_isStringEmpty:jsonString]) {
         return nil;
     } else {
         return jsonString;
@@ -89,7 +89,7 @@
 }
 
 + (BOOL)clearKKUserDefaultsManagerWithIdentifier:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringEmpty:aIdentifier]) {
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
         return NO;
     }
     return [KKUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aIdentifier];
@@ -111,7 +111,7 @@
                 forKey:(NSString*_Nullable)aKey
             identifier:(NSString*_Nullable)aIdentifier
 {
-    if ([NSString isStringEmpty:aKey] ||
+    if ([NSString kk_isStringEmpty:aKey] ||
         !anObject ) {
         return;
     }
@@ -130,7 +130,7 @@
                    forKey:(NSString*_Nullable)aKey
                identifier:(NSString*_Nullable)aIdentifier
 {
-    if ([NSString isStringEmpty:aKey] ||
+    if ([NSString kk_isStringEmpty:aKey] ||
         !anObject ||
         aIndex < 0 ) {
         return;
@@ -155,7 +155,7 @@
                     forKey:(NSString*_Nullable)aKey
                 identifier:(NSString*_Nullable)aIdentifier
 {
-    if ([NSString isStringEmpty:aKey] ||
+    if ([NSString kk_isStringEmpty:aKey] ||
         aIndex < 0) {
         return;
     }

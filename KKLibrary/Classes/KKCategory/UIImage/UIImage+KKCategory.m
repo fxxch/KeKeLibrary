@@ -15,28 +15,6 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 @implementation UIImage (KKCategory)
 
-///**
-// 用颜色值来创建图片
-// 
-// @param color 填充色
-// @return UIImage
-// */
-//- (nonnull UIImage *)imageWithColor:(nullable UIColor *)color{
-//    
-//    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextTranslateCTM(context, 0, self.size.height);
-//    CGContextScaleCTM(context, 1.0, -1.0);
-//    CGContextSetBlendMode(context, kCGBlendModeNormal);
-//    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-//    CGContextClipToMask(context, rect, self.CGImage);
-//    [color setFill];
-//    CGContextFillRect(context, rect);
-//    UIImage*newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return newImage;
-//}
-
 /**
  用颜色值来创建图片
  
@@ -44,10 +22,10 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param size 图片大小
  @return UIImage
  */
-+ (nonnull UIImage *)imageWithColor:(nonnull UIColor *)color
-                               size:(CGSize)size{
++ (nonnull UIImage *)kk_imageWithColor:(nonnull UIColor *)color
+                                  size:(CGSize)size{
     
-    return [UIImage imageWithColor:color size:size radius:0];
+    return [UIImage kk_imageWithColor:color size:size radius:0];
 }
 
 /**
@@ -58,9 +36,9 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param radius 圆角弧度
  @return UIImage
  */
-+ (nonnull UIImage *)imageWithColor:(nonnull UIColor *)color
-                               size:(CGSize)size
-                             radius:(NSInteger)radius{
++ (nonnull UIImage *)kk_imageWithColor:(nonnull UIColor *)color
+                                  size:(CGSize)size
+                                radius:(NSInteger)radius{
     
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
 //    UIView *view = [[UIView alloc]initWithFrame:rect];
@@ -106,7 +84,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param data 图片的data
  @return 格式字符串
  */
-+ (nullable NSString *) contentTypeForImageData:(nullable NSData *)data{
++ (nullable NSString *)kk_contentTypeForImageData:(nullable NSData *)data{
     uint8_t c;
     [data getBytes:&c length:1];
     
@@ -132,7 +110,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param data 图片的data
  @return 格式字符串
  */
-+ (nullable NSString *) contentTypeExtensionForImageData:(nullable NSData *)data{
++ (nullable NSString *)kk_contentTypeExtensionForImageData:(nullable NSData *)data{
     uint8_t c;
     [data getBytes:&c length:1];
     
@@ -159,7 +137,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param isHorizontal YES 水平翻转 NO 垂直翻转
  @return UIImage
  */
-- (nullable UIImage *)flip:(BOOL)isHorizontal {
+- (nullable UIImage *)kk_flip:(BOOL)isHorizontal {
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
     //2014-10-20 刘波
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
@@ -188,8 +166,8 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param size 指定大小
  @return UIImage
  */
-- (nullable UIImage *)resizeTo:(CGSize)size {
-    return [self resizeToWidth:size.width height:size.height];
+- (nullable UIImage *)kk_resizeTo:(CGSize)size {
+    return [self kk_resizeToWidth:size.width height:size.height];
 }
 
 
@@ -200,7 +178,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param height 高度
  @return UIImage
  */
-- (nullable UIImage *)resizeToWidth:(CGFloat)width
+- (nullable UIImage *)kk_resizeToWidth:(CGFloat)width
                              height:(CGFloat)height {
     
     CGSize size = CGSizeMake(width, height);
@@ -224,11 +202,11 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param width  宽度
  @return UIImage
  */
-- (nullable UIImage *)scaleWithWidth:(CGFloat)width {
+- (nullable UIImage *)kk_scaleWithWidth:(CGFloat)width {
     CGSize imageSize = [self size];
     CGFloat scale = imageSize.width / width;
     CGFloat height = imageSize.height / scale;
-    return [self resizeToWidth:width height:height];
+    return [self kk_resizeToWidth:width height:height];
 }
 
 /**
@@ -237,11 +215,11 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param height 高度
  @return UIImage
  */
-- (nullable UIImage *)scaleWithHeight:(CGFloat)height {
+- (nullable UIImage *)kk_scaleWithHeight:(CGFloat)height {
     CGSize imageSize = [self size];
     CGFloat scale = imageSize.height / height;
     CGFloat width = imageSize.width / scale;
-    return [self resizeToWidth:width height:height];
+    return [self kk_resizeToWidth:width height:height];
 }
 
 
@@ -254,10 +232,10 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param height 需要截图区域的height
  @return UIImage
  */
-- (nullable UIImage *)cropImageWithX:(CGFloat)x
-                                   y:(CGFloat)y
-                               width:(CGFloat)width
-                              height:(CGFloat)height {
+- (nullable UIImage *)kk_cropImageWithX:(CGFloat)x
+                                      y:(CGFloat)y
+                                  width:(CGFloat)width
+                                 height:(CGFloat)height {
     
     CGRect rect = CGRectMake(x, y, width, height);
     CGImageRef imageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
@@ -272,7 +250,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param rect 需要截图区域
  @return UIImage
  */
-- (nullable UIImage *)imageAtRect:(CGRect)rect{
+- (nullable UIImage *)kk_imageAtRect:(CGRect)rect{
     
     CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
     UIImage* subImage = [UIImage imageWithCGImage: imageRef];
@@ -287,7 +265,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  
  @return UIImage
  */
-- (nullable UIImage *)fixOrientation {
+- (nullable UIImage *)kk_fixOrientation {
     if (self.imageOrientation == UIImageOrientationUp) return self;
     
     CGAffineTransform transform = CGAffineTransformIdentity;
@@ -357,7 +335,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
     return img;
 }
 
-- (nullable UIImage *)decodedImage {
+- (nullable UIImage *)kk_decodedImage {
     CGImageRef imageRef = self.CGImage;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(NULL,
@@ -386,7 +364,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
     return decompressedImage;
 }
 
-- (nullable UIImage *)decoded{
+- (nullable UIImage *)kk_decoded{
     CGImageRef imageRef = self.CGImage;
     CGSize imageSize = CGSizeMake(CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
     CGRect imageRect = (CGRect){.origin = CGPointZero, .size = imageSize};
@@ -439,10 +417,10 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param point 水印文字起始坐标
  @return UIImage
  */
-- (nonnull UIImage *)addMark:(nullable NSString *)mark
-                   textColor:(nullable UIColor *)textColor
-                        font:(nullable UIFont *)font
-                       point:(CGPoint)point {
+- (nonnull UIImage *)kk_addMark:(nullable NSString *)mark
+                      textColor:(nullable UIColor *)textColor
+                           font:(nullable UIFont *)font
+                          point:(CGPoint)point {
     CGSize size = self.size;
     //2014-10-20 刘波
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
@@ -478,18 +456,18 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  
  @return UIImage
  */
-- (nullable UIImage *)addCreateTime {
+- (nullable UIImage *)kk_addCreateTime {
     NSDate *date = [NSDate date];
-    NSDateFormatter *dateFormatter = [NSDateFormatter defaultFormatter];
+    NSDateFormatter *dateFormatter = [NSDateFormatter kk_defaultFormatter];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     
-    CGSize size = [dateString sizeWithFont:[UIFont boldSystemFontOfSize:16.0f] maxSize:CGSizeMake(self.size.width, CGFLOAT_MAX)];
+    CGSize size = [dateString kk_sizeWithFont:[UIFont boldSystemFontOfSize:16.0f] maxSize:CGSizeMake(self.size.width, CGFLOAT_MAX)];
     
-    return [self addMark:dateString
-               textColor:[UIColor blackColor]
-                    font:[UIFont boldSystemFontOfSize:16.0f]
-                   point:CGPointMake(self.size.width-size.width-10, self.size.height-size.height-10)];
+    return [self kk_addMark:dateString
+                  textColor:[UIColor blackColor]
+                       font:[UIFont boldSystemFontOfSize:16.0f]
+                      point:CGPointMake(self.size.width-size.width-10, self.size.height-size.height-10)];
     
 }
 
@@ -500,7 +478,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param targetSize 目标大小
  @return UIImage
  */
-- (nullable UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize {
+- (nullable UIImage *)kk_imageByScalingProportionallyToSize:(CGSize)targetSize {
     
 
     UIImage *sourceImage = self;
@@ -567,8 +545,8 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param radians 需要旋转的角度
  @return UIImage
  */
-- (nullable UIImage *)imageRotatedByRadians:(CGFloat)radians{
-    return [self imageRotatedByDegrees:KKRadiansToDegrees(radians)];
+- (nullable UIImage *)kk_imageRotatedByRadians:(CGFloat)radians{
+    return [self kk_imageRotatedByDegrees:KKRadiansToDegrees(radians)];
 }
 
 /**
@@ -577,7 +555,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param degrees 需要旋转的角度
  @return UIImage
  */
-- (nullable UIImage *)imageRotatedByDegrees:(CGFloat)degrees{
+- (nullable UIImage *)kk_imageRotatedByDegrees:(CGFloat)degrees{
     // calculate the size of the rotated view's containing box for our drawing space
     UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
     CGAffineTransform t = CGAffineTransformMakeRotation(KKDegreesToRadians(degrees));
@@ -610,7 +588,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
  @param scale 缩放的比例
  @return UIImage
  */
-- (nullable UIImage*)convertImageToScale:(double)scale{
+- (nullable UIImage*)kk_convertImageToScale:(double)scale{
     CGSize newImageSize = CGSizeMake(self.size.width * scale, self.size.height * scale);
     // 创建一个bitmap的context
     // 并把它设置成为当前正在使用的context
@@ -634,8 +612,8 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 // 色调 --> CIPhotoEffectTonal                           冲印 --> CIPhotoEffectProcess
 // 岁月 --> CIPhotoEffectTransfer                        铬黄 --> CIPhotoEffectChrome
 // CILinearToSRGBToneCurve, CISRGBToneCurveToLinear, CIGaussianBlur, CIBoxBlur, CIDiscBlur, CISepiaTone, CIDepthOfField
-+ (nonnull UIImage *)filterWithOriginalImage:(nullable UIImage *)image
-                                  filterName:(nullable NSString *)name{
++ (nonnull UIImage *)kk_filterWithOriginalImage:(nullable UIImage *)image
+                                     filterName:(nullable NSString *)name{
     
     CIContext *context = [CIContext contextWithOptions:nil];
     CIImage *inputImage = [[CIImage alloc] initWithImage:image];
@@ -657,7 +635,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 // CIDiscBlur     ---> 环形卷积模糊(Available in iOS 9.0 and later)
 // CIMedianFilter ---> 中值模糊, 用于消除图像噪点, 无需设置radius(Available in iOS 9.0 and later)
 // CIMotionBlur   ---> 运动模糊, 用于模拟相机移动拍摄时的扫尾效果(Available in iOS 9.0 and later)
-+ (nullable UIImage *)blurWithOriginalImage:(nullable UIImage *)image
++ (nullable UIImage *)kk_blurWithOriginalImage:(nullable UIImage *)image
                                    blurName:(nullable NSString *)name
                                      radius:(NSInteger)radius{
     CIContext *context = [CIContext contextWithOptions:nil];
@@ -680,7 +658,7 @@ CGFloat KKRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
     }
 }
 
-static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth,
+static void kk_addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth,
                                  float ovalHeight)
 {
     float fw, fh;
@@ -707,7 +685,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGContextRestoreGState(context);
 }
 
-+ (nullable UIImage*)createRoundedRectImage:(nullable UIImage*)image
++ (nullable UIImage*)kk_createRoundedRectImage:(nullable UIImage*)image
                                        size:(CGSize)size
                                      radius:(NSInteger)radius
 {
@@ -721,7 +699,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGRect rect = CGRectMake(0, 0, w, h);
     
     CGContextBeginPath(context);
-    addRoundedRectToPath(context, rect, radius, radius);
+    kk_addRoundedRectToPath(context, rect, radius, radius);
     CGContextClosePath(context);
     CGContextClip(context);
     CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
@@ -735,7 +713,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     return img;
 }
 
-- (UIImage *)imageTransWithColor:(UIColor *)color{
+- (UIImage *)kk_imageTransWithColor:(UIColor *)color{
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, 0, self.size.height);
@@ -749,5 +727,100 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     UIGraphicsEndImageContext();
     return newImage;
 }
+
+#pragma mark ==================================================
+#pragma mark == ImageConvert
+#pragma mark ==================================================
+/**
+ 将图片压缩到指定大小 imageArray UIImage数组，imageDataSize 图片数据大小(单位KB)，比如100KB
+ 
+ @param imageArray 需要转换的图片数组
+ @param imageDataSize 需要压缩到图片数据大小(单位KB)，比如100KB
+ @param completedOneBlock 处理完成一张的回调
+ @param completedAllBlock 处理完成所有的回调
+ ☆☆☆☆☆ 注意，外面传进来的imageArray中的Image一定不要用[UIImage imageWithContentsOfFile:aFileFullPath]的方式，否则会出问题
+ */
++ (void)convertImage:(nullable NSArray*)imageArray
+          toDataSize:(CGFloat)imageDataSize
+        oneCompleted:(KKImageConvertImageOneCompletedBlock _Nullable)completedOneBlock
+   allCompletedBlock:(KKImageConvertImageAllCompletedBlock _Nullable)completedAllBlock{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        
+        CGFloat maxLength = imageDataSize*1024;
+        
+        
+        for (NSInteger m=0; m<[imageArray count]; m++) {
+            
+            // Compress by quality
+            UIImage *originalImage_in = [imageArray objectAtIndex:m];
+            CGFloat compression = 1;
+            NSData *data = UIImageJPEGRepresentation(originalImage_in, compression);
+            if (data.length < maxLength){
+                //主线程
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completedOneBlock(data,m);
+                });
+            }
+            else{
+                
+                CGFloat max = 1;
+                CGFloat min = 0;
+                for (int k = 0; k < 6; ++k) {
+                    compression = (max + min) / 2;
+                    data = UIImageJPEGRepresentation(originalImage_in, compression);
+                    if (data.length < maxLength * 0.9) {
+                        min = compression;
+                    } else if (data.length > maxLength) {
+                        max = compression;
+                    } else {
+                        break;
+                    }
+                }
+                if (data.length < maxLength){
+                    //主线程
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completedOneBlock(data,m);
+                    });
+                    continue;
+                }
+                
+                
+                UIImage *resultImage = [UIImage imageWithData:data];
+                // Compress by size
+                NSUInteger lastDataLength = 0;
+                while (data.length > maxLength && data.length != lastDataLength) {
+                    lastDataLength = data.length;
+                    CGFloat ratio = (CGFloat)maxLength / data.length;
+                    CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                                             (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+                    UIGraphicsBeginImageContext(size);
+                    [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+                    resultImage = UIGraphicsGetImageFromCurrentImageContext();
+                    UIGraphicsEndImageContext();
+                    data = UIImageJPEGRepresentation(resultImage, compression);
+                }
+                //主线程
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completedOneBlock(data,m);
+                });
+                
+            }
+            
+            
+        }
+        
+        //主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completedAllBlock) {
+                completedAllBlock();
+            }
+        });
+        
+    });
+    
+}
+
 
 @end

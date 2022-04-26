@@ -17,9 +17,9 @@
  @param aFont 字体
  @return 大小
  */
-+ (CGSize)sizeOfFont:(nonnull UIFont*)aFont{
++ (CGSize)kk_sizeOfFont:(nonnull UIFont*)aFont{
     NSString *string = @"我";
-    return [string sizeWithFont:aFont maxWidth:1000];
+    return [string kk_sizeWithFont:aFont maxWidth:1000];
 }
 
 /**
@@ -28,9 +28,9 @@
  @param aSize 字体大小
  @return 大小
  */
-+ (CGSize)systemFontSize:(CGFloat)aSize{
++ (CGSize)kk_systemFontSize:(CGFloat)aSize{
     NSString *string = @"我";
-    return [string sizeWithFont:[UIFont systemFontOfSize:aSize] maxWidth:1000];
+    return [string kk_sizeWithFont:[UIFont systemFontOfSize:aSize] maxWidth:1000];
 }
 
 /**
@@ -39,9 +39,9 @@
  @param aSize 字体大小
  @return 大小
  */
-+ (CGSize)boldSystemFontSize:(CGFloat)aSize{
++ (CGSize)kk_boldSystemFontSize:(CGFloat)aSize{
     NSString *string = @"我";
-    return [string sizeWithFont:[UIFont boldSystemFontOfSize:aSize] maxWidth:1000];
+    return [string kk_sizeWithFont:[UIFont boldSystemFontOfSize:aSize] maxWidth:1000];
 }
 
 /**
@@ -50,8 +50,8 @@
  @param aFont 字体
  @return 高度
  */
-+ (CGFloat)heightForFont:(UIFont*)aFont{
-    return [UIFont heightForFont:aFont numberOfLines:1];
++ (CGFloat)kk_heightForFont:(UIFont*)aFont{
+    return [UIFont kk_heightForFont:aFont numberOfLines:1];
 }
 
 /**
@@ -60,7 +60,7 @@
  @param aFont 字体
  @return 高度
  */
-+ (CGFloat)heightForFont:(UIFont*)aFont numberOfLines:(NSInteger)numberOfLines{
++ (CGFloat)kk_heightForFont:(UIFont*)aFont numberOfLines:(NSInteger)numberOfLines{
     
     
     NSInteger lineCount = MAX(numberOfLines, 1);

@@ -67,8 +67,8 @@
         self.imageDictionary = [[NSMutableDictionary alloc] init];
         self.isImageLoadingFromURLForState = [[NSMutableDictionary alloc] init];
         
-        NSString *keyN = [NSString stringWithInteger:UIControlStateNormal];
-        NSString *keyH = [NSString stringWithInteger:UIControlStateHighlighted];
+        NSString *keyN = [NSString kk_stringWithInteger:UIControlStateNormal];
+        NSString *keyH = [NSString kk_stringWithInteger:UIControlStateHighlighted];
         [self.titleColorDictionary setObject:[UIColor whiteColor] forKey:keyN];
         [self.titleColorDictionary setObject:[UIColor whiteColor] forKey:keyH];
         
@@ -218,7 +218,7 @@
     
     self.imageURL = aUrl;
     
-    __block NSString *key = [NSString stringWithInteger:state];
+    __block NSString *key = [NSString kk_stringWithInteger:state];
     if (aUrl) {
         [self.isImageLoadingFromURLForState setObject:@"1" forKey:key];
     }
@@ -243,12 +243,12 @@
         [self.backgroundColorDictionary removeObjectForKey:key];
     }
 
-    UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString stringWithInteger:UIControlStateNormal]];
+    UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
 
     [self reloadUI];
 
     KKWeakSelf(self);
-    [self.imageView setImageWithURL:aUrl placeholderImage:imageNormal completed:^(NSData *imageData, NSError *error, BOOL isFromRequest) {
+    [self.imageView kk_setImageWithURL:aUrl placeholderImage:imageNormal completed:^(NSData *imageData, NSError *error, BOOL isFromRequest) {
         UIImage *image = [UIImage imageWithData:imageData];
         if (image && [image isKindOfClass:[UIImage class]]) {
             [weakself.imageDictionary setObject:image forKey:key];
@@ -265,7 +265,7 @@
  backgroundColor:(UIColor*)aBackgroundColor
         forState:(UIControlState)state{
     
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     [self.isImageLoadingFromURLForState removeObjectForKey:key];
     if (aTitle && [aTitle isKindOfClass:[NSString class]] && aTitle.length>0) {
         [self.titleDictionary setObject:aTitle forKey:key];
@@ -299,7 +299,7 @@
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state{
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     if (title && [title isKindOfClass:[NSString class]] && title.length>0) {
         [self.titleDictionary setObject:title forKey:key];
     }
@@ -310,7 +310,7 @@
 }
 
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state{
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     if (color) {
         [self.titleColorDictionary setObject:color forKey:key];
     }
@@ -321,7 +321,7 @@
 }
 
 - (void)setImage:(UIImage *)image forState:(UIControlState)state{
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     [self.isImageLoadingFromURLForState removeObjectForKey:key];
     if (image) {
         [self.imageDictionary setObject:image forKey:key];
@@ -334,7 +334,7 @@
 }
 
 - (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state{
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     if (color) {
         [self.backgroundColorDictionary setObject:color forKey:key];
     }
@@ -351,16 +351,16 @@
     
     self.imageURL = url;
 
-    __block NSString *key = [NSString stringWithInteger:state];
+    __block NSString *key = [NSString kk_stringWithInteger:state];
     if (url) {
         [self.isImageLoadingFromURLForState setObject:@"1" forKey:key];
     }
-    UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString stringWithInteger:UIControlStateNormal]];
+    UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
 
     [self reloadUI];
 
     KKWeakSelf(self);
-    [self.imageView setImageWithURL:url placeholderImage:imageNormal completed:^(NSData *imageData, NSError *error, BOOL isFromRequest) {
+    [self.imageView kk_setImageWithURL:url placeholderImage:imageNormal completed:^(NSData *imageData, NSError *error, BOOL isFromRequest) {
         
         UIImage *image = [UIImage imageWithData:imageData];
         if (image && [image isKindOfClass:[UIImage class]]) {
@@ -385,7 +385,7 @@
 }
 
 - (UIImage*)imageForState:(UIControlState)state{
-    NSString *key = [NSString stringWithInteger:state];
+    NSString *key = [NSString kk_stringWithInteger:state];
     return [self.imageDictionary objectForKey:key];
 }
 
@@ -397,7 +397,7 @@
 
 - (void)initUI{
     self.imageView = [[UIImageView alloc] init];
-    [self.imageView clearBackgroundColor];
+    [self.imageView kk_clearBackgroundColor];
     [self addSubview:self.imageView];
     
     self.textLabel = [[UILabel alloc] init];
@@ -432,17 +432,17 @@
 - (void)reloadUI{
     
     CGSize imageSize = self.imageViewSize;
-    NSString *key = [NSString stringWithInteger:self.state];
+    NSString *key = [NSString kk_stringWithInteger:self.state];
 //    UIImage *image = [self.imageDictionary objectForKey:key];
 //    if (!image) {
-//        image = [self.imageDictionary objectForKey:[NSString stringWithInteger:UIControlStateNormal]];
+//        image = [self.imageDictionary objectForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
 //    }
 //    if (image==nil && self.imageURL==nil) {
 //        imageSize = CGSizeZero;
 //    }
-    NSString *title = [self.titleDictionary stringValueForKey:key];
+    NSString *title = [self.titleDictionary kk_stringValueForKey:key];
     if (!title) {
-        title = [self.titleDictionary stringValueForKey:[NSString stringWithInteger:UIControlStateNormal]];
+        title = [self.titleDictionary kk_stringValueForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
     }
     CGFloat spaceBetween = self.spaceBetweenImgTitle;
 //    if (CGSizeEqualToSize(imageSize, CGSizeZero) ||
@@ -458,7 +458,7 @@
     /* 图片在上，文字在下，整体居左 */
     if (self.buttonType==KKButtonType_ImgTopTitleBottom_Left) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -484,7 +484,7 @@
     /* 图片在上，文字在下，整体居中 */
     else if (self.buttonType==KKButtonType_ImgTopTitleBottom_Center) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -509,7 +509,7 @@
     /* 图片在上，文字在下，整体居右 */
     else if (self.buttonType==KKButtonType_ImgTopTitleBottom_Right) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -535,7 +535,7 @@
     /* 图片在下，文字在上，整体居左 */
     else if (self.buttonType==KKButtonType_ImgBottomTitleTop_Left) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -560,7 +560,7 @@
     /* 图片在下，文字在上，整体居中 */
     else if (self.buttonType==KKButtonType_ImgBottomTitleTop_Center) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -587,7 +587,7 @@
     /* 图片在下，文字在上，整体居右 */
     else if (self.buttonType==KKButtonType_ImgBottomTitleTop_Right) {
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -614,7 +614,7 @@
     else if (self.buttonType==KKButtonType_ImgLeftTitleRight_Left) {
         
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -635,7 +635,7 @@
     /* 图片在左，文字在右，整体居中 */
     else if (self.buttonType==KKButtonType_ImgLeftTitleRight_Center) {
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -656,7 +656,7 @@
     /* 图片在左，文字在右，整体居右 */
     else if (self.buttonType==KKButtonType_ImgLeftTitleRight_Right) {
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -679,7 +679,7 @@
     /* 图片在右，文字在左，整体居左 */
     else if (self.buttonType==KKButtonType_ImgRightTitleLeft_Left) {
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -700,7 +700,7 @@
     /* 图片在右，文字在左，整体居中 */
     else if (self.buttonType==KKButtonType_ImgRightTitleLeft_Center) {
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -721,7 +721,7 @@
     /* 图片在右，文字在左，整体居右 */
     else if (self.buttonType==KKButtonType_ImgRightTitleLeft_Right) {
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -744,7 +744,7 @@
     else if (self.buttonType==KKButtonType_ImgLeftTitleRight_Edge) {
         
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -767,7 +767,7 @@
     else if (self.buttonType==KKButtonType_ImgRightTitleLeft_Edge) {
 
         CGFloat textWidth = self.frame.size.width-left-right-imageSize.width-spaceBetween;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -793,7 +793,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -811,7 +811,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -829,7 +829,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -847,7 +847,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -864,7 +864,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -881,7 +881,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -898,7 +898,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -915,7 +915,7 @@
         self.imageView.frame = self.bounds;
 
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -932,7 +932,7 @@
         self.imageView.frame = self.bounds;
         
         CGFloat textWidth = self.frame.size.width-left-right;
-        CGSize titleSize = [title sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
+        CGSize titleSize = [title kk_sizeWithFont:self.textLabel.font maxSize:CGSizeMake(textWidth, 1000) lineBreakMode:self.textLabel.lineBreakMode];
         if (!title) {
             titleSize = CGSizeZero;
         }
@@ -952,9 +952,9 @@
 }
 
 - (void)reloadUIForStateChanged{
-    NSString *key = [NSString stringWithInteger:self.state];
+    NSString *key = [NSString kk_stringWithInteger:self.state];
     BOOL isLoadingNetImage = NO;
-    if ([NSDictionary isDictionaryNotEmpty:self.isImageLoadingFromURLForState]) {
+    if ([NSDictionary kk_isDictionaryNotEmpty:self.isImageLoadingFromURLForState]) {
         isLoadingNetImage = YES;
     }
     
@@ -979,7 +979,7 @@
             }
         }
         else{
-            UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString stringWithInteger:UIControlStateNormal]];
+            UIImage *imageNormal = [self.imageDictionary objectForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
             if (self.state==UIControlStateHighlighted && imageNormal) {
                 if (self.drawnDarkerImageForHighlighted) {
                     UIImage *highlighted = [self drawnDarkerImage:imageNormal];
@@ -997,8 +997,8 @@
     }
 
     
-    NSString *title = [self.titleDictionary stringValueForKey:key];
-    NSString *titleNormal = [self.titleDictionary stringValueForKey:[NSString stringWithInteger:UIControlStateNormal]];
+    NSString *title = [self.titleDictionary kk_stringValueForKey:key];
+    NSString *titleNormal = [self.titleDictionary kk_stringValueForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
     if (title && [title isKindOfClass:[NSString class]] && title.length>0) {
         self.textLabel.text = title;
     }
@@ -1007,7 +1007,7 @@
     }
     
     UIColor *titleColor = [self.titleColorDictionary objectForKey:key];
-    UIColor *titleColorNormal = [self.titleColorDictionary objectForKey:[NSString stringWithInteger:UIControlStateNormal]];
+    UIColor *titleColorNormal = [self.titleColorDictionary objectForKey:[NSString kk_stringWithInteger:UIControlStateNormal]];
     if (titleColor) {
         self.textLabel.textColor = titleColor;
     }

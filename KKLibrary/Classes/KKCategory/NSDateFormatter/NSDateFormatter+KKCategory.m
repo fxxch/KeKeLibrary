@@ -16,7 +16,7 @@
  
  @return 结果
  */
-+ (nonnull NSDateFormatter*)defaultFormatter{
++ (nonnull NSDateFormatter*)kk_defaultFormatter{
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //①： ① or ②，one of both ok

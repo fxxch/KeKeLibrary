@@ -19,7 +19,7 @@ static char encodingTable[64] = {
 
 @implementation NSData (KKCategory)
 
-- (nonnull NSString *)md5 {
+- (nonnull NSString *)kk_md5 {
     if (!self) {
         return nil;
     }
@@ -36,7 +36,7 @@ static char encodingTable[64] = {
     return outString;
 }
 
-- (nonnull NSString *)base64Encoded {
+- (nonnull NSString *)kk_base64Encoded {
     const unsigned char    *bytes = [self bytes];
     NSMutableString *result = [NSMutableString stringWithCapacity:[self length]];
     unsigned long ixtext = 0;
@@ -87,7 +87,7 @@ static char encodingTable[64] = {
     return [NSString stringWithString:result];
 }
 
-- (nonnull NSData *)base64Decoded {
+- (nonnull NSData *)kk_base64Decoded {
     const unsigned char    *bytes = [self bytes];
     NSMutableData *result = [NSMutableData dataWithCapacity:[self length]];
     
@@ -141,97 +141,6 @@ static char encodingTable[64] = {
         }
     }
     return [NSData dataWithData:result];
-}
-
-/**
- 将图片压缩到指定大小 imageArray UIImage数组，imageDataSize 图片数据大小(单位KB)，比如100KB
- 
- @param imageArray 需要转换的图片数组
- @param imageDataSize 需要压缩到图片数据大小(单位KB)，比如100KB
- @param completedOneBlock 处理完成一张的回调
- @param completedAllBlock 处理完成所有的回调
- ☆☆☆☆☆ 注意，外面传进来的imageArray中的Image一定不要用[UIImage imageWithContentsOfFile:aFileFullPath]的方式，否则会出问题
- */
-+ (void)convertImage:(nullable NSArray*)imageArray
-          toDataSize:(CGFloat)imageDataSize
-        oneCompleted:(KKImageConvertImageOneCompletedBlock _Nullable)completedOneBlock
-   allCompletedBlock:(KKImageConvertImageAllCompletedBlock _Nullable)completedAllBlock{
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        
-        CGFloat maxLength = imageDataSize*1024;
-        
-        
-        for (NSInteger m=0; m<[imageArray count]; m++) {
-            
-            // Compress by quality
-            UIImage *originalImage_in = [imageArray objectAtIndex:m];
-            CGFloat compression = 1;
-            NSData *data = UIImageJPEGRepresentation(originalImage_in, compression);
-            if (data.length < maxLength){
-                //主线程
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completedOneBlock(data,m);
-                });
-            }
-            else{
-                
-                CGFloat max = 1;
-                CGFloat min = 0;
-                for (int k = 0; k < 6; ++k) {
-                    compression = (max + min) / 2;
-                    data = UIImageJPEGRepresentation(originalImage_in, compression);
-                    if (data.length < maxLength * 0.9) {
-                        min = compression;
-                    } else if (data.length > maxLength) {
-                        max = compression;
-                    } else {
-                        break;
-                    }
-                }
-                if (data.length < maxLength){
-                    //主线程
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        completedOneBlock(data,m);
-                    });
-                    continue;
-                }
-                
-                
-                UIImage *resultImage = [UIImage imageWithData:data];
-                // Compress by size
-                NSUInteger lastDataLength = 0;
-                while (data.length > maxLength && data.length != lastDataLength) {
-                    lastDataLength = data.length;
-                    CGFloat ratio = (CGFloat)maxLength / data.length;
-                    CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-                                             (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
-                    UIGraphicsBeginImageContext(size);
-                    [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
-                    resultImage = UIGraphicsGetImageFromCurrentImageContext();
-                    UIGraphicsEndImageContext();
-                    data = UIImageJPEGRepresentation(resultImage, compression);
-                }
-                //主线程
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completedOneBlock(data,m);
-                });
-                
-            }
-            
-            
-        }
-        
-        //主线程
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (completedAllBlock) {
-                completedAllBlock();
-            }
-        });
-        
-    });
-    
 }
 
 @end

@@ -12,23 +12,23 @@
 
 @interface UIImageView (KKWebCache)
 
-@property (nonatomic, copy, readonly) NSString *imageDataURLString;
+@property (nonatomic, copy, readonly) NSString *kk_imageDataURLString;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
-- (void)setImageWithURL:(NSURL *)url
-       placeholderImage:(UIImage *)placeholder
-      showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
-              completed:(KKImageLoadCompletedBlock)completedBlock;
+- (void)kk_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+         showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
+                 completed:(KKImageLoadCompletedBlock)completedBlock;
 
 
 @end

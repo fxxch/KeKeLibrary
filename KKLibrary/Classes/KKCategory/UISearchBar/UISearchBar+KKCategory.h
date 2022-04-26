@@ -10,9 +10,6 @@
 
 @interface UISearchBar (KKCategory)
 
-/**
- 清除背景
- */
--(void)clearBackground;
+-(void)kk_clearBackground;
 
 @end

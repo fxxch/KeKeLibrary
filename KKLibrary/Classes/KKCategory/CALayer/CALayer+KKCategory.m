@@ -9,24 +9,24 @@
 #import "CALayer+KKCategory.h"
 
 @implementation CALayer (KKCategory)
-@dynamic tag;
+@dynamic kk_tag;
 
-- (NSInteger)tag{
-    NSNumber *number = objc_getAssociatedObject(self, @"tag");
+- (NSInteger)kk_tag{
+    NSNumber *number = objc_getAssociatedObject(self, @"kk_tag");
     return [number integerValue];
 }
 
-- (void)setTag:(NSInteger)tag{
-    objc_setAssociatedObject(self, @"tag",[NSNumber numberWithInteger:tag], OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setKk_tag:(NSInteger)kk_tag{
+    objc_setAssociatedObject(self, @"kk_tag",[NSNumber numberWithInteger:kk_tag], OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 
-- (CALayer *)layerWithTag:(NSInteger)tag{
+- (CALayer *)kk_layerWithTag:(NSInteger)tag{
     
     CALayer *returnLayer = nil;
     
     for (CALayer *layer in [self sublayers]) {
-        if (layer.tag==tag) {
+        if (layer.kk_tag==tag) {
             returnLayer =layer;
             break;
         }

@@ -12,18 +12,18 @@
 @interface NSNumber (KKCategory)
 
 //产生>= from <=to 的随机数
-+(NSInteger)randomIntegerBetween:(int)from and:(int)to;
++(NSInteger)kk_randomIntegerBetween:(int)from and:(int)to;
 
 /*是否是整数*/
-- (BOOL)isInt;
+- (BOOL)kk_isInt;
 
 /*是否是整数*/
-- (BOOL)isInteger;
+- (BOOL)kk_isInteger;
 
 /*是否是浮点数*/
-- (BOOL)isFloat;
+- (BOOL)kk_isFloat;
 
 /*是否是高精度浮点数*/
-- (BOOL)isDouble;
+- (BOOL)kk_isDouble;
 
 @end

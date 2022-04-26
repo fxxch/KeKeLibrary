@@ -15,7 +15,7 @@
  
  @param imageData imageData
  */
-- (void)showImageData:(nullable NSData*)imageData;
+- (void)kk_showImageData:(nullable NSData*)imageData;
 
 
 /**
@@ -24,8 +24,8 @@
  @param imageData 图片数据
  @param rect 显示区域
  */
-- (void)showImageData:(nullable NSData*)imageData
-              inFrame:(CGRect)rect;
+- (void)kk_showImageData:(nullable NSData*)imageData
+                 inFrame:(CGRect)rect;
 
 
 

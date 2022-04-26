@@ -16,8 +16,8 @@
  
  @param imageData imageData
  */
-- (void)showImageData:(nullable NSData*)imageData{
-    if ([[UIImage contentTypeExtensionForImageData:imageData] isEqualToString:UIImageExtensionType_GIF]) {
+- (void)kk_showImageData:(nullable NSData*)imageData{
+    if ([[UIImage kk_contentTypeExtensionForImageData:imageData] isEqualToString:UIImageExtensionType_GIF]) {
         NSMutableArray *frames = nil;
         CGImageSourceRef src = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
         double total = 0;
@@ -84,10 +84,10 @@
  @param imageData 图片数据
  @param rect 显示区域
  */
-- (void)showImageData:(nullable NSData*)imageData
-              inFrame:(CGRect)rect{
+- (void)kk_showImageData:(nullable NSData*)imageData
+                 inFrame:(CGRect)rect{
     
-    if ([[UIImage contentTypeExtensionForImageData:imageData] isEqualToString:UIImageExtensionType_GIF]) {
+    if ([[UIImage kk_contentTypeExtensionForImageData:imageData] isEqualToString:UIImageExtensionType_GIF]) {
         NSMutableArray *frames = nil;
         CGImageSourceRef src = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
         

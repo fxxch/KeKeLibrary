@@ -52,8 +52,8 @@
 
 - (CGFloat)KK_SafeAreaBottomHeight;
 
-- (void)createiPhoneXFooterForView:(nullable UIView*)aView;
+- (void)kk_createiPhoneXFooterForView:(nullable UIView*)aView;
 
-- (void)createiPhoneXFooterForView:(nullable UIView*)aView withBackGroudColor:(nullable UIColor *)backColor;
+- (void)kk_createiPhoneXFooterForView:(nullable UIView*)aView withBackGroudColor:(nullable UIColor *)backColor;
 
 @end

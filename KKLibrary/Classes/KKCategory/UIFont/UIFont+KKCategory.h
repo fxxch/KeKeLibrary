@@ -16,7 +16,7 @@
  @param aFont 字体
  @return 大小
  */
-+ (CGSize)sizeOfFont:(nonnull UIFont*)aFont;
++ (CGSize)kk_sizeOfFont:(nonnull UIFont*)aFont;
 
 /**
  某个字体大小所对应的单个汉字的尺寸大小
@@ -24,7 +24,7 @@
  @param aSize 字体大小
  @return 大小
  */
-+ (CGSize)systemFontSize:(CGFloat)aSize;
++ (CGSize)kk_systemFontSize:(CGFloat)aSize;
 
 /**
  某个加粗字体大小所对应的单个汉字的尺寸大小
@@ -32,7 +32,7 @@
  @param aSize 字体大小
  @return 大小
  */
-+ (CGSize)boldSystemFontSize:(CGFloat)aSize;
++ (CGSize)kk_boldSystemFontSize:(CGFloat)aSize;
 
 /**
  某个字体的高度
@@ -40,7 +40,7 @@
  @param aFont 字体
  @return 高度
  */
-+ (CGFloat)heightForFont:(UIFont*_Nonnull)aFont;
++ (CGFloat)kk_heightForFont:(UIFont*_Nonnull)aFont;
 
 /**
  某个字体的多行高度
@@ -48,6 +48,6 @@
  @param aFont 字体
  @return 高度
  */
-+ (CGFloat)heightForFont:(UIFont*_Nonnull)aFont numberOfLines:(NSInteger)numberOfLines;
++ (CGFloat)kk_heightForFont:(UIFont*_Nonnull)aFont numberOfLines:(NSInteger)numberOfLines;
 
 @end

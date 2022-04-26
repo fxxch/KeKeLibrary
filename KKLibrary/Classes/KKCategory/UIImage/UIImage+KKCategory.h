@@ -17,15 +17,6 @@
 
 @interface UIImage (KKCategory)
 
-
-///**
-// 用颜色值来创建图片
-// 
-// @param color 填充色
-// @return UIImage
-// */
-//- (nonnull UIImage *)imageWithColor:(nullable UIColor *)color;
-
 /**
  用颜色值来创建图片
  
@@ -33,8 +24,8 @@
  @param size 图片大小
  @return UIImage
  */
-+ (nonnull UIImage *)imageWithColor:(nonnull UIColor *)color
-                               size:(CGSize)size;
++ (nonnull UIImage *)kk_imageWithColor:(nonnull UIColor *)color
+                                  size:(CGSize)size;
 
 /**
  用颜色值来创建图片
@@ -44,9 +35,9 @@
  @param radius 圆角弧度
  @return UIImage
  */
-+ (nonnull UIImage *)imageWithColor:(nonnull UIColor *)color
-                               size:(CGSize)size
-                             radius:(NSInteger)radius;
++ (nonnull UIImage *)kk_imageWithColor:(nonnull UIColor *)color
+                                  size:(CGSize)size
+                                radius:(NSInteger)radius;
 
 /**
  根据NSData判断是那种图片格式
@@ -54,7 +45,7 @@
  @param data 图片的data
  @return 格式字符串
  */
-+ (nullable NSString *) contentTypeForImageData:(nullable NSData *)data;
++ (nullable NSString *)kk_contentTypeForImageData:(nullable NSData *)data;
 
 /**
  根据NSData判断是那种图片格式
@@ -62,7 +53,7 @@
  @param data 图片的data
  @return 格式字符串
  */
-+ (nullable NSString *) contentTypeExtensionForImageData:(nullable NSData *)data;
++ (nullable NSString *)kk_contentTypeExtensionForImageData:(nullable NSData *)data;
 
 /**
  翻转图片
@@ -70,7 +61,7 @@
  @param isHorizontal YES 水平翻转 NO 垂直翻转
  @return UIImage
  */
-- (nullable UIImage *)flip:(BOOL)isHorizontal;
+- (nullable UIImage *)kk_flip:(BOOL)isHorizontal;
 
 /**
  缩放到指定大小
@@ -78,7 +69,7 @@
  @param size 指定大小
  @return UIImage
  */
-- (nullable UIImage *)resizeTo:(CGSize)size;
+- (nullable UIImage *)kk_resizeTo:(CGSize)size;
 
 /**
  缩放到指定大小
@@ -87,7 +78,7 @@
  @param height 高度
  @return UIImage
  */
-- (nullable UIImage *)resizeToWidth:(CGFloat)width height:(CGFloat)height;
+- (nullable UIImage *)kk_resizeToWidth:(CGFloat)width height:(CGFloat)height;
 
 /**
  缩放到指定大小
@@ -95,7 +86,7 @@
  @param width  宽度
  @return UIImage
  */
-- (nullable UIImage *)scaleWithWidth:(CGFloat)width;
+- (nullable UIImage *)kk_scaleWithWidth:(CGFloat)width;
 
 /**
  缩放到指定大小
@@ -103,7 +94,7 @@
  @param height 高度
  @return UIImage
  */
-- (nullable UIImage *)scaleWithHeight:(CGFloat)height;
+- (nullable UIImage *)kk_scaleWithHeight:(CGFloat)height;
 
 
 /**
@@ -115,10 +106,10 @@
  @param height 需要截图区域的height
  @return UIImage
  */
-- (nullable UIImage *)cropImageWithX:(CGFloat)x
-                                   y:(CGFloat)y
-                               width:(CGFloat)width
-                              height:(CGFloat)height;
+- (nullable UIImage *)kk_cropImageWithX:(CGFloat)x
+                                      y:(CGFloat)y
+                                  width:(CGFloat)width
+                                 height:(CGFloat)height;
 
 /**
  截图
@@ -126,18 +117,18 @@
  @param rect 需要截图区域
  @return UIImage
  */
-- (nullable UIImage *)imageAtRect:(CGRect)rect;
+- (nullable UIImage *)kk_imageAtRect:(CGRect)rect;
 
 /**
  自适应方向
  
  @return UIImage
  */
-- (nullable UIImage *)fixOrientation;
+- (nullable UIImage *)kk_fixOrientation;
 
-- (nullable UIImage *)decodedImage;
+- (nullable UIImage *)kk_decodedImage;
 
-- (nullable UIImage *)decoded;
+- (nullable UIImage *)kk_decoded;
 
 /**
  图片加水印
@@ -148,17 +139,17 @@
  @param point 水印文字起始坐标
  @return UIImage
  */
-- (nonnull UIImage *)addMark:(nullable NSString *)mark
-                   textColor:(nullable UIColor *)textColor
-                        font:(nullable UIFont *)font
-                       point:(CGPoint)point;
+- (nonnull UIImage *)kk_addMark:(nullable NSString *)mark
+                      textColor:(nullable UIColor *)textColor
+                           font:(nullable UIFont *)font
+                          point:(CGPoint)point;
 
 /**
  添加日期
  
  @return UIImage
  */
-- (nullable UIImage *)addCreateTime;
+- (nullable UIImage *)kk_addCreateTime;
 
 /**
  等比缩放图片
@@ -166,7 +157,7 @@
  @param targetSize 目标大小
  @return UIImage
  */
-- (nullable UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize;
+- (nullable UIImage *)kk_imageByScalingProportionallyToSize:(CGSize)targetSize;
 
 /**
  图片旋转
@@ -174,7 +165,7 @@
  @param radians 需要旋转的角度
  @return UIImage
  */
-- (nullable UIImage *)imageRotatedByRadians:(CGFloat)radians;
+- (nullable UIImage *)kk_imageRotatedByRadians:(CGFloat)radians;
 
 /**
  图片旋转
@@ -182,7 +173,7 @@
  @param degrees 需要旋转的角度
  @return UIImage
  */
-- (nullable UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
+- (nullable UIImage *)kk_imageRotatedByDegrees:(CGFloat)degrees;
 
 /**
  图片缩放
@@ -190,7 +181,7 @@
  @param scale 缩放的比例
  @return UIImage
  */
-- (nullable UIImage*)convertImageToScale:(double)scale;
+- (nullable UIImage*)kk_convertImageToScale:(double)scale;
 
 /**
  * 5.对图片进行滤镜处理
@@ -200,7 +191,7 @@
 // 色调 --> CIPhotoEffectTonal                           冲印 --> CIPhotoEffectProcess
 // 岁月 --> CIPhotoEffectTransfer                        铬黄 --> CIPhotoEffectChrome
 // CILinearToSRGBToneCurve, CISRGBToneCurveToLinear, CIGaussianBlur, CIBoxBlur, CIDiscBlur, CISepiaTone, CIDepthOfField
-+ (nonnull UIImage *)filterWithOriginalImage:(nullable UIImage *)image
++ (nonnull UIImage *)kk_filterWithOriginalImage:(nullable UIImage *)image
                                   filterName:(nullable NSString *)name;
 
 /**
@@ -211,13 +202,34 @@
 // CIDiscBlur     ---> 环形卷积模糊(Available in iOS 9.0 and later)
 // CIMedianFilter ---> 中值模糊, 用于消除图像噪点, 无需设置radius(Available in iOS 9.0 and later)
 // CIMotionBlur   ---> 运动模糊, 用于模拟相机移动拍摄时的扫尾效果(Available in iOS 9.0 and later)
-+ (nullable UIImage *)blurWithOriginalImage:(nullable UIImage *)image
++ (nullable UIImage *)kk_blurWithOriginalImage:(nullable UIImage *)image
                                    blurName:(nullable NSString *)name
                                      radius:(NSInteger)radius;
 
-+ (nullable UIImage*)createRoundedRectImage:(nullable UIImage*)image
++ (nullable UIImage*)kk_createRoundedRectImage:(nullable UIImage*)image
                                        size:(CGSize)size
                                      radius:(NSInteger)radius;
 
-- (UIImage *_Nonnull)imageTransWithColor:(UIColor *_Nonnull)color;
+- (UIImage *_Nonnull)kk_imageTransWithColor:(UIColor *_Nonnull)color;
+
+
+#pragma mark ==================================================
+#pragma mark == ImageConvert
+#pragma mark ==================================================
+typedef void(^KKImageConvertImageOneCompletedBlock)(NSData * _Nullable imageData,NSInteger index);
+typedef void(^KKImageConvertImageAllCompletedBlock)(void);
+
+/**
+ 将图片压缩到指定大小 imageArray UIImage数组，imageDataSize 图片数据大小(单位KB)，比如100KB
+ 
+ @param imageArray 需要转换的图片数组
+ @param imageDataSize 需要压缩到图片数据大小(单位KB)，比如100KB
+ @param completedOneBlock 处理完成一张的回调
+ @param completedAllBlock 处理完成所有的回调
+ */
++ (void)convertImage:(nullable NSArray*)imageArray
+          toDataSize:(CGFloat)imageDataSize
+        oneCompleted:(KKImageConvertImageOneCompletedBlock _Nullable )completedOneBlock
+   allCompletedBlock:(KKImageConvertImageAllCompletedBlock _Nullable )completedAllBlock;
+
 @end

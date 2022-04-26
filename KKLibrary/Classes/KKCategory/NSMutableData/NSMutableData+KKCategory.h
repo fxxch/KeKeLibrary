@@ -18,7 +18,7 @@
  @param key 参数key
  @param value 参数值
  */
-- (void) addPostKeyForFileUpload:(nullable NSString*)key value:(nullable NSString*)value;
+- (void) kk_addPostKeyForFileUpload:(nullable NSString*)key value:(nullable NSString*)value;
 
 
 /**
@@ -28,7 +28,7 @@
  @param data 参数的值
  @param key 参数的key
  */
-- (void) addPostDataForFileUpload:(nullable NSData*)data forKey:(nullable NSString*)key;
+- (void) kk_addPostDataForFileUpload:(nullable NSData*)data forKey:(nullable NSString*)key;
 
 /**
  当网络请求不是上传文件的时候使用。文件拼接在body里面。
@@ -42,7 +42,7 @@
  @param key 参数的key
  @param value 参数的值
  */
-- (void) addPostKey:(nullable NSString*)key value:(nullable NSString*)value;
+- (void) kk_addPostKey:(nullable NSString*)key value:(nullable NSString*)value;
 
 @end
 

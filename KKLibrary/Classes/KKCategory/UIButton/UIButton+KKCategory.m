@@ -13,35 +13,35 @@
 
 @implementation UIButton (KKCategory)
 
-- (void)setBackgroundColor:(nullable UIColor *)backgroundColor
+- (void)kk_setBackgroundColor:(nullable UIColor *)backgroundColor
                   forState:(UIControlState)controlState{
     
-    UIImage *image = [UIImage imageWithColor:backgroundColor size:CGSizeMake(self.bounds.size.width, self.bounds.size.height)];
+    UIImage *image = [UIImage kk_imageWithColor:backgroundColor size:CGSizeMake(self.bounds.size.width, self.bounds.size.height)];
     [self setBackgroundImage:image forState:controlState];
 }
 
-- (void)setBackgroundImage:(nullable UIImage *)image
+- (void)kk_setBackgroundImage:(nullable UIImage *)image
                   forState:(UIControlState)state
                contentMode:(UIViewContentMode)contentMode{
     
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.bounds];
     imageView.contentMode = contentMode;
     imageView.image = image;
-    UIImage *newImage = [imageView snapshot];
+    UIImage *newImage = [imageView kk_snapshot];
     [self setBackgroundImage:newImage forState:state];
 }
 
-- (void)setButtonContentAlignment:(ButtonContentAlignment)contentAlignment
-         ButtonContentLayoutModal:(ButtonContentLayoutModal)contentLayoutModal
-       ButtonContentTitlePosition:(ButtonContentTitlePosition)contentTitlePosition
-        SapceBetweenImageAndTitle:(CGFloat)aSpace
-                       EdgeInsets:(UIEdgeInsets)aEdgeInsets{
+- (void)kk_setButtonContentAlignment:(ButtonContentAlignment)contentAlignment
+            buttonContentLayoutModal:(ButtonContentLayoutModal)contentLayoutModal
+          buttonContentTitlePosition:(ButtonContentTitlePosition)contentTitlePosition
+           sapceBetweenImageAndTitle:(CGFloat)aSpace
+                          edgeInsets:(UIEdgeInsets)aEdgeInsets{
     self.titleEdgeInsets = UIEdgeInsetsZero;
     self.imageEdgeInsets = UIEdgeInsetsZero;
     
     NSString *aTitle = self.titleLabel.text;
     
-    CGSize titleSize = [aTitle sizeWithFont:self.titleLabel.font maxSize:CGSizeMake(self.frame.size.width, 1000)];
+    CGSize titleSize = [aTitle kk_sizeWithFont:self.titleLabel.font maxSize:CGSizeMake(self.frame.size.width, 1000)];
     
     CGSize aImageSize = self.imageView.frame.size;
     if (!self.imageView.image) {
@@ -209,7 +209,7 @@
     
     UIButton *button = [[UIButton alloc] initWithFrame:aFrame];
     if (aBackgroundColor) {
-        [button setBackgroundColor:aBackgroundColor forState:UIControlStateNormal];
+        [button kk_setBackgroundColor:aBackgroundColor forState:UIControlStateNormal];
     }
     [button setTitle:aTitle forState:UIControlStateNormal];
     button.titleLabel.font = aFont;

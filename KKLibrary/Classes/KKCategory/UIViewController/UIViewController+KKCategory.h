@@ -10,4 +10,6 @@
 
 @interface UIViewController (KKCategory)
 
+- (void)kk_fullPresentViewController:(UIViewController *_Nullable)viewControllerToPresent animated: (BOOL)flag completion:(void (^ __nullable)(void))completion;
+
 @end

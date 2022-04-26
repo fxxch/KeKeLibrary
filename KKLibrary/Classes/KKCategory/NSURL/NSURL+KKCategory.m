@@ -65,8 +65,8 @@
 - (nullable instancetype)kk_initWithString:(NSString*)URLString{
     
     //如果有中文字符，先进行URLEncoded
-    if ([URLString isHaveChineseCharacter]) {
-        return [self kk_initWithString:[URLString KKURLEncodedString]];
+    if ([URLString kk_isHaveChineseCharacter]) {
+        return [self kk_initWithString:[URLString kk_KKURLEncodedString]];
     }
     else{
         return [self kk_initWithString:URLString];
@@ -93,8 +93,8 @@
     }
 
     //如果有中文字符，先进行URLEncoded
-    if ([resultString isHaveChineseCharacter]) {
-        return [self kk_URLWithString:[resultString KKURLEncodedString]];
+    if ([resultString kk_isHaveChineseCharacter]) {
+        return [self kk_URLWithString:[resultString kk_KKURLEncodedString]];
     }
     else{
         return [self kk_URLWithString:resultString];

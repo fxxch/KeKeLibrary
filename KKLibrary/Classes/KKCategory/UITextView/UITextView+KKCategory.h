@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITextView (KKCategory)
 
-- (void)checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf;
+- (void)kk_checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf;
 
 @end
 

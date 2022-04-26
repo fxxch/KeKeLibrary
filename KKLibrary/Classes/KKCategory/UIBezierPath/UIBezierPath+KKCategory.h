@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIBezierPath (KKCategory)
 
-+ (UIBezierPath *)chatBoxRightShape:(CGRect)originalFrame;
++ (UIBezierPath *)kk_chatBoxRightShape:(CGRect)originalFrame;
 
-+ (UIBezierPath *)chatBoxLeftShape:(CGRect)originalFrame;
++ (UIBezierPath *)kk_chatBoxLeftShape:(CGRect)originalFrame;
 
 @end
 

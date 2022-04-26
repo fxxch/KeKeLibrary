@@ -16,6 +16,6 @@
  
  @return 结果
  */
-+ (nonnull NSDateFormatter*)defaultFormatter;
++ (nonnull NSDateFormatter*)kk_defaultFormatter;
 
 @end

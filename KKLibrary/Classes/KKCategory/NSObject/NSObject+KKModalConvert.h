@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// NSArray(NSMutableArray)、NSDictionary(NSMutableDictionary)、
 /// NSString、NSNumber、以及基本数据类型（BOOL、NSInteger、float等）
 /// @param obj 待转换的对象
-+ (NSDictionary*)objectToDictionary:(id)obj;
++ (NSDictionary*)kk_objectToDictionary:(id)obj;
 
 #pragma mark ==================================================
 #pragma mark == NSDictionary ==> NSObject
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// NSArray(NSMutableArray)、NSDictionary(NSMutableDictionary)、
 /// NSString、NSNumber、以及基本数据类型（BOOL、NSInteger、float等）
 /// @param dic 待转换的对象的数据来源
-+ (instancetype)initFromDictionary:(NSDictionary *)dic;
++ (instancetype)kk_initFromDictionary:(NSDictionary *)dic;
 
 @end
 

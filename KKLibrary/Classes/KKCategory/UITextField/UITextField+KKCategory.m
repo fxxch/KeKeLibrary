@@ -18,13 +18,13 @@
  
  @param color color
  */
-- (void)setPlaceholderColor:(nullable UIColor *)color {
+- (void)kk_setPlaceholderColor:(nullable UIColor *)color {
     if (color == nil) {
         color = [UIColor lightGrayColor];
     }
     
-    if ([UIDevice isSystemVersionBigerThan:@"13.0"]) {
-        if ([NSString isStringNotEmpty:self.placeholder]) {
+    if ([UIDevice kk_isSystemVersionBigerThan:@"13.0"]) {
+        if ([NSString kk_isStringNotEmpty:self.placeholder]) {
             NSMutableAttributedString *AttributedString = [[NSMutableAttributedString alloc] initWithString:self.placeholder];
             
             NSMutableParagraphStyle *style = [self.defaultTextAttributes[NSParagraphStyleAttributeName] mutableCopy];
@@ -49,8 +49,8 @@
  
  @param image image
  */
-- (void)setBackgroundImage:(nullable UIImage *)image {
-    [self setBackgroundImage:image stretchWithX:0 stretchWithY:0];
+- (void)kk_setBackgroundImage:(nullable UIImage *)image {
+    [self kk_setBackgroundImage:image stretchWithX:0 stretchWithY:0];
 }
 
 /**
@@ -61,7 +61,7 @@
  @param y 起始位置y
  
  */
-- (void)setBackgroundImage:(nullable UIImage *)image stretchWithX:(NSInteger)x stretchWithY:(NSInteger)y{
+- (void)kk_setBackgroundImage:(nullable UIImage *)image stretchWithX:(NSInteger)x stretchWithY:(NSInteger)y{
     [self setBorderStyle:UITextBorderStyleNone];
     [self setBackground:[image stretchableImageWithLeftCapWidth:x topCapHeight:y]];
 }
@@ -74,7 +74,7 @@
  @param x 起始位置x
  @param y 起始位置y
  */
-- (void)setDisabledBackgroundImage:(nullable UIImage *)image stretchWithX:(NSInteger)x stretchWithY:(NSInteger)y {
+- (void)kk_setDisabledBackgroundImage:(nullable UIImage *)image stretchWithX:(NSInteger)x stretchWithY:(NSInteger)y {
     [self setBorderStyle:UITextBorderStyleNone];
     [self setDisabledBackground:[image stretchableImageWithLeftCapWidth:x topCapHeight:y]];
 }
@@ -87,12 +87,12 @@
  @param textColor 文字颜色
  @param width 宽度
  */
-- (void)setLeftLabelTitle:(nullable NSString *)text textColor:(nullable UIColor *)textColor width:(CGFloat)width {
-    [self setLeftLabelTitle:text
-                  textColor:textColor
-                   textFont:nil
-                      width:width
-            backgroundColor:nil];
+- (void)kk_setLeftLabelTitle:(nullable NSString *)text textColor:(nullable UIColor *)textColor width:(CGFloat)width {
+    [self kk_setLeftLabelTitle:text
+                     textColor:textColor
+                      textFont:nil
+                         width:width
+               backgroundColor:nil];
 }
 
 /**
@@ -104,17 +104,17 @@
  @param width 宽度
  @param backgroundColor 背景颜色
  */
-- (void)setLeftLabelTitle:(nullable NSString *)text
-                textColor:(nullable UIColor *)textColor
-                 textFont:(nullable UIFont *)font
-                    width:(CGFloat)width
-          backgroundColor:(UIColor *)backgroundColor {
-    [self labelWithText:text
-                 isLeft:YES
-              textColor:textColor
-               textFont:font
-                  width:width
-        backgroundColor:backgroundColor];
+- (void)kk_setLeftLabelTitle:(nullable NSString *)text
+                   textColor:(nullable UIColor *)textColor
+                    textFont:(nullable UIFont *)font
+                       width:(CGFloat)width
+             backgroundColor:(UIColor *)backgroundColor {
+    [self kk_labelWithText:text
+                        isLeft:YES
+                    textColor:textColor
+                    textFont:font
+                        width:width
+            backgroundColor:backgroundColor];
 }
 
 /**
@@ -126,25 +126,25 @@
  @param width 宽度
  @param backgroundColor 背景颜色
  */
-- (void)setRightLabelTitle:(nullable NSString *)text
-                 textColor:(nullable UIColor *)textColor
-                  textFont:(nullable UIFont *)font
-                     width:(CGFloat)width
-           backgroundColor:(UIColor *)backgroundColor {
-    [self labelWithText:text
-                 isLeft:NO
-              textColor:textColor
-               textFont:font
-                  width:width
-        backgroundColor:backgroundColor];
+- (void)kk_setRightLabelTitle:(nullable NSString *)text
+                    textColor:(nullable UIColor *)textColor
+                     textFont:(nullable UIFont *)font
+                        width:(CGFloat)width
+            backgroundColor:(UIColor *)backgroundColor {
+    [self kk_labelWithText:text
+                    isLeft:NO
+                 textColor:textColor
+                  textFont:font
+                     width:width
+           backgroundColor:backgroundColor];
 }
 
-- (nonnull UILabel *)labelWithText:(nullable NSString *)text
-                            isLeft:(BOOL)isLeft
-                         textColor:(nullable UIColor *)textColor
-                          textFont:(UIFont *)font
-                             width:(CGFloat)width
-                   backgroundColor:(nullable UIColor *)backgroundColor {
+- (nonnull UILabel *)kk_labelWithText:(nullable NSString *)text
+                               isLeft:(BOOL)isLeft
+                            textColor:(nullable UIColor *)textColor
+                             textFont:(UIFont *)font
+                                width:(CGFloat)width
+                      backgroundColor:(nullable UIColor *)backgroundColor {
     
     static NSUInteger leftLabelTag = 0;
     static NSUInteger rightLabelTag = 0;
@@ -201,13 +201,13 @@
     return label;
 }
 
-- (void)setMaxTextLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
+- (void)kk_setMaxTextLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
     objc_setAssociatedObject(self, @"kLimitTextFieldMaxLengthKey", [NSNumber numberWithInt:length], OBJC_ASSOCIATION_COPY_NONATOMIC);
     objc_setAssociatedObject(self, @"kLimitTextFieldMaxLengthEnglishHalfKey", [NSNumber numberWithBool:isEnglishHalf], OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [self addTarget:self action:@selector(textFieldTextLengthLimit:) forControlEvents:UIControlEventEditingChanged];
+    [self addTarget:self action:@selector(kk_textFieldTextLengthLimit:) forControlEvents:UIControlEventEditingChanged];
 }
 
-- (void)textFieldTextLengthLimit:(nullable id)sender{
+- (void)kk_textFieldTextLengthLimit:(nullable id)sender{
     NSNumber *lengthNumber = objc_getAssociatedObject(self, @"kLimitTextFieldMaxLengthKey");
     int maxLength = [lengthNumber intValue];
     if (maxLength<=0) return;
@@ -215,10 +215,10 @@
     NSNumber *isEnglishHalf = objc_getAssociatedObject(self, @"kLimitTextFieldMaxLengthEnglishHalfKey");
     BOOL englishHalf = [isEnglishHalf boolValue];
 
-    [self checkLimitMaxLenth:maxLength isEnglishHalf:englishHalf];
+    [self kk_checkLimitMaxLenth:maxLength isEnglishHalf:englishHalf];
 }
 
-- (void)checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
+- (void)kk_checkLimitMaxLenth:(int)length isEnglishHalf:(BOOL)isEnglishHalf{
     int maxLength = length;
     if (maxLength<=0) return ;
 
@@ -227,7 +227,7 @@
     if ( [selectedRange isEmpty] || selectedRange==nil) {
         NSUInteger textLenth = 0;
         if (englishHalf) {
-            textLenth = [self.text realLenth];
+            textLenth = [self.text kk_realLenth];
         }
         else{
             textLenth = [self.text length];
@@ -237,7 +237,7 @@
                 NSString *tempString = nil;
                 for (NSInteger i=0; i<[self.text length]; i++) {
                     tempString = [self.text substringToIndex:i];
-                    if ([tempString realLenth]>maxLength) {
+                    if ([tempString kk_realLenth]>maxLength) {
                         tempString = [self.text substringToIndex:i-1];
                         break;
                     }

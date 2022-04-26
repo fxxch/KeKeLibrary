@@ -58,7 +58,7 @@
 }
 
 - (CGFloat)KK_SafeAreaBottomHeight{
-    if ([[UIDevice currentDevice] isiPhoneX]) {
+    if ([[UIDevice currentDevice] kk_isiPhoneX]) {
         return 34.0f;
     }
     else{
@@ -67,7 +67,7 @@
 }
 
 - (CGFloat)KK_StatusBarHeight{
-    if ([[UIDevice currentDevice] isiPhoneX]) {
+    if ([[UIDevice currentDevice] kk_isiPhoneX]) {
         return 44.0f;
     }
     else{
@@ -83,14 +83,14 @@
     return KKNavigationBarHeight+KKStatusBarHeight;
 }
 
-- (void)createiPhoneXFooterForView:(nullable UIView*)aView{
-    [self createiPhoneXFooterForView:aView withBackGroudColor:[UIColor whiteColor]];
+- (void)kk_createiPhoneXFooterForView:(nullable UIView*)aView{
+    [self kk_createiPhoneXFooterForView:aView withBackGroudColor:[UIColor whiteColor]];
 }
 
-- (void)createiPhoneXFooterForView:(nullable UIView*)aView withBackGroudColor:(nullable UIColor *)backColor{
+- (void)kk_createiPhoneXFooterForView:(nullable UIView*)aView withBackGroudColor:(nullable UIColor *)backColor{
     
     //判断是否是iphoneX
-    if ([[UIDevice currentDevice] isiPhoneX]) {
+    if ([[UIDevice currentDevice] kk_isiPhoneX]) {
         [[aView viewWithTag:2018070299] removeFromSuperview];
         
         UIView *iPhoneXView = [[UIView alloc] initWithFrame:CGRectMake(0, aView.frame.size.height, aView.frame.size.width, KKSafeAreaBottomHeight)];

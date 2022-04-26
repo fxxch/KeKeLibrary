@@ -7,7 +7,6 @@
 //
 
 #import "NSFileManager+KKCategory.h"
-#import "KKThemeManager.h"
 #import "KKLog.h"
 #import "NSString+KKCategory.h"
 #import <AVFoundation/AVFoundation.h>
@@ -17,25 +16,25 @@
 #pragma mark ==================================================
 #pragma mark == 沙盒路径
 #pragma mark ==================================================
-+ (NSString*_Nonnull)documentsDirectory{
++ (NSString*_Nonnull)kk_documentsDirectory{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
 
-+ (NSString*_Nonnull)libraryDirectory{
++ (NSString*_Nonnull)kk_libraryDirectory{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
 
-+ (NSString*_Nonnull)cachesDirectory{
++ (NSString*_Nonnull)kk_cachesDirectory{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
 
-+ (NSString*_Nonnull)temporaryDirectory{
++ (NSString*_Nonnull)kk_temporaryDirectory{
     NSString *documentsDirectory = NSTemporaryDirectory();
     return documentsDirectory;
 }
@@ -45,7 +44,7 @@
  @param path 文件夹完整路径
  @return 返回所有子目录列表
  */
-+ (NSArray*_Nonnull)subDirectoryListAtDirectory:(NSString*_Nullable)path{
++ (NSArray*_Nonnull)kk_subDirectoryListAtDirectory:(NSString*_Nullable)path{
     NSMutableArray *directoryArrary = [NSMutableArray array];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -72,7 +71,7 @@
  @param path 文件夹完整路径
  @return 返回所有文件列表
  */
-+ (NSArray*_Nonnull)fileListAtDirectory:(NSString*_Nullable)path{
++ (NSArray*_Nonnull)kk_fileListAtDirectory:(NSString*_Nullable)path{
     NSMutableArray *fileArrary = [NSMutableArray array];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -99,7 +98,7 @@
 #pragma mark == 文件类型【大类】
 #pragma mark ==================================================
 /* 图片类 */
-+ (BOOL)isFileType_IMG:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_IMG:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"png"] ||
         [[fileExtention lowercaseString] isEqualToString:@"jpg"] ||
         [[fileExtention lowercaseString] isEqualToString:@"bmp"] ||
@@ -114,7 +113,7 @@
 }
 
 /* 视频类 */
-+ (BOOL)isFileType_VIDEO:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_VIDEO:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"mov"] ||
         [[fileExtention lowercaseString] isEqualToString:@"mp4"] ||
         [[fileExtention lowercaseString] isEqualToString:@"flv"] ||
@@ -134,7 +133,7 @@
 }
 
 /* 音频类 */
-+ (BOOL)isFileType_AUDIO:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_AUDIO:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"mp3"] ||
         [[fileExtention lowercaseString] isEqualToString:@"wma"] ||
         [[fileExtention lowercaseString] isEqualToString:@"aac"] ||
@@ -154,10 +153,10 @@
 }
 
 /* 文档类 */
-+ (BOOL)isFileType_Office:(NSString*_Nullable)fileExtention{
-    if ([NSFileManager isFileType_MicrosoftOffice:fileExtention] ||
-        [NSFileManager isFileType_AppleOffice:fileExtention] ||
-        [NSFileManager isFileType_OtherOffice:fileExtention] ) {
++ (BOOL)kk_isFileType_Office:(NSString*_Nullable)fileExtention{
+    if ([NSFileManager kk_isFileType_MicrosoftOffice:fileExtention] ||
+        [NSFileManager kk_isFileType_AppleOffice:fileExtention] ||
+        [NSFileManager kk_isFileType_OtherOffice:fileExtention] ) {
         return YES;
     }
     else{
@@ -166,11 +165,11 @@
 
 }
 
-+ (BOOL)isFileType_MicrosoftOffice:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_MicrosoftOffice:(NSString*_Nullable)fileExtention{
     //微软的
-    if ([NSFileManager isFileType_PPT:fileExtention] ||
-        [NSFileManager isFileType_DOC:fileExtention] ||
-        [NSFileManager isFileType_XLS:fileExtention] ) {
+    if ([NSFileManager kk_isFileType_PPT:fileExtention] ||
+        [NSFileManager kk_isFileType_DOC:fileExtention] ||
+        [NSFileManager kk_isFileType_XLS:fileExtention] ) {
         return YES;
     }
     else{
@@ -178,7 +177,7 @@
     }
 }
 
-+ (BOOL)isFileType_AppleOffice:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_AppleOffice:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"rtf"] ||
         [[fileExtention lowercaseString] isEqualToString:@"rtfd"] ) {
         return YES;
@@ -187,9 +186,9 @@
     }
 }
 
-+ (BOOL)isFileType_OtherOffice:(NSString*_Nullable)fileExtention{
-    if ([NSFileManager isFileType_PDF:fileExtention] ||
-        [NSFileManager isFileType_TXT:fileExtention] ||
++ (BOOL)kk_isFileType_OtherOffice:(NSString*_Nullable)fileExtention{
+    if ([NSFileManager kk_isFileType_PDF:fileExtention] ||
+        [NSFileManager kk_isFileType_TXT:fileExtention] ||
         [[fileExtention lowercaseString] isEqualToString:@"wps"]) {
         return YES;
     } else {
@@ -198,7 +197,7 @@
 }
 
 /* 压缩包类 */
-+ (BOOL)isFileType_ZIP:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_ZIP:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"zip"] ||
         [[fileExtention lowercaseString] isEqualToString:@"rar"]) {
         return YES;
@@ -211,7 +210,7 @@
 #pragma mark ==================================================
 #pragma mark == 文件类型【子类】
 #pragma mark ==================================================
-+ (BOOL)isFileType_DOC:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_DOC:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"doc"] ||
         [[fileExtention lowercaseString] isEqualToString:@"docx"]) {
         return YES;
@@ -221,7 +220,7 @@
     }
 }
 
-+ (BOOL)isFileType_PPT:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_PPT:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"ppt"] ||
         [[fileExtention lowercaseString] isEqualToString:@"pptx"]) {
         return YES;
@@ -231,7 +230,7 @@
     }
 }
 
-+ (BOOL)isFileType_XLS:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_XLS:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"xls"] ||
         [[fileExtention lowercaseString] isEqualToString:@"xlsx"] ||
         [[fileExtention lowercaseString] isEqualToString:@"csv"]) {
@@ -242,7 +241,7 @@
     }
 }
 
-+ (BOOL)isFileType_PDF:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_PDF:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"pdf"]) {
         return YES;
     }
@@ -251,7 +250,7 @@
     }
 }
 
-+ (BOOL)isFileType_TXT:(NSString*_Nullable)fileExtention{
++ (BOOL)kk_isFileType_TXT:(NSString*_Nullable)fileExtention{
     if ([[fileExtention lowercaseString] isEqualToString:@"txt"]) {
         return YES;
     }
@@ -260,120 +259,37 @@
     }
 }
 
-+ (KKFileType)fileTypeAtPath:(NSString*_Nullable)aFilePath{
++ (KKFileType)kk_fileTypeAtPath:(NSString*_Nullable)aFilePath{
     NSString *fileExtention = [aFilePath pathExtension];
-    if ([NSFileManager isFileType_DOC:fileExtention]) {
+    if ([NSFileManager kk_isFileType_DOC:fileExtention]) {
         return KKFileType_doc;
     }
-    else if ([NSFileManager isFileType_PPT:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_PPT:fileExtention]) {
         return KKFileType_ppt;
     }
-    else if ([NSFileManager isFileType_XLS:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_XLS:fileExtention]) {
         return KKFileType_xls;
     }
-    else if ([NSFileManager isFileType_IMG:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_IMG:fileExtention]) {
         return KKFileType_img;
     }
-    else if ([NSFileManager isFileType_VIDEO:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_VIDEO:fileExtention]) {
         return KKFileType_video;
     }
-    else if ([NSFileManager isFileType_AUDIO:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_AUDIO:fileExtention]) {
         return KKFileType_audio;
     }
-    else if ([NSFileManager isFileType_PDF:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_PDF:fileExtention]) {
         return KKFileType_pdf;
     }
-    else if ([NSFileManager isFileType_TXT:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_TXT:fileExtention]) {
         return KKFileType_txt;
     }
-    else if ([NSFileManager isFileType_ZIP:fileExtention]) {
+    else if ([NSFileManager kk_isFileType_ZIP:fileExtention]) {
         return KKFileType_zip;
     }
     else {
         return KKFileType_UnKnown;
-    }
-}
-
-#pragma mark ==================================================
-#pragma mark == 文件图标
-#pragma mark ==================================================
-/**
- 根据文件类型，返回对应的icon图标
-
- @param fileExtention 文件扩展名
- @return icon图片
- */
-+ (UIImage*_Nullable)fileTypeImageLForExtention:(NSString*_Nullable)fileExtention{
-
-    if ([NSFileManager isFileType_DOC:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_DOC");
-    }
-    else if ([NSFileManager isFileType_PPT:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_PPT");
-    }
-    else if ([NSFileManager isFileType_XLS:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_XLS");
-    }
-    else if ([NSFileManager isFileType_IMG:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_IMG");
-    }
-    else if ([NSFileManager isFileType_VIDEO:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_VIDEO");
-    }
-    else if ([NSFileManager isFileType_AUDIO:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_AUDIO");
-    }
-    else if ([NSFileManager isFileType_PDF:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_PDF");
-    }
-    else if ([NSFileManager isFileType_TXT:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_TXT");
-    }
-    else if ([NSFileManager isFileType_ZIP:fileExtention]) {
-        return KKThemeImage(@"FileTypeL_ZIP");
-    }
-    else{
-        return KKThemeImage(@"FileTypeL_XXX");
-    }
-}
-
-/**
- 根据文件类型，返回对应的icon图标
-
- @param fileExtention 文件扩展名
- @return icon图片
- */
-+ (UIImage*_Nullable)fileTypeImageSForExtention:(NSString*_Nullable)fileExtention{
-
-    if ([NSFileManager isFileType_DOC:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_DOC");
-    }
-    else if ([NSFileManager isFileType_PPT:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_PPT");
-    }
-    else if ([NSFileManager isFileType_XLS:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_XLS");
-    }
-    else if ([NSFileManager isFileType_IMG:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_IMG");
-    }
-    else if ([NSFileManager isFileType_VIDEO:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_VIDEO");
-    }
-    else if ([NSFileManager isFileType_AUDIO:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_AUDIO");
-    }
-    else if ([NSFileManager isFileType_PDF:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_PDF");
-    }
-    else if ([NSFileManager isFileType_TXT:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_TXT");
-    }
-    else if ([NSFileManager isFileType_ZIP:fileExtention]) {
-        return KKThemeImage(@"FileTypeS_ZIP");
-    }
-    else{
-        return KKThemeImage(@"FileTypeS_XXX");
     }
 }
 
@@ -385,7 +301,7 @@
  @discussion 例如：将1024byte 转换成1KB
  @param aFileSize 文件的大小，单位byte
  */
-+ (NSString*_Nonnull)fileSizeStringFormat:(CGFloat)aFileSize{
++ (NSString*_Nonnull)kk_fileSizeStringFormat:(CGFloat)aFileSize{
 
     long long KB = 1024;
     long long MB = 1024*1024;
@@ -408,8 +324,8 @@
 #pragma mark ==================================================
 #pragma mark == 文件与文件夹操作
 #pragma mark ==================================================
-+ (BOOL)deleteFileAtPath:(NSString*_Nullable)aFilePath{
-    if ([NSString isStringEmpty:aFilePath]) {
++ (BOOL)kk_deleteFileAtPath:(NSString*_Nullable)aFilePath{
+    if ([NSString kk_isStringEmpty:aFilePath]) {
         return NO;
     }
 
@@ -429,8 +345,8 @@
     }
 }
 
-+ (BOOL)deleteDirectoryAtPath:(NSString*_Nullable)aDirectoryPath{
-    if ([NSString isStringEmpty:aDirectoryPath]) {
++ (BOOL)kk_deleteDirectoryAtPath:(NSString*_Nullable)aDirectoryPath{
+    if ([NSString kk_isStringEmpty:aDirectoryPath]) {
         return NO;
     }
     BOOL isDirectory = YES;
@@ -458,8 +374,8 @@
  @param filePath 文件的完整路径【例如：/var/………………/KKLibraryTempFile/PNG/aa.png 】
  @return 函数调用成功 返回文件有多少Byte
  */
-+ (long long)fileSizeAtPath:(NSString*_Nullable)filePath{
-    if ([NSString isStringEmpty:filePath]) {
++ (long long)kk_fileSizeAtPath:(NSString*_Nullable)filePath{
+    if ([NSString kk_isStringEmpty:filePath]) {
         return 0;
     }
 
@@ -483,8 +399,8 @@
  @discussion 计算文件夹的大小
  @param directoryPath 文件夹的完整路径【例如：/var/………………/KKLibraryTempFile/PNG 】
  */
-+ (void)directorySizeAtPath:(NSString*_Nullable)directoryPath completed:(KKComputeFolderSizeCompletedBlock)completedBlock{
-    if ([NSString isStringEmpty:directoryPath]) {
++ (void)kk_directorySizeAtPath:(NSString*_Nullable)directoryPath completed:(KKComputeFolderSizeCompletedBlock)completedBlock{
+    if ([NSString kk_isStringEmpty:directoryPath]) {
         if (completedBlock) {
             completedBlock(0);
         }
@@ -503,7 +419,7 @@
         long long folderSize = 0;
         while ((fileName = [childFilesEnumerator nextObject]) != nil){
             NSString* fileAbsolutePath = [directoryPath stringByAppendingPathComponent:fileName];
-            folderSize += [NSFileManager fileSizeAtPath:fileAbsolutePath];
+            folderSize += [NSFileManager kk_fileSizeAtPath:fileAbsolutePath];
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -521,21 +437,21 @@
  @param aFilePath 保存的路径
  @return 返回真实的文件名
 */
-+ (NSString*_Nullable)realFileNameForExpectFileName:(NSString*_Nullable)aFileName inPath:(NSString*_Nullable)aFilePath{
++ (NSString*_Nullable)kk_realFileNameForExpectFileName:(NSString*_Nullable)aFileName inPath:(NSString*_Nullable)aFilePath{
     
-    if ([NSString isStringEmpty:aFileName] ||
-        [NSString isStringEmpty:aFilePath] ) {
+    if ([NSString kk_isStringEmpty:aFileName] ||
+        [NSString kk_isStringEmpty:aFilePath] ) {
         KKLogError(@"传入文件名错误，或者路径错误");
         return nil;
     }
     
     NSString *fileNameResult = [NSString stringWithFormat:@"%@",aFileName];
     NSString *aExtension = [fileNameResult pathExtension];
-    NSString *fileNameShort = [fileNameResult fileNameWithOutExtention];
+    NSString *fileNameShort = [fileNameResult kk_fileNameWithOutExtention];
 
-    if ([NSString isStringEmpty:fileNameResult] ||
-        [NSString isStringEmpty:aExtension]  ||
-        [NSString isStringEmpty:fileNameShort] ) {
+    if ([NSString kk_isStringEmpty:fileNameResult] ||
+        [NSString kk_isStringEmpty:aExtension]  ||
+        [NSString kk_isStringEmpty:fileNameShort] ) {
         KKLogError(@"传入文件名格式错误，或者路径错误");
         return nil;
     }
@@ -562,7 +478,7 @@
 #pragma mark ==================================================
 #pragma mark == 获取视频第一帧
 #pragma mark ==================================================
-+ (UIImage*_Nullable) getVideoPreViewImageWithURL:(NSURL*_Nullable)aURL{
++ (UIImage*_Nullable)kk_getVideoPreViewImageWithURL:(NSURL*_Nullable)aURL{
     if (aURL==nil) {
         return nil;
     }
@@ -583,7 +499,7 @@
 #pragma mark ==================================================
 #pragma mark == 获取视频的角度
 #pragma mark ==================================================
-+ (NSUInteger)degressFromVideoFileWithURL:(NSURL*_Nullable)url{
++ (NSUInteger)kk_degressFromVideoFileWithURL:(NSURL*_Nullable)url{
     NSUInteger degress = 0;
     AVAsset *asset = [AVAsset assetWithURL:url];
     NSArray *tracks = [asset tracksWithMediaType:AVMediaTypeVideo];

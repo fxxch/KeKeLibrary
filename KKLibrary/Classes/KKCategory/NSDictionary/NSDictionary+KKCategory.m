@@ -17,7 +17,7 @@
  @param dictionary 需要判断的字典
  @return 结果
  */
-+ (BOOL)isDictionaryNotEmpty:(nullable id)dictionary{
++ (BOOL)kk_isDictionaryNotEmpty:(nullable id)dictionary{
     if (dictionary && [dictionary isKindOfClass:[NSDictionary class]] && [dictionary count]>0) {
         return YES;
     }
@@ -32,28 +32,28 @@
  @param dictionary 需要判断的字典
  @return 结果
  */
-+ (BOOL)isDictionaryEmpty:(nullable id)dictionary{
-    return ![NSDictionary isDictionaryNotEmpty:dictionary];
++ (BOOL)kk_isDictionaryEmpty:(nullable id)dictionary{
+    return ![NSDictionary kk_isDictionaryNotEmpty:dictionary];
 }
 
 
-- (BOOL)boolValueForKey:(nonnull id)aKey {
+- (BOOL)kk_boolValueForKey:(nonnull id)aKey {
     return [[self objectForKey:aKey] boolValue];
 }
 
-- (int)intValueForKey:(nonnull id)aKey {
+- (int)kk_intValueForKey:(nonnull id)aKey {
     return [[self objectForKey:aKey] intValue];
 }
 
-- (NSInteger)integerValueForKey:(nonnull id)aKey {
+- (NSInteger)kk_integerValueForKey:(nonnull id)aKey {
     return [[self objectForKey:aKey] integerValue];
 }
 
-- (float)floatValueForKey:(nonnull id)aKey {
+- (float)kk_floatValueForKey:(nonnull id)aKey {
     return [[self objectForKey:aKey] floatValue];
 }
 
-- (double)doubleValueForKey:(nonnull id)aKey {
+- (double)kk_doubleValueForKey:(nonnull id)aKey {
     return [[self objectForKey:aKey] doubleValue];
 }
 
@@ -63,7 +63,7 @@
  @param aKey aKey
  @return 返回：可能是NSString对象 或者 nil
  */
-- (nullable NSString *)stringValueForKey:(nullable id)aKey {
+- (nullable NSString *)kk_stringValueForKey:(nullable id)aKey {
     if (aKey) {
         id value = [self objectForKey:aKey];
         if ([value isKindOfClass:[NSString class]]) {
@@ -87,7 +87,7 @@
  @param aKey aKey
  @return 返回：一定是一个NSString对象(NSString可能有值，可能为@“”)
  */
-- (nonnull NSString*)validStringForKey:(nullable id)aKey{
+- (nonnull NSString*)kk_validStringForKey:(nullable id)aKey{
     
     if (aKey) {
         NSObject *object = [self objectForKey:aKey];
@@ -99,10 +99,10 @@
                 return (NSString*)object;
             }
             else if ([object isKindOfClass:[NSDictionary class]]){
-                return (NSString*)[(NSDictionary*)object translateToJSONString];
+                return (NSString*)[(NSDictionary*)object kk_translateToJSONString];
             }
             else if ([object isKindOfClass:[NSArray class]]){
-                return (NSString*)[(NSArray*)object translateToJSONString];
+                return (NSString*)[(NSArray*)object kk_translateToJSONString];
             }
             else if ([object isKindOfClass:[NSURL class]]){
                 return [(NSURL*)object absoluteString];
@@ -126,7 +126,7 @@
  @param aKey aKey
  @return 返回：可能是NSDictionary对象 或者 nil
  */
-- (nullable NSDictionary *)dictionaryValueForKey:(nullable id)aKey {
+- (nullable NSDictionary *)kk_dictionaryValueForKey:(nullable id)aKey {
     if (aKey) {
         id value = [self objectForKey:aKey];
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -147,15 +147,15 @@
  @param aKey aKey
  @return 返回：一定是一个NSDictionary对象(NSDictionary里面可能有值，可能为空)
  */
-- (nonnull NSDictionary*)validDictionaryForKey:(nonnull id)aKey{
+- (nonnull NSDictionary*)kk_validDictionaryForKey:(nonnull id)aKey{
     if (aKey) {
         id value = [self objectForKey:aKey];
         if ([value isKindOfClass:[NSDictionary class]]) {
             return (NSDictionary*)value;
         }
         else if ([value isKindOfClass:[NSString class]]){
-            NSDictionary *returnDictionary  = [NSDictionary dictionaryFromJSONString:(NSString*)value];
-            if ([NSDictionary isDictionaryNotEmpty:returnDictionary]) {
+            NSDictionary *returnDictionary  = [NSDictionary kk_dictionaryFromJSONString:(NSString*)value];
+            if ([NSDictionary kk_isDictionaryNotEmpty:returnDictionary]) {
                 return returnDictionary;
             }
             else{
@@ -163,8 +163,8 @@
             }
         }
         else if ([value isKindOfClass:[NSData class]]){
-            NSDictionary *returnDictionary  = [NSDictionary dictionaryFromJSONData:(NSData*)value];
-            if ([NSDictionary isDictionaryNotEmpty:returnDictionary]) {
+            NSDictionary *returnDictionary  = [NSDictionary kk_dictionaryFromJSONData:(NSData*)value];
+            if ([NSDictionary kk_isDictionaryNotEmpty:returnDictionary]) {
                 return returnDictionary;
             }
             else{
@@ -187,7 +187,7 @@
  @param aKey aKey
  @return 返回：可能是NSArray对象 或者nil
  */
-- (nullable NSArray *)arrayValueForKey:(nullable id)aKey {
+- (nullable NSArray *)kk_arrayValueForKey:(nullable id)aKey {
     if (aKey) {
         id value = [self objectForKey:aKey];
         if ([value isKindOfClass:[NSArray class]]) {
@@ -208,15 +208,15 @@
  @param aKey aKey
  @return 返回：一定是一个NSArray对象(NSArray里面可能有值，可能为空)
  */
-- (nonnull NSArray*)validArrayForKey:(nullable id)aKey{
+- (nonnull NSArray*)kk_validArrayForKey:(nullable id)aKey{
     if (aKey) {
         id value = [self objectForKey:aKey];
         if ([value isKindOfClass:[NSArray class]]) {
             return (NSArray*)value;
         }
         else if ([value isKindOfClass:[NSString class]]){
-            NSArray *returnArray = [NSArray arrayFromJSONString:(NSString*)value];
-            if ([NSArray isArrayNotEmpty:returnArray]) {
+            NSArray *returnArray = [NSArray kk_arrayFromJSONString:(NSString*)value];
+            if ([NSArray kk_isArrayNotEmpty:returnArray]) {
                 return returnArray;
             }
             else{
@@ -224,8 +224,8 @@
             }
         }
         else if ([value isKindOfClass:[NSData class]]){
-            NSArray *returnArray = [NSArray arrayFromJSONData:(NSData*)value];
-            if ([NSArray isArrayNotEmpty:returnArray]) {
+            NSArray *returnArray = [NSArray kk_arrayFromJSONData:(NSData*)value];
+            if ([NSArray kk_isArrayNotEmpty:returnArray]) {
                 return returnArray;
             }
             else{
@@ -246,7 +246,7 @@
  
  @return Json字符串
  */
-- (nullable NSString*)translateToJSONString{
+- (nullable NSString*)kk_translateToJSONString{
     
     //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
     NSError *error = nil;
@@ -263,7 +263,7 @@
  
  @return 字典对象
  */
-+ (nullable NSDictionary*)dictionaryFromJSONData:(nullable NSData*)aJsonData{
++ (nullable NSDictionary*)kk_dictionaryFromJSONData:(nullable NSData*)aJsonData{
     if (aJsonData && [aJsonData isKindOfClass:[NSData class]]) {
         
         NSError *error = nil;
@@ -288,7 +288,7 @@
  
  @return 字典对象
  */
-+ (nullable NSDictionary*)dictionaryFromJSONString:(nullable NSString*)aJsonString{
++ (nullable NSDictionary*)kk_dictionaryFromJSONString:(nullable NSString*)aJsonString{
     
     if (aJsonString && [aJsonString isKindOfClass:[NSString class]]) {
         

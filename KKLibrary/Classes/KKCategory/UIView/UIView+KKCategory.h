@@ -38,7 +38,7 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
 };
 
 
-@property (nonatomic,strong) id _Nullable tagInfo;
+@property (nonatomic,strong) id _Nullable kk_tagInfo;
 @property (nonatomic,assign) KKCornerRadiusType kk_CornerRadiusType;
 @property (nonatomic,assign) CGFloat kk_CornerRadius;
 
@@ -65,7 +65,7 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
  
  @return UIImage
  */
-- (nullable UIImage *)snapshot;
+- (nullable UIImage *)kk_snapshot;
 
 /**
  ①普通的截图
@@ -107,19 +107,19 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
 #pragma mark ==================================================
 #pragma mark == 普通设置
 #pragma mark ==================================================
-- (void)clearBackgroundColor;
+- (void)kk_clearBackgroundColor;
 
-- (void)removeAllSubviews;
+- (void)kk_removeAllSubviews;
 
-- (void)setBackgroundImage:(nullable UIImage *)image;
+- (void)kk_setBackgroundImage:(nullable UIImage *)image;
 
-- (void)setIndex:(NSInteger)index;
+- (void)kk_setIndex:(NSInteger)index;
 
-- (void)bringToFront;
+- (void)kk_bringToFront;
 
-- (void)sendToBack;
+- (void)kk_sendToBack;
 
-- (nullable UIViewController *)viewController;
+- (nullable UIViewController *)kk_viewController;
 
 /**
  创建一个渐变色的View
@@ -131,44 +131,44 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
  */
 - (nullable id)initWithFrame:(CGRect)frame startHexColor:(nullable NSString*)startHexColor endHexColor:(nullable NSString*)endHexColor;
 
-- (void)setBackgroundColorFromColor:(nullable UIColor*)startUIColor
-                            toColor:(nullable UIColor*)endUIColor
-                          direction:(UIViewGradientColorDirection)direction;
+- (void)kk_setBackgroundColorFromColor:(nullable UIColor*)startUIColor
+                               toColor:(nullable UIColor*)endUIColor
+                             direction:(UIViewGradientColorDirection)direction;
 
 #pragma mark ==================================================
 #pragma mark == 设置遮罩相关
 #pragma mark ==================================================
-@property (nonatomic,strong) UIBezierPath * _Nullable bezierPath;
+@property (nonatomic,strong) UIBezierPath * _Nullable kk_bezierPath;
 
-- (void)setMaskWithPath:(nullable UIBezierPath*)path;
+- (void)kk_setMaskWithPath:(nullable UIBezierPath*)path;
 
-- (void)setMaskWithPath:(nullable UIBezierPath*)path
-            borderColor:(nullable UIColor*)borderColor
-            borderWidth:(float)borderWidth;
+- (void)kk_setMaskWithPath:(nullable UIBezierPath*)path
+               borderColor:(nullable UIColor*)borderColor
+               borderWidth:(float)borderWidth;
 
-- (BOOL)containsPoint:(CGPoint)point;
+- (BOOL)kk_containsPoint:(CGPoint)point;
 
 #pragma mark ==================================================
 #pragma mark == 设置圆角（计算UIBezierPath+边框颜色+边框粗细）、设置遮罩
 #pragma mark ==================================================
-- (void)setCornerRadius:(CGFloat)radius;
+- (void)kk_setCornerRadius:(CGFloat)radius;
 
-- (void)setCornerRadius:(CGFloat)radius
-                   type:(KKCornerRadiusType)aType;
+- (void)kk_setCornerRadius:(CGFloat)radius
+                      type:(KKCornerRadiusType)aType;
 
 #pragma mark ==================================================
 #pragma mark == 设置边框（①如果有另外UIBezierPath、设置遮罩，②否则就设置默认）
 #pragma mark ==================================================
-- (void)setBorderColor:(nullable UIColor *)color width:(CGFloat)width;
+- (void)kk_setBorderColor:(nullable UIColor *)color width:(CGFloat)width;
 
 #pragma mark ==================================================
 #pragma mark == 设置阴影
 #pragma mark ==================================================
-- (void)setShadowColor:(nullable UIColor *)color
-               opacity:(CGFloat)opacity
-                offset:(CGSize)offset
-            blurRadius:(CGFloat)blurRadius
-            shadowPath:(nullable CGPathRef)shadowPath;
+- (void)kk_setShadowColor:(nullable UIColor *)color
+                  opacity:(CGFloat)opacity
+                   offset:(CGSize)offset
+               blurRadius:(CGFloat)blurRadius
+               shadowPath:(nullable CGPathRef)shadowPath;
 
 #pragma mark ==================================================
 #pragma mark == 设置虚线
@@ -180,56 +180,56 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
  @param lineWidth 虚线的宽度
  @param lineDashPattern 虚线的间隔
  */
-- (void)setDottedLineWithStrokeColor:(UIColor *_Nullable)strokeColor
-                           lineWidth:(CGFloat)lineWidth
-                     lineDashPattern:(NSArray<NSNumber *> *_Nullable)lineDashPattern;
+- (void)kk_setDottedLineWithStrokeColor:(UIColor *_Nullable)strokeColor
+                              lineWidth:(CGFloat)lineWidth
+                        lineDashPattern:(NSArray<NSNumber *> *_Nullable)lineDashPattern;
 
 #pragma mark ==================================================
 #pragma mark == frame相关
 #pragma mark ==================================================
-- (CGPoint)topLeft;
+- (CGPoint)kk_topLeft;
 
-- (CGPoint)topRight;
+- (CGPoint)kk_topRight;
 
-- (CGPoint)bottomLeft;
+- (CGPoint)kk_bottomLeft;
 
-- (CGPoint)bottomRight;
+- (CGPoint)kk_bottomRight;
 
-- (CGFloat)width;
+- (CGFloat)kk_width;
 
-- (void)setWidth:(CGFloat)newwidth;
+- (void)kk_setWidth:(CGFloat)newwidth;
 
-- (CGFloat)height;
+- (CGFloat)kk_height;
 
-- (void)setHeight:(CGFloat)newheight;
+- (void)kk_setHeight:(CGFloat)newheight;
 
-- (CGFloat)left;
+- (CGFloat)kk_left;
 
-- (void)setLeft:(CGFloat)newleft;
+- (void)kk_setLeft:(CGFloat)newleft;
 
-- (CGFloat)right;
+- (CGFloat)kk_right;
 
-- (void)setRight:(CGFloat)newright;
+- (void)kk_setRight:(CGFloat)newright;
 
-- (CGFloat)top;
+- (CGFloat)kk_top;
 
-- (void)setTop:(CGFloat)newtop;
+- (void)kk_setTop:(CGFloat)newtop;
 
-- (CGFloat)bottom;
+- (CGFloat)kk_bottom;
 
-- (void)setBottom:(CGFloat)newbottom;
+- (void)kk_setBottom:(CGFloat)newbottom;
 
-- (CGFloat)centerX;
+- (CGFloat)kk_centerX;
 
-- (void)setCenterX:(CGFloat)centerX;
+- (void)kk_setCenterX:(CGFloat)centerX;
 
-- (CGFloat)centerY;
+- (CGFloat)kk_centerY;
 
-- (void)setCenterY:(CGFloat)centerY;
+- (void)kk_setCenterY:(CGFloat)centerY;
 
 #pragma mark ==================================================
 #pragma mark == 缩放动画
 #pragma mark ==================================================
-- (void)showZoomAnimation;
+- (void)kk_showZoomAnimation;
 
 @end

@@ -37,7 +37,7 @@
         FMResultSet *rs = [db executeQuery: selectSql];
         while ([rs next]) {
             NSDictionary *dictionary = [[KKLibraryDBManager defaultManager] dictionaryFromFMResultSet:rs];
-            [arrary addObject_Safe:dictionary];
+            [arrary kk_addObject_Safe:dictionary];
         }
         [rs close];
     }];
@@ -82,14 +82,14 @@
  插入消息
  */
 + (BOOL)DBInsert_KKFileCache_Information:(NSDictionary*_Nullable)aInformation{
-    if ([NSDictionary isDictionaryEmpty:aInformation]) {
+    if ([NSDictionary kk_isDictionaryEmpty:aInformation]) {
         return NO;
     }
 
     //存在该条数据【删除】
-    NSString *identifer  = [aInformation validStringForKey:Table_KKFileCacheManager_identifier   ];
+    NSString *identifer  = [aInformation kk_validStringForKey:Table_KKFileCacheManager_identifier   ];
     NSDictionary *oldInformation = [KKFileCacheManagerDB DBQuery_KKFileCache_WithIdentifer:identifer];
-    if ([NSDictionary isDictionaryNotEmpty:oldInformation]) {
+    if ([NSDictionary kk_isDictionaryNotEmpty:oldInformation]) {
         [KKLibraryDBManager.defaultManager DBDelete_Table:TableName_KKFileCacheManager withValue:identifer forKey:Table_KKFileCacheManager_identifier];
     }
 
@@ -104,7 +104,7 @@
  查询消息
  */
 + (NSDictionary*_Nullable)DBQuery_KKFileCache_WithIdentifer:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringEmpty:aIdentifier]) {
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
         return nil;
     }
 
@@ -129,7 +129,7 @@
  查询消息【某个目录下】
  */
 + (NSArray*_Nullable)DBQuery_KKFileCache_WithCacheDirectory:(NSString*_Nullable)aCacheDirectory{
-    if ([NSString isStringEmpty:aCacheDirectory]) {
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
         return nil;
     }
 
@@ -142,7 +142,7 @@
         FMResultSet *rs = [db executeQuery: selectSql,aCacheDirectory];
         while ([rs next]) {
             NSDictionary *dictionary = [KKLibraryDBManager.defaultManager dictionaryFromFMResultSet:rs];
-            [array addObject_Safe:dictionary];
+            [array kk_addObject_Safe:dictionary];
         }
         [rs close];
     }];
@@ -154,7 +154,7 @@
  删除消息
  */
 + (BOOL)DBDelete_KKFileCache_WithIdentifer:(NSString*_Nullable)aIdentifier{
-    if ([NSString isStringEmpty:aIdentifier]) {
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
         return NO;
     }
     return [KKLibraryDBManager.defaultManager DBDelete_Table:TableName_KKFileCacheManager withValue:aIdentifier forKey:Table_KKFileCacheManager_identifier];

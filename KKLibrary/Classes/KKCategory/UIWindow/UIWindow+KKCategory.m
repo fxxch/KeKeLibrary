@@ -11,13 +11,13 @@
 @implementation UIWindow (KKCategory)
 
 //获取当前屏幕显示的viewcontroller
-- (nullable UIViewController *)currentTopViewController{
+- (nullable UIViewController *)kk_currentTopViewController{
     UIViewController *rootViewController = self.rootViewController;
-    UIViewController *currentVC = [self getTopViewControllerFrom:rootViewController];
+    UIViewController *currentVC = [self kk_getTopViewControllerFrom:rootViewController];
     return currentVC;
 }
 
-- (nullable UIViewController *)getTopViewControllerFrom:(nullable UIViewController *)rootVC{
+- (nullable UIViewController *)kk_getTopViewControllerFrom:(nullable UIViewController *)rootVC{
     UIViewController *currentVC;
     //有从rootVC presented出来的视图
     if ([rootVC presentedViewController]) {
@@ -25,10 +25,10 @@
     }
     if ([rootVC isKindOfClass:[UITabBarController class]]) {
         // 根视图为UITabBarController
-        currentVC = [self getTopViewControllerFrom:[(UITabBarController *)rootVC selectedViewController]];
+        currentVC = [self kk_getTopViewControllerFrom:[(UITabBarController *)rootVC selectedViewController]];
     } else if ([rootVC isKindOfClass:[UINavigationController class]]){
         // 根视图为UINavigationController
-        currentVC = [self getTopViewControllerFrom:[(UINavigationController *)rootVC visibleViewController]];
+        currentVC = [self kk_getTopViewControllerFrom:[(UINavigationController *)rootVC visibleViewController]];
     } else {
         // 根视图为非导航类
         currentVC = rootVC;
@@ -37,7 +37,7 @@
     return currentVC;
 }
 
-+ (UIWindow*)currentKeyWindow{
++ (UIWindow*)kk_currentKeyWindow{
     
     UIWindow* window = nil;
     

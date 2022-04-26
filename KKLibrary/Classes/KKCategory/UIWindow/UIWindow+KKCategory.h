@@ -11,8 +11,8 @@
 @interface UIWindow (KKCategory)
 
 //获取当前屏幕显示的viewcontroller
-- (nullable UIViewController *)currentTopViewController;
+- (nullable UIViewController *)kk_currentTopViewController;
 
-+ (UIWindow*_Nullable)currentKeyWindow;
++ (UIWindow*_Nullable)kk_currentKeyWindow;
 
 @end

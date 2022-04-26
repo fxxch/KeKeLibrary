@@ -8,7 +8,6 @@
 
 #import "NSString+KKCategory.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "KKAESCrypt.h"
 #import "NSData+KKCategory.h"
 #import "NSBundle+KKCategory.h"
 #import "KKLog.h"
@@ -18,7 +17,7 @@
 #pragma mark ==================================================
 #pragma mark == 加密解密
 #pragma mark ==================================================
-- (nullable NSString *)md5 {
+- (nullable NSString *)kk_md5 {
     if (!self) {
         return nil;
     }
@@ -34,7 +33,7 @@
     return outString;
 }
 
-- (nullable NSString *)sha1 {
+- (nullable NSString *)kk_sha1 {
     if (!self) {
         return nil;
     }
@@ -51,14 +50,14 @@
     return outString;
 }
 
-- (nullable NSString *)base64Encoded {
+- (nullable NSString *)kk_base64Encoded {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data base64Encoded];
+    return [data kk_base64Encoded];
 }
 
-- (nullable NSString *)base64Decoded {
+- (nullable NSString *)kk_base64Decoded {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [[NSString alloc] initWithData:[data base64Decoded] encoding:NSUTF8StringEncoding];
+    return [[NSString alloc] initWithData:[data kk_base64Decoded] encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark ==================================================
@@ -72,10 +71,10 @@
  
  @return 结果
  */
-+ (nullable NSString *)getParamValueFromUrl:(nullable NSString*)aURL
-                                  paramName:(nullable NSString *)paramName{
-    if ([NSString isStringEmpty:aURL] ||
-        [NSString isStringEmpty:paramName]) {
++ (nullable NSString *)kk_getParamValueFromUrl:(nullable NSString*)aURL
+                                     paramName:(nullable NSString *)paramName{
+    if ([NSString kk_isStringEmpty:aURL] ||
+        [NSString kk_isStringEmpty:paramName]) {
         return nil;
     }
     
@@ -107,7 +106,7 @@
     return str;
 }
 
-- (nullable NSString *)KKURLEncodedString {
+- (nullable NSString *)kk_KKURLEncodedString {
     
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
@@ -120,7 +119,7 @@
     //    return encodedString;
 }
 
-- (nullable NSString*)KKURLDecodedString {
+- (nullable NSString*)kk_KKURLDecodedString {
     
     return [self stringByRemovingPercentEncoding];
     
@@ -131,15 +130,15 @@
     //    return result;
 }
 
-+ (nullable NSString*)URL_RegularExpression_All{
-    NSString *path = [[NSBundle kkLibraryBundle] pathForResource:@"URL_EXPRESSION_URL.txt" ofType:nil];
++ (nullable NSString*)kk_URL_RegularExpression_All{
+    NSString *path = [[NSBundle kk_kkLibraryBundle] pathForResource:@"URL_EXPRESSION_URL.txt" ofType:nil];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSString *string = [NSString stringWithData:data];
+    NSString *string = [NSString kk_stringWithData:data];
     return [NSString stringWithFormat:@"(%@)",string];
 //    return [NSString stringWithFormat:@"(%@)",URL_EXPRESSION_URL];
 }
 
-- (NSArray * _Nonnull)URLList {
+- (NSArray * _Nonnull)kk_URLList {
     NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:URL_EXPRESSION_All
                                                                          options:NSRegularExpressionCaseInsensitive|NSRegularExpressionDotMatchesLineSeparators
                                                                            error:nil];
@@ -165,8 +164,8 @@
  @param string 需要判断的字符串
  @return 结果
  */
-+ (BOOL)isStringNotEmpty:(nullable id)string{
-    if (string && [string isKindOfClass:[NSString class]] && [[string trimLeftAndRightSpace] length]>0) {
++ (BOOL)kk_isStringNotEmpty:(nullable id)string{
+    if (string && [string isKindOfClass:[NSString class]] && [[string kk_trimLeftAndRightSpace] length]>0) {
         return YES;
     }
     else{
@@ -180,8 +179,8 @@
  @param string 需要判断的字符串
  @return 结果
  */
-+ (BOOL)isStringEmpty:(nullable id)string{
-    return ![NSString isStringNotEmpty:string];
++ (BOOL)kk_isStringEmpty:(nullable id)string{
+    return ![NSString kk_isStringNotEmpty:string];
 }
 
 
@@ -189,8 +188,8 @@
 @param string 需要判断的字符串
 @return 结果
  */
-+ (BOOL)isLocalFilePath:(nullable id)string{
-    if ([NSString isStringEmpty:string]) {
++ (BOOL)kk_isLocalFilePath:(nullable id)string{
+    if ([NSString kk_isStringEmpty:string]) {
         return NO;
     } else {
         NSString *inString = (NSString*)string;
@@ -212,7 +211,7 @@
  
  @return 长度
  */
-- (int)realLenth{
+- (int)kk_realLenth{
     int strlength = 0;
     char* p = (char*)[self cStringUsingEncoding:NSUnicodeStringEncoding];
     for (int i=0 ; i<[self lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
@@ -236,7 +235,7 @@
  
  @return 结果
  */
-- (BOOL)isURL {
+- (BOOL)kk_isURL {
     NSString *string = [self lowercaseString];
     NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", URL_EXPRESSION_All];
     return [urlTest evaluateWithObject:string];
@@ -247,7 +246,7 @@
  
  @return 结果
  */
-- (nullable NSString *)trimHTMLTag {
+- (nullable NSString *)kk_trimHTMLTag {
     
     NSString *html = [self stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@"  "];
     html = [html stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
@@ -268,7 +267,7 @@
                                                    withString:@""];
         }
     }
-    return [html trimLeftAndRightSpace];
+    return [html kk_trimLeftAndRightSpace];
 }
 
 
@@ -277,7 +276,7 @@
  
  @return 结果
  */
-- (BOOL)isEmail {
+- (BOOL)kk_isEmail {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,100}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:self];
@@ -288,7 +287,7 @@
  
  @return 结果
  */
-- (BOOL)isMobilePhoneNumber {
+- (BOOL)kk_isMobilePhoneNumber {
     NSString *cellPhoneRegex = @"^(((\\+86)?)|((86)?))1(3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9])[-]*\\d{4}[-]*\\d{4}$";
     NSPredicate *cellPhoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", cellPhoneRegex];
     return [cellPhoneTest evaluateWithObject:self];
@@ -299,7 +298,7 @@
  
  @return 结果
  */
-- (BOOL)isTelePhoneNumber {
+- (BOOL)kk_isTelePhoneNumber {
     NSString *phoneRegex= @"((^0(10|2[0-9]|\\d{2,3})){0,1}-{0,1}(\\d{6,8}|\\d{6,8})$)";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:self];
@@ -310,7 +309,7 @@
  
  @return 结果
  */
-- (BOOL)isHaveChineseCharacter{
+- (BOOL)kk_isHaveChineseCharacter{
     for(NSInteger i = 0; i < [self length]; i++){
         int a = [self characterAtIndex:i];
         if (a > 0x4e00 && a < 0x9fff) {
@@ -320,9 +319,9 @@
     return NO;
 }
 
-- (NSString *)hiddenPhoneNum{
+- (NSString *)kk_hiddenPhoneNum{
     
-    if ([self isMobilePhoneNumber]) {
+    if ([self kk_isMobilePhoneNumber]) {
         NSString *numberString = [self stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         return numberString;
     }
@@ -334,7 +333,7 @@
  
  @return 结果
  */
-- (BOOL)isPostCode {
+- (BOOL)kk_isPostCode {
     NSString *zipCodeRegex = @"[1-9]\\d{5}$";
     NSPredicate *zipCodeTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", zipCodeRegex];
     return [zipCodeTest evaluateWithObject:self];
@@ -355,11 +354,11 @@
  @param lineBreakMode 换行方式
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-              maxWidth:(CGFloat)width
-         lineBreakMode:(NSLineBreakMode)lineBreakMode{
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                 maxWidth:(CGFloat)width
+            lineBreakMode:(NSLineBreakMode)lineBreakMode{
     
-    return [self sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:lineBreakMode];
+    return [self kk_sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:lineBreakMode];
 }
 
 
@@ -370,10 +369,10 @@
  @param width 宽度
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-              maxWidth:(CGFloat)width {
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                 maxWidth:(CGFloat)width {
     
-    return [self sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    return [self kk_sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 
@@ -384,10 +383,10 @@
  @param size 展示区域大小
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-               maxSize:(CGSize)size {
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                  maxSize:(CGSize)size {
     
-    return [self sizeWithFont:font maxSize:size inset:UIEdgeInsetsMake(0, 0, 0, 0) lineBreakMode:NSLineBreakByWordWrapping];
+    return [self kk_sizeWithFont:font maxSize:size inset:UIEdgeInsetsMake(0, 0, 0, 0) lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 /**
@@ -398,11 +397,11 @@
  @param lineBreakMode 换行方式
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-               maxSize:(CGSize)size
-         lineBreakMode:(NSLineBreakMode)lineBreakMode{
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                  maxSize:(CGSize)size
+            lineBreakMode:(NSLineBreakMode)lineBreakMode{
     
-    return [self sizeWithFont:font maxSize:size inset:UIEdgeInsetsMake(0, 0, 0, 0) lineBreakMode:lineBreakMode];
+    return [self kk_sizeWithFont:font maxSize:size inset:UIEdgeInsetsMake(0, 0, 0, 0) lineBreakMode:lineBreakMode];
 }
 
 
@@ -414,11 +413,11 @@
  @param inset 缩进
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-              maxWidth:(CGFloat)width
-                 inset:(UIEdgeInsets)inset {
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                 maxWidth:(CGFloat)width
+                    inset:(UIEdgeInsets)inset {
     
-    return [self sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) inset:inset lineBreakMode:NSLineBreakByWordWrapping];
+    return [self kk_sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) inset:inset lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 
@@ -431,12 +430,12 @@
  @param lineBreakMode 换行方式
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-              maxWidth:(CGFloat)width
-                 inset:(UIEdgeInsets)inset
-         lineBreakMode:(NSLineBreakMode)lineBreakMode{
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                 maxWidth:(CGFloat)width
+                    inset:(UIEdgeInsets)inset
+            lineBreakMode:(NSLineBreakMode)lineBreakMode{
     
-    return [self sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) inset:inset lineBreakMode:lineBreakMode];
+    return [self kk_sizeWithFont:font maxSize:CGSizeMake(width, CGFLOAT_MAX) inset:inset lineBreakMode:lineBreakMode];
 }
 
 
@@ -449,10 +448,10 @@
  @param lineBreakMode 换行方式
  @return 大小
  */
-- (CGSize)sizeWithFont:(nullable UIFont *)font
-               maxSize:(CGSize)size
-                 inset:(UIEdgeInsets)inset
-         lineBreakMode:(NSLineBreakMode)lineBreakMode{
+- (CGSize)kk_sizeWithFont:(nullable UIFont *)font
+                  maxSize:(CGSize)size
+                    inset:(UIEdgeInsets)inset
+            lineBreakMode:(NSLineBreakMode)lineBreakMode{
     
     if (font == nil) {
         font = [UIFont systemFontOfSize:14.0f];
@@ -484,7 +483,7 @@
  
  @return 结果
  */
--(nullable NSString*)trimLeftAndRightSpace{
+-(nullable NSString*)kk_trimLeftAndRightSpace{
     if (self) {
         NSString* trimed = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         return trimed;
@@ -499,7 +498,7 @@
  
  @return 结果
  */
--(nullable NSString*)trimAllSpace{
+-(nullable NSString*)kk_trimAllSpace{
     if (self) {
         NSString *string = [self stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         string = [string stringByReplacingOccurrencesOfString:@"\t" withString:@""];
@@ -524,7 +523,7 @@
  
  @return 结果
  */
-- (nullable NSString*)trimNumber{
+- (nullable NSString*)kk_trimNumber{
     if (self) {
         NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+" options:0 error:NULL];
         NSString* resultString = [regex stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:@""];
@@ -542,7 +541,7 @@
  @param data data
  @return 字符串
  */
-+ (nullable NSString*)stringWithData:(nullable NSData *)data{
++ (nullable NSString*)kk_stringWithData:(nullable NSData *)data{
     NSString* s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     return s;
 }
@@ -553,7 +552,7 @@
  
  @return 结果
  */
-- (BOOL)isInteger{
+- (BOOL)kk_isInteger{
     
     BOOL result = NO;
     
@@ -571,7 +570,7 @@
  
  @return 结果
  */
-- (BOOL)isFloat{
+- (BOOL)kk_isFloat{
     
     BOOL result = NO;
     
@@ -590,7 +589,7 @@
  @param aDigits 不超过几位小数位数
  @return 结果
  */
-- (BOOL)isMathematicalNumbers_withDecimal:(NSInteger)aDigits{
+- (BOOL)kk_isMathematicalNumbers_withDecimal:(NSInteger)aDigits{
     
     //小数
     if (aDigits>0) {
@@ -616,9 +615,9 @@
  @param aDigitalString 数字字符串
  @return 结果
  */
-+ (nullable NSString*)chineseUperTextFromDigitalString:(nullable NSString*)aDigitalString{
++ (nullable NSString*)kk_chineseUperTextFromDigitalString:(nullable NSString*)aDigitalString{
     
-    if( ![aDigitalString isInteger] && ![aDigitalString isFloat]){
+    if( ![aDigitalString kk_isInteger] && ![aDigitalString kk_isFloat]){
         return @"";
     }
     
@@ -843,7 +842,7 @@
     }
     KKLogEmpty([NSNumber numberWithLong:(long)digitalNumber]);
 
-    if ([aDigitalString isFloat]) {
+    if ([aDigitalString kk_isFloat]) {
         NSArray *temarr = [aDigitalString componentsSeparatedByString:@"."];
         if ([temarr count]>1) {
             //小数点后的数值字符串
@@ -882,7 +881,7 @@
             returnString = [returnString stringByAppendingFormat:@"%@",@"整"];
         }
     }
-    else if ([aDigitalString isInteger]){
+    else if ([aDigitalString kk_isInteger]){
         returnString = [returnString stringByAppendingFormat:@"%@",@"整"];
     }
     else{
@@ -897,7 +896,7 @@
  @param aString aString
  @return 结果
  */
-+ (NSInteger)sizeOfStringForNSUTF8StringEncoding:(nullable NSString*)aString{
++ (NSInteger)kk_sizeOfStringForNSUTF8StringEncoding:(nullable NSString*)aString{
     NSInteger result = 0;
     const char *tchar=[aString UTF8String];
     if (NULL == tchar) {
@@ -914,12 +913,12 @@
  @param string string
  @return 结果
  */
-+ (nullable NSString*)subStringForNSUTF8StringEncodingWithSize:(NSInteger)size
-                                                        string:(nullable NSString*)string{
++ (nullable NSString*)kk_subStringForNSUTF8StringEncodingWithSize:(NSInteger)size
+                                                           string:(nullable NSString*)string{
     
     NSString *tempString = [NSString stringWithString:string];
     
-    NSInteger tempStringSize = [NSString sizeOfStringForNSUTF8StringEncoding:tempString];
+    NSInteger tempStringSize = [NSString kk_sizeOfStringForNSUTF8StringEncoding:tempString];
     if (tempStringSize <= size) {
         return tempString;
     }
@@ -927,7 +926,7 @@
     if (size>tempStringSize/2) {
         NSInteger index = [tempString length];
         while (1) {
-            if ([NSString sizeOfStringForNSUTF8StringEncoding:tempString]<=size) {
+            if ([NSString kk_sizeOfStringForNSUTF8StringEncoding:tempString]<=size) {
                 break;
             }
             else{
@@ -940,7 +939,7 @@
         NSInteger index = 1;
         while (1) {
             tempString = [string substringWithRange:NSMakeRange(0, index)];
-            if ([NSString sizeOfStringForNSUTF8StringEncoding:tempString]<size) {
+            if ([NSString kk_sizeOfStringForNSUTF8StringEncoding:tempString]<size) {
                 index = index + 1;
             }
             else{
@@ -958,7 +957,7 @@
  @param aString aString
  @return 结果
  */
-+ (NSInteger)sizeOfStringForNSUnicodeStringEncoding:(nullable NSString*)aString{
++ (NSInteger)kk_sizeOfStringForNSUnicodeStringEncoding:(nullable NSString*)aString{
     int strlength = 0;
     char* p = (char*)[aString cStringUsingEncoding:NSUnicodeStringEncoding];
     for (int i=0 ; i<[aString lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
@@ -980,12 +979,12 @@
  @param string string
  @return 结果
  */
-+ (nullable NSString*)subStringForNSUnicodeStringEncodingWithSize:(NSInteger)size
-                                                           string:(nullable NSString*)string{
++ (nullable NSString*)kk_subStringForNSUnicodeStringEncodingWithSize:(NSInteger)size
+                                                              string:(nullable NSString*)string{
     
     NSString *tempString = [NSString stringWithString:string];
     
-    NSInteger tempStringSize = [NSString sizeOfStringForNSUnicodeStringEncoding:tempString];
+    NSInteger tempStringSize = [NSString kk_sizeOfStringForNSUnicodeStringEncoding:tempString];
     if (tempStringSize <= size) {
         return tempString;
     }
@@ -993,7 +992,7 @@
     if (size>tempStringSize/2) {
         NSInteger index = [tempString length];
         while (1) {
-            if ([NSString sizeOfStringForNSUnicodeStringEncoding:tempString]<=size) {
+            if ([NSString kk_sizeOfStringForNSUnicodeStringEncoding:tempString]<=size) {
                 break;
             }
             else{
@@ -1006,7 +1005,7 @@
         NSInteger index = 1;
         while (1) {
             tempString = [string substringWithRange:NSMakeRange(0, index)];
-            if ([NSString sizeOfStringForNSUnicodeStringEncoding:tempString]<size) {
+            if ([NSString kk_sizeOfStringForNSUnicodeStringEncoding:tempString]<size) {
                 index = index + 1;
             }
             else{
@@ -1018,19 +1017,19 @@
     return tempString;
 }
 
-+ (nonnull NSString*)stringWithInteger:(NSInteger)intValue{
++ (nonnull NSString*)kk_stringWithInteger:(NSInteger)intValue{
     return [NSString stringWithFormat:@"%ld",(long)intValue];
 }
 
-+ (nonnull NSString*)stringWithFloat:(CGFloat)floatValue{
++ (nonnull NSString*)kk_stringWithFloat:(CGFloat)floatValue{
     return [NSString stringWithFormat:@"%f",floatValue];
 }
 
-+ (nonnull NSString*)stringWithDouble:(double)doubleValue{
++ (nonnull NSString*)kk_stringWithDouble:(double)doubleValue{
     return [NSString stringWithFormat:@"%lf",doubleValue];
 }
 
-+ (nonnull NSString*)stringWithBool:(BOOL)boolValue{
++ (nonnull NSString*)kk_stringWithBool:(BOOL)boolValue{
     return [NSString stringWithFormat:@"%ld",(long)boolValue];
 }
 
@@ -1038,7 +1037,7 @@
 #pragma mark == 随机字符串
 #pragma mark ==================================================
 /* 随机生成字符串(由大小写字母、数字组成) */
-+ (NSString *_Nonnull)randomString:(NSInteger)length {
++ (NSString *_Nonnull)kk_randomString:(NSInteger)length {
     char ch[length];
     for (int index=0; index<length; index++) {
         int num = arc4random_uniform(75)+48;
@@ -1050,7 +1049,7 @@
 }
 
 /* 随机生成字符串(由大小写字母组成) */
-+ (NSString *_Nonnull)randomStringWithoutNumber:(NSInteger)length {
++ (NSString *_Nonnull)kk_randomStringWithoutNumber:(NSInteger)length {
     char ch[length];
     for (int index=0; index<length; index++) {
         int num = arc4random_uniform(58)+65;
@@ -1070,7 +1069,7 @@
  @param from 截取起始位置
  @return 截取的子字符串
  */
-- (NSString *)substringFromIndex_Safe:(NSUInteger)from {
+- (NSString *)kk_substringFromIndex_Safe:(NSUInteger)from {
     if (from > self.length ) {
         return nil;
     }
@@ -1085,7 +1084,7 @@
  @param to 截取终点位置
  @return 返回截取的字符串
  */
-- (NSString *)substringToIndex_Safe:(NSUInteger)to {
+- (NSString *)kk_substringToIndex_Safe:(NSUInteger)to {
     if (to > self.length ) {
         return nil;
     }
@@ -1102,10 +1101,10 @@
  @param locale 本地化
  @return 返回搜索到的字符串 范围
  */
-- (NSRange)rangeOfString_Safe:(NSString *)searchString
-                      options:(NSStringCompareOptions)mask
-                        range:(NSRange)rangeOfReceiverToSearch
-                       locale:(nullable NSLocale *)locale {
+- (NSRange)kk_rangeOfString_Safe:(NSString *)searchString
+                         options:(NSStringCompareOptions)mask
+                           range:(NSRange)rangeOfReceiverToSearch
+                          locale:(nullable NSLocale *)locale {
     if (!searchString) {
         searchString = self;
     }
@@ -1133,7 +1132,7 @@
  @param range 指定的范围
  @return 返回截取的字符串
  */
-- (NSString *)substringWithRange_Safe:(NSRange)range {
+- (NSString *)kk_substringWithRange_Safe:(NSRange)range {
     if (range.location > self.length) {
         return nil;
     }
@@ -1151,10 +1150,10 @@
 #pragma mark ==================================================
 #pragma mark == 文件路径相关
 #pragma mark ==================================================
-- (NSString*_Nullable)fileNameWithOutExtention{
+- (NSString*_Nullable)kk_fileNameWithOutExtention{
     NSString *aFileName = [NSString stringWithFormat:@"%@",self];
     NSString *extention = [aFileName pathExtension];
-    if ([NSString isStringNotEmpty:extention]) {
+    if ([NSString kk_isStringNotEmpty:extention]) {
         NSString *extentionDel = [NSString stringWithFormat:@".%@",extention];
         NSString *shortName = [aFileName stringByReplacingOccurrencesOfString:extentionDel withString:@""];
         return shortName;

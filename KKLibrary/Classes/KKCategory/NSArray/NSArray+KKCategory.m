@@ -16,7 +16,7 @@
  @param array 需要判断的数组
  @return 结果
  */
-+ (BOOL)isArrayNotEmpty:(nullable id)array{
++ (BOOL)kk_isArrayNotEmpty:(nullable id)array{
     if (array && [array isKindOfClass:[NSArray class]] && [array count]>0) {
         return YES;
     }
@@ -31,8 +31,8 @@
  @param array 需要判断的数组
  @return 结果
  */
-+ (BOOL)isArrayEmpty:(nullable id)array{
-    return ![NSArray isArrayNotEmpty:array];
++ (BOOL)kk_isArrayEmpty:(nullable id)array{
+    return ![NSArray kk_isArrayNotEmpty:array];
 }
 
 /**
@@ -41,7 +41,7 @@
  @param aString 需要判断的字符串对象
  @return 结果
  */
-- (BOOL)containsStringValue:(nullable NSString*)aString{
+- (BOOL)kk_containsStringValue:(nullable NSString*)aString{
     
     BOOL contains = NO;
     
@@ -73,7 +73,7 @@
  
  @return 结果
  */
-- (nonnull NSString*)translateToJSONString{
+- (nonnull NSString*)kk_translateToJSONString{
     
     //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
     NSError *error = nil;
@@ -91,7 +91,7 @@
  @param aJsonData aJsonData
  @return 结果
  */
-+ (nullable NSArray*)arrayFromJSONData:(nullable NSData*)aJsonData{
++ (nullable NSArray*)kk_arrayFromJSONData:(nullable NSData*)aJsonData{
     if (aJsonData && [aJsonData isKindOfClass:[NSData class]]) {
         NSError *error = nil;
         NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:aJsonData
@@ -116,7 +116,7 @@
  @param aJsonString aJsonString
  @return 结果
  */
-+ (nullable NSArray*)arrayFromJSONString:(nullable NSString*)aJsonString{
++ (nullable NSArray*)kk_arrayFromJSONString:(nullable NSString*)aJsonString{
     
     if (aJsonString && [aJsonString isKindOfClass:[NSString class]]) {
         
@@ -147,7 +147,7 @@
  @param index 索引值
  @return 结果
  */
-- (id)objectAtIndex_Safe:(NSUInteger)index{
+- (id)kk_objectAtIndex_Safe:(NSUInteger)index{
     if (index>=0 && index<[self count]) {
         return [self objectAtIndex:index];
     }

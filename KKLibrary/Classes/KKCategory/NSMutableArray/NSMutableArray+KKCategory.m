@@ -18,7 +18,7 @@
  
  @param object 索引值
  */
-- (void)addObject_Safe:(id)object{
+- (void)kk_addObject_Safe:(id)object{
     if (object) {
         return [self addObject:object];
     }
@@ -30,7 +30,7 @@
  @param index 索引值
  @return 结果
  */
-- (id)objectAtIndex_Safe:(NSUInteger)index{
+- (id)kk_objectAtIndex_Safe:(NSUInteger)index{
     if (index>=0 && index<[self count]) {
         return [self objectAtIndex:index];
     }
@@ -45,7 +45,7 @@
  @param anObject 新值
  @param index 索引 index
  */
-- (void)insertObject_Safe:(id)anObject atIndex:(NSUInteger)index {
+- (void)kk_insertObject_Safe:(id)anObject atIndex:(NSUInteger)index {
     if (index > self.count) {
         return;
     }
@@ -67,7 +67,7 @@
  @param anObject 移除的anObject
  @param range 范围
  */
-- (void)removeObject_Safe:(id)anObject inRange:(NSRange)range {
+- (void)kk_removeObject_Safe:(id)anObject inRange:(NSRange)range {
     if (range.location > self.count) {
         return;
     }
@@ -93,7 +93,7 @@
  
  @param range 移除 范围
  */
-- (void)removeObjectsInRange_Safe:(NSRange)range {
+- (void)kk_removeObjectsInRange_Safe:(NSRange)range {
     
     if (range.location > self.count) {
         return;

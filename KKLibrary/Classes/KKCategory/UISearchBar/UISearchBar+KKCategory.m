@@ -10,7 +10,7 @@
 
 @implementation UISearchBar (KKCategory)
 
--(void)clearBackground{
+-(void)kk_clearBackground{
     for (UIView *subView in [self subviews]) {
         for (UIView *subsubView in [subView subviews]) {
             if ([subsubView isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {

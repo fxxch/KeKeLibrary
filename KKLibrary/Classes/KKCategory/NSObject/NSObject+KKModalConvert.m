@@ -23,7 +23,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
 #pragma mark ==================================================
 #pragma mark == NSObject ==> NSDictionary
 #pragma mark ==================================================
-+ (NSDictionary*)objectToDictionary:(id)obj{
++ (NSDictionary*)kk_objectToDictionary:(id)obj{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     unsigned int propsCount;
     objc_property_t *props = class_copyPropertyList([obj class], &propsCount);//获得属性列表
@@ -34,7 +34,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
         id value = [obj valueForKey:propName];//kvc读值
         if(value != nil)
         {
-            value = [self getObjectInternal:value];//自定义处理数组，字典，其他类
+            value = [self kk_getObjectInternal:value];//自定义处理数组，字典，其他类
             if (value) {
                 [dic setObject:value forKey:propName];
             }
@@ -43,7 +43,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
     return dic;
 }
 
-+ (id)getObjectInternal:(id)obj{
++ (id)kk_getObjectInternal:(id)obj{
     if([obj isKindOfClass:[NSString class]]
        || [obj isKindOfClass:[NSNumber class]])
     {
@@ -57,7 +57,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
         NSArray *objarr = obj;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:objarr.count];
         for (NSInteger i=0; i<objarr.count; i++) {
-            [arr setObject:[self getObjectInternal:[objarr objectAtIndex:i]] atIndexedSubscript:i];
+            [arr setObject:[self kk_getObjectInternal:[objarr objectAtIndex:i]] atIndexedSubscript:i];
         }
         return arr;
     }
@@ -67,7 +67,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:[objdic count]];
         for(NSString *key in objdic.allKeys)
         {
-            [dic setObject:[self getObjectInternal:[objdic objectForKey:key]] forKey:key];
+            [dic setObject:[self kk_getObjectInternal:[objdic objectForKey:key]] forKey:key];
         }
         return dic;
     }
@@ -76,7 +76,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
             return nil;
         }
         else{
-            NSDictionary *dic = [self objectToDictionary:obj];
+            NSDictionary *dic = [self kk_objectToDictionary:obj];
             if (dic && dic.count>0) {
                 return dic;
             }
@@ -90,7 +90,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
 #pragma mark ==================================================
 #pragma mark == NSDictionary ==> NSObject
 #pragma mark ==================================================
-+ (instancetype)initFromDictionary:(NSDictionary *)dic{
++ (instancetype)kk_initFromDictionary:(NSDictionary *)dic{
     id myObj = [[self alloc] init];
     
     unsigned int outCount;
@@ -113,7 +113,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
 //        }
 
         //获取属性是什么类型的
-        NSDictionary *dicPropertyType = [self propertyTypeFromProperty:property];
+        NSDictionary *dicPropertyType = [self kk_propertyTypeFromProperty:property];
         NSString *propertyClassType = [dicPropertyType objectForKey:@"classType"];
         NSString *propertyType = [dicPropertyType objectForKey:@"type"];
         //KKLogDebugFormat(@"属性名:%@ 类型:%@", KKValidString(propertyName),KKValidString(propertyClassType));
@@ -147,7 +147,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
         else if ([propertyType isEqualToString:KKClassType_CustomObject]) {
             //自定义类型
             NSDictionary *propertyValueDic = [dic objectForKey:propertyName];
-            propertyValue = [NSClassFromString(propertyClassType) initFromDictionary:propertyValueDic];
+            propertyValue = [NSClassFromString(propertyClassType) kk_initFromDictionary:propertyValueDic];
             if (propertyValue != nil) {
                 [myObj setValue:propertyValue forKey:propertyName];
             }
@@ -171,7 +171,7 @@ NSAttributedStringKey const KKClassType_Other         =   @"其它";
 }
 
 //获取属性的类型
-- (NSDictionary *)propertyTypeFromProperty:(objc_property_t)property{
+- (NSDictionary *)kk_propertyTypeFromProperty:(objc_property_t)property{
     //获取属性的类型, 类似 T@"NSString",C,N,V_name    T@"UserModel",&,N,V_user
     NSString *propertyAttrs = @(property_getAttributes(property));
     
