@@ -8,6 +8,7 @@ target 'KKLibraryDemo_Pod' do
   
   use_frameworks!
 
-  pod 'KeKeLibrary'
+  pod 'KeKeLibrary', '~> 0.1.27'
+
 
 end

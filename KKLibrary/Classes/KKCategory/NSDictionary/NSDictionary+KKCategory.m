@@ -8,8 +8,50 @@
 
 #import "NSDictionary+KKCategory.h"
 #import "NSArray+KKCategory.h"
+#import <objc/runtime.h>
 
 @implementation NSDictionary (KKCategory)
+
+#pragma mark ==================================================
+#pragma mark == @dynamic & load
+#pragma mark ==================================================
++ (void)load{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+            
+        SEL sys_SEL = @selector(descriptionWithLocale:indent:);
+        SEL my_SEL = @selector(cvn_descriptionWithLocale:indent:);
+        
+        Method sys_Method   = class_getInstanceMethod(self, sys_SEL);
+        Method my_Method    = class_getInstanceMethod(self, my_SEL);
+                
+        BOOL didAddMethod = class_addMethod([self class],
+                                                  sys_SEL,
+                                                  method_getImplementation(my_Method),
+                                                  method_getTypeEncoding(my_Method));
+        
+        if (didAddMethod) {
+            class_replaceMethod([self class],
+                                my_SEL,
+                                method_getImplementation(sys_Method),
+                                method_getTypeEncoding(sys_Method));
+        }
+        method_exchangeImplementations(sys_Method, my_Method);
+    });
+}
+
+//解决NSLog对象的时候，中文输出unicode编码，不便查看的问题
+- (NSString *)cvn_descriptionWithLocale:(nullable id)locale indent:(NSUInteger)level{
+    NSString *originString = [self cvn_descriptionWithLocale:locale indent:level];
+    
+    NSMutableString *convertedString = [originString mutableCopy];
+    [convertedString replaceOccurrencesOfString:@"\\U" withString:@"\\u" options:0 range:NSMakeRange(0, convertedString.length)];
+    CFStringRef transform = CFSTR("Any-Hex/Java");
+    CFStringTransform((__bridge CFMutableStringRef)convertedString, NULL, transform, YES);
+    
+    return convertedString;
+}
 
 /**
  判断字典是否为空（nil、不是字典、字典包含元素0个 都视为空）
