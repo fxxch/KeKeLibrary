@@ -115,16 +115,25 @@
  
  @return 结果
  */
-- (nonnull NSString*)kk_translateToJSONString{
-    
-    //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
-    NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:0
-                                                         error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
-    return jsonString;
+- (nullable NSString*)kk_translateToJSONString{
+    if ([NSJSONSerialization isValidJSONObject:self]) {
+        //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
+        NSError *error = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                           options:0
+                                                             error:&error];
+        if (jsonData && [jsonData isKindOfClass:[NSData class]]) {
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                         encoding:NSUTF8StringEncoding];
+            return jsonString;
+        }
+        else{
+            return nil;
+        }
+    }
+    else{
+        return nil;
+    }
 }
 
 /**

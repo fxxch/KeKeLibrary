@@ -80,23 +80,43 @@
 
 
 - (BOOL)kk_boolValueForKey:(nonnull id)aKey {
-    return [[self objectForKey:aKey] boolValue];
+    if ([self objectForKey:aKey] &&
+        ( ([[self objectForKey:aKey] isKindOfClass:[NSNumber class]]) || ([[self objectForKey:aKey] isKindOfClass:[NSString class]]) )) {
+        return [[self objectForKey:aKey] boolValue];
+    }
+    return NO;
 }
 
 - (int)kk_intValueForKey:(nonnull id)aKey {
-    return [[self objectForKey:aKey] intValue];
+    if ([self objectForKey:aKey] &&
+        ( ([[self objectForKey:aKey] isKindOfClass:[NSNumber class]]) || ([[self objectForKey:aKey] isKindOfClass:[NSString class]]) )) {
+        return [[self objectForKey:aKey] intValue];
+    }
+    return NO;
 }
 
 - (NSInteger)kk_integerValueForKey:(nonnull id)aKey {
-    return [[self objectForKey:aKey] integerValue];
+    if ([self objectForKey:aKey] &&
+        ( ([[self objectForKey:aKey] isKindOfClass:[NSNumber class]]) || ([[self objectForKey:aKey] isKindOfClass:[NSString class]]) )) {
+        return [[self objectForKey:aKey] integerValue];
+    }
+    return NO;
 }
 
 - (float)kk_floatValueForKey:(nonnull id)aKey {
-    return [[self objectForKey:aKey] floatValue];
+    if ([self objectForKey:aKey] &&
+        ( ([[self objectForKey:aKey] isKindOfClass:[NSNumber class]]) || ([[self objectForKey:aKey] isKindOfClass:[NSString class]]) )) {
+        return [[self objectForKey:aKey] floatValue];
+    }
+    return NO;
 }
 
 - (double)kk_doubleValueForKey:(nonnull id)aKey {
-    return [[self objectForKey:aKey] doubleValue];
+    if ([self objectForKey:aKey] &&
+        ( ([[self objectForKey:aKey] isKindOfClass:[NSNumber class]]) || ([[self objectForKey:aKey] isKindOfClass:[NSString class]]) )) {
+        return [[self objectForKey:aKey] doubleValue];
+    }
+    return NO;
 }
 
 /**
@@ -289,15 +309,24 @@
  @return Json字符串
  */
 - (nullable NSString*)kk_translateToJSONString{
-    
-    //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
-    NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
-    return jsonString;
+    if ([NSJSONSerialization isValidJSONObject:self]) {
+        //NSJSONWritingPrettyPrinted 方式，苹果会默认加上\n换行符，如果传0，就不会
+        NSError *error = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        if (jsonData && [jsonData isKindOfClass:[NSData class]]) {
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                         encoding:NSUTF8StringEncoding];
+            return jsonString;
+        }
+        else{
+            return nil;
+        }
+    }
+    else{
+        return nil;
+    }
 }
 
 /**

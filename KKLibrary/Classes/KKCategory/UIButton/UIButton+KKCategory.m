@@ -31,9 +31,9 @@
     [self setBackgroundImage:newImage forState:state];
 }
 
-- (void)kk_setButtonContentAlignment:(ButtonContentAlignment)contentAlignment
-            buttonContentLayoutModal:(ButtonContentLayoutModal)contentLayoutModal
-          buttonContentTitlePosition:(ButtonContentTitlePosition)contentTitlePosition
+- (void)kk_setButtonContentAlignment:(KKButtonContentAlignment)contentAlignment
+            buttonContentLayoutModal:(KKButtonContentLayoutModal)contentLayoutModal
+          buttonContentTitlePosition:(KKButtonContentTitlePosition)contentTitlePosition
            sapceBetweenImageAndTitle:(CGFloat)aSpace
                           edgeInsets:(UIEdgeInsets)aEdgeInsets{
     self.titleEdgeInsets = UIEdgeInsetsZero;
@@ -61,15 +61,15 @@
     
     
     //垂直对齐
-    if (contentLayoutModal==ButtonContentLayoutModalVertical) {
-        if (contentAlignment==ButtonContentAlignmentLeft) {
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+    if (contentLayoutModal==KKButtonContentLayoutModalVertical) {
+        if (contentAlignment==KKButtonContentAlignmentLeft) {
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake(aEdgeInsets.left+MAX(titleSize.width, aImageSize.width)/2.0, (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height/2.0);
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(aEdgeInsets.left+MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height+aSpace+aImageSize.height);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(aEdgeInsets.left+MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+aImageSize.height/2.0);
                 
@@ -80,14 +80,14 @@
                 
             }
         }
-        else if (contentAlignment==ButtonContentAlignmentCenter){
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+        else if (contentAlignment==KKButtonContentAlignmentCenter){
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake((self.frame.size.width-MAX(titleSize.width, aImageSize.width))/2.0+MAX(titleSize.width, aImageSize.width)/2.0, (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height/2.0);
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake((self.frame.size.width-MAX(titleSize.width, aImageSize.width))/2.0+MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height+aSpace+aImageSize.height);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake((self.frame.size.width-MAX(titleSize.width, aImageSize.width))/2.0+MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+aImageSize.height/2.0);
                 
@@ -98,15 +98,15 @@
                 
             }
         }
-        else if (contentAlignment==ButtonContentAlignmentRight){
+        else if (contentAlignment==KKButtonContentAlignmentRight){
             
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake(self.frame.size.width-aEdgeInsets.right-MAX(titleSize.width, aImageSize.width)/2.0, (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height/2.0);
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(self.frame.size.width-aEdgeInsets.right-MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+titleSize.height+aSpace+aImageSize.height);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(self.frame.size.width-aEdgeInsets.right-MAX(titleSize.width, aImageSize.width)/2.0,  (self.frame.size.height-titleSize.height-aImageSize.height-aSpace)/2.0+aImageSize.height/2.0);
                 
@@ -122,15 +122,15 @@
         }
     }
     //水平对齐
-    else if (contentLayoutModal==ButtonContentLayoutModalHorizontal){
-        if (contentAlignment==ButtonContentAlignmentLeft) {
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+    else if (contentLayoutModal==KKButtonContentLayoutModalHorizontal){
+        if (contentAlignment==KKButtonContentAlignmentLeft) {
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake(aEdgeInsets.left+titleSize.width/2.0, self.frame.size.height/2.0);
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(aEdgeInsets.left+titleSize.width+aImageSize.width/2.0+aSpace, self.frame.size.height/2.0);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake(aEdgeInsets.left+titleSize.width/2.0+aImageSize.width+aSpace, self.frame.size.height/2.0);
                 // 找出imageView最终的center
@@ -140,8 +140,8 @@
                 
             }
         }
-        else if (contentAlignment==ButtonContentAlignmentCenter){
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+        else if (contentAlignment==KKButtonContentAlignmentCenter){
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 CGFloat endTitleLabelCenter_X = MAX((self.frame.size.width-titleSize.width-aImageSize.width-aSpace)/2.0+titleSize.width/2.0, titleSize.width/2.0+5);
                 endTitleLabelCenter = CGPointMake(endTitleLabelCenter_X, self.frame.size.height/2.0);
@@ -149,7 +149,7 @@
                 CGFloat endImageViewCenter_X = MIN((self.frame.size.width-titleSize.width-aImageSize.width-aSpace)/2.0+titleSize.width+aSpace+aImageSize.width/2.0, self.frame.size.width-aImageSize.width/2.0);
                 endImageViewCenter = CGPointMake(endImageViewCenter_X, self.frame.size.height/2.0);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake((self.frame.size.width-titleSize.width-aImageSize.width-aSpace)/2.0+aImageSize.width/2.0, self.frame.size.height/2.0);
                 // 找出titleLabel最终的center
@@ -159,15 +159,15 @@
                 
             }
         }
-        else if (contentAlignment==ButtonContentAlignmentRight){
+        else if (contentAlignment==KKButtonContentAlignmentRight){
             
-            if (contentTitlePosition==ButtonContentTitlePositionBefore) {
+            if (contentTitlePosition==KKButtonContentTitlePositionBefore) {
                 // 找出titleLabel最终的center
                 endTitleLabelCenter = CGPointMake(self.frame.size.width-titleSize.width/2.0-aImageSize.width-aEdgeInsets.right-aSpace, self.frame.size.height/2.0);
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(self.frame.size.width-aEdgeInsets.right-aImageSize.width/2.0, self.frame.size.height/2.0);
             }
-            else if (contentTitlePosition==ButtonContentTitlePositionAfter){
+            else if (contentTitlePosition==KKButtonContentTitlePositionAfter){
                 // 找出imageView最终的center
                 endImageViewCenter = CGPointMake(self.frame.size.width-aImageSize.width/2.0-titleSize.width-aEdgeInsets.right-aSpace, self.frame.size.height/2.0);
                 // 找出titleLabel最终的center

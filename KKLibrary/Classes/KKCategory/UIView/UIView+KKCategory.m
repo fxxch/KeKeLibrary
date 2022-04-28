@@ -388,7 +388,7 @@
 
 - (void)kk_setBackgroundColorFromColor:(nullable UIColor*)startUIColor
                                toColor:(nullable UIColor*)endUIColor
-                             direction:(UIViewGradientColorDirection)direction{
+                             direction:(KKUIViewGradientColorDirection)direction{
     
     if (! (startUIColor && endUIColor)) {
         return;
@@ -403,18 +403,18 @@
                          (id)startUIColor.CGColor,
                          (id)endUIColor.CGColor, nil];
     
-    if (direction==UIViewGradientColorDirection_TopBottom) {
+    if (direction==KKUIViewGradientColorDirection_TopBottom) {
         gLayer.frame = self.bounds;
     }
-    else if (direction==UIViewGradientColorDirection_BottomTop){
+    else if (direction==KKUIViewGradientColorDirection_BottomTop){
         gLayer.frame = self.bounds;
         [gLayer setValue:[NSNumber numberWithDouble:M_PI] forKeyPath:@"transform.rotation.z"];
     }
-    else if (direction==UIViewGradientColorDirection_LeftRight){
+    else if (direction==KKUIViewGradientColorDirection_LeftRight){
         gLayer.frame = CGRectMake(-(self.frame.size.height/2.0-self.frame.size.width/2.0), self.frame.size.height/2.0-self.frame.size.width/2.0, self.bounds.size.height, self.bounds.size.width);
         [gLayer setValue:[NSNumber numberWithDouble:-M_PI/2] forKeyPath:@"transform.rotation.z"];
     }
-    else if (direction==UIViewGradientColorDirection_RightLeft){
+    else if (direction==KKUIViewGradientColorDirection_RightLeft){
         gLayer.frame = CGRectMake(-(self.frame.size.height/2.0-self.frame.size.width/2.0), self.frame.size.height/2.0-self.frame.size.width/2.0, self.bounds.size.height, self.bounds.size.width);
         [gLayer setValue:[NSNumber numberWithDouble:M_PI/2] forKeyPath:@"transform.rotation.z"];
     }

@@ -41,7 +41,7 @@
  
  @return 结果
  */
-- (nonnull NSString*)kk_translateToJSONString;
+- (nullable NSString*)kk_translateToJSONString;
 /**
  将JsonData转换成数组
  

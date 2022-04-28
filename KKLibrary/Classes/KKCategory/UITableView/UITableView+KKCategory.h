@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, TableViewCellPositionType){
-    TableViewCellPositionType_Single=0,//第0行(共1行)
-    TableViewCellPositionType_Min=1,//第0行(共非1行)
-    TableViewCellPositionType_Middle=2,//中间行(共非1行)
-    TableViewCellPositionType_Max=3,//最后行(共非1行)
+typedef NS_ENUM(NSInteger, KKTableViewCellPositionType){
+    KKTableViewCellPositionType_Single=0,//第0行(共1行)
+    KKTableViewCellPositionType_Min=1,//第0行(共非1行)
+    KKTableViewCellPositionType_Middle=2,//中间行(共非1行)
+    KKTableViewCellPositionType_Max=3,//最后行(共非1行)
 };
 
 @interface UITableView (KKCategory)
@@ -42,9 +42,9 @@ typedef NS_ENUM(NSInteger, TableViewCellPositionType){
  当前行所处的位置
  
  @param indexPath indexPath
- @return TableViewCellPositionType
+ @return KKTableViewCellPositionType
  */
-- (TableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath;
+- (KKTableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath;
 
 /**
  快速创建TableView

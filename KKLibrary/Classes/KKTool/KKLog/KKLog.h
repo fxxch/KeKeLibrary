@@ -10,7 +10,7 @@
 
 typedef const char * _Nullable KKLOG_FUCTION_NAME;
 
-#define KKValidString(obj) ([NSString KK_isStringNotEmpty:obj]?obj:@"")
+#define KKValidString(obj) ((obj && [obj isKindOfClass:[NSString class]]) ?obj:@"")
 
 /*====================  Empty ====================*/
 #define KKLogEmpty(obj)                                         \

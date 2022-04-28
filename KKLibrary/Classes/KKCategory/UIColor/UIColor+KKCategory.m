@@ -92,16 +92,16 @@
             
             break;
             
-        case 4: // #ARGB
+        case 4: // #RGBA
+                        
+            red   = [self kk_colorComponentFrom: colorString start: 0 length: 1];
             
-            alpha = [self kk_colorComponentFrom: colorString start: 0 length: 1];
+            green = [self kk_colorComponentFrom: colorString start: 1 length: 1];
             
-            red   = [self kk_colorComponentFrom: colorString start: 1 length: 1];
+            blue  = [self kk_colorComponentFrom: colorString start: 2 length: 1];
             
-            green = [self kk_colorComponentFrom: colorString start: 2 length: 1];
-            
-            blue  = [self kk_colorComponentFrom: colorString start: 3 length: 1];
-            
+            alpha = [self kk_colorComponentFrom: colorString start: 3 length: 1];
+
             break;
             
         case 6: // #RRGGBB
@@ -114,16 +114,16 @@
             
             break;
             
-        case 8: // #AARRGGBB
+        case 8: // #RRGGBBAA
+                        
+            red   = [self kk_colorComponentFrom: colorString start: 0 length: 2];
             
-            alpha = [self kk_colorComponentFrom: colorString start: 0 length: 2];
+            green = [self kk_colorComponentFrom: colorString start: 2 length: 2];
             
-            red   = [self kk_colorComponentFrom: colorString start: 2 length: 2];
+            blue  = [self kk_colorComponentFrom: colorString start: 4 length: 2];
             
-            green = [self kk_colorComponentFrom: colorString start: 4 length: 2];
-            
-            blue  = [self kk_colorComponentFrom: colorString start: 6 length: 2];
-            
+            alpha = [self kk_colorComponentFrom: colorString start: 6 length: 2];
+
             break;
             
         default:

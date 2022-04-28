@@ -60,28 +60,28 @@
  当前行所处的位置
  
  @param indexPath indexPath
- @return TableViewCellPositionType
+ @return KKTableViewCellPositionType
  */
-- (TableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath{
+- (KKTableViewCellPositionType)kk_tableViewCellPositionTypeForIndexPath:(nonnull NSIndexPath*)indexPath{
     
-    TableViewCellPositionType position;
+    KKTableViewCellPositionType position;
     if (indexPath.row==0) {
         //0行 总共0行
         if (indexPath.row==[self numberOfRowsInSection:indexPath.section]-1) {
-            position = TableViewCellPositionType_Single;
+            position = KKTableViewCellPositionType_Single;
         }
         else{
-            position = TableViewCellPositionType_Min;
+            position = KKTableViewCellPositionType_Min;
         }
     }
     else{
         //中间行
         if (indexPath.row!=[self numberOfRowsInSection:indexPath.section]-1) {
-            position = TableViewCellPositionType_Middle;
+            position = KKTableViewCellPositionType_Middle;
         }
         //最后行
         else{
-            position = TableViewCellPositionType_Max;
+            position = KKTableViewCellPositionType_Max;
         }
     }
     return position;

@@ -13,15 +13,15 @@
 /**
  *  渐进色的方向
  */
-typedef NS_ENUM(NSInteger,UIViewGradientColorDirection) {
+typedef NS_ENUM(NSInteger,KKUIViewGradientColorDirection) {
     
-    UIViewGradientColorDirection_TopBottom = 0,/* 从上到下 */
+    KKUIViewGradientColorDirection_TopBottom = 0,/* 从上到下 */
     
-    UIViewGradientColorDirection_BottomTop = 1,/* 从下到上 */
+    KKUIViewGradientColorDirection_BottomTop = 1,/* 从下到上 */
     
-    UIViewGradientColorDirection_LeftRight = 2,/* 从左到右 */
+    KKUIViewGradientColorDirection_LeftRight = 2,/* 从左到右 */
 
-    UIViewGradientColorDirection_RightLeft = 3,/* 从右到左 */
+    KKUIViewGradientColorDirection_RightLeft = 3,/* 从右到左 */
 
 };
 
@@ -133,7 +133,7 @@ typedef NS_OPTIONS(NSUInteger, KKCornerRadiusType) {
 
 - (void)kk_setBackgroundColorFromColor:(nullable UIColor*)startUIColor
                                toColor:(nullable UIColor*)endUIColor
-                             direction:(UIViewGradientColorDirection)direction;
+                             direction:(KKUIViewGradientColorDirection)direction;
 
 #pragma mark ==================================================
 #pragma mark == 设置遮罩相关
