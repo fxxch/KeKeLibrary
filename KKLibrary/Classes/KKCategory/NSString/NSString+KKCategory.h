@@ -66,6 +66,10 @@
 + (nullable NSString *)kk_getParamValueFromUrl:(nullable NSString*)aURL
                                      paramName:(nullable NSString *)paramName;
 
++ (nullable NSString *)kk_getParamByName:(nullable NSString *)paramName URLString:(nullable NSString *)aURL;
+
++ (nullable NSDictionary *)kk_getParamsWithUrlString:(nullable NSString*)aURL;
+
 - (nullable NSString *)kk_KKURLEncodedString;
 
 - (nullable NSString*)kk_KKURLDecodedString;
