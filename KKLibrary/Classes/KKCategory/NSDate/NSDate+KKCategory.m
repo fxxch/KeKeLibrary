@@ -11,6 +11,7 @@
 #import "NSCalendar+KKCategory.h"
 #import "NSString+KKCategory.h"
 #include <mach/mach_time.h>
+#include <sys/sysctl.h>
 #import "KKLog.h"
 
 @implementation NSDate (KKCategory)
@@ -563,6 +564,26 @@
     else{
         return [NSString stringWithFormat:@"%02d:%02d",MM,SS];
     }
+}
+
+
+// #include <sys/sysctl.h>
+//get system uptime since last boot
++ (NSTimeInterval)sytemRuningSecondsSinceBoot
+{
+    struct timeval boottime;
+    int mib[2] = {CTL_KERN, KERN_BOOTTIME};
+    size_t size = sizeof(boottime);
+    struct timeval now;
+    struct timezone tz;
+    gettimeofday(&now, &tz);
+    double uptime = -1;
+    if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 && boottime.tv_sec != 0)
+    {
+        uptime = now.tv_sec - boottime.tv_sec;
+        uptime += (double)(now.tv_usec - boottime.tv_usec) / 1000000.0;
+    }
+    return uptime;
 }
 
 
