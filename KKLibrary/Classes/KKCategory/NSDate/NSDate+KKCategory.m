@@ -569,7 +569,7 @@
 
 // #include <sys/sysctl.h>
 //get system uptime since last boot
-+ (NSTimeInterval)sytemRuningSecondsSinceBoot
++ (NSTimeInterval)kk_sytemRuningSecondsSinceBoot
 {
     struct timeval boottime;
     int mib[2] = {CTL_KERN, KERN_BOOTTIME};
