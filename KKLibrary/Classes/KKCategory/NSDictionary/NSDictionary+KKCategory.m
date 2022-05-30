@@ -134,6 +134,9 @@
         else if ([value isKindOfClass:[NSNumber class]]) {
             return [(NSNumber*)value stringValue];
         }
+        else if ([value isKindOfClass:[NSURL class]]){
+            return [(NSURL*)value absoluteString];
+        }
         else{
             return nil;
         }
