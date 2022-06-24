@@ -7,7 +7,6 @@
 //
 
 #import "KKFileCacheManager.h"
-#import "KKUserDefaultsManager.h"
 #import "KKCategory.h"
 #import "KKSharedInstance.h"
 #import "KKLog.h"

@@ -1,31 +1,31 @@
 //
 //  KKUserDefaultsManager.h
-//  ProjectK
+//  ChervonIot
 //
-//  Created by liubo on 14-1-10.
-//  Copyright (c) 2014年 Beartech. All rights reserved.
+//  Created by edward lannister on 2022/06/22.
+//  Copyright © 2022 ts. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 @interface KKUserDefaultsManager : NSObject
 
 #pragma mark ==================================================
-#pragma mark == 基础方法
+#pragma mark == Basic
 #pragma mark ==================================================
-+ (BOOL)setObject:(id _Nullable)anObject forKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier;
++ (void)setObject:(id _Nullable)anObject forKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier;
 
-+ (BOOL)removeObjectForKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier;
++ (void)removeObjectForKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier;
 
 + (id _Nullable)objectForKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier;
 
-+ (BOOL)clearKKUserDefaultsManagerWithIdentifier:(NSString*_Nullable)aIdentifier;
++ (void)clearUserDefaultsWithIdentifier:(NSString*_Nullable)aIdentifier;
+
 
 #pragma mark ==================================================
-#pragma mark == 扩展方法
+#pragma mark == More <Array>
 #pragma mark ==================================================
-+ (void)clearNSUserDefaults;
++ (void)clearAllUserDefaults;
 
 + (void)arrayAddObject:(id _Nullable)anObject
                 forKey:(NSString*_Nullable)aKey

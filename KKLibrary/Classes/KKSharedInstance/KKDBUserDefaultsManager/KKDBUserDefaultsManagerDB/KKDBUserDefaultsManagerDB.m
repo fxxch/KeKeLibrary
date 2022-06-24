@@ -1,16 +1,16 @@
 //
-//  KKUserDefaultsManagerDB.m
+//  KKDBUserDefaultsManagerDB.m
 //  BM
 //
 //  Created by 刘波 on 2020/3/1.
 //  Copyright © 2020 bm. All rights reserved.
 //
 
-#import "KKUserDefaultsManagerDB.h"
+#import "KKDBUserDefaultsManagerDB.h"
 #import "KKCategory.h"
 #import "KKLibraryDBManager.h"
 
-@implementation KKUserDefaultsManagerDB
+@implementation KKDBUserDefaultsManagerDB
 
 /**
  插入消息
@@ -23,20 +23,20 @@
         return NO;
     }
 
-    [KKUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aUserIdentifier
+    [KKDBUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aUserIdentifier
                                                                     key:aKey];
 
     NSMutableDictionary *aInformation = [NSMutableDictionary dictionary];
     if ([NSString kk_isStringNotEmpty:aUserIdentifier]) {
-        [aInformation setObject:aUserIdentifier forKey:Table_KKUserDefaultsManager_user_identifier];
+        [aInformation setObject:aUserIdentifier forKey:Table_KKDBUserDefaultsManager_user_identifier];
     } else {
-        [aInformation setObject:@"" forKey:Table_KKUserDefaultsManager_user_identifier];
+        [aInformation setObject:@"" forKey:Table_KKDBUserDefaultsManager_user_identifier];
     }
-    [aInformation setObject:aKey forKey:Table_KKUserDefaultsManager_key];
-    [aInformation setObject:aValue forKey:Table_KKUserDefaultsManager_value];
+    [aInformation setObject:aKey forKey:Table_KKDBUserDefaultsManager_key];
+    [aInformation setObject:aValue forKey:Table_KKDBUserDefaultsManager_value];
 
     BOOL result =  [KKLibraryDBManager.defaultManager insertInformation:aInformation
-                                                                toTable:TableName_KKUserDefaultsManager];
+                                                                toTable:TableName_KKDBUserDefaultsManager];
 
     return  result;
 }
@@ -52,7 +52,7 @@
 
     if ([NSString kk_isStringNotEmpty:aUserIdentifier]) {
         NSString *selectSql = [NSString stringWithFormat:@" SELECT * FROM %@ "
-                               " where %@ = ? and %@ = ?",TableName_KKUserDefaultsManager,Table_KKUserDefaultsManager_user_identifier,Table_KKUserDefaultsManager_key];
+                               " where %@ = ? and %@ = ?",TableName_KKDBUserDefaultsManager,Table_KKDBUserDefaultsManager_user_identifier,Table_KKDBUserDefaultsManager_key];
 
         FMDatabaseQueue *m_db = KKLibraryDBManager.defaultManager.db;
         __block NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -65,10 +65,10 @@
             [rs close];
         }];
 
-        return [dic kk_validStringForKey:Table_KKUserDefaultsManager_value];
+        return [dic kk_validStringForKey:Table_KKDBUserDefaultsManager_value];
     } else {
         NSString *selectSql = [NSString stringWithFormat:@" SELECT * FROM %@ "
-                               " where %@ = ?",TableName_KKUserDefaultsManager,Table_KKUserDefaultsManager_key];
+                               " where %@ = ?",TableName_KKDBUserDefaultsManager,Table_KKDBUserDefaultsManager_key];
 
         FMDatabaseQueue *m_db = KKLibraryDBManager.defaultManager.db;
         __block NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -81,7 +81,7 @@
             [rs close];
         }];
 
-        return [dic kk_validStringForKey:Table_KKUserDefaultsManager_value];
+        return [dic kk_validStringForKey:Table_KKDBUserDefaultsManager_value];
     }
 }
 
@@ -100,9 +100,9 @@
         NSString *deleteSql = [NSString stringWithFormat:@"Delete From %@ "
                                " where  "
                                " %@ = ? and %@ = ? ",
-                               TableName_KKUserDefaultsManager,
-                               Table_KKUserDefaultsManager_user_identifier,
-                               Table_KKUserDefaultsManager_key];
+                               TableName_KKDBUserDefaultsManager,
+                               Table_KKDBUserDefaultsManager_user_identifier,
+                               Table_KKDBUserDefaultsManager_key];
 
         FMDatabaseQueue *m_db = KKLibraryDBManager.defaultManager.db;
         [m_db inDatabase:^(FMDatabase *db){
@@ -124,8 +124,8 @@
         NSString *deleteSql = [NSString stringWithFormat:@"Delete From %@ "
                                " where  "
                                " %@ = ?",
-                               TableName_KKUserDefaultsManager,
-                               Table_KKUserDefaultsManager_key];
+                               TableName_KKDBUserDefaultsManager,
+                               Table_KKDBUserDefaultsManager_key];
 
         FMDatabaseQueue *m_db = KKLibraryDBManager.defaultManager.db;
         [m_db inDatabase:^(FMDatabase *db){
@@ -156,8 +156,8 @@
     NSString *deleteSql = [NSString stringWithFormat:@"Delete From %@ "
                            " where  "
                            " %@ = ?",
-                           TableName_KKUserDefaultsManager,
-                           Table_KKUserDefaultsManager_user_identifier];
+                           TableName_KKDBUserDefaultsManager,
+                           Table_KKDBUserDefaultsManager_user_identifier];
 
     FMDatabaseQueue *m_db = KKLibraryDBManager.defaultManager.db;
     [m_db inDatabase:^(FMDatabase *db){

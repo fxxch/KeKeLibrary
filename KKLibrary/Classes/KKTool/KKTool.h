@@ -18,4 +18,7 @@
 //打印日志 /*❤️*/
 #import "KKLog.h"
 
+//保存UserDefaults /*❤️*/
+#import "KKUserDefaultsManager.h"
+
 #endif /* KKTool_h */

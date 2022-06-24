@@ -1,19 +1,19 @@
 //
-//  KKUserDefaultsManager.m
+//  KKDBUserDefaultsManager.m
 //  ProjectK
 //
 //  Created by liubo on 14-1-10.
 //  Copyright (c) 2014年 Beartech. All rights reserved.
 //
 
-#import "KKUserDefaultsManager.h"
+#import "KKDBUserDefaultsManager.h"
 #import "KKCategory.h"
-#import "KKUserDefaultsManagerDB.h"
+#import "KKDBUserDefaultsManagerDB.h"
 #import "KKLog.h"
 
 #define KKUserDefaultsInformationKey @"KKUserDefaultsInformationKey"
 
-@implementation KKUserDefaultsManager
+@implementation KKDBUserDefaultsManager
 
 #pragma mark ==================================================
 #pragma mark == 基础方法
@@ -25,12 +25,12 @@
     }
 
     if ([anObject isKindOfClass:[NSString class]]) {
-        return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:anObject];
+        return [KKDBUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:anObject];
     }
     else if ([anObject isKindOfClass:[NSNumber class]]) {
         NSString *jsonString = [(NSNumber*)anObject stringValue];
         if ([NSString kk_isStringNotEmpty:jsonString]) {
-            return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
+            return [KKDBUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
             return NO;
@@ -39,7 +39,7 @@
     else if ([anObject isKindOfClass:[NSDictionary class]]) {
         NSString *jsonString = [(NSDictionary*)anObject kk_translateToJSONString];
         if ([NSString kk_isStringNotEmpty:jsonString]) {
-            return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
+            return [KKDBUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
             return NO;
@@ -48,7 +48,7 @@
     else if ([anObject isKindOfClass:[NSArray class]]){
         NSString *jsonString = [(NSArray*)anObject kk_translateToJSONString];
         if ([NSString kk_isStringNotEmpty:jsonString]) {
-            return [KKUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
+            return [KKDBUserDefaultsManagerDB DBInsert_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey value:jsonString];
         } else {
             KKLogErrorFormat(@"KKUserDefaults保存信息格式不支持：%@",anObject);
             return NO;
@@ -60,7 +60,7 @@
 }
 
 + (BOOL)removeObjectForKey:(NSString*_Nullable)aKey identifier:(NSString*_Nullable)aIdentifier{
-    return [KKUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aIdentifier
+    return [KKDBUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aIdentifier
                                                                            key:aKey];
 }
 
@@ -70,7 +70,7 @@
         return nil;
     }
 
-    NSString *jsonString = [KKUserDefaultsManagerDB DBQuery_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey];
+    NSString *jsonString = [KKDBUserDefaultsManagerDB DBQuery_KKUserDefaults_WithUserIdentifier:aIdentifier key:aKey];
     NSDictionary *dic = [NSDictionary kk_dictionaryFromJSONString:jsonString];
     if ([NSDictionary kk_isDictionaryNotEmpty:dic]) {
         return dic;
@@ -88,11 +88,11 @@
     }
 }
 
-+ (BOOL)clearKKUserDefaultsManagerWithIdentifier:(NSString*_Nullable)aIdentifier{
++ (BOOL)clearKKDBUserDefaultsManagerWithIdentifier:(NSString*_Nullable)aIdentifier{
     if ([NSString kk_isStringEmpty:aIdentifier]) {
         return NO;
     }
-    return [KKUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aIdentifier];
+    return [KKDBUserDefaultsManagerDB DBDelete_KKUserDefaults_WithUserIdentifier:aIdentifier];
 }
 
 #pragma mark ==================================================
@@ -117,12 +117,12 @@
     }
 
     NSMutableArray *aArray = [NSMutableArray array];
-    NSArray *arrayold = [KKUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
+    NSArray *arrayold = [KKDBUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
     if (arrayold) {
         [aArray addObjectsFromArray:arrayold];
     }
     [aArray addObject:anObject];
-    [KKUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
+    [KKDBUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
 }
 
 + (void)arrayInsertObject:(id _Nullable)anObject
@@ -137,7 +137,7 @@
     }
 
     NSMutableArray *aArray = [NSMutableArray array];
-    NSArray *arrayold = [KKUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
+    NSArray *arrayold = [KKDBUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
     if (arrayold) {
         [aArray addObjectsFromArray:arrayold];
     }
@@ -148,7 +148,7 @@
         [aArray addObject:anObject];
     }
     
-    [KKUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
+    [KKDBUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
 }
 
 + (void)arrayRemoveAtIndex:(NSInteger)aIndex
@@ -161,7 +161,7 @@
     }
 
     NSMutableArray *aArray = [NSMutableArray array];
-    NSArray *arrayold = [KKUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
+    NSArray *arrayold = [KKDBUserDefaultsManager objectForKey:aKey identifier:aIdentifier];
     if (arrayold) {
         [aArray addObjectsFromArray:arrayold];
     }
@@ -170,7 +170,7 @@
         [aArray removeObjectAtIndex:aIndex];
     }
     
-    [KKUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
+    [KKDBUserDefaultsManager setObject:aArray forKey:aKey identifier:aIdentifier];
 }
 
 

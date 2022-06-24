@@ -10,11 +10,11 @@
 #define KKSharedInstance_h
 
 #import "KKFileCacheManager.h"
-#import "KKUserDefaultsManager.h"
+#import "KKDBUserDefaultsManager.h"
 
 /* 缓存一些相关数据，比如文件缓存和UserDefaults缓存 */
 #import "KKLibraryDBManager.h"
 #import "KKFileCacheManagerDB.h"
-#import "KKUserDefaultsManagerDB.h"
+#import "KKDBUserDefaultsManagerDB.h"
 
 #endif /* KKSharedInstance_h */

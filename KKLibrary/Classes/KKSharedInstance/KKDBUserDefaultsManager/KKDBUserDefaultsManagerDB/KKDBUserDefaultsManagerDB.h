@@ -1,5 +1,5 @@
 //
-//  KKUserDefaultsManagerDB.h
+//  KKDBUserDefaultsManagerDB.h
 //  BM
 //
 //  Created by 刘波 on 2020/3/1.
@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-#define TableName_KKUserDefaultsManager @"KKUserDefaultsManager"
+#define TableName_KKDBUserDefaultsManager @"KKDBUserDefaultsManager"
 #pragma mark ==================================================
 #pragma mark == KKFileCacheManager
 #pragma mark ==================================================
-#define Table_KKUserDefaultsManager_id                      @"id" //自增字段
+#define Table_KKDBUserDefaultsManager_id                      @"id" //自增字段
 /* 标示符 用于区分用户 */
-#define Table_KKUserDefaultsManager_user_identifier         @"user_identifier"
+#define Table_KKDBUserDefaultsManager_user_identifier         @"user_identifier"
 /* 主键 */
-#define Table_KKUserDefaultsManager_key                     @"key"
+#define Table_KKDBUserDefaultsManager_key                     @"key"
 /* 值  */
-#define Table_KKUserDefaultsManager_value                   @"value"
+#define Table_KKDBUserDefaultsManager_value                   @"value"
 
-@interface KKUserDefaultsManagerDB : NSObject
+@interface KKDBUserDefaultsManagerDB : NSObject
 
 /**
  插入消息
