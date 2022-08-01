@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111C206328979A6C00F0336D /* KKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFD25BD2590534F00A14CA1 /* KKFramework.framework */; };
+		111C206428979A6C00F0336D /* KKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFD25BD2590534F00A14CA1 /* KKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AA02B19258CCFE2004AF28A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA02B18258CCFE2004AF28A /* AppDelegate.m */; };
 		3AA02B1C258CCFE2004AF28A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA02B1B258CCFE2004AF28A /* SceneDelegate.m */; };
 		3AA02B24258CCFE4004AF28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA02B23258CCFE4004AF28A /* Assets.xcassets */; };
@@ -34,18 +36,16 @@
 		3AA02DF9258CD50A004AF28A /* libKKLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA02DE7258CD50A004AF28A /* libKKLibrary.a */; };
 		3AA02E08258CD61A004AF28A /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA02E07258CD61A004AF28A /* TestViewController.m */; };
 		3AA02E0D258CD62A004AF28A /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA02E0B258CD62A004AF28A /* TestViewController.m */; };
-		3AFD25C1259053BA00A14CA1 /* KKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFD25BD2590534F00A14CA1 /* KKFramework.framework */; };
-		3AFD25C2259053BA00A14CA1 /* KKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFD25BD2590534F00A14CA1 /* KKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3AFD25C3259053BA00A14CA1 /* Embed Frameworks */ = {
+		111C206528979A6C00F0336D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3AFD25C2259053BA00A14CA1 /* KKFramework.framework in Embed Frameworks */,
+				111C206428979A6C00F0336D /* KKFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AFD25C1259053BA00A14CA1 /* KKFramework.framework in Frameworks */,
+				111C206328979A6C00F0336D /* KKFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +620,7 @@
 				3AA02C1C258CD238004AF28A /* Sources */,
 				3AA02C22258CD238004AF28A /* Frameworks */,
 				3AA02C23258CD238004AF28A /* Resources */,
-				3AFD25C3259053BA00A14CA1 /* Embed Frameworks */,
+				111C206528979A6C00F0336D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -17,6 +17,7 @@
 #include <net/if_dl.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "KKLog.h"
+#import "UIWindow+KKCategory.h"
 
 @implementation UIDevice (KKCategory)
 
@@ -73,24 +74,29 @@
  */
 - (BOOL)kk_isiPhoneX{
     BOOL result = YES;
-    CGSize screenSize = [[UIScreen mainScreen] currentMode].size;
-    // iPhone4、iPhone4S
-    CGSize iPhone4_Size = CGSizeMake(640,960);
-    // iPhone5、iPhone5C、iPhone5S、iPhoneSE
-    CGSize iPhone5_Size = CGSizeMake(640,1136);
-    // iPhone6、iPhone6S、iPhone7、iPhone8、iPhoneSE2
-    CGSize iPhone678_Size = CGSizeMake(750,1334);
-    // iPhone6P、iPhone6SP、iPhone7P、iPhone8P
-    CGSize iPhone678P_Size = CGSizeMake(1242,2208);
-                    
-    if (CGSizeEqualToSize(iPhone4_Size, screenSize) ||
-        CGSizeEqualToSize(iPhone5_Size, screenSize) ||
-        CGSizeEqualToSize(iPhone678_Size, screenSize)  ||
-        CGSizeEqualToSize(iPhone678P_Size, screenSize) ) {
-        result = NO;
+    if (@available(iOS 11.0, *)) {\
+        result = [UIWindow kk_currentKeyWindow].safeAreaInsets.bottom > 0.0;
     }
     else{
-        result = YES;
+        CGSize screenSize = [[UIScreen mainScreen] currentMode].size;
+        // iPhone4、iPhone4S
+        CGSize iPhone4_Size = CGSizeMake(640,960);
+        // iPhone5、iPhone5C、iPhone5S、iPhoneSE
+        CGSize iPhone5_Size = CGSizeMake(640,1136);
+        // iPhone6、iPhone6S、iPhone7、iPhone8、iPhoneSE2
+        CGSize iPhone678_Size = CGSizeMake(750,1334);
+        // iPhone6P、iPhone6SP、iPhone7P、iPhone8P
+        CGSize iPhone678P_Size = CGSizeMake(1242,2208);
+                        
+        if (CGSizeEqualToSize(iPhone4_Size, screenSize) ||
+            CGSizeEqualToSize(iPhone5_Size, screenSize) ||
+            CGSizeEqualToSize(iPhone678_Size, screenSize)  ||
+            CGSizeEqualToSize(iPhone678P_Size, screenSize) ) {
+            result = NO;
+        }
+        else{
+            result = YES;
+        }
     }
     return result;
 }

@@ -88,6 +88,27 @@
  dataInformation:(NSDictionary*_Nullable)aDataInformation;
 
 /**
+ 将某个文件拷贝保存到本地
+ @param aOriginFilePath 原文件路径
+ @param aCacheDirectory 存储与哪个目录（
+ KKFileCacheManager_CacheDirectoryOfWebImage、
+ KKFileCacheManager_CacheDirectoryOfAlbumImage、
+ KKFileCacheManager_CacheDirectoryOfCameraImage，
+ 也可自定义）
+ @param aDisplayFullName 例如：考勤数据表.xls” 仅作参考，如果涉及到重名，可能会变成“考勤数据表(0).xls”
+ @param aIdentifier 文件标示符 (一般是文件的远程URL字符串)
+ @param aRemoteURL 文件的远程URL字符串
+ @param aDataInformation 文件信息
+ @return 函数调用成功返回 结果
+ */
++ (BOOL)saveFileInPath:(NSString*_Nullable)aOriginFilePath
+      toCacheDirectory:(NSString*_Nullable)aCacheDirectory
+       displayFullName:(NSString*_Nullable)aDisplayFullName
+            identifier:(NSString*_Nullable)aIdentifier
+             remoteURL:(NSString*_Nullable)aRemoteURL
+       dataInformation:(NSDictionary*_Nullable)aDataInformation;
+
+/**
  将Data保存到本地
  @param data 文件二进制数据
  @param aCacheDirectory 存储与哪个目录（KKFileCacheManager_CacheDirectoryOfWebImage、KKFileCacheManager_CacheDirectoryOfAlbumImage、KKFileCacheManager_CacheDirectoryOfCameraImage，也可自定义）
@@ -98,6 +119,19 @@
 + (NSString*_Nullable)saveData:(NSData*_Nullable)data toCacheDirectory:(NSString*_Nullable)aCacheDirectory
                displayFullName:(NSString*_Nullable)aDisplayFullName
                dataInformation:(NSDictionary*_Nullable)aDataInformation;
+
+/**
+ 将某个文件拷贝保存到本地
+ @param aOriginFilePath 原文件路径
+ @param aCacheDirectory 存储与哪个目录（KKFileCacheManager_CacheDirectoryOfWebImage、KKFileCacheManager_CacheDirectoryOfAlbumImage、KKFileCacheManager_CacheDirectoryOfCameraImage，也可自定义）
+ @param aDisplayFullName 例如：考勤数据表.xls” 仅作参考，如果涉及到重名，可能会变成“考勤数据表(0).xls”
+ @param aDataInformation 文件信息
+ @return 文件标示符 (一般是文件的远程URL字符串)
+ */
++ (NSString*_Nullable)saveFileInPath:(NSString*_Nullable)aOriginFilePath
+                    toCacheDirectory:(NSString*_Nullable)aCacheDirectory
+                     displayFullName:(NSString*_Nullable)aDisplayFullName
+                     dataInformation:(NSDictionary*_Nullable)aDataInformation;
 
 /**
  判断缓存文件是否存在

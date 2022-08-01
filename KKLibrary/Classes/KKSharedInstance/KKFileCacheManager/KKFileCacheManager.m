@@ -209,6 +209,108 @@
 }
 
 /**
+ 将某个文件拷贝保存到本地
+ @param aOriginFilePath 原文件路径
+ @param aCacheDirectory 存储与哪个目录（
+ KKFileCacheManager_CacheDirectoryOfWebImage、
+ KKFileCacheManager_CacheDirectoryOfAlbumImage、
+ KKFileCacheManager_CacheDirectoryOfCameraImage，
+ 也可自定义）
+ @param aDisplayFullName 例如：考勤数据表.xls” 仅作参考，如果涉及到重名，可能会变成“考勤数据表(0).xls”
+ @param aIdentifier 文件标示符 (一般是文件的远程URL字符串)
+ @param aRemoteURL 文件的远程URL字符串
+ @param aDataInformation 文件信息
+ @return 函数调用成功返回 结果
+ */
++ (BOOL)saveFileInPath:(NSString*_Nullable)aOriginFilePath toCacheDirectory:(NSString*_Nullable)aCacheDirectory
+ displayFullName:(NSString*_Nullable)aDisplayFullName
+      identifier:(NSString*_Nullable)aIdentifier
+       remoteURL:(NSString*_Nullable)aRemoteURL
+ dataInformation:(NSDictionary*_Nullable)aDataInformation{
+    if (!aOriginFilePath || [aOriginFilePath isKindOfClass:[NSNull class]]) {
+        KKLogErrorFormat(@"缓存文件失败：originFilePath：%@",KKValidString(aOriginFilePath));
+        return NO;
+    }
+    
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
+        KKLogErrorFormat(@"缓存文件失败：aCacheDirectory：%@",KKValidString(aCacheDirectory));
+        return NO;
+    }
+    
+    if ([NSString kk_isStringEmpty:aIdentifier]) {
+        KKLogErrorFormat(@"缓存文件失败：aIdentifier：%@",KKValidString(aIdentifier));
+        return NO;
+    }
+
+    if ([NSString kk_isStringEmpty:aDisplayFullName]) {
+        KKLogErrorFormat(@"缓存文件失败：aDisplayFullName：%@",KKValidString(aDisplayFullName));
+        return NO;
+    }
+
+    NSString *aExtension = [aDisplayFullName pathExtension];
+    if ([NSString kk_isStringEmpty:aExtension]) {
+        KKLogErrorFormat(@"缓存文件失败：aExtension：%@",KKValidString(aExtension));
+        return NO;
+    }
+
+    NSString *extraInformationJson = @"";
+    if ([NSDictionary kk_isDictionaryNotEmpty:aDataInformation]) {
+        extraInformationJson = [aDataInformation kk_translateToJSONString];
+        if ([NSString kk_isStringEmpty:extraInformationJson]) {
+            KKLogErrorFormat(@"缓存文件失败(附加信息不能够转换成json字符串)：aDataInformation：%@",aDataInformation);
+            return NO;
+        }
+    }
+
+    if ([KKFileCacheManager isExistCacheData:aIdentifier]) {
+        [KKFileCacheManager deleteCacheData:aIdentifier];
+    }
+    
+    //KK缓存目录
+    NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
+    //文件完整目录
+    NSString *fileFullDirectoryPath = [NSString stringWithFormat:@"%@/%@",kkcachesDirectory,[aExtension uppercaseString]];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    if(![fileManager contentsOfDirectoryAtPath:fileFullDirectoryPath error:&error]){
+        BOOL result = [fileManager createDirectoryAtPath:fileFullDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error];
+        if (!result) {
+            KKLogErrorFormat(@"%@",KKValidString([error localizedDescription]));
+            return NO;
+        }
+    }
+    
+    NSString *expectFileName = [NSFileManager kk_realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
+    //文件完整目录
+    NSString *fileFullPath = [fileFullDirectoryPath stringByAppendingPathComponent:expectFileName];
+
+    BOOL copyResult = [[NSFileManager defaultManager] copyItemAtURL:[NSURL fileURLWithPath:aOriginFilePath] toURL:[NSURL fileURLWithPath:fileFullPath] error:nil];
+    
+    if(copyResult && [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath]){
+        //KK缓存目录
+        NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
+        //文件完整目录
+        NSString *localPath = [NSString stringWithFormat:@"%@/%@/%@",kkcachesDirectory,[aExtension uppercaseString],expectFileName];
+
+        BOOL result = [KKFileCacheManagerDB saveFileCache_WithIdentifer:KKValidString(aIdentifier)
+                                                             remote_url:aRemoteURL
+                                                        cache_directory:aCacheDirectory
+                                                              extention:aExtension
+                                                             local_path:localPath
+                                                             local_name:aDisplayFullName
+                                                        local_full_name:expectFileName
+                                                           display_name:aDisplayFullName
+                                                      extra_information:extraInformationJson];
+        return result;
+    }
+    else{
+        KKLogError(@"缓存文件失败");
+        return NO;
+    }
+}
+
+/**
  将Data保存到本地
  @param data 文件二进制数据
  @param aCacheDirectory 存储与哪个目录（KKFileCacheManager_CacheDirectoryOfWebImage、KKFileCacheManager_CacheDirectoryOfAlbumImage、KKFileCacheManager_CacheDirectoryOfCameraImage，也可自定义）
@@ -301,6 +403,102 @@
         return nil;
     }
 }
+
+/**
+ 将某个文件拷贝保存到本地
+ @param aOriginFilePath 原文件路径
+ @param aCacheDirectory 存储与哪个目录（KKFileCacheManager_CacheDirectoryOfWebImage、KKFileCacheManager_CacheDirectoryOfAlbumImage、KKFileCacheManager_CacheDirectoryOfCameraImage，也可自定义）
+ @param aDisplayFullName 例如：考勤数据表.xls” 仅作参考，如果涉及到重名，可能会变成“考勤数据表(0).xls”
+ @param aDataInformation 文件信息
+ @return 文件标示符 (一般是文件的远程URL字符串)
+ */
++ (NSString*_Nullable)saveFileInPath:(NSString*_Nullable)aOriginFilePath toCacheDirectory:(NSString*_Nullable)aCacheDirectory
+      displayFullName:(NSString*_Nullable)aDisplayFullName
+      dataInformation:(NSDictionary*_Nullable)aDataInformation{
+    
+    if (!aOriginFilePath || [aOriginFilePath isKindOfClass:[NSNull class]]) {
+        KKLogErrorFormat(@"缓存文件失败：originFilePath：%@",KKValidString(aOriginFilePath));
+        return nil;
+    }
+
+    if ([NSString kk_isStringEmpty:aCacheDirectory]) {
+        KKLogErrorFormat(@"缓存文件失败：aCacheDirectory：%@",KKValidString(aCacheDirectory));
+        return nil;
+    }
+
+    if ([NSString kk_isStringEmpty:aDisplayFullName]) {
+        KKLogErrorFormat(@"缓存文件失败：aDisplayFullName：%@",KKValidString(aDisplayFullName));
+        return nil;
+    }
+
+    NSString *aExtension = [aDisplayFullName pathExtension];
+    if ([NSString kk_isStringEmpty:aExtension]) {
+        KKLogErrorFormat(@"缓存文件失败：aExtension：%@",KKValidString(aExtension));
+        return nil;
+    }
+
+    NSString *extraInformationJson = @"";
+    if ([NSDictionary kk_isDictionaryNotEmpty:aDataInformation]) {
+        extraInformationJson = [aDataInformation kk_translateToJSONString];
+        if ([NSString kk_isStringEmpty:extraInformationJson]) {
+            KKLogErrorFormat(@"缓存文件失败(附加信息不能够转换成json字符串)：aDataInformation：%@",aDataInformation);
+            return nil;
+        }
+    }
+
+    //文件标识符 20141212_094434_123999
+    NSString *identifier = [KKFileCacheManager createRandomFileName];
+    
+    NSString *realDisplayName = [aDisplayFullName kk_fileNameWithOutExtention];
+
+    //KK缓存目录
+    NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
+    //文件完整目录
+    NSString *fileFullDirectoryPath = [NSString stringWithFormat:@"%@/%@",kkcachesDirectory,[aExtension uppercaseString]];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    if(![fileManager contentsOfDirectoryAtPath:fileFullDirectoryPath error:&error]){
+        BOOL result = [fileManager createDirectoryAtPath:fileFullDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error];
+        if (!result) {
+            KKLogErrorFormat(@"%@",KKValidString([error localizedDescription]));
+            return nil;
+        }
+    }
+    
+    NSString *expectFileName = [NSFileManager kk_realFileNameForExpectFileName:aDisplayFullName inPath:fileFullDirectoryPath];
+    //文件完整目录
+    NSString *fileFullPath = [fileFullDirectoryPath stringByAppendingPathComponent:expectFileName];
+    
+    BOOL copyResult = [[NSFileManager defaultManager] copyItemAtURL:[NSURL fileURLWithPath:aOriginFilePath] toURL:[NSURL fileURLWithPath:fileFullPath] error:nil];
+    if(copyResult && [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath]){
+        //KK缓存目录
+        NSString *kkcachesDirectory = [KKFileCacheManager kkCacheDirectoryFullPath:aCacheDirectory];
+        //文件完整目录
+        NSString *localPath = [NSString stringWithFormat:@"%@/%@/%@",kkcachesDirectory,[aExtension uppercaseString],expectFileName];
+
+        BOOL result = [KKFileCacheManagerDB saveFileCache_WithIdentifer:identifier
+                                                             remote_url:@""
+                                                        cache_directory:aCacheDirectory
+                                                              extention:aExtension
+                                                             local_path:localPath
+                                                             local_name:realDisplayName
+                                                        local_full_name:expectFileName
+                                                           display_name:aDisplayFullName
+                                                      extra_information:extraInformationJson];
+        if (result) {
+            return identifier;
+        } else {
+            [NSFileManager.defaultManager removeItemAtPath:fileFullPath error:nil];
+            return nil;
+        }
+    }
+    else{
+        KKLogError(@"缓存文件失败");
+        return nil;
+    }
+}
+
 
 /**
  判断缓存文件是否存在

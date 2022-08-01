@@ -8,6 +8,7 @@
 
 #import "UIScreen+KKCategory.h"
 #import "UIDevice+KKCategory.h"
+#import "UIWindow+KKCategory.h"
 
 @implementation UIScreen (KKCategory)
 
@@ -58,8 +59,10 @@
 }
 
 - (CGFloat)KK_SafeAreaBottomHeight{
-    if ([[UIDevice currentDevice] kk_isiPhoneX]) {
-        return 34.0f;
+
+    if (@available(iOS 11.0,*)) {
+        UIEdgeInsets edgeInsets = [UIWindow kk_currentKeyWindow].safeAreaInsets;
+        return edgeInsets.bottom;
     }
     else{
         return 0;
@@ -67,11 +70,13 @@
 }
 
 - (CGFloat)KK_StatusBarHeight{
-    if ([[UIDevice currentDevice] kk_isiPhoneX]) {
-        return 44.0f;
+    if (@available(iOS 13.0,*)) {
+        CGFloat statusBarHeight = [UIWindow kk_currentKeyWindow].windowScene.statusBarManager.statusBarFrame.size.height;
+        return statusBarHeight;
     }
     else{
-        return 20.0f;
+        CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+        return statusBarHeight;
     }
 }
 

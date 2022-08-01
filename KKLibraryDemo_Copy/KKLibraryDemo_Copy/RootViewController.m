@@ -7,7 +7,7 @@
 
 #import "RootViewController.h"
 #import "TestViewController.h"
-#import <KKFramework/KKFramework.h>
+//#import <KKFramework/KKFramework.h>
 
 @interface RootViewController ()
 
@@ -34,15 +34,24 @@
     [button2 addTarget:self action:@selector(showActionAAAa) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button2];
 
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if (@available(iOS 13.0,*)) {
+        statusBarHeight = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height;
+    }
+    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0,*)) {
+        edgeInsets = [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+    }
+    NSLog(@"");
 }
 
 - (void)showAction {
-    KKAlertView *alert = [[KKAlertView alloc] initWithTitle:nil subTitle:nil message:@"哈哈哈" delegate:self buttonTitles:@"OK",nil];
-    [alert show];
-    NSLog(@"");
-
-    TestViewController *vc = [[TestViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    KKAlertView *alert = [[KKAlertView alloc] initWithTitle:nil subTitle:nil message:@"哈哈哈" delegate:self buttonTitles:@"OK",nil];
+//    [alert show];
+//    NSLog(@"");
+//
+//    TestViewController *vc = [[TestViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)showActionAAAa {
