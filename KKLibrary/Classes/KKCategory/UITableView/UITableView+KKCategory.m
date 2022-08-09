@@ -125,10 +125,12 @@
             // Fallback on earlier versions
         }
     }
-    
+        
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_15_0
     if (@available(iOS 15.0, *)) {
         table.sectionHeaderTopPadding = 0;
     }
+#endif
     
     return table;
 }

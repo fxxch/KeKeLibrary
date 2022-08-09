@@ -245,6 +245,14 @@ NSNotificationName const NotificationName_ViewControllerWillDealloc = @"Notifica
     [self.navigationController.navigationBar setTintColor:navigationBarColor];
     [self.navigationController.navigationBar setBackgroundColor:navigationBarColor];
     
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundColor = navigationBarColor;
+        self.navigationController.navigationBar.standardAppearance = appearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance=self.navigationController.navigationBar.standardAppearance;
+    }
+
     //    [self openNavigationBarShadow];
     [self closeNavigationBarShadow];
     
