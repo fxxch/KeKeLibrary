@@ -129,11 +129,8 @@
     {
         if ( self.placeHolderLabel == nil )
         {
-            NSString *wo = @"我";
-            
-            CGSize size = [wo kk_sizeWithFont:self.font maxSize:CGSizeMake(1000, 1000)];
-            
-            self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.placeHolderLabelEdgeInsets.left,self.placeHolderLabelEdgeInsets.top,self.bounds.size.width-self.placeHolderLabelEdgeInsets.top,size.height)];
+            CGFloat fontHeight = ceilf(self.font.lineHeight);
+            self.placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.placeHolderLabelEdgeInsets.left,self.placeHolderLabelEdgeInsets.top,self.bounds.size.width-self.placeHolderLabelEdgeInsets.top,fontHeight)];
             self.placeHolderLabel.lineBreakMode = NSLineBreakByCharWrapping;
             self.placeHolderLabel.numberOfLines = 0;
             self.placeHolderLabel.font = self.font;
