@@ -14,6 +14,10 @@
 
 ## 引入方式：
 ```
+#import <KeKeLibrary/KeKeLibrary.h>
+```
+
+```
 1、git clone https://github.com/fxxch/KeKeLibrary.git 然后自行编译静态库或者动态库
 ```
 

@@ -8,7 +8,8 @@ target 'KKLibraryDemo_Pod' do
   
   use_frameworks!
 
-  pod 'KeKeLibrary', '~> 0.1.27'
+#  pod 'KeKeLibrary', '~> 0.1.27'
+  pod 'KeKeLibrary', :path => '../../KeKeLibrary'
 
 
 end
