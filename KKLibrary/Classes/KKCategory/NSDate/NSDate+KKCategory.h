@@ -244,7 +244,7 @@
 
 + (NSString*_Nonnull)kk_timeDurationFormatShortString:(NSTimeInterval)timeInterval;
 
-+ (NSTimeInterval)kk_sytemRuningSecondsSinceBoot;
++ (NSTimeInterval)kk_systemRuningSecondsSinceBoot;
 
 @end
 

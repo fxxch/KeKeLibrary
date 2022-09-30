@@ -18,6 +18,9 @@
 //打印日志 /*❤️*/
 #import "KKLog.h"
 
+//计时器 /*❤️*/
+#import "KKTimer.h"
+
 //保存UserDefaults /*❤️*/
 #import "KKUserDefaultsManager.h"
 

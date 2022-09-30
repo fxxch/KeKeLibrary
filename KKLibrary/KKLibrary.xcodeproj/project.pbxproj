@@ -16,6 +16,9 @@
 		11893E42286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
 		11893E43286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
 		11893E44286599550089D28C /* KKUserDefaultsManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11893E3F286598800089D28C /* KKUserDefaultsManager.h */; };
+		11BA40E728E6A24F006BBBCA /* KKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA40E528E6A24F006BBBCA /* KKTimer.m */; };
+		11BA40E828E6A24F006BBBCA /* KKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA40E528E6A24F006BBBCA /* KKTimer.m */; };
+		11BA40E928E6A24F006BBBCA /* KKTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 11BA40E628E6A24F006BBBCA /* KKTimer.h */; };
 		3A0986C325E64402001A7F99 /* KKTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A0986DB25E6481D001A7F99 /* KKTool.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A0986C225E64402001A7F99 /* KKTool.h */; };
 		3A6542C8258B5B1000942E7E /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A654072258B5B0E00942E7E /* KLTNavigationController.m */; };
@@ -413,6 +416,8 @@
 		111A3BC028046B5600CBBBC1 /* NSCalendar+KKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+KKCategory.h"; sourceTree = "<group>"; };
 		11893E3F286598800089D28C /* KKUserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUserDefaultsManager.h; sourceTree = "<group>"; };
 		11893E40286598800089D28C /* KKUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUserDefaultsManager.m; sourceTree = "<group>"; };
+		11BA40E528E6A24F006BBBCA /* KKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKTimer.m; sourceTree = "<group>"; };
+		11BA40E628E6A24F006BBBCA /* KKTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKTimer.h; sourceTree = "<group>"; };
 		3A0986C225E64402001A7F99 /* KKTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKTool.h; sourceTree = "<group>"; };
 		3A654071258B5B0E00942E7E /* AnimationContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContoller.h; sourceTree = "<group>"; };
 		3A654072258B5B0E00942E7E /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
@@ -590,6 +595,15 @@
 			path = KKUserDefaultsManager;
 			sourceTree = "<group>";
 		};
+		11BA40E428E6A24F006BBBCA /* KKTimer */ = {
+			isa = PBXGroup;
+			children = (
+				11BA40E628E6A24F006BBBCA /* KKTimer.h */,
+				11BA40E528E6A24F006BBBCA /* KKTimer.m */,
+			);
+			path = KKTimer;
+			sourceTree = "<group>";
+		};
 		3A65406F258B5B0E00942E7E /* KKBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +747,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0986C225E64402001A7F99 /* KKTool.h */,
+				11BA40E428E6A24F006BBBCA /* KKTimer */,
 				11893E3E286598800089D28C /* KKUserDefaultsManager */,
 				3A654128258B5B0E00942E7E /* KKButton */,
 				3A654138258B5B0E00942E7E /* KKLog */,
@@ -1314,6 +1329,7 @@
 				3A65455D258CC2AD00942E7E /* UIView+KKCategory.h in Headers */,
 				3A65455E258CC2AD00942E7E /* UIFont+KKCategory.h in Headers */,
 				3A65455F258CC2AD00942E7E /* NSDateFormatter+KKCategory.h in Headers */,
+				11BA40E928E6A24F006BBBCA /* KKTimer.h in Headers */,
 				3A654560258CC2AD00942E7E /* NSFileManager+KKCategory.h in Headers */,
 				3A654561258CC2AD00942E7E /* UIButton+KKWebCache.h in Headers */,
 				3A654562258CC2AD00942E7E /* KKWebCacheDefine.h in Headers */,
@@ -1536,6 +1552,7 @@
 				3A6544BA258CC1EC00942E7E /* UITextView+KKCategory.m in Sources */,
 				3A6544BB258CC1EC00942E7E /* UIDevice+KKCategory.m in Sources */,
 				3A6544BC258CC1EC00942E7E /* NSURL+KKCategory.m in Sources */,
+				11BA40E828E6A24F006BBBCA /* KKTimer.m in Sources */,
 				3A6544BE258CC1EC00942E7E /* UIBezierPath+KKCategory.m in Sources */,
 				3A6544BF258CC1EC00942E7E /* UIImageView+KKCategory.m in Sources */,
 				111A3BC228046B5600CBBBC1 /* NSCalendar+KKCategory.m in Sources */,
@@ -1603,6 +1620,7 @@
 				3A654301258B5B1100942E7E /* KKButton.m in Sources */,
 				3A65434C258B5B1100942E7E /* NSDictionary+KKCategory.m in Sources */,
 				3A6542CF258B5B1000942E7E /* KKTextField.m in Sources */,
+				11BA40E728E6A24F006BBBCA /* KKTimer.m in Sources */,
 				3A6543A9258B68CE00942E7E /* KKLibraryDBManager.m in Sources */,
 				3A65434B258B5B1100942E7E /* UIImage+KKCategory.m in Sources */,
 				3A654352258B5B1100942E7E /* UIResponder+KKCategory.m in Sources */,
