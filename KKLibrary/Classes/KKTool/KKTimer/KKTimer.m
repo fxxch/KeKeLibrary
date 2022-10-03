@@ -23,6 +23,7 @@
 @property (nonatomic , copy) KKTimerBlock startBlock;
 @property (nonatomic , copy) KKTimerBlock loopBlock;
 @property (nonatomic , copy) KKTimerBlock endBlock;
+@property (nonatomic , assign) BOOL isEndBlockProcessed;
 
 @end
 
@@ -52,6 +53,9 @@
             loopBlock:(KKTimerBlock)aLoopBlock
              endBlock:(KKTimerBlock)aEndBlock{
 
+    [self stop];
+    self.isEndBlockProcessed = NO;
+
     self.type = aType;
     self.allTimestampCount = aTimeInterval;
     if (self.type==KKTimerType_Descending){
@@ -67,11 +71,14 @@
 }
 
 - (void)stop{
-    if (self.endBlock){
-        self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount);
+    if (self.isEndBlockProcessed==NO){
+        self.isEndBlockProcessed = YES;
+        if (self.endBlock){
+            self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount);
+        }
+        [self stopTimer];
+        [self clear];
     }
-    [self stopTimer];
-    [self clear];
 }
 
 #pragma mark ==================================================
@@ -101,11 +108,7 @@
     if (self.type==KKTimerType_Descending){
         self.currentTimestampCount = self.currentTimestampCount - time;
         if (self.currentTimestampCount<=0) {
-            if (self.endBlock){
-                self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount);
-            }
-            [self stopTimer];
-            [self clear];
+            [self stop];
         }
         else{
             if (self.loopBlock){
@@ -116,11 +119,7 @@
     else{
         self.currentTimestampCount = self.currentTimestampCount + time;
         if (self.currentTimestampCount>self.allTimestampCount) {
-            if (self.endBlock){
-                self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount);
-            }
-            [self stopTimer];
-            [self clear];
+            [self stop];
         }
         else{
             if (self.loopBlock){
