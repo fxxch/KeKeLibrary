@@ -20,9 +20,9 @@
 @property (nonatomic , assign) NSTimeInterval allTimestampCount;
 @property (nonatomic , assign) KKTimerType type;
 
-@property (nonatomic , copy) KKTimerBlock startBlock;
-@property (nonatomic , copy) KKTimerBlock loopBlock;
-@property (nonatomic , copy) KKTimerBlock endBlock;
+@property (nonatomic , copy) KKTimerStartBlock startBlock;
+@property (nonatomic , copy) KKTimerLoopBlock loopBlock;
+@property (nonatomic , copy) KKTimerEndBlock endBlock;
 @property (nonatomic , assign) BOOL isEndBlockProcessed;
 
 @end
@@ -49,13 +49,13 @@
 
 - (void)startWithType:(KKTimerType)aType
          timeInterval:(NSTimeInterval)aTimeInterval
-           startBlock:(KKTimerBlock)aStartBlock
-            loopBlock:(KKTimerBlock)aLoopBlock
-             endBlock:(KKTimerBlock)aEndBlock{
+           startBlock:(KKTimerStartBlock)aStartBlock
+            loopBlock:(KKTimerLoopBlock)aLoopBlock
+             endBlock:(KKTimerEndBlock)aEndBlock{
 
-    [self stop];
+    [self private_stopByTimeout:NO];
+
     self.isEndBlockProcessed = NO;
-
     self.type = aType;
     self.allTimestampCount = aTimeInterval;
     if (self.type==KKTimerType_Descending){
@@ -67,14 +67,19 @@
     self.startBlock = aStartBlock;
     self.loopBlock = aLoopBlock;
     self.endBlock = aEndBlock;
+    
     [self startTimer];
 }
 
 - (void)stop{
+    [self private_stopByTimeout:NO];
+}
+
+- (void)private_stopByTimeout:(BOOL)timeout{
     if (self.isEndBlockProcessed==NO){
         self.isEndBlockProcessed = YES;
         if (self.endBlock){
-            self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount);
+            self.endBlock(self.type, self.currentTimestampCount, self.allTimestampCount, timeout);
         }
         [self stopTimer];
         [self clear];
@@ -108,7 +113,7 @@
     if (self.type==KKTimerType_Descending){
         self.currentTimestampCount = self.currentTimestampCount - time;
         if (self.currentTimestampCount<=0) {
-            [self stop];
+            [self private_stopByTimeout:YES];
         }
         else{
             if (self.loopBlock){
@@ -119,7 +124,7 @@
     else{
         self.currentTimestampCount = self.currentTimestampCount + time;
         if (self.currentTimestampCount>self.allTimestampCount) {
-            [self stop];
+            [self private_stopByTimeout:YES];
         }
         else{
             if (self.loopBlock){

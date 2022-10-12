@@ -16,10 +16,22 @@ typedef NS_ENUM(NSInteger,KKTimerType) {
     
     KKTimerType_Ascending = 0,/* 计时器升序 */
     
-    KKTimerType_Descending = 1,/* 计时器降序（倒计时） */
+    KKTimerType_Descending = 1,/* 计时器倒叙（倒计时） */
 };
 
-typedef void(^KKTimerBlock)(KKTimerType type, NSTimeInterval currentTimeInterval, NSTimeInterval allTimeInterval);
+typedef void(^KKTimerStartBlock)(KKTimerType type,
+                             NSTimeInterval currentTimeInterval,
+                             NSTimeInterval allTimeInterval);
+
+typedef void(^KKTimerLoopBlock)(KKTimerType type,
+                             NSTimeInterval currentTimeInterval,
+                             NSTimeInterval allTimeInterval);
+
+// timerEndByTimeout 计时器结束是否是时间到了结束？
+typedef void(^KKTimerEndBlock)(KKTimerType type,
+                                     NSTimeInterval currentTimeInterval,
+                                     NSTimeInterval allTimeInterval,
+                                     BOOL timerEndByTimeout);
 
 @interface KKTimer : NSObject
 
@@ -33,9 +45,9 @@ typedef void(^KKTimerBlock)(KKTimerType type, NSTimeInterval currentTimeInterval
 ///   - aEndBlock: 计时结束
 - (void)startWithType:(KKTimerType)aType
          timeInterval:(NSTimeInterval)aTimeInterval
-           startBlock:(KKTimerBlock)aStartBlock
-            loopBlock:(KKTimerBlock)aLoopBlock
-             endBlock:(KKTimerBlock)aEndBlock;
+           startBlock:(KKTimerStartBlock)aStartBlock
+            loopBlock:(KKTimerLoopBlock)aLoopBlock
+             endBlock:(KKTimerEndBlock)aEndBlock;
 
 /// 停止计时
 - (void)stop;
