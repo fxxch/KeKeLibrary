@@ -78,24 +78,27 @@
         result = [UIWindow kk_currentKeyWindow].safeAreaInsets.bottom > 0.0;
     }
     else{
-        CGSize screenSize = [[UIScreen mainScreen] currentMode].size;
-        // iPhone4、iPhone4S
-        CGSize iPhone4_Size = CGSizeMake(640,960);
-        // iPhone5、iPhone5C、iPhone5S、iPhoneSE
-        CGSize iPhone5_Size = CGSizeMake(640,1136);
-        // iPhone6、iPhone6S、iPhone7、iPhone8、iPhoneSE2
-        CGSize iPhone678_Size = CGSizeMake(750,1334);
-        // iPhone6P、iPhone6SP、iPhone7P、iPhone8P
-        CGSize iPhone678P_Size = CGSizeMake(1242,2208);
-                        
-        if (CGSizeEqualToSize(iPhone4_Size, screenSize) ||
-            CGSizeEqualToSize(iPhone5_Size, screenSize) ||
-            CGSizeEqualToSize(iPhone678_Size, screenSize)  ||
-            CGSizeEqualToSize(iPhone678P_Size, screenSize) ) {
-            result = NO;
+        CGSize iPhone = [UIScreen mainScreen].nativeBounds.size;
+        CGFloat iPhone_Scale = [UIScreen mainScreen].scale;
+        CGSize iPhone_size = CGSizeMake(iPhone.width/iPhone_Scale, iPhone.height/iPhone_Scale);
+        //iPhone4 4S 3G 3GS
+        if (CGSizeEqualToSize(iPhone_size, CGSizeMake(320, 480))) {
+            return NO;
         }
-        else{
-            result = YES;
+        //iPhone5 5S 5C SE1
+        else if (CGSizeEqualToSize(iPhone_size, CGSizeMake(320, 568))) {
+            return NO;
+        }
+        //iPhone678 SE2 SE3
+        else if (CGSizeEqualToSize(iPhone_size, CGSizeMake(375, 667)) ) {
+            return NO;
+        }
+        //iPhone678P
+        else if (CGSizeEqualToSize(iPhone_size, CGSizeMake(414, 736)) ) {
+            return NO;
+        }
+        else {
+            return YES;
         }
     }
     return result;
