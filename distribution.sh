@@ -51,3 +51,7 @@ pod search KeKeLibrary
 
 #上传成功后查找
 #pod search WMCloverSdk
+
+#错误： 如果trunk 报错：[!] Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.
+#解决办法：pod trunk register 349230334@qq.com 'KeKeLibrary' --description='KeKeLibrary'
+
