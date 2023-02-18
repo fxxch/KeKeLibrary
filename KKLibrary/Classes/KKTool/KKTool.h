@@ -21,6 +21,10 @@
 //计时器 /*❤️*/
 #import "KKTimer.h"
 
+//主题与资源 /*❤️*/
+#import "KKResourceManager.h"
+#import "KKThemeManager.h"
+
 //保存UserDefaults /*❤️*/
 #import "KKUserDefaultsManager.h"
 
