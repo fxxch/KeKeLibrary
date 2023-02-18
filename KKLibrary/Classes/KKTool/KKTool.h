@@ -25,6 +25,9 @@
 #import "KKResourceManager.h"
 #import "KKThemeManager.h"
 
+//国际化 /*❤️*/
+#import "KKLocalizationManager.h"
+
 //保存UserDefaults /*❤️*/
 #import "KKUserDefaultsManager.h"
 
