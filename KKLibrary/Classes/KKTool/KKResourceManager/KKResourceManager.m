@@ -41,7 +41,7 @@
 + (NSDictionary*)loadThemeInformation_withBundleFileName:(NSString*)aBundleFileName{
 
     NSString *themeBundlePath = [KKResourceManager loadThemeBundlePath_withBundleFileName:aBundleFileName];
-    NSString *bundleFileName = [themeBundlePath lastPathComponent];
+    //NSString *bundleFileName = [themeBundlePath lastPathComponent];
     if (themeBundlePath) {
         NSString *themePlistPath = [NSString stringWithFormat:@"%@/theme.plist",themeBundlePath];
         if ([[NSFileManager defaultManager] fileExistsAtPath:themePlistPath]==NO) {
