@@ -54,4 +54,7 @@
 #import "UITableView+KKEmptyNoticeView.h"
 #import "UICollectionView+KKEmptyNoticeView.h"
 
+//等待提示框 /*❤️*/
+#import "KKWaitingView.h"
+
 #endif /* KKTool_h */
