@@ -49,6 +49,9 @@
 #import "KKWindowActionView.h"
 #import "KKWindowActionViewItem.h"
 
-
+//UITableView/UIColectionView 空白数据的展位图 /*❤️*/
+#import "KKEmptyNoticeView.h"
+#import "UITableView+KKEmptyNoticeView.h"
+#import "UICollectionView+KKEmptyNoticeView.h"
 
 #endif /* KKTool_h */
