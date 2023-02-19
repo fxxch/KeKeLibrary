@@ -43,6 +43,16 @@
 		1166476A29A1E21200C13879 /* KKWindowModalView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166475E29A1E19200C13879 /* KKWindowModalView.h */; };
 		1166476C29A1E29700C13879 /* KKWindowModalView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1166476B29A1E29700C13879 /* KKWindowModalView.png */; };
 		1166476D29A1E2CB00C13879 /* KKWindowModalView.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166476B29A1E29700C13879 /* KKWindowModalView.png */; };
+		1166477429A1E4F500C13879 /* KKWindowMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1166477029A1E4F500C13879 /* KKWindowMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1166477529A1E4F500C13879 /* KKWindowMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166477129A1E4F500C13879 /* KKWindowMenuItem.m */; };
+		1166477629A1E4F500C13879 /* KKWindowMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166477129A1E4F500C13879 /* KKWindowMenuItem.m */; };
+		1166477729A1E4F500C13879 /* KKWindowMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1166477229A1E4F500C13879 /* KKWindowMenuView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1166477829A1E4F500C13879 /* KKWindowMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166477329A1E4F500C13879 /* KKWindowMenuView.m */; };
+		1166477929A1E4F500C13879 /* KKWindowMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166477329A1E4F500C13879 /* KKWindowMenuView.m */; };
+		1166477B29A1E56300C13879 /* KKWindowMenuView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1166477A29A1E56300C13879 /* KKWindowMenuView.png */; };
+		1166477C29A1E57500C13879 /* KKWindowMenuItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166477029A1E4F500C13879 /* KKWindowMenuItem.h */; };
+		1166477D29A1E57500C13879 /* KKWindowMenuView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166477229A1E4F500C13879 /* KKWindowMenuView.h */; };
+		1166477E29A1E58200C13879 /* KKWindowMenuView.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166477A29A1E56300C13879 /* KKWindowMenuView.png */; };
 		11893E41286598800089D28C /* KKUserDefaultsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 11893E3F286598800089D28C /* KKUserDefaultsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11893E42286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
 		11893E43286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
@@ -313,6 +323,7 @@
 			dstPath = resouce;
 			dstSubfolderSpec = 16;
 			files = (
+				1166477E29A1E58200C13879 /* KKWindowMenuView.png in CopyFiles */,
 				1166476D29A1E2CB00C13879 /* KKWindowModalView.png in CopyFiles */,
 				3A6543BC258CBB0B00942E7E /* KKLibraryDBManager.sqlite in CopyFiles */,
 				3A6543B8258CBAD500942E7E /* URL_EXPRESSION_URL.txt in CopyFiles */,
@@ -398,6 +409,8 @@
 			dstPath = include/KKTool;
 			dstSubfolderSpec = 16;
 			files = (
+				1166477C29A1E57500C13879 /* KKWindowMenuItem.h in CopyFiles */,
+				1166477D29A1E57500C13879 /* KKWindowMenuView.h in CopyFiles */,
 				1166476929A1E21200C13879 /* KKWindowModalViewItem.h in CopyFiles */,
 				1166476A29A1E21200C13879 /* KKWindowModalView.h in CopyFiles */,
 				1166473229A1D0E500C13879 /* KKAlertView.h in CopyFiles */,
@@ -469,6 +482,11 @@
 		1166476129A1E19200C13879 /* KKWindowModalViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWindowModalViewItem.m; sourceTree = "<group>"; };
 		1166476229A1E19200C13879 /* KKWindowModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWindowModalView.m; sourceTree = "<group>"; };
 		1166476B29A1E29700C13879 /* KKWindowModalView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KKWindowModalView.png; sourceTree = "<group>"; };
+		1166477029A1E4F500C13879 /* KKWindowMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKWindowMenuItem.h; sourceTree = "<group>"; };
+		1166477129A1E4F500C13879 /* KKWindowMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWindowMenuItem.m; sourceTree = "<group>"; };
+		1166477229A1E4F500C13879 /* KKWindowMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKWindowMenuView.h; sourceTree = "<group>"; };
+		1166477329A1E4F500C13879 /* KKWindowMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWindowMenuView.m; sourceTree = "<group>"; };
+		1166477A29A1E56300C13879 /* KKWindowMenuView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KKWindowMenuView.png; sourceTree = "<group>"; };
 		11893E3F286598800089D28C /* KKUserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUserDefaultsManager.h; sourceTree = "<group>"; };
 		11893E40286598800089D28C /* KKUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUserDefaultsManager.m; sourceTree = "<group>"; };
 		11BA40E528E6A24F006BBBCA /* KKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKTimer.m; sourceTree = "<group>"; };
@@ -706,6 +724,26 @@
 			path = KKWindowModalViewItem;
 			sourceTree = "<group>";
 		};
+		1166476E29A1E4F500C13879 /* KKWindowMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				1166476F29A1E4F500C13879 /* KKWindowMenuItem */,
+				1166477229A1E4F500C13879 /* KKWindowMenuView.h */,
+				1166477329A1E4F500C13879 /* KKWindowMenuView.m */,
+				1166477A29A1E56300C13879 /* KKWindowMenuView.png */,
+			);
+			path = KKWindowMenuView;
+			sourceTree = "<group>";
+		};
+		1166476F29A1E4F500C13879 /* KKWindowMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				1166477029A1E4F500C13879 /* KKWindowMenuItem.h */,
+				1166477129A1E4F500C13879 /* KKWindowMenuItem.m */,
+			);
+			path = KKWindowMenuItem;
+			sourceTree = "<group>";
+		};
 		11893E3E286598800089D28C /* KKUserDefaultsManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,6 +905,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0986C225E64402001A7F99 /* KKTool.h */,
+				1166476E29A1E4F500C13879 /* KKWindowMenuView */,
 				1166475D29A1E19200C13879 /* KKWindowModalView */,
 				1166472C29A1CC1A00C13879 /* KKAlertView */,
 				1166472529A1CAE300C13879 /* KKToastView */,
@@ -1502,6 +1541,8 @@
 				1166472F29A1CC1B00C13879 /* KKAlertView.h in Headers */,
 				1166476329A1E19200C13879 /* KKWindowModalView.h in Headers */,
 				1166476429A1E19200C13879 /* KKWindowModalViewItem.h in Headers */,
+				1166477729A1E4F500C13879 /* KKWindowMenuView.h in Headers */,
+				1166477429A1E4F500C13879 /* KKWindowMenuItem.h in Headers */,
 				1166472129A11F2B00C13879 /* KKLocalizationManager.h in Headers */,
 				3A86124925E6559E001EFE14 /* KeKeLibrary.h in Headers */,
 			);
@@ -1595,6 +1636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A654604258CC34900942E7E /* URL_EXPRESSION_URL.txt in Resources */,
+				1166477B29A1E56300C13879 /* KKWindowMenuView.png in Resources */,
 				1166476C29A1E29700C13879 /* KKWindowModalView.png in Resources */,
 				3A654601258CC34200942E7E /* KKLibraryDBManager.sqlite in Resources */,
 			);
@@ -1679,6 +1721,7 @@
 				3A6544AF258CC1EC00942E7E /* UIButton+KKCategory.m in Sources */,
 				3A6544B0258CC1EC00942E7E /* UIColor+KKCategory.m in Sources */,
 				1166473129A1CC1B00C13879 /* KKAlertView.m in Sources */,
+				1166477929A1E4F500C13879 /* KKWindowMenuView.m in Sources */,
 				3A6544B1258CC1EC00942E7E /* UIView+KKCategory.m in Sources */,
 				3A6544B2258CC1EC00942E7E /* UIFont+KKCategory.m in Sources */,
 				3A6544B3258CC1EC00942E7E /* NSDateFormatter+KKCategory.m in Sources */,
@@ -1705,6 +1748,7 @@
 				1166472329A11F2B00C13879 /* KKLocalizationManager.m in Sources */,
 				3A6544C6258CC1EC00942E7E /* NSMutableData+KKCategory.m in Sources */,
 				11893E43286598800089D28C /* KKUserDefaultsManager.m in Sources */,
+				1166477629A1E4F500C13879 /* KKWindowMenuItem.m in Sources */,
 				3A6544C8258CC1EC00942E7E /* NSArray+KKCategory.m in Sources */,
 				3A6544C9258CC1EC00942E7E /* NSMutableArray+KKCategory.m in Sources */,
 				3A6544CA258CC1EC00942E7E /* CALayer+KKCategory.m in Sources */,
@@ -1754,6 +1798,7 @@
 				3A6542C8258B5B1000942E7E /* KLTNavigationController.m in Sources */,
 				3A654355258B5B1100942E7E /* UIColor+KKCategory.m in Sources */,
 				1166473029A1CC1B00C13879 /* KKAlertView.m in Sources */,
+				1166477829A1E4F500C13879 /* KKWindowMenuView.m in Sources */,
 				3A654373258B5B1100942E7E /* NSObject+KKCategory.m in Sources */,
 				111A3BC128046B5600CBBBC1 /* NSCalendar+KKCategory.m in Sources */,
 				3A65434D258B5B1100942E7E /* UIScrollView+KKCategory.m in Sources */,
@@ -1780,6 +1825,7 @@
 				1166472229A11F2B00C13879 /* KKLocalizationManager.m in Sources */,
 				3A654369258B5B1100942E7E /* UITableView+KKCategory.m in Sources */,
 				11893E42286598800089D28C /* KKUserDefaultsManager.m in Sources */,
+				1166477529A1E4F500C13879 /* KKWindowMenuItem.m in Sources */,
 				3A65435F258B5B1100942E7E /* NSData+KKCategory.m in Sources */,
 				3A6542D1258B5B1000942E7E /* KKViewController.m in Sources */,
 				3A6542D6258B5B1000942E7E /* KKFileCacheManagerDB.m in Sources */,

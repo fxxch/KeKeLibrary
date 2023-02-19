@@ -41,4 +41,10 @@
 #import "KKWindowModalView.h"
 #import "KKWindowModalViewItem.h"
 
+//从某个view处，弹出菜单（拷贝、剪切、转发、翻译、收藏） /*❤️*/
+#import "KKWindowMenuView.h"
+#import "KKWindowMenuItem.h"
+
+
+
 #endif /* KKTool_h */
