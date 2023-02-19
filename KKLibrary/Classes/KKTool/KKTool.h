@@ -34,4 +34,7 @@
 //吐司提示 /*❤️*/
 #import "KKToastView.h"
 
+//提示框 /*❤️*/
+#import "KKAlertView.h"
+
 #endif /* KKTool_h */

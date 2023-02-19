@@ -29,6 +29,10 @@
 		1166472929A1CAE300C13879 /* KKToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166472629A1CAE300C13879 /* KKToastView.m */; };
 		1166472A29A1CAE300C13879 /* KKToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1166472729A1CAE300C13879 /* KKToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1166472B29A1CB1E00C13879 /* KKToastView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166472729A1CAE300C13879 /* KKToastView.h */; };
+		1166472F29A1CC1B00C13879 /* KKAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1166472D29A1CC1A00C13879 /* KKAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1166473029A1CC1B00C13879 /* KKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166472E29A1CC1A00C13879 /* KKAlertView.m */; };
+		1166473129A1CC1B00C13879 /* KKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166472E29A1CC1A00C13879 /* KKAlertView.m */; };
+		1166473229A1D0E500C13879 /* KKAlertView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1166472D29A1CC1A00C13879 /* KKAlertView.h */; };
 		11893E41286598800089D28C /* KKUserDefaultsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 11893E3F286598800089D28C /* KKUserDefaultsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11893E42286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
 		11893E43286598800089D28C /* KKUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11893E40286598800089D28C /* KKUserDefaultsManager.m */; };
@@ -383,6 +387,7 @@
 			dstPath = include/KKTool;
 			dstSubfolderSpec = 16;
 			files = (
+				1166473229A1D0E500C13879 /* KKAlertView.h in CopyFiles */,
 				1166472B29A1CB1E00C13879 /* KKToastView.h in CopyFiles */,
 				1166472429A11F6800C13879 /* KKLocalizationManager.h in CopyFiles */,
 				116646FD29A0A85300C13879 /* KKResourceManager.h in CopyFiles */,
@@ -444,6 +449,8 @@
 		1166472029A11F2B00C13879 /* KKLocalizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLocalizationManager.m; sourceTree = "<group>"; };
 		1166472629A1CAE300C13879 /* KKToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKToastView.m; sourceTree = "<group>"; };
 		1166472729A1CAE300C13879 /* KKToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKToastView.h; sourceTree = "<group>"; };
+		1166472D29A1CC1A00C13879 /* KKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAlertView.h; sourceTree = "<group>"; };
+		1166472E29A1CC1A00C13879 /* KKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAlertView.m; sourceTree = "<group>"; };
 		11893E3F286598800089D28C /* KKUserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUserDefaultsManager.h; sourceTree = "<group>"; };
 		11893E40286598800089D28C /* KKUserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUserDefaultsManager.m; sourceTree = "<group>"; };
 		11BA40E528E6A24F006BBBCA /* KKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKTimer.m; sourceTree = "<group>"; };
@@ -652,6 +659,15 @@
 			path = KKToastView;
 			sourceTree = "<group>";
 		};
+		1166472C29A1CC1A00C13879 /* KKAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				1166472D29A1CC1A00C13879 /* KKAlertView.h */,
+				1166472E29A1CC1A00C13879 /* KKAlertView.m */,
+			);
+			path = KKAlertView;
+			sourceTree = "<group>";
+		};
 		11893E3E286598800089D28C /* KKUserDefaultsManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +829,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0986C225E64402001A7F99 /* KKTool.h */,
+				1166472C29A1CC1A00C13879 /* KKAlertView */,
 				1166472529A1CAE300C13879 /* KKToastView */,
 				1166471E29A11F2B00C13879 /* KKLocalizationManager */,
 				116646F729A0A7E400C13879 /* KKResourceManager */,
@@ -1443,6 +1460,7 @@
 				11893E41286598800089D28C /* KKUserDefaultsManager.h in Headers */,
 				11BA40E928E6A24F006BBBCA /* KKTimer.h in Headers */,
 				1166472A29A1CAE300C13879 /* KKToastView.h in Headers */,
+				1166472F29A1CC1B00C13879 /* KKAlertView.h in Headers */,
 				1166472129A11F2B00C13879 /* KKLocalizationManager.h in Headers */,
 				3A86124925E6559E001EFE14 /* KeKeLibrary.h in Headers */,
 			);
@@ -1617,6 +1635,7 @@
 				3A6544AE258CC1EC00942E7E /* NSBundle+KKCategory.m in Sources */,
 				3A6544AF258CC1EC00942E7E /* UIButton+KKCategory.m in Sources */,
 				3A6544B0258CC1EC00942E7E /* UIColor+KKCategory.m in Sources */,
+				1166473129A1CC1B00C13879 /* KKAlertView.m in Sources */,
 				3A6544B1258CC1EC00942E7E /* UIView+KKCategory.m in Sources */,
 				3A6544B2258CC1EC00942E7E /* UIFont+KKCategory.m in Sources */,
 				3A6544B3258CC1EC00942E7E /* NSDateFormatter+KKCategory.m in Sources */,
@@ -1689,6 +1708,7 @@
 				3A654371258B5B1100942E7E /* NSNumber+KKCategory.m in Sources */,
 				3A6542C8258B5B1000942E7E /* KLTNavigationController.m in Sources */,
 				3A654355258B5B1100942E7E /* UIColor+KKCategory.m in Sources */,
+				1166473029A1CC1B00C13879 /* KKAlertView.m in Sources */,
 				3A654373258B5B1100942E7E /* NSObject+KKCategory.m in Sources */,
 				111A3BC128046B5600CBBBC1 /* NSCalendar+KKCategory.m in Sources */,
 				3A65434D258B5B1100942E7E /* UIScrollView+KKCategory.m in Sources */,
