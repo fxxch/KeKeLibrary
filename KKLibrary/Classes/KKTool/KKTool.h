@@ -37,4 +37,8 @@
 //提示框 /*❤️*/
 #import "KKAlertView.h"
 
+//底部Model出来的一个view,里面可以摆放很多按钮，横向滚动分页 /*❤️*/
+#import "KKWindowModalView.h"
+#import "KKWindowModalViewItem.h"
+
 #endif /* KKTool_h */
