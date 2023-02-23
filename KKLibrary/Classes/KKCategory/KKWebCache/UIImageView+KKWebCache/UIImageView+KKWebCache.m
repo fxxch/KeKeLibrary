@@ -140,7 +140,7 @@
 - (void)kk_setImageWithURL_ForLocal:(NSURL *)url
                           completed:(KKImageLoadCompletedBlock)completedBlock{
 
-//    KKLogInfoFormat(@"UIImageView+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIImageView+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
 
     [self kk_removePlaceHolderView];
 
@@ -160,7 +160,7 @@
                    showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
                            completed:(KKImageLoadCompletedBlock)completedBlock{
 
-    KKLogInfoFormat(@"UIImageView+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIImageView+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
 
     self.kk_imageDataURLString = [url absoluteString];
     

@@ -90,7 +90,6 @@
         self.frame = self.superview.bounds;
         [self kk_removeAllSubviews];
         [self initUI];
-        KKLogDebugFormat(@"layoutSubviews: %@",(NSStringFromCGRect(self.superview.frame)));
     }
 }
 

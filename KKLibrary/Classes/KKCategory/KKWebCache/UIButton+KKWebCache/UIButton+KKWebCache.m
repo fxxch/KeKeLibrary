@@ -229,7 +229,7 @@
                            forState:(KKControlState)state
                           completed:(KKImageLoadCompletedBlock)completedBlock{
 
-//    KKLogInfoFormat(@"UIButton+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIButton+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
 
     [self kk_removePlaceHolderView];
 
@@ -261,7 +261,7 @@
                    showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
                            completed:(KKImageLoadCompletedBlock)completedBlock{
 
-    KKLogInfoFormat(@"UIButton+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIButton+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
 
     self.kk_imageDataURLString = [url absoluteString];
     
@@ -483,7 +483,7 @@
                                      forState:(KKControlState)state
                                     completed:(KKImageLoadCompletedBlock)completedBlock{
 
-//    KKLogInfoFormat(@"UIButton+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIButton+KKWebCache加载本地缓存图片:  %@",KKValidString(url.absoluteString));
 
     [self kk_removePlaceHolderView];
 
@@ -515,7 +515,7 @@
                              showActivityStyle:(KKActivityIndicatorViewStyle)aStyle
                                      completed:(KKImageLoadCompletedBlock)completedBlock{
 
-    KKLogInfoFormat(@"UIButton+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
+    //KKLogInfoFormat(@"UIButton+KKWebCache加载远程图片:  %@",KKValidString(url.absoluteString));
 
     if (state==KKControlStateNone) {
         [self setBackgroundImage:placeholder forState:UIControlStateNormal];
