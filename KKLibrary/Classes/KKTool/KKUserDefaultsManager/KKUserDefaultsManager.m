@@ -210,7 +210,7 @@ NSAttributedStringKey const KKUserDefaultsManagerDefaultIdentiiferKey  = @"KKUse
     if ([NSString kk_isStringEmpty:aUserDefaultsKey]) {
         aUserDefaultsKey = KKUserDefaultsManagerDefaultIdentiiferKey;
     }
-    [[NSUserDefaults standardUserDefaults] setObject:aDictionary forKey:aKey];
+    [[NSUserDefaults standardUserDefaults] setObject:aDictionary forKey:aUserDefaultsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
