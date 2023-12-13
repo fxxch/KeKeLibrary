@@ -202,10 +202,6 @@ NSAttributedStringKey const KKUserDefaultsManagerDefaultIdentiiferKey  = @"KKUse
 
 /* UserDefaults Group */
 + (void)private_saveUserDefaults:(NSDictionary*_Nullable)aDictionary forKey:(NSString*_Nullable)aKey{
-    if ([NSDictionary kk_isDictionaryEmpty:aDictionary]) {
-        return;
-    }
-
     NSString *aUserDefaultsKey = aKey;
     if ([NSString kk_isStringEmpty:aUserDefaultsKey]) {
         aUserDefaultsKey = KKUserDefaultsManagerDefaultIdentiiferKey;
